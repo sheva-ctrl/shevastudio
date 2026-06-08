@@ -29,7 +29,9 @@
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:880px;margin:0 auto}
-  
+
+.brand-sticker{width:140px;height:auto;background:transparent;filter:drop-shadow(0px 10px 20px rgba(21,21,28,0.12));transition:transform .3s cubic-bezier(.2,.7,.3,1);cursor:pointer}
+  .brand-sticker:hover{transform:translateY(-4px) scale(1.03) rotate(2deg);filter:drop-shadow(0px 14px 24px rgba(96,32,208,0.18))}  
   .back-btn {
     font-family:'Space Mono',monospace;
     font-size:12px; text-decoration:none; color:var(--violet);
@@ -81,7 +83,8 @@
   td { padding:14px 18px; border-bottom:1px solid var(--line); font-weight:300; }
   td:first-child { font-family:'Space Mono',monospace; font-weight:700; color:var(--violet); width:140px; }
   tr:last-child td { border-bottom:none; }
-
+.brand-sticker{width:140px;height:auto;background:transparent;filter:drop-shadow(0px 10px 20px rgba(21,21,28,0.12));transition:transform .3s cubic-bezier(.2,.7,.3,1);cursor:pointer}
+  .brand-sticker:hover{transform:translateY(-4px) scale(1.03) rotate(2deg);filter:drop-shadow(0px 14px 24px rgba(96,32,208,0.18))}
   /* ---- quick prompts box ---- */
   .prompts-box { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:10px; }
   .prompt-line {
@@ -96,6 +99,9 @@
 <body>
 <div class="wrap">
 
+  <div style="text-align:center; margin-bottom:28px;" class="rise d1">
+    <img src="Gemini_Generated_Image_kl8s9vkl8s9vkl8s.png" alt="Sheva Studio Sticker" class="brand-sticker">
+  </div>
   <a class="back-btn" href="index.html">← Studio Hub</a>
 
   <h1>Get Started <span class="accent">with AI.</span></h1>
