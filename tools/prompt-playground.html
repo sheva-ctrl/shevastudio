@@ -237,13 +237,11 @@
 
     function handleFriction(type) {
       if (type === 'tabs') {
-        alert("Redirecting to your 'Intro to AI' landing page module!");
-        // template link anchor: window.location.href = '../#intro-to-ai';
+        window.location.href = '../#intro-to-ai'; 
       } else if (type === 'scripts') {
         document.getElementById('prompts-anchor').scrollIntoView({ behavior: 'smooth' });
       } else if (type === 'cards') {
-        alert("Redirecting to your custom Card Generator tool!");
-        // template link: window.location.href = 'card-generator.html';
+        window.location.href = 'card-generator.html'; 
       }
     }
   </script>
