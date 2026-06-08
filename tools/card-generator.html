@@ -285,5 +285,23 @@ document.getElementById('grain').onclick = function() {
   }
 };
 </script>
+<script>
+function generatePrompt() {
+    // 1. Grab what the user typed
+    const topic = document.getElementById('userTopic').value.trim();
+    
+    if (!topic) {
+        alert("Please enter a topic first!");
+        return;
+    }
+    
+    // 2. Your master prompt template (use ${topic} where the magic happens)
+    const frameworkTemplate = `Act as an expert performance coach. Break down the topic of "${topic}" into a 3-step 'Don't Make Me Think' execution framework. Focus purely on reduction of cognitive load, clear micro-steps, and eliminate any fluff.`;
+    
+    // 3. Inject it into the output container and make it visible
+    const outputDiv = document.getElementById('promptOutput');
+    outputDiv.innerText = frameworkTemplate;
+    outputDiv.style.display = 'block';
+}
 </body>
 </html>
