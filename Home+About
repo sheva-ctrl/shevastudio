@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheva Studio — AI Transformation Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#6020D0;
+    --violet-2:#7C3AED;
+    --teal:#0891B2;
+    --ink:#15151C;
+    --muted:#55555F;
+    --line:#E7E5EE;
+    --bg:#FCFCFE;
+    --card:#FFFFFF;
+    --grad:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Lexend',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    padding:clamp(28px,6vw,72px) clamp(20px,5vw,64px);
+  }
+  .wrap{max-width:880px;margin:0 auto}
+
+  /* ---- intro ---- */
+  .kicker{
+    font-family:'Space Mono',monospace;
+    font-size:13px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--violet);
+    display:inline-flex;align-items:center;gap:10px;
+    margin-bottom:22px;
+  }
+  .kicker::before{content:"";width:34px;height:2px;background:var(--grad);border-radius:2px}
+
+  h1{
+    font-family:'Syne',sans-serif;
+    font-weight:800;
+    font-size:clamp(32px,6.5vw,54px);
+    line-height:1.08;
+    letter-spacing:-0.02em;
+    margin-bottom:12px;
+  }
+  h1 .accent{
+    background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .sub-headline {
+    font-family:'Space Mono',monospace;
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--teal);
+    margin-bottom: 28px;
+    font-weight: 700;
+  }
+  .lede{
+    font-size:clamp(17px,2.4vw,21px);
+    color:var(--muted);
+    font-weight:300;
+    max-width:64ch;
+    margin-bottom:34px;
+  }
+  .lede strong{color:var(--ink);font-weight:500}
+
+  /* ---- pillars ---- */
+  .section-label{
+    font-family:'Space Mono',monospace;
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);
+    margin:clamp(40px,7vw,54px) 0 20px;
+  }
+  .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:20px;margin-bottom:40px;}
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px 24px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .card::before{
+    content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--grad);
+  }
+  .card .tag{
+    font-family:'Space Mono',monospace;
+    font-size:11px;font-weight:700;letter-spacing:.14em;
+    color:var(--violet);
+    display:block;margin-bottom:12px;
+  }
+  .card h3{
+    font-family:'Syne',sans-serif;font-weight:700;
+    font-size:20px;line-height:1.25;margin-bottom:10px;letter-spacing:-0.01em;
+  }
+  .card p{font-size:14.5px;color:var(--muted);font-weight:300;line-height:1.6;margin-bottom:20px;}
+  .card .card-link {
+    font-size:14px;font-weight:500;color:var(--violet);text-decoration:none;margin-top:auto;
+    display:inline-flex;align-items:center;gap:4px;
+  }
+  .card .card-link:hover { text-decoration: underline; }
+
+  /* ---- social connections links ---- */
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .social-link {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .social-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--violet);
+  }
+  .social-platform {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: var(--violet);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .social-handle {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---- CTA ---- */
+  .cta{
+    margin-top:clamp(40px,7vw,64px);
+    border-top:1px solid var(--line);
+    padding-top:36px;
+  }
+  .cta h2{
+    font-family:'Syne',sans-serif;font-weight:700;
+    font-size:clamp(22px,4vw,30px);letter-spacing:-0.01em;margin-bottom:20px;
+  }
+  .btns{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    font-family:'Lexend',sans-serif;font-weight:500;font-size:15px;
+    text-decoration:none;border-radius:999px;padding:13px 24px;
+    display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary:hover{box-shadow:0 10px 28px rgba(96,32,208,.34)}
+  .btn-ghost:hover{border-color:var(--violet);color:var(--violet)}
+  .btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+  .signoff{
+    font-family:'Space Mono',monospace;
+    font-size:13px;color:var(--muted);
+    margin-top:34px;line-height:1.7;
+  }
+  .signoff a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
+  .signoff a:hover{border-bottom-color:var(--violet)}
+
+  /* ---- load animation ---- */
+  .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}
+  .d4{animation-delay:.35s}.d5{animation-delay:.45s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="kicker rise d1">Hey, I'm Sheva</span>
+
+  <h1 class="rise d2">AI Transformation Leader <span class="accent">| Seattle Based</span></h1>
+  <p class="sub-headline rise d2">Microsoft + Blue Origin Alumni</p>
+
+  <p class="lede rise d3">Helping organizations and individuals turn AI from an "initiative" into culture. Welcome to Sheva Studio, where enterprise AI meets everyday life, and <strong>connection beats perfection every time</strong>.</p>
+
+  <p class="lede rise d3">I translate complex tech into clean, cinematic stories for teams and for the internet. As an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver — <strong>I'm making AI human, practical, and a little bit fun</strong>.</p>
+
+  <!-- THE 3 ECOSYSTEM PILLARS -->
+  <p class="section-label rise d4">Ecosystem Hub</p>
+  <div class="grid rise d4">
+    <div class="card">
+      <span class="tag">01 · TRAINING</span>
+      <h3>Intro to AI</h3>
+      <p>A short series for people who want to actually use AI minus the jargon, the hype, and the open-tabs rabbit hole[cite: 1].</p>
+      <a href="Sheva-Studio-Intro-to-AI.html" class="card-link">Start Series →</a>
+    </div>
+    
+    <div class="card">
+      <span class="tag">02 · PROMPTING</span>
+      <h3>Click-to-Guides</h3>
+      <p>Quick recipes, tools, frameworks, and quick-glance cheat sheets for instant cross-platform productivity.</p>
+      <a href="guides.html" class="card-link">Open Guides →</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">03 · COMMUNITY</span>
+      <h3>Side by Side Collective</h3>
+      <p>Real-life connection — not perfect, not curated. Systems built for different brains.</p>
+      <a href="https://facebook.com/ShevaKayStudio" target="_blank" class="card-link">Join Group →</a>
+    </div>
+  </div>
+
+  <!-- SOCIAL GRID -->
+  <p class="section-label rise d4">Let's Connect</p>
+  <div class="social-grid rise d4">
+    <a href="https://tiktok.com/@sheva.studio" class="social-link" target="_blank" rel="noopener">
+      <span class="social-platform">TikTok</span>
+      <span class="social-handle">@sheva.studio</span>
+    </a>
+    <a href="https://youtube.com/@sheva.studio" class="social-link" target="_blank" rel="noopener">
+      <span class="social-platform">YouTube</span>
+      <span class="social-handle">@sheva.studio</span>
+    </a>
+    <a href="https://instagram.com/sheva.studios" class="social-link" target="_blank" rel="noopener">
+      <span class="social-platform">Instagram</span>
+      <span class="social-handle">@sheva.studios</span>
+    </a>
+    <a href="https://linkedin.com/in/shevanoland" class="social-link" target="_blank" rel="noopener">
+      <span class="social-platform">LinkedIn</span>
+      <span class="social-handle">shevanoland</span>
+    </a>
+    <a href="https://facebook.com/ShevaKayStudio" class="social-link" target="_blank" rel="noopener">
+      <span class="social-platform">Facebook</span>
+      <span class="social-handle">ShevaKayStudio</span>
+    </a>
+    <a href="https://amazon.com/shop/scribinglife" class="social-link" target="_blank" rel="noopener">
+      <span class="social-platform">Amazon Shop</span>
+      <span class="social-handle">scribinglife</span>
+    </a>
+  </div>
+
+  <!-- CONTACT & CALL TO ACTION -->
+  <div class="cta rise d5">
+    <h2>Ready to transform your workflow?</h2>
+    <div class="btns">
+      <a class="btn btn-primary" href="Sheva-Studio-Intro-to-AI.html">Get Started with AI →</a>
+      <a class="btn btn-ghost" href="mailto:sheva@shevastudio.com">Get In Touch</a>
+    </div>
+    <p class="signoff">Want to bring this framework to your team? &nbsp;→&nbsp; <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></p>
+  </div>
+
+</div>
+</body>
+</html>
