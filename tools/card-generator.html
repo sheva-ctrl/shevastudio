@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheva Studio · Carousel Card Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{
+    --violet-deep:#1B0F33; --violet:#2A1A4A; --teal-dark:#0E3B3C;
+    --accent:#2DD4BF; --cream:#F5F0FF; --ink:#0d0820;
+    --ui-bg:#150e26; --ui-panel:#221538; --ui-line:#3a2a5c; --ui-text:#EDE7FB;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ui-bg);color:var(--ui-text);
+    font-family:'JetBrains Mono',ui-monospace,monospace;-webkit-font-smoothing:antialiased;}
+  header{position:sticky;top:0;z-index:30;background:rgba(21,14,38,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--ui-line);padding:14px 16px;}
+  h1{font-size:15px;margin:0 0 2px;letter-spacing:.04em;font-weight:800;}
+  h1 span{color:var(--accent)}
+  .sub{font-size:11px;color:#9d8fc0;margin-bottom:12px;line-height:1.4}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .ctl{display:flex;align-items:center;gap:6px;background:var(--ui-panel);
+    border:1px solid var(--ui-line);border-radius:10px;padding:7px 10px;font-size:11px}
+  .ctl label{color:#9d8fc0;text-transform:uppercase;letter-spacing:.06em;font-size:10px}
+  select,button{font-family:inherit;color:var(--ui-text);background:transparent;border:none;font-size:12px}
+  select{cursor:pointer;outline:none}
+  .swatch{width:20px;height:20px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0}
+  .swatch[aria-pressed="true"]{border-color:var(--cream);transform:scale(1.12)}
+  .toggle{cursor:pointer;padding:7px 12px;border-radius:10px;background:var(--ui-panel);
+    border:1px solid var(--ui-line);font-size:11px;color:var(--ui-text)}
+  .toggle[aria-pressed="true"]{background:var(--accent);color:var(--ink);border-color:var(--accent);font-weight:700}
+  .dl-all{background:var(--accent);color:var(--ink);font-weight:800;padding:9px 16px;border-radius:10px;
+    cursor:pointer;letter-spacing:.03em}
+  .dl-all:active{transform:translateY(1px)}
+  main{max-width:480px;margin:0 auto;padding:18px 16px 80px}
+  .tip{font-size:11px;color:#9d8fc0;line-height:1.5;background:var(--ui-panel);
+    border:1px solid var(--ui-line);border-left:3px solid var(--accent);
+    border-radius:8px;padding:10px 12px;margin-bottom:20px}
+  .cardwrap{margin-bottom:26px}
+  .cardhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:11px;color:#9d8fc0}
+  .cardhead b{color:var(--ui-text)}
+  .dl{cursor:pointer;background:var(--ui-panel);border:1px solid var(--ui-line);
+    color:var(--accent);border-radius:8px;padding:6px 12px;font-size:11px;font-weight:700}
+  .stage{position:relative;width:100%;overflow:hidden;border-radius:14px;
+    box-shadow:0 12px 40px rgba(0,0,0,.5)}
+  
+  /* Export nodes (1080px base) scaled responsively via script fit() */
+  .card{
+    width:1080px;transform-origin:top left;position:relative;
+    background:
+      radial-gradient(120% 90% at 15% 0%, #34206b 0%, rgba(52,32,107,0) 55%),
+      radial-gradient(120% 90% at 100% 100%, #0E3B3C 0%, rgba(14,59,60,0) 60%),
+      var(--ink);
+    padding:90px 80px;display:flex;flex-direction:column;justify-content:space-between;
+    box-sizing:border-box;overflow:hidden;
+  }
+  .card.ratio-45{height:1350px}
+  .card.ratio-916{height:1920px}
+  
+  /* Texture Overlays */
+  .card::before{
+    content:"";position:absolute;inset:0;opacity:0.04;pointer-events:none;z-index:2;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3联%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .card.grain-heavy::before{opacity:0.09}
+  .card.grain-none::before{display:none}
+
+  /* Typography Specs */
+  .kicker{font-family:'Space Mono',monospace;font-size:28px;font-weight:700;
+    color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:40px}
+  .bodytext{font-size:52px;line-height:1.45;color:var(--cream);font-weight:400;text-align:left;max-width:920px}
+  .bodytext .accent{color:var(--accent);font-weight:700}
+  
+  /* Footer Brand Items */
+  .cardfoot{display:flex;justify-content:space-between;align-items:center;z-index:5}
+  .brand{font-size:26px;font-weight:800;letter-spacing:.05em;color:var(--cream);opacity:.9}
+  .handle{font-family:'Space Mono',monospace;font-size:24px;color:var(--accent);opacity:.85}
+  .dots{display:flex;gap:12px}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--cream);opacity:.2}
+  .dot.active{background:var(--accent);opacity:1;box-shadow:0 0 12px var(--accent)}
+
+  /* Special Layout: Intro Cover */
+  .card.layout-intro{justify-content:center;text-align:center}
+  .card.layout-intro .kicker{margin-bottom:24px;font-size:32px}
+  .card.layout-intro .bodytext{font-size:72px;font-weight:800;text-align:center;max-width:100%;line-height:1.25}
+  .card.layout-intro .cardfoot{position:absolute;bottom:90px;left:80px;right:80px}
+
+  /* Special Layout: CTA Slide */
+  .card.layout-cta .bodytext{font-size:60px;font-weight:700;margin-bottom:60px}
+  .card.layout-cta .comment-box{border:3px dashed rgba(45,212,191,.4);border-radius:20px;
+    padding:40px;background:rgba(14,59,60,.2);font-size:38px;color:var(--cream);line-height:1.4}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SHEVA STUDIO <span>· Carousel Generator</span></h1>
+  <div class="sub">High-contrast, left-aligned, spacious line templates structured for dyslexic and ADHD readers.</div>
+  <div class="controls">
+    <div class="ctl">
+      <label>Font</label>
+      <select id="font">
+        <option value="'JetBrains Mono',monospace">JetBrains Mono</option>
+        <option value="'Space Mono',monospace">Space Mono</option>
+      </select>
+    </div>
+    <div class="ctl">
+      <label>Accent</label>
+      <button class="swatch" data-c="#2DD4BF" style="background:#2DD4BF" aria-pressed="true"></button>
+      <button class="swatch" data-c="#F43F5E" style="background:#F43F5E"></button>
+      <button class="swatch" data-c="#3B82F6" style="background:#3B82F6"></button>
+      <button class="swatch" data-c="#EAB308" style="background:#EAB308"></button>
+    </div>
+    <button id="ratio" class="toggle" aria-pressed="false">4:5</button>
+    <button id="grain" class="toggle" aria-pressed="false">Texture: Soft</button>
+    <button id="dlall" class="dl-all">⤓ Download All 8</button>
+  </div>
+</header>
+
+<main>
+  <div class="tip">
+    <b>ADHD Visual Layout Engine:</b> Pre-configured with 1080px production grids. Scale rendering runs automatically.
+  </div>
+  <div id="deck"></div>
+</main>
+
+<script>
+// Master Data Source
+const DATA = [
+  {type:'intro', kicker:'ADHD BRAIN ADAPTATIONS', html:'Half my personality is just <span class="accent">ADHD adaptations</span> I got really good at.'},
+  {type:'', kicker:'THE ADAPTATION MACHINE', html:'Everyone talks about the struggles. Nobody tells you ADHD brains are <span class="accent">weirdly good</span> at very specific things.'},
+  {type:'', kicker:'KNOWING SOMETHING’S OFF', html:'You walk in, read the room in two seconds, and clock the mood shift <span class="accent">before anyone says a word</span>.'},
+  {type:'', kicker:'THE 48-HOUR EXPERT', html:'A topic grabs you Tuesday. By Thursday you could <span class="accent">teach a class</span> on it.'},
+  {type:'', kicker:'CALM WHEN IT COUNTS', html:'Everyone else spirals in a crisis. Your brain finally goes <span class="accent">quiet</span> and gets to work.'},
+  {type:'', kicker:'CONNECTIONS NOBODY SEES', html:'Your brain doesn’t go A to B. It goes A, to a song from 2009, to a smell, to B — and <span class="accent">you’re right</span>.'},
+  {type:'', kicker:'THE LAST-MINUTE MACHINE', html:'You’ll wait until the last possible second. And you’ll <span class="accent">still get it done</span>.'},
+  {type:'cta', kicker:'YOUR TURN', html:'What’s your weirdly specific ADHD strength?', ctaText:'Drop your strength in the comments 👇\nFollow @sheva.studio for realistic systems.'}
+];
+
+const N = DATA.length;
+let RATIO = '45'; // '45' or '916'
+let grain = 'soft'; // 'soft', 'heavy', 'none'
+let accent = '#2DD4BF';
+
+// Render Workspace DOM
+const deck = document.getElementById('deck');
+DATA.forEach((d, i) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'cardwrap';
+  
+  const head = document.createElement('div');
+  head.className = 'cardhead';
+  head.innerHTML = `<span>Card <b>${i+1}/${N}</b> (${d.type||'slide'})</span><button class="dl" onclick="download(${i})">📥 Export PNG</button>`;
+  
+  const stage = document.createElement('div');
+  stage.className = 'stage';
+  
+  const card = document.createElement('div');
+  card.id = `card-${i}`;
+  card.className = `card ratio-45 grain-soft layout-${d.type||'standard'}`;
+  
+  let innerHTML = '';
+  if(d.type === 'intro') {
+    innerHTML = `
+      <div>
+        <div class="kicker">${d.kicker}</div>
+        <div class="bodytext">${d.html}</div>
+      </div>
+      <div class="cardfoot">
+        <span class="brand">SHEVA STUDIO</span>
+        <span class="handle">@sheva.studio</span>
+      </div>`;
+  } else if(d.type === 'cta') {
+    innerHTML = `
+      <div>
+        <div class="kicker">${d.kicker}</div>
+        <div class="bodytext">${d.html}</div>
+        <div class="comment-box">${d.ctaText.replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="cardfoot">
+        <span class="brand">SHEVA STUDIO</span>
+        <div class="dots">${Array.from({length:N},(_,idx)=>`<div class="dot ${idx===i?'active':''}"></div>`).join('')}</div>
+      </div>`;
+  } else {
+    innerHTML = `
+      <div>
+        <div class="kicker">${d.kicker}</div>
+        <div class="bodytext">${d.html}</div>
+      </div>
+      <div class="cardfoot">
+        <div class="dots">${Array.from({length:N},(_,idx)=>`<div class="dot ${idx===i?'active':''}"></div>`).join('')}</div>
+        <span class="handle">@sheva.studio</span>
+      </div>`;
+  }
+  
+  card.innerHTML = innerHTML;
+  stage.appendChild(card);
+  wrap.appendChild(head);
+  wrap.appendChild(stage);
+  deck.appendChild(wrap);
+});
+
+// Dynamic Rescaling Engine
+function fit() {
+  const w = deck.clientWidth - 32; 
+  document.querySelectorAll('.card').forEach(c => {
+    const scale = w / 1080;
+    c.style.transform = `scale(${scale})`;
+    c.parentElement.style.height = (RATIO === '45' ? 1350 : 1920) * scale + 'px';
+  });
+}
+window.onresize = fit;
+fit();
+
+// Control Functions
+function applyFont() {
+  const f = document.getElementById('font').value;
+  document.querySelectorAll('.card').forEach(c => c.style.family = f);
+}
+function applyAccent() {
+  document.documentElement.style.setProperty('--accent', accent);
+}
+document.getElementById('font').onchange = applyFont;
+
+// High-Resolution Rendering & Export
+async function download(i) {
+  const card = document.getElementById(`card-${i}`);
+  const prevT = card.style.transform;
+  card.style.transform = 'none'; // Lock scale for source render
+  
+  const canvas = await html2canvas(card, {
+    scale: 1,
+    useCORS: true,
+    logging: false,
+    width: 1080,
+    height: (RATIO === '45' ? 1350 : 1920)
+  });
+  
+  card.style.transform = prevT;
+  const a = document.createElement('a');
+  a.download = `carousel-card-${i+1}.png`; 
+  a.href = canvas.toDataURL('image/png'); 
+  a.click();
+}
+
+async function downloadAll() {
+  const btn = document.getElementById('dlall'); 
+  btn.textContent = 'Rendering…';
+  for(let i = 0; i < N; i++) { 
+    await download(i); 
+    await new Promise(r => setTimeout(r, 400)); 
+  }
+  btn.textContent = '⤓ Download all 8';
+}
+document.getElementById('dlall').onclick = downloadAll;
+
+document.getElementById('ratio').onclick = function() {
+  RATIO = RATIO === '45' ? '916' : '45';
+  this.textContent = RATIO === '45' ? '4:5' : '9:16';
+  this.setAttribute('aria-pressed', RATIO === '916');
+  document.querySelectorAll('.card').forEach(c => {
+    c.classList.remove('ratio-45', 'ratio-916');
+    c.classList.add('ratio-' + RATIO);
+  });
+  fit();
+};
+
+document.getElementById('grain').onclick = function() {
+  if (grain === 'soft') {
+    grain = 'heavy';
+    this.textContent = 'Texture: Heavy';
+    document.querySelectorAll('.card').forEach(c => { c.classList.remove('grain-soft'); c.classList.add('grain-heavy'); });
+  } else if (grain === 'heavy') {
+    grain = 'none';
+    this.textContent = 'Texture: None';
+    document.querySelectorAll('.card').forEach(c => { c.classList.remove('grain-heavy'); c.classList.add('grain-none'); });
+  } else {
+    grain = 'soft';
+    this.textContent = 'Texture: Soft';
+    document.querySelectorAll('.card').forEach(c => { c.classList.remove('grain-none'); c.classList.add('grain-soft'); });
+  }
+};
+</script>
+</body>
+</html>
