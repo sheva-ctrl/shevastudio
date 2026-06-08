@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheva Studio — Quick-Glance Prompt Frameworks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#6020D0;
+    --violet-2:#7C3AED;
+    --teal:#0891B2;
+    --ink:#15151C;
+    --muted:#55555F;
+    --line:#E7E5EE;
+    --bg:#FCFCFE;
+    --card:#FFFFFF;
+    --grad:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Lexend',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    padding:clamp(28px,6vw,72px) clamp(20px,5vw,64px);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto}
+  
+  .back-btn {
+    font-family:'Space Mono',monospace;
+    font-size:12px; text-decoration:none; color:var(--violet);
+    display:inline-flex; align-items:center; gap:6px; margin-bottom:32px;
+    font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+  }
+  .back-btn:hover { color:var(--teal); }
+
+  h1{
+    font-family:'Syne',sans-serif; font-weight:800;
+    font-size:clamp(32px,6.5vw,54px); line-height:1.08;
+    letter-spacing:-0.02em; margin-bottom:16px;
+  }
+  h1 .accent{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+  
+  .lede { font-size:clamp(16px,2.2vw,19px); color:var(--muted); font-weight:300; max-width:64ch; margin-bottom:40px; }
+
+  .section-label{
+    font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--muted); margin:44px 0 20px; display:block;
+  }
+
+  /* ---- tool tags ---- */
+  .tools-container { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px; }
+  .tool-tag {
+    font-family:'Space Mono',monospace; font-size:13px; font-weight:700;
+    padding:8px 16px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--muted);
+  }
+  .tool-tag.active { border-color:var(--violet); color:var(--violet); box-shadow:0 2px 10px rgba(96,32,208,0.08); }
+
+  /* ---- ordered list workflow ---- */
+  .workflow-list { display:flex; flex-direction:column; gap:14px; margin-bottom:40px; }
+  .workflow-item {
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; display:flex; gap:18px; align-items:flex-start;
+  }
+  .workflow-num {
+    background:var(--grad); color:#fff; font-family:'Space Mono',monospace; font-weight:700;
+    font-size:14px; min-width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;
+  }
+  .workflow-content h3 { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; margin-bottom:4px; }
+  .workflow-content p { font-size:14.5px; color:var(--muted); font-weight:300; }
+
+  /* ---- table styling ---- */
+  .table-container { overflow-x:auto; background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:34px; }
+  table { width:100%; border-collapse:collapse; text-align:left; font-size:15px; }
+  th { background:rgba(229,226,238,0.3); font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 18px; color:var(--ink); border-bottom:1px solid var(--line); }
+  td { padding:14px 18px; border-bottom:1px solid var(--line); font-weight:300; }
+  td:first-child { font-family:'Space Mono',monospace; font-weight:700; color:var(--violet); width:140px; }
+  tr:last-child td { border-bottom:none; }
+
+  /* ---- quick prompts box ---- */
+  .prompts-box { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px; display:flex; flex-direction:column; gap:10px; }
+  .prompt-line {
+    background:var(--bg); border:1px solid var(--line); padding:12px 16px; border-radius:8px;
+    font-family:'Lexend',sans-serif; font-size:14.5px; color:var(--ink); font-weight:400;
+  }
+  .prompt-line span { color:var(--teal); font-weight:500; }
+
+  .footer-cta { margin-top:54px; border-top:1px solid var(--line); padding-top:32px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-btn" href="index.html">← Studio Hub</a>
+
+  <h1>Get Started <span class="accent">with AI.</span></h1>
+  <p class="lede">Ask, analyze, create, and verify — with any AI assistant you have access to. Match the tool to how you naturally think and operate.</p>
+
+  <p class="section-label">01 · Cross-Platform Core Engines</p>
+  <div class="tools-container">
+    <div class="tool-tag active">ChatGPT · chatgpt.com</div>
+    <div class="tool-tag active">Gemini · gemini.google.com</div>
+    <div class="tool-tag active">Claude · claude.ai</div>
+    <div class="tool-tag">Grok · grok.com</div>
+    <div class="tool-tag">Copilot · copilot.microsoft.com</div>
+    <div class="tool-tag">NoteTaking Assistants</div>
+  </div>
+
+  <p class="section-label">02 · The 5-Step Workflow Habit</p>
+  <div class="workflow-list">
+    <div class="workflow-item">
+      <div class="workflow-num">1</div>
+      <div class="workflow-content">
+        <h3>Start a fresh conversation</h3>
+        <p>Open your tool and begin a clean slate — context doesn't carry over between distinct sessions.</p>
+      </div>
+    </div>
+    <div class="workflow-item">
+      <div class="workflow-num">2</div>
+      <div class="workflow-content">
+        <h3>Give it clear context</h3>
+        <p>State your primary goal, target audience, and any constraints upfront. The more specific you are, the sharper the output.</p>
+      </div>
+    </div>
+    <div class="workflow-item">
+      <div class="workflow-num">3</div>
+      <div class="workflow-content">
+        <h3>Add your source material</h3>
+        <p>Paste explicit text, upload documents, or share approved asset links. Work from your own validated systems.</p>
+      </div>
+    </div>
+    <div class="workflow-item">
+      <div class="workflow-num">4</div>
+      <div class="workflow-content">
+        <h3>Use it for everyday tasks</h3>
+        <p>Draft quick emails, summarize dense documents, brainstorm strategic content ideas, compare choices, or frame operational outlines.</p>
+      </div>
+    </div>
+    <div class="workflow-item">
+      <div class="workflow-num">5</div>
+      <div class="workflow-content">
+        <h3>Review before you use it</h3>
+        <p>AI can make errors. Always track and verify metrics, logic, figures, and sources before deploying or acting on any output.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">03 · The Perfect Prompt Recipe</p>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Execution Framework</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Goal</td><td>What exactly you want completed or built.</td></tr>
+        <tr><td>Context</td><td>Background layout, core files, and specific parameters.</td></tr>
+        <tr><td>Audience</td><td>Precisely who will be reading, watching, or using it.</td></tr>
+        <tr><td>Format</td><td>Bullets, data tables, structural emails, or markdown outlines.</td></tr>
+        <tr><td>Check</td><td>Ask the model explicitly for its logical sources or assumptions.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-label">04 · Try These Formulas First</p>
+  <div class="prompts-box">
+    <div class="prompt-line">Summarize this for <span>[audience]</span> in exactly 5 high-impact bullets.</div>
+    <div class="prompt-line">Compare <span>[Tool/Option A]</span> vs <span>[Tool/Option B]</span> using <span>[your explicit criteria]</span>.</div>
+    <div class="prompt-line">Draft a professional, clean <span>[type]</span> email regarding <span>[topic]</span>.</div>
+    <div class="prompt-line">Explain <span>[complex tech concept]</span> simply using an accessible everyday analogy.</div>
+    <div class="prompt-line">List the potential pros, blindspots, and structural cons of <span>[decision]</span>.</div>
+  </div>
+
+  <div class="footer-cta">
+    <a class="back-btn" href="index.html">← Back To Homepage Hub</a>
+  </div>
+
+</div>
+</body>
+</html>
