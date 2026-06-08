@@ -124,20 +124,35 @@
     margin-bottom: 40px;
   }
   .social-link {
-    display: flex;
-    flex-direction: column;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 16px;
-    text-decoration: none;
-    color: var(--ink);
-    transition: transform .15s ease, border-color .15s ease;
-  }
-  .social-link:hover {
-    transform: translateY(-2px);
-    border-color: var(--violet);
-  }
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform .15s ease, border-color .15s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--violet);
+}
+
+/* Keeps the logos perfectly crisp and square */
+.social-link img {
+  flex-shrink: 0;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* Stacks your platform name and handle cleanly */
+.social-text {
+  display: flex;
+  flex-direction: column;
+}
   .social-platform {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -238,28 +253,46 @@
   <div class="section-label rise d4">Let's Connect</div>
   <div class="social-grid rise d4">
     <a href="https://tiktok.com/@sheva.studio" class="social-link" target="_blank" rel="noopener">
-      <span class="social-platform">TikTok</span>
-      <span class="social-handle">@sheva.studio</span>
+      <img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=128" alt="TikTok logo" width="20" height="20" loading="lazy">
+      <div class="social-text">
+        <span class="social-platform">TikTok</span>
+        <span class="social-handle">@sheva.studio</span>
+      </div>
     </a>
     <a href="https://youtube.com/@sheva.studio" class="social-link" target="_blank" rel="noopener">
-      <span class="social-platform">YouTube</span>
-      <span class="social-handle">@sheva.studio</span>
+      <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="YouTube logo" width="20" height="20" loading="lazy">
+      <div class="social-text">
+        <span class="social-platform">YouTube</span>
+        <span class="social-handle">@sheva.studio</span>
+      </div>
     </a>
     <a href="https://instagram.com/sheva.studios" class="social-link" target="_blank" rel="noopener">
-      <span class="social-platform">Instagram</span>
-      <span class="social-handle">@sheva.studios</span>
+      <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=128" alt="Instagram logo" width="20" height="20" loading="lazy">
+      <div class="social-text">
+        <span class="social-platform">Instagram</span>
+        <span class="social-handle">@sheva.studios</span>
+      </div>
     </a>
     <a href="https://linkedin.com/in/shevanoland" class="social-link" target="_blank" rel="noopener">
-      <span class="social-platform">LinkedIn</span>
-      <span class="social-handle">shevanoland</span>
+      <img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=128" alt="LinkedIn logo" width="20" height="20" loading="lazy">
+      <div class="social-text">
+        <span class="social-platform">LinkedIn</span>
+        <span class="social-handle">shevanoland</span>
+      </div>
     </a>
     <a href="https://facebook.com/ShevaKayStudio" class="social-link" target="_blank" rel="noopener">
-      <span class="social-platform">Facebook</span>
-      <span class="social-handle">ShevaKayStudio</span>
+      <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=128" alt="Facebook logo" width="20" height="20" loading="lazy">
+      <div class="social-text">
+        <span class="social-platform">Facebook</span>
+        <span class="social-handle">ShevaKayStudio</span>
+      </div>
     </a>
     <a href="https://amazon.com/shop/scribinglife" class="social-link" target="_blank" rel="noopener">
-      <span class="social-platform">Amazon Shop</span>
-      <span class="social-handle">scribinglife</span>
+      <img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=128" alt="Amazon logo" width="20" height="20" loading="lazy">
+      <div class="social-text">
+        <span class="social-platform">Amazon Shop</span>
+        <span class="social-handle">scribinglife</span>
+      </div>
     </a>
   </div>
 
