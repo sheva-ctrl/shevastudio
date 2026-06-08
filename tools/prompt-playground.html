@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheva Studio — Creator Toolbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --violet: #6020D0;
+      --violet-light: #7C3AED;
+      --teal: #0891B2;
+      --ink: #15151C;
+      --muted: #55555F;
+      --line: #E7E5EE;
+      --bg: #FCFCFE;
+      --card: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(100deg, var(--violet) 0%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Quiz Router Styles */
+    .quiz-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .quiz-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media(min-width: 600px) {
+      .quiz-options { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .quiz-btn {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-btn:hover {
+      border-color: var(--violet);
+      background: #F5F3FF;
+      transform: translateY(-2px);
+    }
+
+    /* Prompt Playground Grid */
+    .playground-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--teal);
+      padding-left: 0.75rem;
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .prompt-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .prompt-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .prompt-box {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .accent-text {
+      color: var(--violet);
+      font-weight: 600;
+    }
+
+    .btn-copy {
+      background: var(--ink);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.2rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s ease;
+    }
+
+    .btn-copy:hover {
+      background: var(--violet);
+    }
+
+    /* Custom Notification Toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--ink);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Sheva Studio Toolbox</h1>
+      <p>Clean, frictionless AI frameworks built for different brains.</p>
+    </header>
+
+    <section class="quiz-card">
+      <h2>What's stalling your creative momentum today?</h2>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="handleFriction('tabs')">🤯 42 Tabs Open / Brain Melting</button>
+        <button class="quiz-btn" onclick="handleFriction('scripts')">✍️ Staring at a Blank Script</button>
+        <button class="quiz-btn" onclick="handleFriction('cards')">📱 Formatting Photo Carousels</button>
+      </div>
+    </section>
+
+    <h2 class="playground-title" id="prompts-anchor">The "Don't Make Me Think" Prompt Hub</h2>
+    
+    <section class="prompt-grid">
+      <div class="prompt-card" id="card-images">
+        <span class="tag">Midjourney / Firefly Matrix</span>
+        <h3>The 3-Part Cinematic Formula</h3>
+        <div class="prompt-box" id="p1">
+          Act as a professional creative director. Generate a highly specific prompt for an AI image generator using: 1) A clear subject, 2) A real-world cinematic setting, and 3) <span class="accent-text">One unexpected material detail</span>. Do not use generic filler words like "photorealistic".
+        </div>
+        <button class="btn-copy" onclick="copyPrompt('p1')">📋 Copy Prompt Template</button>
+      </div>
+
+      <div class="prompt-card" id="card-writing">
+        <span class="tag">ChatGPT / Claude Scripting</span>
+        <h3>The ADHD Tasks Un-Sticker</h3>
+        <div class="prompt-box" id="p2">
+          I need to start [insert your task here] but my executive dysfunction is hitting hard. Break this task down into exactly 3 micro-steps. <span class="accent-text">Each step must take less than 5 minutes</span>. Do not give me advice or context—just give me the 3 tiny steps.
+        </div>
+        <button class="btn-copy" onclick="copyPrompt('p2')">📋 Copy Prompt Template</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast">Copied to clipboard! 🚀</div>
+
+  <script>
+    function copyPrompt(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2000);
+      });
+    }
+
+    function handleFriction(type) {
+      if (type === 'tabs') {
+        alert("Redirecting to your 'Intro to AI' landing page module!");
+        // template link anchor: window.location.href = '../#intro-to-ai';
+      } else if (type === 'scripts') {
+        document.getElementById('prompts-anchor').scrollIntoView({ behavior: 'smooth' });
+      } else if (type === 'cards') {
+        alert("Redirecting to your custom Card Generator tool!");
+        // template link: window.location.href = 'card-generator.html';
+      }
+    }
+  </script>
+</body>
+</html>
