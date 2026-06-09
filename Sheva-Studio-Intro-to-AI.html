@@ -38,28 +38,65 @@
     -webkit-text-fill-color:transparent;color:transparent}
   .lede{font-size:clamp(17px,2.4vw,21px);color:var(--muted);font-weight:300;max-width:60ch;margin-bottom:24px;}
   .lede strong{color:var(--ink);font-weight:500}
-  
-  /* ---- video embed container ---- */
-  .video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    margin: 32px 0;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    box-shadow: 0 10px 30px rgba(21, 21, 28, 0.04);
-  }
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
 
+   /* pro tip */
+  .protip{background:rgba(96,32,208,.06);border:1px solid rgba(96,32,208,.18);border-radius:14px;
+    padding:16px 18px;margin:0 0 20px;font-size:15.5px;color:var(--ink);font-weight:300;line-height:1.6}
+  .protip .lbl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--violet);display:block;margin-bottom:6px;font-weight:700}
+  .protip b{font-weight:600}
+
+  <section class="section rise d2">
+    <span class="eyebrow">01 · Pick</span>
+    <h2>Which tool, and when<span class="sub">Match the tool to your goals and style. Tap a logo to open it and try prompting.</span></h2>
+
+    <div class="tool">
+      <a class="badge" href="https://copilot.microsoft.com" target="_blank" rel="noopener" aria-label="Open Microsoft Copilot">
+        <img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=128" alt="Microsoft Copilot logo" width="24" height="24" loading="lazy"></a>
+      <div class="body">
+        <div class="name">Microsoft Copilot</div>
+        <div class="best">Best for living inside Microsoft 365.</div>
+        <div class="tryif"><b>Try first if</b> → your day runs on Word, Excel, Teams, and Outlook.</div>
+      </div>
+    </div>
+    <div class="tool">
+      <a class="badge" href="https://gemini.google.com" target="_blank" rel="noopener" aria-label="Open Google Gemini">
+        <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Google Gemini logo" width="24" height="24" loading="lazy"></a>
+      <div class="body">
+        <div class="name">Google Gemini</div>
+        <div class="best">Best for Google Workspace, plus images, audio, and video.</div>
+        <div class="tryif"><b>Try first if</b> → you live in Docs/Gmail or work with a lot of visual content.</div>
+      </div>
+    </div>
+    <div class="tool">
+      <a class="badge" href="https://chatgpt.com" target="_blank" rel="noopener" aria-label="Open ChatGPT">
+        <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" alt="ChatGPT logo" width="24" height="24" loading="lazy"></a>
+      <div class="body">
+        <div class="name">ChatGPT</div>
+        <div class="best">Best for creative, flexible, general-purpose work.</div>
+        <div class="tryif"><b>Try first if</b> → you write, brainstorm, or want one do-everything starting point.</div>
+      </div>
+    </div>
+    <div class="tool">
+      <a class="badge" href="https://claude.ai" target="_blank" rel="noopener" aria-label="Open Claude">
+        <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude logo" width="24" height="24" loading="lazy"></a>
+      <div class="body">
+        <div class="name">Claude</div>
+        <div class="best">Best for long documents, careful analysis, and coding.</div>
+        <div class="tryif"><b>Try first if</b> → you read big PDFs, contracts, or reports, or you want help with code.</div>
+      </div>
+    </div>
+    <div class="tool">
+      <a class="badge" href="https://grok.com" target="_blank" rel="noopener" aria-label="Open Grok">
+        <img src="https://www.google.com/s2/favicons?domain=grok.com&sz=128" alt="Grok logo" width="24" height="24" loading="lazy"></a>
+      <div class="body">
+        <div class="name">Grok</div>
+        <div class="best">Best for real-time, current-events answers — and increasingly enterprise work.</div>
+        <div class="tryif"><b>Try first if</b> → you want live, up-to-the-minute info or already work in the X / xAI world.</div>
+      </div>
+    </div>
+  </section>
+  
   .objective{margin-top:20px;padding-left:16px;border-left:3px solid var(--violet);
     font-size:16px;color:var(--ink);font-weight:300;line-height:1.6;max-width:62ch}
   .objective b{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
@@ -72,13 +109,6 @@
     letter-spacing:-0.01em;margin-bottom:18px}
   .section h2 .sub{display:block;font-family:'Lexend';font-weight:300;font-size:16px;
     color:var(--muted);letter-spacing:0;margin-top:6px}
-
-  /* pro tip */
-  .protip{background:rgba(96,32,208,.06);border:1px solid rgba(96,32,208,.18);border-radius:14px;
-    padding:16px 18px;margin:0 0 20px;font-size:15.5px;color:var(--ink);font-weight:300;line-height:1.6}
-  .protip .lbl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--violet);display:block;margin-bottom:6px;font-weight:700}
-  .protip b{font-weight:600}
 
   /* accordion bubbles */
   .hint{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);margin:0 0 12px}
@@ -174,14 +204,14 @@
 
   <p class="objective rise d2"><b>The goal</b>By the time you reach the bottom, you'll know how to talk to AI, how to make it stick, and which tool to open first — even if today is your very first time using AI.</p>
 
-  <section class="section rise d2">
-    <span class="eyebrow">01 · Prompt</span>
-    <h2>Prompting that works</h2>
-
-    <div class="protip">
+      <div class="protip">
       <span class="lbl">Pro tip</span>
       <b>Talk to it like a person.</b> Type the way you'd talk to a friend or coworker you're figuring something out with — normal sentences, plain words. You don't need any special tricks.
     </div>
+  
+  <section class="section rise d2">
+    <span class="eyebrow">02 · Prompt</span>
+    <h2>Prompting that works</h2>
 
     <p class="hint">A good request has these pieces. Tap any one to open an example.</p>
     <div class="acc">
@@ -203,7 +233,7 @@
   </section>
 
   <section class="section rise d2">
-    <span class="eyebrow">02 · Start</span>
+    <span class="eyebrow">03 · Start</span>
     <h2>Your first ten minutes</h2>
     <ol class="steps">
       <li><div><div class="t">Open a tool and sign in.</div><div class="d">Not sure which? The tool picker is at the end of this guide. Free tiers are plenty to start.</div></div></li>
@@ -213,7 +243,7 @@
   </section>
 
   <section class="section rise d2">
-    <span class="eyebrow">03 · Stick</span>
+    <span class="eyebrow">04 · Stick</span>
     <h2>Make it stick</h2>
     <ul class="points">
       <li><b>Set your preferences once.</b> In settings, tell it your role, your tone, and 2–3 things to avoid. It loads into every chat so you stop repeating yourself.</li>
@@ -229,56 +259,7 @@
     </div>
   </section>
 
-  <section class="section rise d2">
-    <span class="eyebrow">04 · Pick</span>
-    <h2>Which tool, and when<span class="sub">Match the tool to your goals and style. Tap a logo to open it and try prompting.</span></h2>
 
-    <div class="tool">
-      <a class="badge" href="https://copilot.microsoft.com" target="_blank" rel="noopener" aria-label="Open Microsoft Copilot">
-        <img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=128" alt="Microsoft Copilot logo" width="24" height="24" loading="lazy"></a>
-      <div class="body">
-        <div class="name">Microsoft Copilot</div>
-        <div class="best">Best for living inside Microsoft 365.</div>
-        <div class="tryif"><b>Try first if</b> → your day runs on Word, Excel, Teams, and Outlook.</div>
-      </div>
-    </div>
-    <div class="tool">
-      <a class="badge" href="https://gemini.google.com" target="_blank" rel="noopener" aria-label="Open Google Gemini">
-        <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Google Gemini logo" width="24" height="24" loading="lazy"></a>
-      <div class="body">
-        <div class="name">Google Gemini</div>
-        <div class="best">Best for Google Workspace, plus images, audio, and video.</div>
-        <div class="tryif"><b>Try first if</b> → you live in Docs/Gmail or work with a lot of visual content.</div>
-      </div>
-    </div>
-    <div class="tool">
-      <a class="badge" href="https://chatgpt.com" target="_blank" rel="noopener" aria-label="Open ChatGPT">
-        <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" alt="ChatGPT logo" width="24" height="24" loading="lazy"></a>
-      <div class="body">
-        <div class="name">ChatGPT</div>
-        <div class="best">Best for creative, flexible, general-purpose work.</div>
-        <div class="tryif"><b>Try first if</b> → you write, brainstorm, or want one do-everything starting point.</div>
-      </div>
-    </div>
-    <div class="tool">
-      <a class="badge" href="https://claude.ai" target="_blank" rel="noopener" aria-label="Open Claude">
-        <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude logo" width="24" height="24" loading="lazy"></a>
-      <div class="body">
-        <div class="name">Claude</div>
-        <div class="best">Best for long documents, careful analysis, and coding.</div>
-        <div class="tryif"><b>Try first if</b> → you read big PDFs, contracts, or reports, or you want help with code.</div>
-      </div>
-    </div>
-    <div class="tool">
-      <a class="badge" href="https://grok.com" target="_blank" rel="noopener" aria-label="Open Grok">
-        <img src="https://www.google.com/s2/favicons?domain=grok.com&sz=128" alt="Grok logo" width="24" height="24" loading="lazy"></a>
-      <div class="body">
-        <div class="name">Grok</div>
-        <div class="best">Best for real-time, current-events answers — and increasingly enterprise work.</div>
-        <div class="tryif"><b>Try first if</b> → you want live, up-to-the-minute info or already work in the X / xAI world.</div>
-      </div>
-    </div>
-  </section>
 
   <div class="cta rise d3">
     <h2>Want the full walkthrough?</h2>
@@ -291,6 +272,27 @@
   </div>
 
 </div>
+
+  /* ---- video embed container ---- */
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    margin: 32px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(21, 21, 28, 0.04);
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
 
 <script>
 (function(){
