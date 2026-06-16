@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Sheva & David — Custom Photo Booth</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cormorant Garamond & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;0,500;0,600;1,300&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            tiffany: {
+              light: '#E6F8F7',
+              DEFAULT: '#0ABAB5',
+              medium: '#099E9A',
+              dark: '#05615F',
+            },
+            slateCustom: {
+              950: '#0B0F19',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+              100: '#F1F5F9',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Prevent default bounce gestures on iPad Pro */
+    body {
+      touch-action: none;
+      background-color: #0B0F19;
+      overflow: hidden;
+    }
+    .serif-font {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    /* Flashing camera effect */
+    .flash-active {
+      animation: camera-flash 0.4s ease-out forwards;
+    }
+    @keyframes camera-flash {
+      0% { opacity: 0; }
+      40% { opacity: 1; background-color: #ffffff; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between p-6">
+
+  <!-- CAMERA FLASH OVERLAY -->
+  <div id="flash" class="fixed inset-0 z-50 pointer-events-none opacity-0"></div>
+
+  <!-- HEADER -->
+  <header class="flex justify-between items-center bg-slateCustom-900/80 backdrop-blur border border-white/5 rounded-2xl px-6 py-4 mb-4 shadow-xl">
+    <div>
+      <h1 class="serif-font text-3xl font-light text-tiffany">Sheva <span class="italic font-extralight">&amp;</span> David</h1>
+      <p id="sub-header-date" class="text-[10px] font-sans uppercase tracking-[0.25em] text-slate-400">Engagement Celebration · June 27th, 2026</p>
+    </div>
+    
+    <!-- Config Trigger Button -->
+    <button onclick="toggleConfigModal()" class="text-slate-400 hover:text-tiffany text-xs bg-slateCustom-800/60 hover:bg-slateCustom-800 px-4 py-2 rounded-xl border border-white/5 transition-all">
+      ⚙️ Customize Logo
+    </button>
+  </header>
+
+  <!-- WORKSPACE GRID -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow items-stretch max-h-[80vh]">
+    
+    <!-- LEFT: CAMERA PREVIEW VIEWPORT (7 Columns) -->
+    <div class="lg:col-span-7 flex flex-col justify-center bg-slateCustom-950 border border-white/5 rounded-3xl relative overflow-hidden p-2 min-h-[400px] shadow-2xl">
+      
+      <!-- Video Element -->
+      <video id="video" autoplay playsinline class="w-full h-full object-cover rounded-2xl bg-black transform -scale-x-100"></video>
+      
+      <!-- Countdown Overlay -->
+      <div id="countdown-overlay" class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <span id="countdown-number" class="text-9xl font-bold font-serif text-tiffany animate-pulse">3</span>
+        <span id="photo-index-label" class="text-sm uppercase tracking-[0.2em] text-slate-300 mt-6">Get Ready for Photo 1 of 3</span>
+      </div>
+
+      <!-- Live Indicator -->
+      <div class="absolute top-6 left-6 bg-black/70 backdrop-blur text-white px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 border border-white/5">
+        <span id="camera-status-dot" class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+        <span id="camera-status-text">Connecting Camera...</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: PREVIEW & PHOTO STRIP OUTPUT (5 Columns) -->
+    <div class="lg:col-span-5 flex flex-col justify-between bg-slateCustom-900/40 border border-white/5 rounded-3xl p-6 relative shadow-2xl">
+      
+      <!-- Photo strip renderer (looks like a classy glossy print card) -->
+      <div class="flex-grow flex items-center justify-center overflow-hidden py-2">
+        <div id="photo-strip" class="bg-white text-slate-900 p-4 shadow-2xl rounded-sm w-[200px] flex flex-col gap-3 border border-slate-200/40 transition-transform duration-300">
+          
+          <!-- Captured Photo Containers -->
+          <div class="aspect-[4/3] bg-slate-50 border border-slate-100 rounded-sm overflow-hidden relative shadow-inner">
+            <img id="strip-img-1" src="" class="w-full h-full object-cover hidden" alt="Capture 1" />
+            <div id="strip-placeholder-1" class="absolute inset-0 flex items-center justify-center text-xs text-slate-300">Photo 1</div>
+          </div>
+
+          <div class="aspect-[4/3] bg-slate-50 border border-slate-100 rounded-sm overflow-hidden relative shadow-inner">
+            <img id="strip-img-2" src="" class="w-full h-full object-cover hidden" alt="Capture 2" />
+            <div id="strip-placeholder-2" class="absolute inset-0 flex items-center justify-center text-xs text-slate-300">Photo 2</div>
+          </div>
+
+          <div class="aspect-[4/3] bg-slate-50 border border-slate-100 rounded-sm overflow-hidden relative shadow-inner">
+            <img id="strip-img-3" src="" class="w-full h-full object-cover hidden" alt="Capture 3" />
+            <div id="strip-placeholder-3" class="absolute inset-0 flex items-center justify-center text-xs text-slate-300">Photo 3</div>
+          </div>
+
+          <!-- Base Event Signature / Brand Styling -->
+          <div class="text-center pt-2 border-t border-slate-100">
+            <p id="strip-names" class="serif-font text-xl font-bold tracking-tight text-slate-800">Sheva &amp; David</p>
+            <p id="strip-date" class="text-[8px] font-sans uppercase tracking-[0.2em] text-slate-400 mt-1 font-semibold">June 27, 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Panel Buttons -->
+      <div class="space-y-3 mt-4">
+        <button id="start-btn" onclick="startPhotoBooth()" class="w-full bg-tiffany hover:bg-tiffany-medium text-white py-4 rounded-xl text-sm font-bold uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2">
+          📸 Start Photo Booth
+        </button>
+        
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Live Share Button (Combines Claude's native API trigger with my backup) -->
+          <button id="share-btn" disabled onclick="sharePhotoStrip()" class="bg-slateCustom-800 hover:bg-slateCustom-700 text-slate-500 disabled:opacity-50 py-3.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5">
+            📤 Share Strip
+          </button>
+          <button id="reset-btn" disabled onclick="resetPhotoBooth()" class="bg-rose-950/30 hover:bg-rose-900/60 border border-rose-500/10 text-rose-300 disabled:opacity-50 py-3.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all">
+            🔄 Retake
+          </button>
+        </div>
+
+        <p id="share-status" class="text-center text-[11px] text-slate-400 h-4"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONFIGURATION MODAL -->
+  <div id="config-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slateCustom-800 border border-white/10 rounded-2xl w-full max-w-md p-6 shadow-2xl">
+      <h3 class="serif-font text-2xl text-tiffany mb-4">Branding Configuration</h3>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1.5">Host Names / Headline</label>
+          <input id="input-names" type="text" value="Sheva & David" class="w-full bg-slateCustom-900 rounded-xl px-4 py-3 border border-white/15 text-sm text-white focus:outline-none focus:border-tiffany" />
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1.5">Event Label</label>
+          <input id="input-sub" type="text" value="Engagement Celebration" class="w-full bg-slateCustom-900 rounded-xl px-4 py-3 border border-white/15 text-sm text-white focus:outline-none focus:border-tiffany" />
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1.5">Display Date</label>
+          <input id="input-date" type="text" value="June 27, 2026" class="w-full bg-slateCustom-900 rounded-xl px-4 py-3 border border-white/15 text-sm text-white focus:outline-none focus:border-tiffany" />
+        </div>
+      </div>
+
+      <div class="flex gap-3 mt-6 pt-4 border-t border-white/5">
+        <button onclick="toggleConfigModal()" class="flex-1 bg-slateCustom-700 hover:bg-slateCustom-600 text-white py-3 rounded-xl text-xs font-bold uppercase transition-all">Cancel</button>
+        <button onclick="saveConfig()" class="flex-1 bg-tiffany hover:bg-tiffany-medium text-white py-3 rounded-xl text-xs font-bold uppercase transition-all">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO READY OVERLAY DIALOG (BULLETPROOF IOS FALLBACK BACKUP) -->
+  <div id="share-fallback-modal" class="fixed inset-0 bg-black/90 backdrop-blur z-50 flex items-center justify-center p-4 hidden animate-fadeIn">
+    <div class="bg-slateCustom-900 border border-white/10 rounded-3xl w-full max-w-sm p-6 text-center shadow-2xl">
+      <h3 class="serif-font text-2xl text-tiffany mb-2">Your Photo Strip is Ready!</h3>
+      <p class="text-xs text-slate-400 mb-4">Press and hold the image below to Save to Photos, or choose Share below!</p>
+      
+      <div class="flex justify-center mb-6">
+        <img id="fallback-strip-image" src="" class="w-[200px] border border-white/10 shadow-2xl rounded-sm" alt="Your Strip" />
+      </div>
+
+      <div class="space-y-2">
+        <button onclick="triggerDirectIOSShare()" class="w-full bg-tiffany hover:bg-tiffany-medium text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all">
+          📤 AirDrop / Text / Email
+        </button>
+        <button onclick="closeShareModal()" class="w-full bg-slateCustom-800 hover:bg-slateCustom-700 text-slate-300 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all">
+          ✕ Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="text-center text-xs text-slate-500 mt-4">
+    Mount iPad Pro landscape style · Keep Awake Screen lock enabled 📤
+  </footer>
+
+  <!-- Invisible canvases for image generations -->
+  <canvas id="canvas" class="hidden"></canvas>
+  <canvas id="stripCanvas" class="hidden"></canvas>
+
+  <script>
+    let stream;
+    let wakeLock = null;
+    let imagesCaptured = [];
+    let currentPhotoIndex = 0;
+    let currentFileBlob = null; // Stored file blob for sharing
+    
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const stripCanvas = document.getElementById('stripCanvas');
+    const startBtn = document.getElementById('start-btn');
+    const shareBtn = document.getElementById('share-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const countdownOverlay = document.getElementById('countdown-overlay');
+    const countdownNumber = document.getElementById('countdown-number');
+    const indexLabel = document.getElementById('photo-index-label');
+    const flashOverlay = document.getElementById('flash');
+    const shareStatus = document.getElementById('share-status');
+
+    // Automatically load camera stream on page mount
+    window.onload = async function() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 720 } },
+          audio: false
+        });
+        video.srcObject = stream;
+        document.getElementById('camera-status-dot').className = "w-2.5 h-2.5 rounded-full bg-teal-500";
+        document.getElementById('camera-status-text').innerText = "Live Front-Camera connected";
+      } catch (err) {
+        console.error("Camera connection failed: ", err);
+        document.getElementById('camera-status-text').innerText = "Camera not detected. Enable Safari access.";
+        document.getElementById('camera-status-dot').className = "w-2.5 h-2.5 rounded-full bg-rose-500";
+      }
+    };
+
+    // Keep screen awake during the party
+    async function requestWakeLock() {
+      try {
+        if ('wakeLock' in navigator) {
+          wakeLock = await navigator.wakeLock.request('screen');
+        }
+      } catch (err) {
+        console.warn("Screen WakeLock failed to register: ", err);
+      }
+    }
+
+    // Countdown and photo capture sequence loop
+    function startPhotoBooth() {
+      requestWakeLock();
+      imagesCaptured = [];
+      currentPhotoIndex = 1;
+      currentFileBlob = null;
+      startBtn.disabled = true;
+      resetBtn.disabled = true;
+      shareBtn.disabled = true;
+      shareBtn.classList.remove('text-white', 'bg-tiffany');
+      shareStatus.innerText = "";
+      
+      runCaptureSequence();
+    }
+
+    function runCaptureSequence() {
+      if (currentPhotoIndex > 3) {
+        generatePhotoStrip();
+        return;
+      }
+
+      indexLabel.innerText = `Strike a pose! Photo ${currentPhotoIndex} of 3`;
+      countdownOverlay.classList.remove('opacity-0');
+      
+      let countdown = 3;
+      countdownNumber.innerText = countdown;
+
+      const timer = setInterval(() => {
+        countdown--;
+        if (countdown > 0) {
+          countdownNumber.innerText = countdown;
+        } else {
+          clearInterval(timer);
+          triggerSnap();
+        }
+      }, 1000);
+    }
+
+    // Trigger visual camera flash & save raw frame
+    function triggerSnap() {
+      flashOverlay.classList.add('flash-active');
+      setTimeout(() => flashOverlay.classList.remove('flash-active'), 400);
+
+      const width = video.videoWidth || 1280;
+      const height = video.videoHeight || 720;
+      canvas.width = width;
+      canvas.height = height;
+      
+      const ctx = canvas.getContext('2d');
+      // Mirror image horizontal to match direct perspective
+      ctx.translate(width, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, width, height);
+      
+      const dataUrl = canvas.toDataURL('image/png');
+      imagesCaptured.push(dataUrl);
+
+      // Render straight onto corresponding strip thumbnail
+      const previewImg = document.getElementById(`strip-img-${currentPhotoIndex}`);
+      const placeholder = document.getElementById(`strip-placeholder-${currentPhotoIndex}`);
+      
+      previewImg.src = dataUrl;
+      previewImg.classList.remove('hidden');
+      placeholder.classList.add('hidden');
+
+      // Setup next photo cycle
+      countdownOverlay.classList.add('opacity-0');
+      currentPhotoIndex++;
+      
+      setTimeout(runCaptureSequence, 1500);
+    }
+
+    // Stitch images into a single premium resolution file on-demand
+    async function generatePhotoStrip() {
+      shareStatus.innerText = "Processing high-res photo strip...";
+      const ctx = stripCanvas.getContext('2d');
+      
+      // DPI layout specifications (600px width by 1750px height)
+      stripCanvas.width = 600;
+      stripCanvas.height = 1750;
+
+      // Fill elegant white card
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, stripCanvas.width, stripCanvas.height);
+
+      // Load captured image references
+      const loadedImages = [];
+      let loadedCount = 0;
+
+      for (let i = 0; i < 3; i++) {
+        const img = new Image();
+        img.src = imagesCaptured[i];
+        loadedImages.push(img);
+        
+        img.onload = function() {
+          loadedCount++;
+          if (loadedCount === 3) {
+            renderFinalCard();
+          }
+        };
+      }
+
+      function renderFinalCard() {
+        const padding = 40;
+        const imgWidth = 520;
+        const imgHeight = 390; // Standard 4:3 dimension
+
+        // Draw photos onto final Canvas
+        for (let i = 0; i < 3; i++) {
+          const yPos = padding + i * (imgHeight + 30);
+          ctx.drawImage(loadedImages[i], padding, yPos, imgWidth, imgHeight);
+          
+          // Subtle frame outline
+          ctx.strokeStyle = "#e2e8f0";
+          ctx.lineWidth = 1;
+          ctx.strokeRect(padding, yPos, imgWidth, imgHeight);
+        }
+
+        // Add custom text branding signature
+        ctx.fillStyle = "#0F172A";
+        ctx.textAlign = "center";
+        
+        // Host Names
+        ctx.font = "italic 44px 'Cormorant Garamond', serif";
+        ctx.fillText(document.getElementById('strip-names').innerText, 300, 1500);
+
+        // Separator Graphic
+        ctx.fillStyle = "#0ABAB5";
+        ctx.font = "normal 14px 'DM Sans', sans-serif";
+        ctx.fillText("◇   ENGAGEMENT PARTY   ◇", 300, 1545);
+
+        // Party Date
+        ctx.fillStyle = "#64748b";
+        ctx.font = "bold 18px 'DM Sans', sans-serif";
+        ctx.letterSpacing = "2px";
+        ctx.fillText(document.getElementById('strip-date').innerText, 300, 1595);
+
+        // Convert canvas output directly to blob file format
+        stripCanvas.toBlob((blob) => {
+          currentFileBlob = blob;
+          
+          // Activate control panel buttons
+          startBtn.disabled = false;
+          resetBtn.disabled = false;
+          shareBtn.disabled = false;
+          shareBtn.classList.remove('text-slate-500');
+          shareBtn.classList.add('text-white', 'bg-tiffany', 'hover:bg-tiffany-medium');
+          
+          // Show status and load fallback image preview
+          shareStatus.innerText = "Ready to share!";
+          const stripDataUrl = stripCanvas.toDataURL('image/png');
+          document.getElementById('fallback-strip-image').src = stripDataUrl;
+        }, 'image/png');
+      }
+    }
+
+    // Trigger Native iPadOS Share Sheet (with visual modal fallback)
+    async function sharePhotoStrip() {
+      if (!currentFileBlob) return;
+      openShareFallback();
+    }
+
+    // Direct Share Sheet invocation from inside the pop-up modal
+    async function triggerDirectIOSShare() {
+      if (!currentFileBlob) return;
+
+      const file = new File([currentFileBlob], 'sheva-david-photostrip.png', { type: 'image/png' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            files: [file],
+            title: 'Our Photo Strip',
+            text: 'Check out our photo strip from Sheva & David’s celebration!'
+          });
+          shareStatus.innerText = "Shared successfully!";
+        } catch (err) {
+          console.log("Sharing dismissed or failed:", err);
+        }
+      } else {
+        // Direct local save fallback if share API is entirely blocked
+        const url = URL.createObjectURL(currentFileBlob);
+        const link = document.createElement('a');
+        link.download = "sheva-david-photostrip.png";
+        link.href = url;
+        link.click();
+        shareStatus.innerText = "Saved to iPad Downloads.";
+      }
+    }
+
+    function openShareFallback() {
+      document.getElementById('share-fallback-modal').classList.remove('hidden');
+    }
+
+    function closeShareModal() {
+      document.getElementById('share-fallback-modal').classList.add('hidden');
+    }
+
+    function resetPhotoBooth() {
+      for (let i = 1; i <= 3; i++) {
+        const previewImg = document.getElementById(`strip-img-${i}`);
+        const placeholder = document.getElementById(`strip-placeholder-${i}`);
+        previewImg.src = "";
+        previewImg.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+      resetBtn.disabled = true;
+      shareBtn.disabled = true;
+      shareBtn.classList.remove('text-white', 'bg-tiffany', 'hover:bg-tiffany-medium');
+      shareBtn.classList.add('text-slate-500');
+      shareStatus.innerText = "";
+    }
+
+    // Configuration Modal Controls
+    function toggleConfigModal() {
+      document.getElementById('config-modal').classList.toggle('hidden');
+    }
+
+    function saveConfig() {
+      const names = document.getElementById('input-names').value;
+      const sub = document.getElementById('input-sub').value;
+      const date = document.getElementById('input-date').value;
+
+      document.getElementById('strip-names').innerText = names;
+      document.getElementById('strip-date').innerText = date;
+      document.getElementById('sub-header-date').innerText = `${sub} · ${date}`;
+      
+      toggleConfigModal();
+    }
+  </script>
+</body>
+</html>
