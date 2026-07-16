@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Sheva & David — Wedding Style Guide & Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F7F3EC;
+            --ivory-deep: #EDE6DA;
+            --teal: #4EC3C0;
+            --teal-tint: #E4F5F4;
+            --teal-dark: #2C8A87;
+            --gray: #8C8F94;
+            --gray-dark: #5E6166;
+            --plum: #6B4E8C;
+            --bluelt: #B8CCE0;
+            --silver: #C9CDD2;
+            --ink: #2F3238;
+            --white: #FFFFFF;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--ivory);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+        .stripe {
+            height: 6px;
+            background: linear-gradient(90deg, var(--teal), var(--gray), var(--teal));
+        }
+        header {
+            text-align: center;
+            padding: 60px 24px 30px;
+            background: var(--white);
+            border-bottom: 1px solid var(--ivory-deep);
+        }
+        .eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--teal-dark);
+            margin-bottom: 16px;
+        }
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(44px, 8vw, 72px);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--ink);
+        }
+        .names .amp {
+            font-style: italic;
+            color: var(--teal-dark);
+        }
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(18px, 3vw, 24px);
+            font-style: italic;
+            color: var(--gray-dark);
+            margin-top: 10px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: var(--white);
+            padding: 35px 30px;
+            border-radius: 6px;
+            border: 1px solid var(--ivory-deep);
+            box-shadow: 0 4px 20px rgba(70, 80, 100, 0.05);
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--ivory-deep);
+        }
+        .section-title span {
+            color: var(--plum);
+            font-size: 14px;
+        }
+        .palette-grid {
+            display: grid;
+            gap: 16px;
+        }
+        .swatch-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(140, 143, 148, 0.15);
+        }
+        .swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+        .swatch-info {
+            flex-grow: 1;
+        }
+        .color-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .color-hex {
+            font-size: 13px;
+            color: var(--gray-dark);
+            font-family: monospace;
+            margin-top: 2px;
+        }
+        .color-use {
+            font-size: 13px;
+            color: var(--gray-dark);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+        .attire-note {
+            font-size: 15px;
+            color: var(--gray-dark);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .attire-note strong {
+            color: var(--ink);
+        }
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 3px;
+            background: var(--teal-tint);
+            color: var(--teal-dark);
+            margin-top: 5px;
+        }
+        .badge.plum-badge {
+            background: #F4EFF9;
+            color: var(--plum);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: var(--teal-dark);
+        }
+    </style>
+</head>
+<body>
+
+<div class="stripe"></div>
+
+<header>
+    <p class="eyebrow">Wedding Style Guide</p>
+    <h1 class="names">Sheva <span class="amp">&amp;</span> David</h1>
+    <p class="subtitle">September 4, 2026 &middot; Color Palette &amp; Details</p>
+</header>
+
+<div class="container">
+    
+    <!-- PALETTE CARD SECTION -->
+    <div class="card">
+        <h2 class="section-title">The Color Palette <span>&#9671;</span></h2>
+        
+        <div class="palette-grid">
+            <!-- Ivory -->
+            <div class="swatch-row">
+                <div class="swatch" style="background-color: var(--ivory);"></div>
+                <div class="swatch-info">
+                    <div class="color-name">Ivory <span class="badge">Dominant Base</span></div>
+                    <div class="color-hex">#F7F3EC</div>
+                    <div class="color-use">Wedding gown, calla lilies, table linens, and soft candlelight ambiance.</div>
+                </div>
+            </div>
+
+            <!-- Soft Alexandrite Teal -->
+            <div class="swatch-row">
+                <div class="swatch" style="background-color: var(--teal);"></div>
+                <div class="swatch-info">
+                    <div class="color-name">Soft Alexandrite Teal <span class="badge">Visual Weight</span></div>
+                    <div class="color-hex">#4EC3C0</div>
+                    <div class="color-use">Primary design tone, stationery highlights, ribbon accents, and bar elements.</div>
+                </div>
+            </div>
+
+            <!-- Nailhead Gray -->
+            <div class="swatch-row">
+                <div class="swatch" style="background-color: var(--gray);"></div>
+                <div class="swatch-info">
+                    <div class="color-name">Nailhead Gray <span class="badge">Visual Weight</span></div>
+                    <div class="color-hex">#8C8F94</div>
+                    <div class="color-use">Suit structure, table runners, structural design lines, and neutral grounding.</div>
+                </div>
+            </div>
+
+            <!-- Light Blue -->
+            <div class="swatch-row">
+                <div class="swatch" style="background-color: var(--bluelt);"></div>
+                <div class="swatch-info">
+                    <div class="color-name">Light Blue</div>
+                    <div class="color-hex">#B8CCE0</div>
+                    <div class="color-use">Supporting shirt colors and soft contextual textile layers.</div>
+                </div>
+            </div>
+
+            <!-- Plum / Violet -->
+            <div class="swatch-row">
+                <div class="swatch" style="background-color: var(--plum);"></div>
+                <div class="swatch-info">
+                    <div class="color-name">Plum / Violet <span class="badge plum-badge">Strict Accent Only</span></div>
+                    <div class="color-hex">#6B4E8C</div>
+                    <div class="color-use">Used sparingly for rich structural pops: deep floral accents and elegant wax seals.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- METALS & ATTIRING CORNER FOR WEDDING PARTY -->
+    <div class="card">
+        <h2 class="section-title">Wedding Party Guidance <span>&#9671;</span></h2>
+        <p class="attire-note">
+            <strong>Metals & Hardware:</strong> All metallic tones are locked to <strong>Silver and White Gold only</strong> (candlesticks, frames, tableware, and jewelry accents) to cleanly frame the alexandrite stone profiles.
+        </p>
+        <p class="attire-note">
+            <strong>Matron of Honor & Best Man Note:</strong> Layout visuals lean completely on the <strong>Ivory, Soft Teal, and Nailhead Gray</strong> structures. Use deep <strong>Plum / Violet</strong> tones selectively for flattering statement items or floral coordinate textures.
+        </p>
+    </div>
+
+</div>
+
+<footer>Sheva &amp; David</footer>
+
+</body>
+</html>
