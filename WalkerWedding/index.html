@@ -3,99 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sheva & David — Save the Date</title>
+  <title>Sheva & David | Our Wedding</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Clean, highly readable Google Fonts -->
+  <!-- Updated Wedding Fonts: Cormorant Garamond & DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #F7F3EC; /* Warm Ivory Base */
+      font-family: 'DM Sans', sans-serif;
+      background-color: #F7F3EC; /* Ivory Base */
+      color: #8C8F94; /* Nailhead Gray */
     }
-    h1, h2, .serif {
-      font-family: 'Playfair Display', serif;
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    /* Alexandrite Shift Element */
+    #alexandrite-block {
+      background-color: #00C4CC; /* Starts Teal */
+      transition: background-color 0.1s ease;
+    }
+    
+    /* Custom Range Slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #F7F3EC;
+      border: 2px solid #8C8F94;
+      cursor: pointer;
+      margin-top: -8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      background: linear-gradient(to right, #00C4CC, #6B4E8C);
+      border-radius: 4px;
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 md:p-8">
+<body class="min-h-screen flex flex-col items-center p-4 md:p-8">
 
-  <!-- Main Card: Grounded in Elegant Nailhead Gray border -->
-  <div class="max-w-md w-full bg-white rounded-2xl shadow-xl border border-[#8C8F94]/20 overflow-hidden">
+  <!-- Main Website Container -->
+  <div class="max-w-2xl w-full bg-white rounded-xl shadow-2xl border border-[#8C8F94]/15 overflow-hidden mb-12">
     
-    <!-- Top Modern Accent Line (Teal & Gray Dominant, tiny Plum pixel accent) -->
-    <div class="h-2.5 bg-gradient-to-r from-[#4EC3C0] via-[#8C8F94] to-[#6B4E8C] w-full"></div>
+    <!-- BAKED IN PHOTO HERO -->
+    <!-- Note: Replace this src link with a picture of the two of you when ready! -->
+    <div class="w-full aspect-[4/3] md:aspect-[16/9] relative bg-gray-100 overflow-hidden">
+      <img 
+        src="https://lh3.googleusercontent.com/rd-gg-dl/AAQ_wbH5rqGrxeSaRgdTbYWRFSB5BHIHzlKJf16nUKNcNKMiCiHvqzATVdZq55y-r4yQJ-5qv9tqP5dzPE8MWKGBT9QbYG7wXuuzimhqsfO2788toYbaouIKn6wZfREKWUxyVHrVjhpAv3fGkDdGhwKGCwnG6AYFvbFz3pCcX5_oIAk9V4kRdmE1N3iCttYGXuxQiWqsyU2Y5NyduFGcJMtqqCYPfhE51Y2LzaHYvxESCnQgJ-osRvYTJaMboIJARvfJfK4788MiX8BQ9jb_zNv36DLyjrYeg1TGRLLh-m7CoPiJfzjQnEjGFwRrtWL1WsQZ65s491cvuaF-hBGxbj_gZOKiyb64bOP2lqpebrn2l4J4ruplzTpp4z8JUY3clRDlDhoL3ez45-LtvZlHdAaWLJOMpVMnP1-rd4So2Me9QEn21Lz7-oYvhwptOLqrlgGWiS4hq7q4KSWMFrTUzN8SUyb6gDTq7y1YunfaIF-yy_VlI74Wzz_3ccx8NfaWcWBt6WZGy8GaISLqaFhpP3DrZbqkCqM8gTkO6oGG6jqB4vmKdvvq_lHqrya39X4LF2gZdfSw-RYLQGihnrSsyfLEMvWKr0YewSwrZK32pzheQ2Oiz8eGqfdzMQeKRvL0S9f1dU6QP-W2mkfKO9x4a0ZGsZHzoTGpXzFZActmqIWEypkjstIURys5mRtIxQihn-lfudCT2icYjlnZFFr0EdS5aWwaRxmxEd2oVZN_XOEk6UiN0T1s182wUWAVd-7TEXkka21pFYVMYcTUOtLH_6jfxuBIrdrH0-68fgR7vGygjNek8jpEWXicd_pjQixRcThT86afi14k9YJ8RkzcCA1tWyvUllYsbwj5bN-1_bOAtP2fm_fVYMUofeG1T4_FYr8up3Vy_GwP-Y7IYxEhPxbC57tRdalA7Z9RZdkVJpM6OETzot3QkQpRZ238MksgyvTgn65nyb7UO0N8ZU_iEmemE2bPoh3fcdfgZF0HXty54ASW9yj4-W1cRBoDfGgo3A4Yh1W0DBlkUQoccrxLZBv_uH6mGA6J_8b_UPmFQIyd8Eyln4VJgcBjh47-vAGslj9V7UAfOKPj_1yY9jLLeqaW7muLcC6OSMTP2YBI7qoOGQbfr-faUBAUZK0wxciMzxin4IVZ9gdOXSK9aIQCGAWY43qcKaSjUexfzRr-HElTgNkpYDxNIMQfA3NeG_oVOcFoHc-1oSswor5yDn2EWZiXbQ=s1024-rj" 
+        alt="Sheva & David" 
+        class="w-full h-full object-cover"
+      />
+      <!-- Soft gradient overlay to make text pop -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+        <h1 class="text-white text-5xl md:text-6xl font-semibold tracking-wide drop-shadow-md">Sheva & David</h1>
+        <p class="text-white/90 text-lg md:text-xl tracking-widest uppercase font-medium mt-2">September 4, 2026</p>
+      </div>
+    </div>
 
-    <div class="p-8 md:p-10 space-y-8 text-center">
+    <div class="p-8 md:p-12 space-y-12 text-center">
       
-      <!-- 1. Oversized Clear Header -->
-      <p class="text-sm font-extrabold tracking-[0.3em] text-[#8C8F94] uppercase sm:text-base">
-        SAVE THE DATE
-      </p>
-
-      <!-- 2. The Ring Hero Image -->
-      <div class="relative w-full aspect-[3/2] rounded-xl overflow-hidden border border-[#8C8F94]/30 shadow-inner bg-[#F7F3EC]">
-        <!-- Embedded image of your actual Alexandrite ring -->
-        <img 
-          src="https://lh3.googleusercontent.com/rd-gg-dl/AAQ_wbH5rqGrxeSaRgdTbYWRFSB5BHIHzlKJf16nUKNcNKMiCiHvqzATVdZq55y-r4yQJ-5qv9tqP5dzPE8MWKGBT9QbYG7wXuuzimhqsfO2788toYbaouIKn6wZfREKWUxyVHrVjhpAv3fGkDdGhwKGCwnG6AYFvbFz3pCcX5_oIAk9V4kRdmE1N3iCttYGXuxQiWqsyU2Y5NyduFGcJMtqqCYPfhE51Y2LzaHYvxESCnQgJ-osRvYTJaMboIJARvfJfK4788MiX8BQ9jb_zNv36DLyjrYeg1TGRLLh-m7CoPiJfzjQnEjGFwRrtWL1WsQZ65s491cvuaF-hBGxbj_gZOKiyb64bOP2lqpebrn2l4J4ruplzTpp4z8JUY3clRDlDhoL3ez45-LtvZlHdAaWLJOMpVMnP1-rd4So2Me9QEn21Lz7-oYvhwptOLqrlgGWiS4hq7q4KSWMFrTUzN8SUyb6gDTq7y1YunfaIF-yy_VlI74Wzz_3ccx8NfaWcWBt6WZGy8GaISLqaFhpP3DrZbqkCqM8gTkO6oGG6jqB4vmKdvvq_lHqrya39X4LF2gZdfSw-RYLQGihnrSsyfLEMvWKr0YewSwrZK32pzheQ2Oiz8eGqfdzMQeKRvL0S9f1dU6QP-W2mkfKO9x4a0ZGsZHzoTGpXzFZActmqIWEypkjstIURys5mRtIxQihn-lfudCT2icYjlnZFFr0EdS5aWwaRxmxEd2oVZN_XOEk6UiN0T1s182wUWAVd-7TEXkka21pFYVMYcTUOtLH_6jfxuBIrdrH0-68fgR7vGygjNek8jpEWXicd_pjQixRcThT86afi14k9YJ8RkzcCA1tWyvUllYsbwj5bN-1_bOAtP2fm_fVYMUofeG1T4_FYr8up3Vy_GwP-Y7IYxEhPxbC57tRdalA7Z9RZdkVJpM6OETzot3QkQpRZ238MksgyvTgn65nyb7UO0N8ZU_iEmemE2bPoh3fcdfgZF0HXty54ASW9yj4-W1cRBoDfGgo3A4Yh1W0DBlkUQoccrxLZBv_uH6mGA6J_8b_UPmFQIyd8Eyln4VJgcBjh47-vAGslj9V7UAfOKPj_1yY9jLLeqaW7muLcC6OSMTP2YBI7qoOGQbfr-faUBAUZK0wxciMzxin4IVZ9gdOXSK9aIQCGAWY43qcKaSjUexfzRr-HElTgNkpYDxNIMQfA3NeG_oVOcFoHc-1oSswor5yDn2EWZiXbQ=s1024-rj" 
-          alt="Alexandrite Engagement Ring" 
-          class="w-full h-full object-cover"
-        />
-      </div>
-
-      <!-- 3. The Couple -->
-      <div class="space-y-1">
-        <h1 class="text-4xl md:text-5xl font-semibold text-[#8C8F94] tracking-tight">
-          Sheva & David
-        </h1>
-        <p class="serif italic text-lg text-[#4EC3C0] font-medium">are getting married</p>
-      </div>
-
-      <!-- Clean Soft Teal Horizontal Divider -->
-      <div class="w-16 h-[2px] bg-[#4EC3C0] mx-auto"></div>
-
-      <!-- 4. Key Details (High-Contrast Blocks) -->
-      <div class="space-y-5 py-2">
-        
-        <!-- Date Block: Surrounded in Soft Teal Border, Clear Date -->
-        <div class="bg-[#F7F3EC] rounded-xl p-4 border border-[#4EC3C0]/35">
-          <p class="text-[10px] font-bold tracking-wider text-[#8C8F94] uppercase mb-1">When</p>
-          <p class="text-2xl font-bold text-[#8C8F94] tracking-tight">
-            Friday, <span class="text-[#6B4E8C]">September 4, 2026</span>
-          </p>
+      <!-- 1. LIVE COUNTDOWN -->
+      <div class="space-y-4">
+        <h2 class="serif italic text-[#00C4CC] text-2xl">The Countdown Begins</h2>
+        <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-sm mx-auto">
+          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
+            <span id="cd-days" class="block text-2xl font-bold text-[#8C8F94]">000</span>
+            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Days</span>
+          </div>
+          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
+            <span id="cd-hours" class="block text-2xl font-bold text-[#8C8F94]">00</span>
+            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Hrs</span>
+          </div>
+          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
+            <span id="cd-mins" class="block text-2xl font-bold text-[#8C8F94]">00</span>
+            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Min</span>
+          </div>
+          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
+            <span id="cd-secs" class="block text-2xl font-bold text-[#00C4CC]">00</span>
+            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Sec</span>
+          </div>
         </div>
-
-        <!-- Location Block -->
-        <div class="space-y-1">
-          <p class="text-[10px] font-bold tracking-wider text-[#8C8F94] uppercase">Where</p>
-          <p class="text-xl font-bold text-[#8C8F94]">Lake Wilderness Lodge</p>
-          <p class="text-sm text-[#8C8F94]/90 max-w-xs mx-auto">
-            22500 SE 248th St,<br>Maple Valley, WA 98038
-          </p>
-        </div>
-
       </div>
 
-      <!-- 5. Footer & Primary Call to Action -->
-      <div class="pt-5 border-t border-[#F7F3EC] space-y-4">
-        <p class="serif italic text-[#8C8F94] text-base">Formal invitation to follow</p>
+      <!-- Divider -->
+      <div class="w-24 h-[1px] bg-[#8C8F94]/30 mx-auto"></div>
+
+      <!-- 2. THE EVENT DETAILS & UNIVERSAL CALENDAR -->
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-[11px] font-bold tracking-[0.2em] text-[#8C8F94] uppercase mb-2">The Location</h3>
+          <p class="text-2xl font-semibold text-[#8C8F94] serif">Lake Wilderness Lodge</p>
+          <p class="text-base text-[#8C8F94]/90 mt-1">22500 SE 248th St, Maple Valley, WA 98038</p>
+        </div>
         
-        <!-- Highly visible map button linking directly to the address destination -->
-        <a href="https://maps.google.com/?q=Lake+Wilderness+Lodge,+22500+SE+248th+St,+Maple+Valley,+WA+98038" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="inline-block w-full py-3.5 px-6 rounded-lg bg-[#4EC3C0] hover:bg-[#3db3b0] text-white font-bold text-sm tracking-wider transition shadow-md">
-          VIEW MAP & DIRECTIONS →
-        </a>
+        <!-- Smart Calendar Buttons (Side by side on desktop, stacked on mobile) -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          
+          <!-- Apple/Outlook iOS Button (Triggers ICS file download) -->
+          <button onclick="downloadICS()" class="flex items-center justify-center gap-2 py-3 px-5 rounded-lg bg-[#8C8F94] hover:bg-[#7a7c81] text-white font-medium text-sm tracking-wide transition shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            Add to Apple / Outlook
+          </button>
+
+          <!-- Google Calendar Button (Web link) -->
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sheva+%26+David%27s+Wedding&dates=20260904T220000Z/20260905T060000Z&details=We+can%27t+wait+to+celebrate+with+you!&location=Lake+Wilderness+Lodge,+22500+SE+248th+St,+Maple+Valley,+WA+98038" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-3 px-5 rounded-lg border-2 border-[#8C8F94] text-[#8C8F94] hover:bg-gray-50 font-medium text-sm tracking-wide transition shadow-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+            Add to Google Calendar
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. ALEXANDRITE INTERACTIVE SLIDER -->
+      <div class="bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-100 shadow-inner space-y-6">
+        <h2 class="serif italic text-[#8C8F94] text-xl">The Alexandrite Shift</h2>
+        <p class="text-sm text-[#8C8F94]/80">Drag the slider to see our signature colors shift like the stone in the light.</p>
+        
+        <div class="space-y-4 max-w-sm mx-auto">
+          <input type="range" min="0" max="100" value="0" id="alexandrite-slider">
+          <div id="alexandrite-block" class="h-20 w-full rounded-lg shadow-md flex items-center justify-center transition-colors">
+            <span class="text-white font-medium tracking-widest uppercase text-xs opacity-80" id="color-label">Daylight Teal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. REAL GUESTBOOK (Wired for Formspree/Google Sheets) -->
+      <div class="pt-8 border-t border-[#8C8F94]/20 text-left">
+        <h2 class="serif italic text-3xl text-[#6B4E8C] mb-2">Leave a Wish</h2>
+        <p class="text-sm text-[#8C8F94] mb-6">Drop us a note! Your message will go straight to our private digital guestbook.</p>
+
+        <!-- Form Setup: Set the action URL to a free Formspree.io endpoint, or a Google Apps Script URL -->
+        <form action="YOUR_WEBHOOK_URL_HERE" method="POST" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold tracking-wider text-[#8C8F94] uppercase mb-1">Your Name</label>
+            <input type="text" name="Guest Name" required class="w-full bg-[#F7F3EC] border border-[#8C8F94]/30 rounded-md px-4 py-3 text-gray-800 focus:outline-none focus:border-[#00C4CC] focus:ring-1 focus:ring-[#00C4CC] transition">
+          </div>
+          <div>
+            <label class="block text-xs font-bold tracking-wider text-[#8C8F94] uppercase mb-1">Your Message</label>
+            <textarea name="Message" rows="3" required class="w-full bg-[#F7F3EC] border border-[#8C8F94]/30 rounded-md px-4 py-3 text-gray-800 focus:outline-none focus:border-[#00C4CC] focus:ring-1 focus:ring-[#00C4CC] transition"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-[#00C4CC] hover:bg-[#00a8af] text-white font-bold tracking-widest uppercase py-3.5 rounded-md shadow-md transition">
+            Send Message
+          </button>
+        </form>
       </div>
 
     </div>
   </div>
 
+  <!-- Javascript Logic -->
+  <script>
+    // 1. Countdown Logic to Sept 4, 2026 (Assumed 4 PM local time)
+    const targetDate = new Date("September 4, 2026 16:00:00").getTime();
+    
+    setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("cd-days").innerText = days.toString().padStart(3, '0');
+      document.getElementById("cd-hours").innerText = hours.toString().padStart(2, '0');
+      document.getElementById("cd-mins").innerText = minutes.toString().padStart(2, '0');
+      document.getElementById("cd-secs").innerText = seconds.toString().padStart(2, '0');
+    }, 1000);
+
+    // 2. Alexandrite Slider Logic (Teal #00C4CC to Violet #6B4E8C)
+    const slider = document.getElementById('alexandrite-slider');
+    const block = document.getElementById('alexandrite-block');
+    const label = document.getElementById('color-label');
+
+    // Helper function to blend colors mathematically
+    function mixColors(color1, color2, weight) {
+      const w1 = 1 - weight;
+      const w2 = weight;
+      const r = Math.round(color1[0] * w1 + color2[0] * w2);
+      const g = Math.round(color1[1] * w1 + color2[1] * w2);
+      const b = Math.round(color1[2] * w1 + color2[2] * w2);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    const teal = [0, 196, 204];  // #00C4CC
+    const violet = [107, 78, 140]; // #6B4E8C
+
+    slider.addEventListener('input', function(e) {
+      const percent = e.target.value / 100;
+      block.style.backgroundColor = mixColors(teal, violet, percent);
+      
+      if(percent < 0.3) {
+        label.innerText = "Daylight Teal";
+      } else if (percent > 0.7) {
+        label.innerText = "Evening Violet";
+      } else {
+        label.innerText = "The Shift";
+      }
+    });
+
+    // 3. Apple/Outlook Universal Calendar Generator
+    function downloadICS() {
+      const icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sheva and David Wedding//EN
+BEGIN:VEVENT
+DTSTART:20260904T220000Z
+DTEND:20260905T060000Z
+SUMMARY:Sheva & David's Wedding
+LOCATION:Lake Wilderness Lodge\\, 22500 SE 248th St\\, Maple Valley\\, WA 98038
+DESCRIPTION:We can't wait to celebrate with you! For more details, refer to formal invitation.
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'Sheva_David_Wedding.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
 </body>
 </html>
