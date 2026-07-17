@@ -1,243 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sheva & David | Our Wedding</title>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Updated Wedding Fonts: Cormorant Garamond & DM Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date | Sheva & David</title>
+    <!-- Google Fonts for Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-teal: #1e5e63; /* Daylight Teal */
+            --dark-charcoal: #2d2d2d;
+            --cream-bg: #FAF9F6;
+            --white: #ffffff;
+            --gray-muted: #6e6e6e;
+        }
 
-  <style>
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #F7F3EC; /* Ivory Base */
-      color: #8C8F94; /* Nailhead Gray */
-    }
-    h1, h2, h3, .serif {
-      font-family: 'Cormorant Garamond', serif;
-    }
-    
-    /* Alexandrite Shift Element */
-    #alexandrite-block {
-      background-color: #00C4CC; /* Starts Teal */
-      transition: background-color 0.1s ease;
-    }
-    
-    /* Custom Range Slider */
-    input[type=range] {
-      -webkit-appearance: none;
-      width: 100%;
-      background: transparent;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 24px;
-      width: 24px;
-      border-radius: 50%;
-      background: #F7F3EC;
-      border: 2px solid #8C8F94;
-      cursor: pointer;
-      margin-top: -8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    input[type=range]::-webkit-slider-runnable-track {
-      width: 100%;
-      height: 8px;
-      cursor: pointer;
-      background: linear-gradient(to right, #00C4CC, #6B4E8C);
-      border-radius: 4px;
-    }
-  </style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(rgba(250, 249, 246, 0.75), rgba(250, 249, 246, 0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') no-repeat center center/cover;
+            padding: 100px 20px 60px 20px;
+            border-bottom: 3px solid var(--primary-teal);
+        }
+
+        .save-the-date-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            color: var(--primary-teal);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--dark-charcoal);
+            margin-bottom: 10px;
+        }
+
+        .wedding-date {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--primary-teal);
+            margin-bottom: 30px;
+        }
+
+        /* Countdown styling matching your layout */
+        .countdown-container {
+            background-color: var(--white);
+            display: inline-block;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 45px;
+        }
+
+        .countdown-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary-teal);
+            display: block;
+        }
+
+        .countdown-label {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--gray-muted);
+        }
+
+        /* Calendar Actions */
+        .calendar-actions {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-calendar {
+            background-color: var(--white);
+            color: var(--dark-charcoal);
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn-calendar:hover {
+            border-color: var(--primary-teal);
+            color: var(--primary-teal);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Main Content Grid */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--primary-teal);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Details Selector Box */
+        .selector-box {
+            background: var(--white);
+            border: 1px solid #e2e2e2;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .selector-box p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--white);
+            color: var(--primary-teal);
+            border: 2px solid var(--primary-teal);
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover, .btn.active {
+            background-color: var(--primary-teal);
+            color: var(--white);
+        }
+
+        /* Dynamic Schedule Cards */
+        .details-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            display: none; 
+            text-align: left;
+        }
+
+        .details-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-teal);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .details-card p {
+            margin-bottom: 15px;
+        }
+
+        .highlight-time {
+            font-weight: bold;
+            color: var(--primary-teal);
+        }
+
+        /* RSVP Form Section */
+        .rsvp-section {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        input[type="text"]:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+        }
+
+        .btn-submit {
+            background-color: var(--primary-teal);
+            color: var(--white);
+            border: none;
+            width: 100%;
+            max-width: 500px;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #143f43;
+        }
+
+        footer {
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: var(--gray-muted);
+            border-top: 1px solid #e2e2e2;
+        }
+    </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-4 md:p-8">
+<body>
 
-  <!-- Main Website Container -->
-  <div class="max-w-2xl w-full bg-white rounded-xl shadow-2xl border border-[#8C8F94]/15 overflow-hidden mb-12">
-    
-    <!-- BAKED IN PHOTO HERO -->
-    <!-- Note: Replace this src link with a picture of the two of you when ready! -->
-    <div class="w-full aspect-[4/3] md:aspect-[16/9] relative bg-gray-100 overflow-hidden">
-      <img 
-        src="https://lh3.googleusercontent.com/rd-gg-dl/AAQ_wbH5rqGrxeSaRgdTbYWRFSB5BHIHzlKJf16nUKNcNKMiCiHvqzATVdZq55y-r4yQJ-5qv9tqP5dzPE8MWKGBT9QbYG7wXuuzimhqsfO2788toYbaouIKn6wZfREKWUxyVHrVjhpAv3fGkDdGhwKGCwnG6AYFvbFz3pCcX5_oIAk9V4kRdmE1N3iCttYGXuxQiWqsyU2Y5NyduFGcJMtqqCYPfhE51Y2LzaHYvxESCnQgJ-osRvYTJaMboIJARvfJfK4788MiX8BQ9jb_zNv36DLyjrYeg1TGRLLh-m7CoPiJfzjQnEjGFwRrtWL1WsQZ65s491cvuaF-hBGxbj_gZOKiyb64bOP2lqpebrn2l4J4ruplzTpp4z8JUY3clRDlDhoL3ez45-LtvZlHdAaWLJOMpVMnP1-rd4So2Me9QEn21Lz7-oYvhwptOLqrlgGWiS4hq7q4KSWMFrTUzN8SUyb6gDTq7y1YunfaIF-yy_VlI74Wzz_3ccx8NfaWcWBt6WZGy8GaISLqaFhpP3DrZbqkCqM8gTkO6oGG6jqB4vmKdvvq_lHqrya39X4LF2gZdfSw-RYLQGihnrSsyfLEMvWKr0YewSwrZK32pzheQ2Oiz8eGqfdzMQeKRvL0S9f1dU6QP-W2mkfKO9x4a0ZGsZHzoTGpXzFZActmqIWEypkjstIURys5mRtIxQihn-lfudCT2icYjlnZFFr0EdS5aWwaRxmxEd2oVZN_XOEk6UiN0T1s182wUWAVd-7TEXkka21pFYVMYcTUOtLH_6jfxuBIrdrH0-68fgR7vGygjNek8jpEWXicd_pjQixRcThT86afi14k9YJ8RkzcCA1tWyvUllYsbwj5bN-1_bOAtP2fm_fVYMUofeG1T4_FYr8up3Vy_GwP-Y7IYxEhPxbC57tRdalA7Z9RZdkVJpM6OETzot3QkQpRZ238MksgyvTgn65nyb7UO0N8ZU_iEmemE2bPoh3fcdfgZF0HXty54ASW9yj4-W1cRBoDfGgo3A4Yh1W0DBlkUQoccrxLZBv_uH6mGA6J_8b_UPmFQIyd8Eyln4VJgcBjh47-vAGslj9V7UAfOKPj_1yY9jLLeqaW7muLcC6OSMTP2YBI7qoOGQbfr-faUBAUZK0wxciMzxin4IVZ9gdOXSK9aIQCGAWY43qcKaSjUexfzRr-HElTgNkpYDxNIMQfA3NeG_oVOcFoHc-1oSswor5yDn2EWZiXbQ=s1024-rj" 
-        alt="Sheva & David" 
-        class="w-full h-full object-cover"
-      />
-      <!-- Soft gradient overlay to make text pop -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
-        <h1 class="text-white text-5xl md:text-6xl font-semibold tracking-wide drop-shadow-md">Sheva & David</h1>
-        <p class="text-white/90 text-lg md:text-xl tracking-widest uppercase font-medium mt-2">September 4, 2026</p>
-      </div>
-    </div>
+    <header>
+        <div class="save-the-date-badge">Save the Date</div>
+        <h1>Sheva & David</h1>
+        <div class="wedding-date">SEPTEMBER 4, 2026</div>
 
-    <div class="p-8 md:p-12 space-y-12 text-center">
-      
-      <!-- 1. LIVE COUNTDOWN -->
-      <div class="space-y-4">
-        <h2 class="serif italic text-[#00C4CC] text-2xl">The Countdown Begins</h2>
-        <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-sm mx-auto">
-          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
-            <span id="cd-days" class="block text-2xl font-bold text-[#8C8F94]">000</span>
-            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Days</span>
-          </div>
-          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
-            <span id="cd-hours" class="block text-2xl font-bold text-[#8C8F94]">00</span>
-            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Hrs</span>
-          </div>
-          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
-            <span id="cd-mins" class="block text-2xl font-bold text-[#8C8F94]">00</span>
-            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Min</span>
-          </div>
-          <div class="bg-[#F7F3EC] p-3 rounded-lg border border-[#8C8F94]/20 shadow-sm">
-            <span id="cd-secs" class="block text-2xl font-bold text-[#00C4CC]">00</span>
-            <span class="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#8C8F94]/70">Sec</span>
-          </div>
+        <!-- Single Days Metric Countdown -->
+        <div class="countdown-container">
+            <span class="countdown-number" id="days-count">--</span>
+            <span class="countdown-label">Days to Go</span>
         </div>
-      </div>
 
-      <!-- Divider -->
-      <div class="w-24 h-[1px] bg-[#8C8F94]/30 mx-auto"></div>
-
-      <!-- 2. THE EVENT DETAILS & UNIVERSAL CALENDAR -->
-      <div class="space-y-6">
-        <div>
-          <h3 class="text-[11px] font-bold tracking-[0.2em] text-[#8C8F94] uppercase mb-2">The Location</h3>
-          <p class="text-2xl font-semibold text-[#8C8F94] serif">Lake Wilderness Lodge</p>
-          <p class="text-base text-[#8C8F94]/90 mt-1">22500 SE 248th St, Maple Valley, WA 98038</p>
+        <!-- Streamlined Save the Date Calendar Actions -->
+        <div class="calendar-actions">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sheva+%26+David%27s+Wedding+-+Save+the+Date%21&dates=20260904T173000/20260904T230000&details=Save+the+Date+for+Sheva+%26+David%27s+Wedding%21+Official+invitation+and+schedule+selection+details+to+follow.&location=Lake+Wilderness+Lodge%2C+22500+SE+248th+St%2C+Maple+Valley%2C+WA+98038" 
+               target="_blank" class="btn-calendar">
+               📅 Add to Google Calendar
+            </a>
+            <button onclick="downloadICS()" class="btn-calendar">
+               📅 Add to Apple / Outlook
+            </button>
         </div>
-        
-        <!-- Smart Calendar Buttons (Side by side on desktop, stacked on mobile) -->
-        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-          
-          <!-- Apple/Outlook iOS Button (Triggers ICS file download) -->
-          <button onclick="downloadICS()" class="flex items-center justify-center gap-2 py-3 px-5 rounded-lg bg-[#8C8F94] hover:bg-[#7a7c81] text-white font-medium text-sm tracking-wide transition shadow-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            Add to Apple / Outlook
-          </button>
+    </header>
 
-          <!-- Google Calendar Button (Web link) -->
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sheva+%26+David%27s+Wedding&dates=20260904T220000Z/20260905T060000Z&details=We+can%27t+wait+to+celebrate+with+you!&location=Lake+Wilderness+Lodge,+22500+SE+248th+St,+Maple+Valley,+WA+98038" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-3 px-5 rounded-lg border-2 border-[#8C8F94] text-[#8C8F94] hover:bg-gray-50 font-medium text-sm tracking-wide transition shadow-sm">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
-            Add to Google Calendar
-          </a>
+    <main>
+        <!-- STEP 1: Interactive Tier Selector -->
+        <div class="selector-box">
+            <p class="section-title" style="font-size: 1.3rem;">Which timeline applies to you?</p>
+            <p style="color: var(--gray-muted); font-size: 0.95rem; margin-top: -10px;">Select to view the schedule timeline detailed on your invitation card.</p>
+            <div class="btn-group">
+                <button class="btn" onclick="showSchedule('tier1', this)">Ceremony & Celebration (Tier 1)</button>
+                <button class="btn" onclick="showSchedule('tier2', this)">Celebration Only (Tier 2)</button>
+            </div>
         </div>
-      </div>
 
-      <!-- 3. ALEXANDRITE INTERACTIVE SLIDER -->
-      <div class="bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-100 shadow-inner space-y-6">
-        <h2 class="serif italic text-[#8C8F94] text-xl">The Alexandrite Shift</h2>
-        <p class="text-sm text-[#8C8F94]/80">Drag the slider to see our signature colors shift like the stone in the light.</p>
-        
-        <div class="space-y-4 max-w-sm mx-auto">
-          <input type="range" min="0" max="100" value="0" id="alexandrite-slider">
-          <div id="alexandrite-block" class="h-20 w-full rounded-lg shadow-md flex items-center justify-center transition-colors">
-            <span class="text-white font-medium tracking-widest uppercase text-xs opacity-80" id="color-label">Daylight Teal</span>
-          </div>
+        <!-- Tier 1 Schedule Detail Card -->
+        <div id="tier1-card" class="details-card">
+            <h3>Ceremony & Reception Details</h3>
+            <p>We're thrilled to have you join us for our full wedding celebration!</p>
+            <p><strong>Location:</strong> <a href="https://maps.google.com/?q=Lake+Wilderness+Lodge+22500+SE+248th+St+Maple+Valley+WA+98038" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">Lake Wilderness Lodge, Maple Valley, WA</a></p>
+            <p><strong>Ceremony Arrival:</strong> <span class="highlight-time">5:30 PM</span> (Ceremony starts promptly at 6:00 PM)</p>
+            <p><strong>Full Celebration:</strong> <span class="highlight-time">7:00 PM</span> onwards with grazing boards, desserts, and dancing!</p>
         </div>
-      </div>
 
-      <!-- 4. REAL GUESTBOOK (Wired for Formspree/Google Sheets) -->
-      <div class="pt-8 border-t border-[#8C8F94]/20 text-left">
-        <h2 class="serif italic text-3xl text-[#6B4E8C] mb-2">Leave a Wish</h2>
-        <p class="text-sm text-[#8C8F94] mb-6">Drop us a note! Your message will go straight to our private digital guestbook.</p>
+        <!-- Tier 2 Schedule Detail Card -->
+        <div id="tier2-card" class="details-card">
+            <h3>Celebration Details</h3>
+            <p>We are hosting a lively, standing-room celebration featuring signature grazing boards, delicious desserts, music, and plenty of dancing. We can't wait to party with you!</p>
+            <p><strong>Location:</strong> <a href="https://maps.google.com/?q=Lake+Wilderness+Lodge+22500+SE+248th+St+Maple+Valley+WA+98038" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">Lake Wilderness Lodge, Maple Valley, WA</a></p>
+            <p><strong>Celebration Party Starts:</strong> <span class="highlight-time">7:00 PM</span></p>
+        </div>
 
-        <!-- Form Setup: Set the action URL to a free Formspree.io endpoint, or a Google Apps Script URL -->
-        <form action="YOUR_WEBHOOK_URL_HERE" method="POST" class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold tracking-wider text-[#8C8F94] uppercase mb-1">Your Name</label>
-            <input type="text" name="Guest Name" required class="w-full bg-[#F7F3EC] border border-[#8C8F94]/30 rounded-md px-4 py-3 text-gray-800 focus:outline-none focus:border-[#00C4CC] focus:ring-1 focus:ring-[#00C4CC] transition">
-          </div>
-          <div>
-            <label class="block text-xs font-bold tracking-wider text-[#8C8F94] uppercase mb-1">Your Message</label>
-            <textarea name="Message" rows="3" required class="w-full bg-[#F7F3EC] border border-[#8C8F94]/30 rounded-md px-4 py-3 text-gray-800 focus:outline-none focus:border-[#00C4CC] focus:ring-1 focus:ring-[#00C4CC] transition"></textarea>
-          </div>
-          <button type="submit" class="w-full bg-[#00C4CC] hover:bg-[#00a8af] text-white font-bold tracking-widest uppercase py-3.5 rounded-md shadow-md transition">
-            Send Message
-          </button>
-        </form>
-      </div>
+        <!-- RSVP form routed directly to ellie7kay@gmail.com -->
+        <section class="rsvp-section">
+            <h2 class="section-title">RSVP</h2>
+            <p style="margin-bottom: 25px; color: var(--gray-muted);">Quickly let us know if you can make it below. Submitting will draft a quick email reply directly to us!</p>
+            
+            <form id="rsvpForm" onsubmit="handleRSVP(event)">
+                <div class="form-group">
+                    <label for="guestName">Your Full Name(s)</label>
+                    <input type="text" id="guestName" placeholder="e.g., Jane and John Doe" required>
+                </div>
 
-    </div>
-  </div>
+                <div class="form-group">
+                    <label for="rsvpStatus">Will you be attending?</label>
+                    <select id="rsvpStatus" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Yes, joyfully attending">Yes, joyfully attending</option>
+                        <option value="Regretfully declining">Regretfully declining</option>
+                    </select>
+                </div>
 
-  <!-- Javascript Logic -->
-  <script>
-    // 1. Countdown Logic to Sept 4, 2026 (Assumed 4 PM local time)
-    const targetDate = new Date("September 4, 2026 16:00:00").getTime();
-    
-    setInterval(function() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+                <div class="form-group">
+                    <label for="partySize">Total Party Size</label>
+                    <select id="partySize" required>
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5+">5+</option>
+                    </select>
+                </div>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                <div class="form-group">
+                    <label for="guestNote">A note for the couple (Optional)</label>
+                    <textarea id="guestNote" rows="3" placeholder="Leave a wish or let us know about any serious food allergies!"></textarea>
+                </div>
 
-      document.getElementById("cd-days").innerText = days.toString().padStart(3, '0');
-      document.getElementById("cd-hours").innerText = hours.toString().padStart(2, '0');
-      document.getElementById("cd-mins").innerText = minutes.toString().padStart(2, '0');
-      document.getElementById("cd-secs").innerText = seconds.toString().padStart(2, '0');
-    }, 1000);
+                <button type="submit" class="btn-submit">Send RSVP via Email</button>
+            </form>
+        </section>
+    </main>
 
-    // 2. Alexandrite Slider Logic (Teal #00C4CC to Violet #6B4E8C)
-    const slider = document.getElementById('alexandrite-slider');
-    const block = document.getElementById('alexandrite-block');
-    const label = document.getElementById('color-label');
+    <footer>
+        <p>Sheva & David • September 4, 2026 • Lake Wilderness Lodge</p>
+    </footer>
 
-    // Helper function to blend colors mathematically
-    function mixColors(color1, color2, weight) {
-      const w1 = 1 - weight;
-      const w2 = weight;
-      const r = Math.round(color1[0] * w1 + color2[0] * w2);
-      const g = Math.round(color1[1] * w1 + color2[1] * w2);
-      const b = Math.round(color1[2] * w1 + color2[2] * w2);
-      return `rgb(${r}, ${g}, ${b})`;
-    }
+    <script>
+        // Set Wedding Date (September 4, 2026)
+        const weddingDate = new Date("September 4, 2026 00:00:00").getTime();
 
-    const teal = [0, 196, 204];  // #00C4CC
-    const violet = [107, 78, 140]; // #6B4E8C
+        // Update days remaining
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-    slider.addEventListener('input', function(e) {
-      const percent = e.target.value / 100;
-      block.style.backgroundColor = mixColors(teal, violet, percent);
-      
-      if(percent < 0.3) {
-        label.innerText = "Daylight Teal";
-      } else if (percent > 0.7) {
-        label.innerText = "Evening Violet";
-      } else {
-        label.innerText = "The Shift";
-      }
-    });
+            if (distance < 0) {
+                document.getElementById("days-count").innerHTML = "0";
+            } else {
+                document.getElementById("days-count").innerHTML = days;
+            }
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 60000); // refresh hourly element updates
 
-    // 3. Apple/Outlook Universal Calendar Generator
-    function downloadICS() {
-      const icsData = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Sheva and David Wedding//EN
-BEGIN:VEVENT
-DTSTART:20260904T220000Z
-DTEND:20260905T060000Z
-SUMMARY:Sheva & David's Wedding
-LOCATION:Lake Wilderness Lodge\\, 22500 SE 248th St\\, Maple Valley\\, WA 98038
-DESCRIPTION:We can't wait to celebrate with you! For more details, refer to formal invitation.
-END:VEVENT
-END:VCALENDAR`;
+        // Toggle Dynamic View Timelines
+        function showSchedule(tier, element) {
+            document.getElementById('tier1-card').style.display = 'none';
+            document.getElementById('tier2-card').style.display = 'none';
 
-      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'Sheva_David_Wedding.ics');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  </script>
+            const buttons = document.querySelectorAll('.btn-group .btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tier + '-card').style.display = 'block';
+            element.classList.add('active');
+            
+            document.getElementById(tier + '-card').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Email Form Handler (Routes cleanly to default email application)
+        function handleRSVP(event) {
+            event.preventDefault();
+
+            const emailTo = "ellie7kay@gmail.com";
+            const name = document.getElementById('guestName').value;
+            const rsvp = document.getElementById('rsvpStatus').value;
+            const size = document.getElementById('partySize').value;
+            const note = document.getElementById('guestNote').value;
+
+            const subject = `Wedding RSVP: ${name} - ${rsvp}`;
+            const body = `Hi Sheva & David,\n\nHere is my RSVP for September 4, 2026:\n\n` +
+                         `• Guest Name(s): ${name}\n` +
+                         `• Attendance: ${rsvp}\n` +
+                         `• Party Size: ${size}\n` +
+                         `• Personal Note / Dietary Notes: ${note || "None"}\n\n` +
+                         `Cheers,\n${name}`;
+
+            window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Generates cleanly trimmed .ics file payload for Apple Calendar / Microsoft Outlook
+        function downloadICS() {
+            const icsData = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Sheva and David//Save the Date//EN",
+                "BEGIN:VEVENT",
+                "UID:sheva-david-wedding-2026@shevastudio.com",
+                "DTSTAMP:20260716T000000Z",
+                "DTSTART:20260904T173000",
+                "DTEND:20260904T230000",
+                "SUMMARY:Sheva & David's Wedding - Save the Date!",
+                "DESCRIPTION:Save the Date for Sheva & David's Wedding! Official invitation and schedule selection details to follow.",
+                "LOCATION:Lake Wilderness Lodge, 22500 SE 248th St, Maple Valley, WA 98038",
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ].join("\r\n");
+
+            const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Sheva_and_David_Save_The_Date.ics";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 </body>
 </html>
