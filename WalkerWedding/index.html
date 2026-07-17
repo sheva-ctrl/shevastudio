@@ -3,455 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save the Date | Sheva & David</title>
-    <!-- Google Fonts for Elegant Typography -->
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Sheva & David — Our Wedding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght=9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
         :root {
-            --primary-teal: #1e5e63; /* Daylight Teal */
-            --dark-charcoal: #2d2d2d;
-            --cream-bg: #FAF9F6;
-            --white: #ffffff;
-            --gray-muted: #6e6e6e;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --ivory: #F7F3EC;
+            --ivory-dp: #EDE6DA;
+            --teal: #00C4CC;
+            --teal-tint: #E0F7F8;
+            --teal-dk: #0A7C80;
+            --gray: #8C8F94;
+            --gray-dk: #5E6166;
+            --violet: #6B4E8C;
+            --bluelt: #B8CCE0;
+            --silver: #C9CDD2;
+            --ink: #2F3238;
+            --white: #fff;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--cream-bg);
-            color: var(--dark-charcoal);
-            line-height: 1.6;
-            text-align: center;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--ivory);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Stripe */
+        .stripe {
+            height: 6px;
+            background: linear-gradient(90deg, var(--teal), var(--gray), var(--teal));
         }
 
         /* Hero Section */
-        header {
-            background: linear-gradient(rgba(250, 249, 246, 0.75), rgba(250, 249, 246, 0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') no-repeat center center/cover;
-            padding: 100px 20px 60px 20px;
-            border-bottom: 3px solid var(--primary-teal);
+        .hero {
+            text-align: center;
+            padding: 60px 24px 30px;
         }
-
-        .save-the-date-badge {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            letter-spacing: 5px;
-            color: var(--primary-teal);
-            text-transform: uppercase;
-            margin-bottom: 10px;
+        .eyebrow {
+            font-size: 13px;
             font-weight: 600;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--teal-dk);
+            margin-bottom: 18px;
         }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(46px, 9vw, 74px);
             font-weight: 400;
-            color: var(--dark-charcoal);
-            margin-bottom: 10px;
+            line-height: 1;
+            color: var(--ink);
+        }
+        .names .amp {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--teal-dk);
+        }
+        .sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(20px, 4vw, 26px);
+            color: var(--gray-dk);
+            margin-top: 12px;
         }
 
-        .wedding-date {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: var(--primary-teal);
-            margin-bottom: 30px;
-        }
-
-        /* Countdown styling matching your layout */
-        .countdown-container {
-            background-color: var(--white);
-            display: inline-block;
-            padding: 20px 40px;
+        /* Ring Image */
+        .ring {
+            max-width: 340px;
+            margin: 32px auto 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 45px;
+            overflow: hidden;
+            border: 1px solid var(--silver);
+            box-shadow: 0 12px 30px rgba(70,80,100,.12);
         }
-
-        .countdown-number {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: var(--primary-teal);
+        .ring img {
+            width: 100%;
             display: block;
         }
 
-        .countdown-label {
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            color: var(--gray-muted);
-        }
-
-        /* Calendar Actions */
-        .calendar-actions {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-calendar {
-            background-color: var(--white);
-            color: var(--dark-charcoal);
-            border: 1px solid #ccc;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .btn-calendar:hover {
-            border-color: var(--primary-teal);
-            color: var(--primary-teal);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        /* Main Content Grid */
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--primary-teal);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Details Selector Box */
-        .selector-box {
+        /* Schedule / Itinerary Section */
+        .schedule-container {
+            max-width: 640px;
+            margin: 40px auto 50px;
             background: var(--white);
-            border: 1px solid #e2e2e2;
-            padding: 30px;
+            border: 1px solid var(--ivory-dp);
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.03);
         }
-
-        .selector-box p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
+        .schedule-title {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--ink);
+            margin-bottom: 24px;
         }
-
-        .btn-group {
+        .event {
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--ivory-dp);
+        }
+        .event:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        /* Dynamic Ceremony display (hidden by default) */
+        #ceremony-event {
+            display: none;
         }
 
-        .btn {
-            background-color: var(--white);
-            color: var(--primary-teal);
-            border: 2px solid var(--primary-teal);
-            padding: 12px 24px;
-            font-size: 1rem;
+        .event-time {
+            font-size: 14px;
             font-weight: 600;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            letter-spacing: .1em;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover, .btn.active {
-            background-color: var(--primary-teal);
-            color: var(--white);
-        }
-
-        /* Dynamic Schedule Cards */
-        .details-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            display: none; 
-            text-align: left;
-        }
-
-        .details-card h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-teal);
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .details-card p {
-            margin-bottom: 15px;
-        }
-
-        .highlight-time {
-            font-weight: bold;
-            color: var(--primary-teal);
-        }
-
-        /* RSVP Form Section */
-        .rsvp-section {
-            background-color: var(--white);
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 60px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
+            color: var(--teal-dk);
             margin-bottom: 8px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+        .event-details h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--ink);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .general-note {
+            color: var(--gray-dk);
+            font-size: 15px;
+            line-height: 1.5;
         }
 
-        input[type="text"], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+        @media (min-width: 500px) {
+            .event {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .event-time {
+                flex: 0 0 160px;
+                margin-bottom: 0;
+                padding-top: 6px;
+            }
         }
 
-        input[type="text"]:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-teal);
-        }
-
-        .btn-submit {
-            background-color: var(--primary-teal);
-            color: var(--white);
-            border: none;
-            width: 100%;
-            max-width: 500px;
-            padding: 15px;
-            border-radius: 30px;
-            font-size: 1.1rem;
+        /* Swatches Section */
+        .lbl {
+            text-align: center;
+            font-size: 13px;
             font-weight: 600;
-            cursor: pointer;
+            letter-spacing: .28em;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: background-color 0.3s;
-            margin-top: 10px;
+            color: var(--teal-dk);
+            margin: 48px 0 24px;
+        }
+        .sws {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+        .sw {
+            border: 1px solid var(--ivory-dp);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,.02);
+        }
+        .sw-chip { height: 96px; }
+        .sw-body { padding: 12px 14px; }
+        .sw-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .sw-hex {
+            font-size: 11px;
+            letter-spacing: .12em;
+            color: var(--gray);
+            margin-top: 2px;
+            font-variant-numeric: tabular-nums;
         }
 
-        .btn-submit:hover {
-            background-color: #143f43;
-        }
-
+        /* Footer */
         footer {
-            padding: 40px 20px;
-            font-size: 0.9rem;
-            color: var(--gray-muted);
-            border-top: 1px solid #e2e2e2;
+            padding: 60px 24px;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 24px;
+            color: var(--teal-dk);
         }
+
+        @media print { .stripe { display: none; } }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="save-the-date-badge">Save the Date</div>
-        <h1>Sheva & David</h1>
-        <div class="wedding-date">SEPTEMBER 4, 2026</div>
-
-        <!-- Single Days Metric Countdown -->
-        <div class="countdown-container">
-            <span class="countdown-number" id="days-count">--</span>
-            <span class="countdown-label">Days to Go</span>
+    <div class="stripe"></div>
+    
+    <section class="hero">
+        <p class="eyebrow">Wedding Details & Colors</p>
+        <h1 class="names">Sheva <span class="amp">&amp;</span> David</h1>
+        <p class="sub">September 4, 2026</p>
+        
+        <div class="ring">
+            <img src="your_image_here.jpg" alt="Engagement Ring">
         </div>
+    </section>
 
-        <!-- Streamlined Save the Date Calendar Actions -->
-        <div class="calendar-actions">
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sheva+%26+David%27s+Wedding+-+Save+the+Date%21&dates=20260904T173000/20260904T230000&details=Save+the+Date+for+Sheva+%26+David%27s+Wedding%21+Official+invitation+and+schedule+selection+details+to+follow.&location=Lake+Wilderness+Lodge%2C+22500+SE+248th+St%2C+Maple+Valley%2C+WA+98038" 
-               target="_blank" class="btn-calendar">
-               📅 Add to Google Calendar
-            </a>
-            <button onclick="downloadICS()" class="btn-calendar">
-               📅 Add to Apple / Outlook
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <!-- STEP 1: Interactive Tier Selector -->
-        <div class="selector-box">
-            <p class="section-title" style="font-size: 1.3rem;">Which timeline applies to you?</p>
-            <p style="color: var(--gray-muted); font-size: 0.95rem; margin-top: -10px;">Select to view the schedule timeline detailed on your invitation card.</p>
-            <div class="btn-group">
-                <button class="btn" onclick="showSchedule('tier1', this)">Ceremony & Celebration (Tier 1)</button>
-                <button class="btn" onclick="showSchedule('tier2', this)">Celebration Only (Tier 2)</button>
+    <!-- Schedule Section -->
+    <section class="schedule-container">
+        <h2 class="schedule-title">Schedule of Events</h2>
+        
+        <!-- HIDDEN BY DEFAULT (Only shows if link has ?ceremony) -->
+        <div class="event" id="ceremony-event">
+            <div class="event-time">5:00 PM – 6:00 PM</div>
+            <div class="event-details">
+                <h3>The Ceremony</h3>
+                <p class="general-note">Please arrive early to find your seat before we begin.</p>
             </div>
         </div>
 
-        <!-- Tier 1 Schedule Detail Card -->
-        <div id="tier1-card" class="details-card">
-            <h3>Ceremony & Reception Details</h3>
-            <p>We're thrilled to have you join us for our full wedding celebration!</p>
-            <p><strong>Location:</strong> <a href="https://maps.google.com/?q=Lake+Wilderness+Lodge+22500+SE+248th+St+Maple+Valley+WA+98038" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">Lake Wilderness Lodge, Maple Valley, WA</a></p>
-            <p><strong>Ceremony Arrival:</strong> <span class="highlight-time">5:30 PM</span> (Ceremony starts promptly at 6:00 PM)</p>
-            <p><strong>Full Celebration:</strong> <span class="highlight-time">7:00 PM</span> onwards with grazing boards, desserts, and dancing!</p>
+        <!-- ALWAYS VISIBLE -->
+        <div class="event">
+            <div class="event-time" id="reception-time">7:00 PM</div>
+            <div class="event-details">
+                <h3>The Celebration</h3>
+                <p class="general-note">Join us for an evening of dinner, drinks, and dancing!</p>
+            </div>
         </div>
+    </section>
 
-        <!-- Tier 2 Schedule Detail Card -->
-        <div id="tier2-card" class="details-card">
-            <h3>Celebration Details</h3>
-            <p>We are hosting a lively, standing-room celebration featuring signature grazing boards, delicious desserts, music, and plenty of dancing. We can't wait to party with you!</p>
-            <p><strong>Location:</strong> <a href="https://maps.google.com/?q=Lake+Wilderness+Lodge+22500+SE+248th+St+Maple+Valley+WA+98038" target="_blank" style="color: var(--primary-teal); text-decoration: none; font-weight: 600;">Lake Wilderness Lodge, Maple Valley, WA</a></p>
-            <p><strong>Celebration Party Starts:</strong> <span class="highlight-time">7:00 PM</span></p>
+    <!-- Colors Section -->
+    <p class="lbl">Our Color Palette</p>
+    <div class="sws">
+        <!-- (Your color swatches remain exactly the same here) -->
+        <div class="sw">
+            <div class="sw-chip" style="background: var(--ivory);"></div>
+            <div class="sw-body"><div class="sw-name">Ivory</div><div class="sw-hex">#F7F3EC</div></div>
         </div>
-
-        <!-- RSVP form routed directly to ellie7kay@gmail.com -->
-        <section class="rsvp-section">
-            <h2 class="section-title">RSVP</h2>
-            <p style="margin-bottom: 25px; color: var(--gray-muted);">Quickly let us know if you can make it below. Submitting will draft a quick email reply directly to us!</p>
-            
-            <form id="rsvpForm" onsubmit="handleRSVP(event)">
-                <div class="form-group">
-                    <label for="guestName">Your Full Name(s)</label>
-                    <input type="text" id="guestName" placeholder="e.g., Jane and John Doe" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="rsvpStatus">Will you be attending?</label>
-                    <select id="rsvpStatus" required>
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="Yes, joyfully attending">Yes, joyfully attending</option>
-                        <option value="Regretfully declining">Regretfully declining</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="partySize">Total Party Size</label>
-                    <select id="partySize" required>
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5+">5+</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="guestNote">A note for the couple (Optional)</label>
-                    <textarea id="guestNote" rows="3" placeholder="Leave a wish or let us know about any serious food allergies!"></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Send RSVP via Email</button>
-            </form>
-        </section>
-    </main>
+        <div class="sw">
+            <div class="sw-chip" style="background: var(--teal);"></div>
+            <div class="sw-body"><div class="sw-name">Teal</div><div class="sw-hex">#00C4CC</div></div>
+        </div>
+        <div class="sw">
+            <div class="sw-chip" style="background: var(--violet);"></div>
+            <div class="sw-body"><div class="sw-name">Violet</div><div class="sw-hex">#6B4E8C</div></div>
+        </div>
+        <div class="sw">
+            <div class="sw-chip" style="background: var(--bluelt);"></div>
+            <div class="sw-body"><div class="sw-name">Soft Blue</div><div class="sw-hex">#B8CCE0</div></div>
+        </div>
+        <div class="sw">
+            <div class="sw-chip" style="background: var(--silver);"></div>
+            <div class="sw-body"><div class="sw-name">Silver</div><div class="sw-hex">#C9CDD2</div></div>
+        </div>
+        <div class="sw">
+            <div class="sw-chip" style="background: var(--ink);"></div>
+            <div class="sw-body"><div class="sw-name">Ink</div><div class="sw-hex">#2F3238</div></div>
+        </div>
+    </div>
 
     <footer>
-        <p>Sheva & David • September 4, 2026 • Lake Wilderness Lodge</p>
+        We can't wait to celebrate with you.
     </footer>
 
+    <!-- SCRIPT: Checks URL for "?ceremony" -->
     <script>
-        // Set Wedding Date (September 4, 2026)
-        const weddingDate = new Date("September 4, 2026 00:00:00").getTime();
-
-        // Update days remaining
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-            if (distance < 0) {
-                document.getElementById("days-count").innerHTML = "0";
-            } else {
-                document.getElementById("days-count").innerHTML = days;
-            }
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 60000); // refresh hourly element updates
-
-        // Toggle Dynamic View Timelines
-        function showSchedule(tier, element) {
-            document.getElementById('tier1-card').style.display = 'none';
-            document.getElementById('tier2-card').style.display = 'none';
-
-            const buttons = document.querySelectorAll('.btn-group .btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(tier + '-card').style.display = 'block';
-            element.classList.add('active');
-            
-            document.getElementById(tier + '-card').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Email Form Handler (Routes cleanly to default email application)
-        function handleRSVP(event) {
-            event.preventDefault();
-
-            const emailTo = "ellie7kay@gmail.com";
-            const name = document.getElementById('guestName').value;
-            const rsvp = document.getElementById('rsvpStatus').value;
-            const size = document.getElementById('partySize').value;
-            const note = document.getElementById('guestNote').value;
-
-            const subject = `Wedding RSVP: ${name} - ${rsvp}`;
-            const body = `Hi Sheva & David,\n\nHere is my RSVP for September 4, 2026:\n\n` +
-                         `• Guest Name(s): ${name}\n` +
-                         `• Attendance: ${rsvp}\n` +
-                         `• Party Size: ${size}\n` +
-                         `• Personal Note / Dietary Notes: ${note || "None"}\n\n` +
-                         `Cheers,\n${name}`;
-
-            window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
-
-        // Generates cleanly trimmed .ics file payload for Apple Calendar / Microsoft Outlook
-        function downloadICS() {
-            const icsData = [
-                "BEGIN:VCALENDAR",
-                "VERSION:2.0",
-                "PRODID:-//Sheva and David//Save the Date//EN",
-                "BEGIN:VEVENT",
-                "UID:sheva-david-wedding-2026@shevastudio.com",
-                "DTSTAMP:20260716T000000Z",
-                "DTSTART:20260904T173000",
-                "DTEND:20260904T230000",
-                "SUMMARY:Sheva & David's Wedding - Save the Date!",
-                "DESCRIPTION:Save the Date for Sheva & David's Wedding! Official invitation and schedule selection details to follow.",
-                "LOCATION:Lake Wilderness Lodge, 22500 SE 248th St, Maple Valley, WA 98038",
-                "END:VEVENT",
-                "END:VCALENDAR"
-            ].join("\r\n");
-
-            const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
-            const link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = "Sheva_and_David_Save_The_Date.ics";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('ceremony')) {
+            // Show the ceremony event
+            document.getElementById('ceremony-event').style.display = 'flex';
+            // Optional: change "7:00 PM" to "7:00 PM – 10:00 PM" for ceremony guests if you prefer
+            document.getElementById('reception-time').textContent = "7:00 PM – 10:00 PM";
         }
     </script>
 </body>
