@@ -172,16 +172,16 @@ footer .fd{font-size:11px;letter-spacing:.05em;color:var(--gray);margin-top:8px}
   </div>
 
   <div class="step">
-   <div class="step-head"><div class="step-num">2</div><div class="step-t serif">Pick a song for the dance floor</div></div>
-   <p class="step-d">One song you can never sit out. We'll play it.</p>
+   <div class="step-head"><div class="step-num">2</div><div class="step-t serif">Request songs for the dance floor</div></div>
+   <p class="step-d">Songs you can never sit out. Add as many as you like &mdash; we’ll pass every suggestion along to our DJ.</p>
    <div class="songline">
     <input class="n" id="s-name" type="text" placeholder="Your name (optional)" maxlength="60">
     <input class="s" id="s-song" type="text" placeholder="Song &amp; artist" maxlength="120">
    </div>
-   <button class="cta" style="margin-top:14px" onclick="submitSong(event)">Add to the Playlist &#9834;</button>
+   <button class="cta" style="margin-top:14px" onclick="submitSong(event)">Send Us This Song &#9834;</button>
    <div class="board">
-    <div class="bh">On the Playlist</div>
-    <div class="songs" id="songs"><div class="empty" id="s-empty">Add the first song &#9834;</div></div>
+    <div class="bh">Songs You&rsquo;ve Sent Us</div>
+    <div class="songs" id="songs"><div class="empty" id="s-empty">Your suggestions will appear here &#9834;</div></div>
    </div>
   </div>
  </div>
@@ -234,15 +234,15 @@ function addSong(name,song){
 function submitSong(e){
  const n=document.getElementById('s-name'), s=document.getElementById('s-song');
  const name=n.value.trim(), song=s.value.trim();
- if(!song){toast("Add a song first");return;}
+ if(!song){toast("Type a song first");return;}
  if(SONG_WIRED){
   const fd=new FormData(); if(name) fd.append(ENTRY_SONG_NAME,name); fd.append(ENTRY_SONG,song);
   fetch(SONG_ACTION,{method:"POST",mode:"no-cors",body:fd}).catch(function(){});
-  toast("Added to our playlist");
+  toast("Got it \u2014 send another if you like!");
  } else { toast("Preview only \u2014 connect your song sheet to save this"); }
  addSong(name,song);
  burst(e.clientX||innerWidth/2, e.clientY||innerHeight/2);
- n.value='';s.value='';
+ s.value=''; s.focus();
 }
 function burst(x,y){
  const set=['\u{1F49A}','\u{1F49C}','\u2728','\u{1F3B5}'];
