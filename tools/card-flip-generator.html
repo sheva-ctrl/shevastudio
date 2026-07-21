@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Flip Generator — Editorial Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',-apple-system,sans-serif; background:#f9fafb; }
+.container { max-width:1400px; margin:0 auto; padding:2rem; }
+h1 { font-family:'Playfair Display',serif; font-size:2.5rem; font-weight:800; color:#1a2238; margin-bottom:0.5rem; }
+.subtitle { color:#4b5563; margin-bottom:1rem; }
+.note { background:#fef3c7; border-left:4px solid #d9b26c; padding:0.75rem 1rem; border-radius:0.375rem; font-size:0.9rem; color:#78350f; margin-bottom:1.5rem; }
+.main-grid { display:grid; grid-template-columns:1fr 2fr; gap:2rem; }
+.sidebar { background:white; border-radius:0.5rem; box-shadow:0 1px 3px rgba(0,0,0,0.1); padding:1.5rem; height:fit-content; }
+.sidebar h2 { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; margin-bottom:1rem; color:#1a2238; }
+.preset-btn { display:block; width:100%; padding:0.7rem; margin-bottom:0.5rem; background:#e5e7eb; border:none; border-radius:0.375rem; font-weight:600; cursor:pointer; text-align:left; transition:all 0.2s; }
+.preset-btn:hover { background:#d1d5db; }
+.preset-btn.active { background:#1a2238; color:white; }
+.editor-section { margin-bottom:1.1rem; }
+.editor-label { font-size:0.78rem; font-weight:600; color:#374151; margin-bottom:0.35rem; display:block; }
+.editor-input, .editor-textarea, select.editor-input { width:100%; padding:0.6rem; border:1px solid #d1d5db; border-radius:0.375rem; font-size:0.85rem; font-family:'Inter',sans-serif; }
+.editor-input:focus, .editor-textarea:focus { outline:none; border-color:#1a2238; background:rgba(26,34,56,0.04); }
+.mode-toggle { display:flex; gap:0.5rem; }
+.mode-btn { flex:1; padding:0.6rem; border:none; border-radius:0.375rem; font-weight:600; cursor:pointer; transition:all 0.2s; }
+.mode-btn.light-mode { background:#f2f1ea; color:#1a2238; border:2px solid #e5e7eb; }
+.mode-btn.dark-mode { background:#1b2540; color:#f2f0e9; border:2px solid #1b2540; }
+.mode-btn.selected { outline:3px solid #d9b26c; }
+.button-group { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-top:0.5rem; }
+.action-btn { padding:0.65rem 0.8rem; border-radius:0.375rem; font-weight:600; border:none; cursor:pointer; font-size:0.85rem; transition:all 0.2s; }
+.btn-primary { background:#1a2238; color:white; } .btn-primary:hover { background:#0f1626; }
+.btn-secondary { background:#e5e7eb; color:#374151; } .btn-secondary:hover { background:#d1d5db; }
+.btn-add { background:#0891b2; color:white; } .btn-add:hover { background:#0e7490; }
+.btn-del { background:#b91c1c; color:white; } .btn-del:hover { background:#991b1b; }
+.preview-area { background:white; border-radius:0.5rem; box-shadow:0 1px 3px rgba(0,0,0,0.1); padding:2rem; }
+.preview-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1a2238; margin-bottom:1.5rem; }
+.slides-preview { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; margin-bottom:2rem; }
+.card { aspect-ratio:4/5; border-radius:0.5rem; padding:2rem 1.5rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.12); cursor:pointer; }
+.card.selected-card { outline:3px solid #d9b26c; }
+.card.light { background:#f2f1ea; color:#1a2238; }
+.card.dark { background:#1b2540; color:#f2f0e9; }
+.card-eyebrow { font-size:0.65rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.9rem; }
+.card.dark .card-eyebrow { color:#d9b26c; } .card.light .card-eyebrow { color:#8a7a4f; }
+.card-headline { font-family:'Playfair Display',serif; font-weight:700; line-height:1.18; white-space:pre-line; }
+.card-headline.big { font-size:1.55rem; } .card-headline.med { font-size:1.3rem; }
+.card-subtitle { font-size:0.85rem; line-height:1.5; margin-top:1rem; white-space:pre-line; opacity:0.92; }
+.card-footer { position:absolute; bottom:0.9rem; left:0; right:0; text-align:center; font-size:0.55rem; letter-spacing:0.08em; opacity:0.38; }
+.card-num { position:absolute; top:0.7rem; left:0.7rem; font-size:0.65rem; font-weight:700; opacity:0.4; }
+.card-tag { position:absolute; top:0.7rem; right:0.8rem; font-size:0.55rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6; }
+.card.dark .card-tag { color:#d9b26c; }
+.card.light .card-tag { color:#8a7a4f; }
+.export-section { background:#f3f4f6; border-radius:0.5rem; padding:1.5rem; }
+.export-title { font-family:'Playfair Display',serif; font-size:1.125rem; font-weight:700; color:#1a2238; margin-bottom:1rem; }
+.export-btn { width:100%; padding:1rem; background:#1a2238; color:white; border:none; border-radius:0.375rem; font-weight:700; font-size:1rem; cursor:pointer; margin-bottom:0.5rem; transition:background 0.2s; }
+.export-btn:hover { background:#0f1626; }
+.export-note { font-size:0.85rem; color:#4b5563; margin-top:0.75rem; }
+.hint { font-size:0.78rem; color:#6b7280; margin-bottom:0.75rem; }
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(249,250,251,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #e5e7eb;margin:0 0 24px;padding:14px 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
+.site-nav .nav-home:hover{color:#6020D0;}
+.site-nav .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#55555F;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
+.site-nav .nav-link:hover{background:#F0EFF5;color:#15151C;}
+.site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
+@media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-home">🏠 Sheva Studio</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="prompt-builder.html" class="nav-link">Prompt Builder</a>
+    <a href="no-brainer-decks.html" class="nav-link">No-Brainer Decks</a>
+    <a href="card-flip-generator.html" class="nav-link current">Build Your Own</a>
+  </div>
+</nav>
+
+<div class="container">
+<h1>Card Flip Generator</h1>
+<p class="subtitle">Editorial Edition · serif headlines · click any slide to edit it</p>
+<div class="note">💡 DARK slides = the superpower hook. LIGHT slides = the habit. Intro slides stay footer-free like your mockups; power slides carry a subtle @scribing.life.</div>
+<details class="howto" style="background:#fff;border:1px solid #e5e7eb;border-radius:0.5rem;padding:1rem 1.25rem;margin-bottom:1.5rem;" open>
+<summary style="font-weight:700;cursor:pointer;font-family:'Playfair Display',serif;font-size:1.1rem;color:#1a2238;">How to use this ▾</summary>
+<ol style="margin:0.9rem 0 0 1.1rem;line-height:1.75;color:#374151;font-size:0.95rem;">
+<li>Pick a challenge to start, or hit <strong>Blank Canvas</strong> to build from scratch.</li>
+<li><strong>Click any slide</strong> in the preview to select it. Edit it in the panel on the left.</li>
+<li>Toggle <strong>Light</strong> (the habit) or <strong>Dark</strong> (the superpower). Use <strong>Add</strong> or <strong>Delete</strong> to change the deck length.</li>
+<li>Keep the rhythm: a dark slide hooks with the superpower, the next light slide delivers the habit.</li>
+<li>Hit <strong>Download All Slides as PNG</strong> when you love it. Markdown and JSON save your text to reuse later.</li>
+</ol>
+<p style="margin:0.85rem 0 0;color:#6b7280;font-size:0.9rem;">Intro slides stay clean. Power slides carry your @scribing.life handle. Everything exports at 4:5.</p>
+</details>
+<div class="main-grid">
+<div class="sidebar">
+<h2>Quick Start</h2>
+<button class="preset-btn active" onclick="loadPreset('deck1',event)">🔥 Dopamine Challenge</button>
+<button class="preset-btn" onclick="loadPreset('deck2',event)">🎯 Focus Challenge</button>
+<button class="preset-btn" onclick="loadPreset('deck3',event)">🧘 Reset Challenge</button>
+<button class="preset-btn" onclick="loadPreset('blank',event)">✏️ Blank Canvas</button>
+<h2 style="margin-top:2rem;">Edit Slide <span id="editSlideNum" style="color:#d9b26c;"></span></h2>
+<p class="hint">Click a slide in the preview to select it.</p>
+<div class="editor-section">
+<label class="editor-label">Background</label>
+<div class="mode-toggle">
+<button class="mode-btn light-mode" id="lightModeBtn" onclick="setMode('light')">Light (habit)</button>
+<button class="mode-btn dark-mode" id="darkModeBtn" onclick="setMode('dark')">Dark (superpower)</button>
+</div>
+</div>
+<div class="editor-section">
+<label class="editor-label">Footer</label>
+<select id="slideType" class="editor-input" onchange="updateSlide()">
+<option value="intro">Intro (no footer)</option>
+<option value="power">Power slide (subtle footer)</option>
+</select>
+</div>
+<div class="editor-section">
+<label class="editor-label">Eyebrow / badge (optional)</label>
+<input type="text" id="slideEyebrow" class="editor-input" placeholder="POWER MOVE #1" onchange="updateSlide()">
+</div>
+<div class="editor-section">
+<label class="editor-label">Headline (serif). Use Enter for line breaks.</label>
+<textarea id="slideHeadline" class="editor-textarea" rows="3" onchange="updateSlide()"></textarea>
+</div>
+<div class="editor-section">
+<label class="editor-label">Subtitle (optional, sans)</label>
+<textarea id="slideSub" class="editor-textarea" rows="4" onchange="updateSlide()"></textarea>
+</div>
+<div class="button-group">
+<button class="action-btn btn-primary" onclick="updateSlide()">💾 Update</button>
+<button class="action-btn btn-secondary" onclick="resetPreset()">🔄 Reset Deck</button>
+<button class="action-btn btn-add" onclick="addSlide()">➕ Add Slide</button>
+<button class="action-btn btn-del" onclick="deleteSlide()">🗑️ Delete Slide</button>
+</div>
+</div>
+<div class="preview-area">
+<h2 class="preview-title">Carousel Preview</h2>
+<div class="slides-preview" id="slidesContainer"></div>
+<div class="export-section">
+<div class="export-title">📥 Export</div>
+<button class="export-btn" onclick="downloadImages()">Download All Slides as PNG</button>
+<button class="export-btn" onclick="downloadMarkdown()" style="background:#4b5563;">Save Deck as Markdown</button>
+<button class="export-btn" onclick="downloadJSON()" style="background:#1f2937;">Save Deck as JSON</button>
+<p class="export-note">💡 4:5 ratio, post-ready for TikTok / Instagram / Facebook carousels.</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+const presets = {
+deck1:{ name:"The Dopamine Challenge", slides:[
+{mode:'light',type:'intro',eyebrow:'',headline:'Introducing:\nThe Dopamine Challenge',sub:'The first deck of five power moves. Dropping soon. Follow for the reveal.'},
+{mode:'light',type:'intro',eyebrow:'',headline:'Every Superpower\nhas a shadow.',sub:'This deck pairs your greatest strengths with the simple habits that keep them fueled, not fizzled.'},
+{mode:'dark',type:'intro',eyebrow:'',headline:"Your ADHD isn't a bug.\nIt's an engine.",sub:"You just weren't given the manual.\nUntil now."},
+{mode:'dark',type:'power',eyebrow:'Power Move #1',headline:"Your brain doesn't have an off switch. It has an ON switch you forgot to press.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Move before you think.',sub:'Your body is the ignition. Thirty seconds of motion. Pacing, stretching, one loud song. The engine turns over, and the task gets easy once the wheels are already moving.'},
+{mode:'dark',type:'power',eyebrow:'Power Move #2',headline:"Fueled right, you don't work in hours. You work in bursts that leave everyone behind.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Feed the brain before the caffeine.',sub:'Coffee on an empty tank just makes the warning lights flash faster. Protein first. That is the difference between buzzing and actually building.'},
+{mode:'dark',type:'power',eyebrow:'Power Move #3',headline:"Your brain notices everything. That's not a bug. That's a sensor array most people don't have.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Get real light in your eyes early.',sub:'Ten minutes outside resets your whole system for the day. Skip it and you are on backup power by lunch, wondering why nothing loads.'},
+{mode:'dark',type:'power',eyebrow:'Power Move #4',headline:"You don't need motivation. You build momentum from nothing in about ninety seconds.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Start embarrassingly small.',sub:'Your brain refuses cold starts. Give it one stupid-easy win. Make the bed, open the doc, fill the water bottle. The next thing pulls you forward.'},
+{mode:'dark',type:'power',eyebrow:'Power Move #5',headline:"Silence isn't peaceful for you. The right sound is. That's your operating system, not a flaw.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Use sound on purpose.',sub:'Silence hands your brain a microphone and lets it narrate every worry. A steady beat gives it something to lock onto so the real work can happen underneath.'}
+]},
+deck2:{ name:"The Focus Challenge", slides:[
+{mode:'light',type:'intro',eyebrow:'',headline:'The Focus Challenge',sub:'Four unlocks for a brain that focuses like a laser once it locks in.'},
+{mode:'dark',type:'intro',eyebrow:'',headline:"Your focus isn't broken.\nIt's just selective.",sub:'Give it the right target and it does not let go.'},
+{mode:'dark',type:'power',eyebrow:'Focus Unlock #1',headline:"Your focus isn't weak. When it locks in, it's a laser nobody can pull away.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Pick ONE thing.',sub:'Close the other tabs. Your brain can do anything. It just cannot do everything at once. One target unlocks the laser.'},
+{mode:'dark',type:'power',eyebrow:'Focus Unlock #2',headline:"You don't get distracted by the room. You absorb it. So build the room on purpose.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Set the scene before the work.',sub:'Same desk, same playlist, same light. Your brain learns the cue and drops into focus faster every single time.'},
+{mode:'dark',type:'power',eyebrow:'Focus Unlock #3',headline:"You work better with a witness. That's not weakness. That's wiring.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Borrow a body.',sub:'Coworker on video, friend on a call, even a timer that is watching. Accountability is your cheat code, not your crutch.'},
+{mode:'dark',type:'power',eyebrow:'Focus Unlock #4',headline:"Deadlines don't scare you. They wake you up.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Shrink the timer.',sub:'Do not give yourself the afternoon. Give yourself fifteen minutes. Urgency is the switch that turns your brain on.'}
+]},
+deck3:{ name:"The Reset Challenge", slides:[
+{mode:'light',type:'intro',eyebrow:'',headline:'The Reset Challenge',sub:'Four moves for the days your brain stalls, floods, or crashes.'},
+{mode:'dark',type:'intro',eyebrow:'',headline:"A stall isn't laziness.\nIt's an overload.",sub:'You do not need more willpower. You need a reset.'},
+{mode:'dark',type:'power',eyebrow:'Reset #1',headline:"When your brain stalls, it's not lazy. It's overloaded. Big difference.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Reset the body, not the willpower.',sub:'Water, stand up, three slow breaths. The stall clears faster through your body than through force.'},
+{mode:'dark',type:'power',eyebrow:'Reset #2',headline:"Overwhelm means you can see all of it at once. Most people can't.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Dump it all out.',sub:'Brain to paper, no order, no editing. You cannot organize a thought that is still trapped in your head.'},
+{mode:'dark',type:'power',eyebrow:'Reset #3',headline:"You feel everything at full volume. Same wiring that makes you magnetic.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Name the feeling out loud.',sub:'Say it: I am overstimulated. Naming it shrinks it from a flood to a fact you can actually work with.'},
+{mode:'dark',type:'power',eyebrow:'Reset #4',headline:"Rest isn't quitting for you. It's how the next burst gets loaded.",sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'Schedule the crash before it schedules you.',sub:'A real break, not scrolling, refuels the tank. Guilt-free recovery is part of the system.'}
+]},
+blank:{ name:"Blank Canvas", slides:[
+{mode:'light',type:'intro',eyebrow:'',headline:'Your headline here',sub:'Your subtitle here.'},
+{mode:'dark',type:'power',eyebrow:'POWER MOVE #1',headline:'The superpower hook.',sub:''},
+{mode:'light',type:'power',eyebrow:'',headline:'The habit.',sub:'How to do it.'}
+]}
+};
+let deck = JSON.parse(JSON.stringify(presets.deck1));
+let selected = 0;
+function headlineSize(t){ return t.length > 60 ? 'med' : 'big'; }
+function render(){
+document.getElementById('slidesContainer').innerHTML = deck.slides.map((s,i)=>`
+<div class="card ${s.mode} ${i===selected?'selected-card':''}" id="slide-${i+1}" onclick="selectSlide(${i})">
+<div class="card-num">${i+1}</div>
+${s.eyebrow?`<div class="card-eyebrow">${s.eyebrow}</div>`:''}
+<div class="card-headline ${headlineSize(s.headline)}">${s.headline}</div>
+${s.sub?`<div class="card-subtitle">${s.sub}</div>`:''}
+${s.type==='power'?`<div class="card-tag">${s.mode==='dark'?'superpower':'the habit'}</div>`:''}
+${s.type==='power'?`<div class="card-footer">@scribing.life</div>`:''}
+</div>`).join('');
+}
+function loadEditor(){
+const s = deck.slides[selected];
+document.getElementById('editSlideNum').textContent = `(${selected+1})`;
+document.getElementById('slideEyebrow').value = s.eyebrow || '';
+document.getElementById('slideHeadline').value = s.headline || '';
+document.getElementById('slideSub').value = s.sub || '';
+document.getElementById('slideType').value = s.type;
+document.getElementById('lightModeBtn').classList.toggle('selected', s.mode==='light');
+document.getElementById('darkModeBtn').classList.toggle('selected', s.mode==='dark');
+}
+function selectSlide(i){ selected = i; loadEditor(); render(); }
+function setMode(m){ deck.slides[selected].mode = m; loadEditor(); render(); }
+function updateSlide(){
+const s = deck.slides[selected];
+s.eyebrow = document.getElementById('slideEyebrow').value;
+s.headline = document.getElementById('slideHeadline').value;
+s.sub = document.getElementById('slideSub').value;
+s.type = document.getElementById('slideType').value;
+render();
+}
+function addSlide(){
+deck.slides.splice(selected+1, 0, {mode:'light',type:'power',eyebrow:'',headline:'New slide',sub:''});
+selected++; loadEditor(); render();
+}
+function deleteSlide(){
+if (deck.slides.length<=1){ alert('Need at least one slide.'); return; }
+deck.slides.splice(selected,1);
+if (selected>=deck.slides.length) selected = deck.slides.length-1;
+loadEditor(); render();
+}
+function loadPreset(key, ev){
+deck = JSON.parse(JSON.stringify(presets[key]));
+document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+ev.target.classList.add('active');
+selected = 0; loadEditor(); render();
+}
+function resetPreset(){
+const active = document.querySelector('.preset-btn.active').textContent;
+let key = 'deck1';
+if (active.includes('Focus')) key='deck2'; else if (active.includes('Reset')) key='deck3'; else if (active.includes('Blank')) key='blank';
+deck = JSON.parse(JSON.stringify(presets[key])); selected=0; loadEditor(); render();
+}
+async function downloadImages(){
+alert(`Downloading all ${deck.slides.length} slides as PNG.`);
+const prev = selected; selected=-1; render();
+for (let i=1;i<=deck.slides.length;i++){
+const el=document.getElementById('slide-'+i);
+const canvas=await html2canvas(el,{scale:2,useCORS:true,logging:false});
+const link=document.createElement('a'); link.href=canvas.toDataURL('image/png'); link.download=`CardFlip-Slide-${i}.png`; link.click();
+await new Promise(r=>setTimeout(r,300));
+}
+selected=prev; render();
+}
+function downloadJSON(){
+const link=document.createElement('a');
+link.href='data:application/json,'+encodeURIComponent(JSON.stringify(deck,null,2));
+link.download='card-flip-deck.json'; link.click();
+}
+function downloadMarkdown(){
+let md=`# ${deck.name}\n\n`;
+deck.slides.forEach((s,i)=>{ md+=`## Slide ${i+1} (${s.mode})\n${s.eyebrow?`**Eyebrow:** ${s.eyebrow}\n`:''}**Headline:** ${s.headline.replace(/\n/g,' / ')}\n${s.sub?`**Subtitle:** ${s.sub}\n`:''}\n`; });
+const link=document.createElement('a');
+link.href='data:text/markdown,'+encodeURIComponent(md);
+link.download='card-flip-deck.md'; link.click();
+}
+loadEditor(); render();
+</script>
+</body>
+</html>
