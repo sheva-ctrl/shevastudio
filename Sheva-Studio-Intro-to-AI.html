@@ -156,10 +156,47 @@
   .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
   .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}
   @keyframes rise{to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(252,252,254,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7E5EE;margin:calc(-1 * clamp(28px,6vw,72px)) calc(-1 * clamp(20px,5vw,64px)) clamp(24px,5vw,40px);padding:14px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
+.site-nav .nav-home:hover{color:#6020D0;}
+.site-nav .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#55555F;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
+.site-nav .nav-link:hover{background:#F0EFF5;color:#15151C;}
+.site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
+@media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
+
+  /* jump link */
+  .jumplink{font-family:'Space Mono',monospace;font-size:13px;color:var(--teal);text-decoration:none;
+    font-weight:700;display:inline-block;margin-bottom:8px;}
+  .jumplink:hover{color:var(--violet);}
+
+  /* recommended tool badge */
+  .tool.recommended{background:rgba(96,32,208,.04);border-radius:14px;padding:18px 16px;margin-top:6px;border-top:none;}
+  .tool.recommended .rec-tag{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:#fff;background:var(--grad);display:inline-block;padding:3px 10px;
+    border-radius:999px;margin-bottom:6px;}
+
+  /* steal these list */
+  .stealbox{font-family:'Space Mono',monospace;font-size:14px;line-height:1.6;background:#fff;
+    border:1px solid var(--line);border-left:4px solid var(--violet);border-radius:0 12px 12px 0;
+    padding:14px 18px 10px;margin:10px 0;color:var(--ink);}
+  .stealbox .lbl{display:block;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;font-family:'Space Mono',monospace;}
+  .stealbox ul{margin:0;padding-left:18px;}
+  .stealbox li{margin-bottom:8px;}
+  .stealbox li:last-child{margin-bottom:0;}
 </style>
 </head>
 <body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-home">🏠 Sheva Studio</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="Sheva-Studio-Intro-to-AI.html" class="nav-link current">Intro to AI</a>
+    <a href="prompt-builder.html" class="nav-link">Prompt Builder</a>
+    <a href="no-brainer-decks.html" class="nav-link">No-Brainer Decks</a>
+    <a href="card-flip-generator.html" class="nav-link">Build Your Own</a>
+  </div>
+</nav>
 <div class="wrap">
 
   <a class="back-btn" href="index.html">← Studio Hub</a>
@@ -167,6 +204,8 @@
   <span class="kicker rise d1">The Starter Guide</span>
   <h1 class="rise d1">Start using AI <span class="accent">today.</span></h1>
   <p class="lede rise d2">One page, no jargon. Run your first prompt, build a habit, then pick a tool and go. <strong>Keep this open in a tab</strong> — it's built to be used, not just read.</p>
+
+  <a class="jumplink rise d2" href="#video">▶ Prefer to watch? Skip to the video ↓</a>
   
   <p class="objective rise d2"><b>The goal</b>By the time you reach the bottom, you'll know how to talk to AI, how to make it stick, and which tool to open first — even if today is your very first time using AI.</p>
 
@@ -199,10 +238,11 @@
         <div class="tryif"><b>Try first if</b> → you live in Docs/Gmail or work with a lot of visual content.</div>
       </div>
     </div>
-    <div class="tool">
+    <div class="tool recommended">
       <a class="badge" href="https://chatgpt.com" target="_blank" rel="noopener" aria-label="Open ChatGPT">
         <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" alt="ChatGPT logo" width="24" height="24" loading="lazy"></a>
       <div class="body">
+        <span class="rec-tag">New here? Start with this one</span>
         <div class="name">ChatGPT</div>
         <div class="best">Best for creative, flexible, general-purpose work.</div>
         <div class="tryif"><b>Try first if</b> → you write, brainstorm, or want one do-everything starting point.</div>
@@ -248,7 +288,13 @@
     </div>
 
     <div class="promptbox first"><span class="lbl">Example</span>I run a small bakery. Write a warm, under-100-word email telling customers we're closed Monday for a staff day. No corporate tone, no bullet points.</div>
-    <div class="promptbox"><span class="lbl">Steal these</span>"Answer as a patient teacher: explain [topic] to me with one analogy and one real example."<br>"Here's a draft: [paste]. Tell me what's weak and how to fix it."<br>"Give me 10 varied ideas for [thing]. List only, no explanations yet."</div>
+    <div class="stealbox"><span class="lbl">Steal these</span>
+      <ul>
+        <li>"Answer as a patient teacher: explain [topic] to me with one analogy and one real example."</li>
+        <li>"Here's a draft: [paste]. Tell me what's weak and how to fix it."</li>
+        <li>"Give me 10 varied ideas for [thing]. List only, no explanations yet."</li>
+      </ul>
+    </div>
   </section>
 
   <section class="section rise d2">
@@ -279,8 +325,8 @@
   </section>
 
   <!-- VIDEO EMBED MOVED HERE (BEFORE FOOTER) -->
-  <div class="video-container rise d2">
-    <iframe src="https://www.youtube.com/embed/k8BFcqVHFdU" title="Sheva Studio — Get Started With AI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div class="video-container rise d2" id="video">
+    <iframe src="https://www.youtube.com/embed/AMTiGFmoD3g" title="Sheva Studio — Get Started With AI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
 
   <div class="cta rise d3">
