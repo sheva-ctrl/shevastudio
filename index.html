@@ -208,9 +208,27 @@
   .d4{animation-delay:.35s}.d5{animation-delay:.45s}
   @keyframes rise{to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(252,252,254,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7E5EE;margin:calc(-1 * clamp(28px,6vw,72px)) calc(-1 * clamp(20px,5vw,64px)) clamp(24px,5vw,40px);padding:14px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
+.site-nav .nav-home:hover{color:#6020D0;}
+.site-nav .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#55555F;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
+.site-nav .nav-link:hover{background:#F0EFF5;color:#15151C;}
+.site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
+@media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
 </style>
 </head>
 <body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-home">🏠 Sheva Studio</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link current">Home</a>
+    <a href="prompt-builder.html" class="nav-link">Prompt Builder</a>
+    <a href="no-brainer-decks.html" class="nav-link">No-Brainer Decks</a>
+    <a href="card-flip-generator.html" class="nav-link">Build Your Own</a>
+  </div>
+</nav>
+
 <div class="wrap">
 
 <div style="text-align:center; margin-bottom:28px;" class="rise d1">
@@ -226,7 +244,7 @@
 
   <p class="lede rise d3">I translate complex tech into clean, cinematic stories for teams and for the internet. As an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver — <strong>I'm making AI human, practical, and a little bit fun</strong>.</p>
 
-  <p class="section-label rise d4">Ecosystem Hub</p>
+  <p class="section-label rise d4">Learn AI With Me</p>
   <div class="grid rise d4">
     <div class="card">
       <span class="tag">01 · TRAINING</span>
@@ -247,6 +265,30 @@
       <h3>Side by Side Collective</h3>
       <p>Real-life connection — not perfect, not curated. Systems built for different brains.</p>
       <a href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" class="card-link">Join Group →</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">04 · AI LEARNING PACK</span>
+      <h3>The Prompt Builder</h3>
+      <p>Fill in five blanks — Goal, Context, Audience, Format, Check — and watch a clean, copy-ready prompt build itself.</p>
+      <a href="prompt-builder.html" class="card-link">Build a Prompt →</a>
+    </div>
+  </div>
+
+  <p class="section-label rise d4">ADHD Learning Pack</p>
+  <div class="grid rise d4">
+    <div class="card">
+      <span class="tag">01 · GRAB &amp; GO</span>
+      <h3>No-Brainer Decks</h3>
+      <p>Pre-made ADHD challenge carousels. Pick one, download the slides, post. Zero design required.</p>
+      <a href="no-brainer-decks.html" class="card-link">Grab a Deck →</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">02 · MAKE YOUR OWN</span>
+      <h3>Build-Your-Own Decks</h3>
+      <p>Same dark/light carousel format, but editable. Swap the words, add slides, make it yours.</p>
+      <a href="card-flip-generator.html" class="card-link">Start Building →</a>
     </div>
   </div>
 
