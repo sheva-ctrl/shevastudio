@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No-Brainer Decks — Sheva Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root{--violet:#6020D0;--violet-2:#7C3AED;--teal:#0891B2;--ink:#15151C;--muted:#55555F;--line:#E7E5EE;--bg:#FCFCFE;--card:#FFFFFF;--grad:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);}
+body { font-family:'Lexend',system-ui,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased; padding:clamp(28px,6vw,56px) clamp(20px,5vw,48px); }
+.container { max-width:1200px; margin:0 auto; }
+.kicker{ font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--violet); display:inline-flex; align-items:center; gap:10px; margin-bottom:16px; }
+.kicker::before{ content:""; width:34px; height:2px; background:var(--grad); border-radius:2px; }
+h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5vw,46px); line-height:1.12; letter-spacing:-0.01em; margin-bottom:10px; }
+h1 .accent{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+.subtitle { font-family:'Space Mono',monospace; color:var(--teal); font-weight:700; font-size:clamp(13px,2vw,16px); margin-bottom:24px; }
+.note { background:linear-gradient(180deg,rgba(96,32,208,.05),rgba(8,145,178,.04)); border:1px solid var(--line); border-left:4px solid var(--violet); padding:0.85rem 1.1rem; border-radius:12px; font-size:0.92rem; color:var(--muted); margin-bottom:1.25rem; }
+.controls { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:1.25rem 1.5rem; margin-bottom:2rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center; }
+.control-btn { font-family:'Lexend',sans-serif; padding:0.65rem 1.3rem; border-radius:999px; font-size:0.95rem; font-weight:500; border:1.5px solid var(--line); cursor:pointer; background:var(--card); color:var(--ink); transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease,color .15s ease; }
+.control-btn.active { background:var(--grad); color:#fff; border-color:transparent; box-shadow:0 6px 18px rgba(96,32,208,.26); }
+.control-btn.inactive { background:var(--card); color:var(--ink); }
+.control-btn.inactive:hover { transform:translateY(-2px); border-color:var(--violet); color:var(--violet); }
+.deck-section { margin-bottom:4rem; }
+.deck-title { font-family:'Lexend',sans-serif; font-size:clamp(20px,3vw,26px); font-weight:700; color:var(--ink); letter-spacing:-0.01em; margin-bottom:0.3rem; }
+.deck-subtitle { font-family:'Space Mono',monospace; color:var(--muted); font-size:12px; letter-spacing:.06em; margin-bottom:1.75rem; }
+.slides-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
+.rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards;}
+@keyframes rise{to{opacity:1;transform:none;}}
+@media(prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none;}}
+.card { aspect-ratio:4/5; border-radius:0.5rem; padding:2.5rem 2rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.12); }
+.card.light { background:#f2f1ea; color:#1a2238; }
+.card.dark { background:#1b2540; color:#f2f0e9; }
+.card-eyebrow { font-family:'Inter',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1.1rem; }
+.card.dark .card-eyebrow { color:#d9b26c; }
+.card.light .card-eyebrow { color:#8a7a4f; }
+.card-headline { font-family:'Playfair Display',serif; font-weight:700; line-height:1.18; white-space:pre-line; }
+.card-headline.big { font-size:2rem; }
+.card-headline.med { font-size:1.7rem; }
+.card-subtitle { font-family:'Inter',sans-serif; font-weight:400; font-size:1.02rem; line-height:1.55; margin-top:1.3rem; white-space:pre-line; opacity:0.92; max-width:90%; }
+.card-footer { position:absolute; bottom:1.1rem; left:0; right:0; text-align:center; font-family:'Inter',sans-serif; font-size:0.62rem; letter-spacing:0.08em; opacity:0.38; }
+.card-tag { position:absolute; top:1.1rem; right:1.2rem; font-family:'Inter',sans-serif; font-size:0.6rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6; }
+.card.dark .card-tag { color:#d9b26c; }
+.card.light .card-tag { color:#8a7a4f; }
+.download-btn { font-family:'Lexend',sans-serif; padding:0.7rem 1.4rem; background:var(--grad); color:#fff; border:none; border-radius:999px; font-weight:500; cursor:pointer; margin-top:1rem; width:100%; box-shadow:0 6px 18px rgba(96,32,208,.22); transition:transform .15s ease,box-shadow .15s ease; }
+.download-btn:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(96,32,208,.3); }
+.card-wrapper { position:relative; }
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(252,252,254,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7E5EE;margin:calc(-1 * clamp(28px,6vw,56px)) calc(-1 * clamp(20px,5vw,48px)) clamp(24px,5vw,40px);padding:14px clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
+.site-nav .nav-home:hover{color:#6020D0;}
+.site-nav .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#55555F;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
+.site-nav .nav-link:hover{background:#F0EFF5;color:#15151C;}
+.site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
+@media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-home">🏠 Sheva Studio</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="prompt-builder.html" class="nav-link">Prompt Builder</a>
+    <a href="no-brainer-decks.html" class="nav-link current">No-Brainer Decks</a>
+    <a href="card-flip-generator.html" class="nav-link">Build Your Own</a>
+  </div>
+</nav>
+
+<div class="container">
+<span class="kicker rise">ADHD Learning Pack · Sheva Studio</span>
+<h1 class="rise">No-Brainer Decks <span class="accent">| Just Grab &amp; Post</span></h1>
+<p class="subtitle rise">Pre-made ADHD challenge carousels · zero design required</p>
+<div class="note rise">💡 All metaphors original to Sheva Studio. Intro slides stay clean; power slides carry a subtle @scribing.life.</div>
+<details class="howto rise" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.25rem;margin-bottom:2rem;" open>
+<summary style="font-weight:700;cursor:pointer;font-family:'Lexend',sans-serif;font-size:1.05rem;color:var(--ink);">How to use this ▾</summary>
+<ol style="margin:0.9rem 0 0 1.1rem;line-height:1.75;color:var(--muted);font-size:0.95rem;">
+<li>Pick a challenge up top, or leave it on <strong style="color:var(--ink);">All</strong> to see everything.</li>
+<li>Find the slide you want. Hit <strong style="color:var(--ink);">Download</strong> under it for one, or <strong style="color:var(--ink);">Download All</strong> for the whole deck.</li>
+<li>Post them <strong style="color:var(--ink);">in order</strong> as a carousel. The dark slide is the superpower. The light slide right after is the habit.</li>
+<li>Intro slides come first. They set up the challenge before the power moves start.</li>
+</ol>
+<p style="margin:0.85rem 0 0;color:var(--muted);font-size:0.9rem;">Every file saves as a PNG at 4:5, ready for TikTok, Instagram, and Facebook.</p>
+</details>
+<div class="controls">
+<span style="font-weight:600;">View:</span>
+<button class="control-btn active" onclick="showDeck('all',event)">All 3 Challenges</button>
+<button class="control-btn inactive" onclick="showDeck('1',event)">Dopamine</button>
+<button class="control-btn inactive" onclick="showDeck('2',event)">Focus</button>
+<button class="control-btn inactive" onclick="showDeck('3',event)">Reset</button>
+<button class="control-btn inactive" onclick="downloadAll()">📥 Download All</button>
+</div>
+<div class="deck-section" id="deck1">
+<h2 class="deck-title">Challenge 1: The Dopamine Challenge</h2>
+<p class="deck-subtitle">3 intro slides + 5 power moves · 13 slides</p>
+<div class="slides-grid" id="deck1Grid"></div>
+</div>
+<div class="deck-section" id="deck2">
+<h2 class="deck-title">Challenge 2: The Focus Challenge</h2>
+<p class="deck-subtitle">2 intro slides + 4 power moves · 10 slides</p>
+<div class="slides-grid" id="deck2Grid"></div>
+</div>
+<div class="deck-section" id="deck3">
+<h2 class="deck-title">Challenge 3: The Reset Challenge</h2>
+<p class="deck-subtitle">2 intro slides + 4 power moves · 10 slides</p>
+<div class="slides-grid" id="deck3Grid"></div>
+</div>
+</div>
+<script>
+// type: 'intro' (no footer) or 'power' (subtle footer). mode: 'light'/'dark'.
+const decks = {
+1: [
+{mode:'light', type:'intro', eyebrow:'', headline:'Introducing:\nThe Dopamine Challenge', sub:'The first deck of five power moves. Dropping soon. Follow for the reveal.'},
+{mode:'light', type:'intro', headline:'Every Superpower\nhas a shadow.', sub:'This deck pairs your greatest strengths with the simple habits that keep them fueled, not fizzled.'},
+{mode:'dark', type:'intro', headline:"Your ADHD isn't a bug.\nIt's an engine.", sub:"You just weren't given the manual.\nUntil now."},
+{mode:'dark', type:'power', eyebrow:'Power Move #1', headline:"Your brain doesn't have an off switch. It has an ON switch you forgot to press."},
+{mode:'light', type:'power', headline:'Move before you think.', sub:'Your body is the ignition. Thirty seconds of motion. Pacing, stretching, one loud song. The engine turns over, and the task gets easy once the wheels are already moving.'},
+{mode:'dark', type:'power', eyebrow:'Power Move #2', headline:"Fueled right, you don't work in hours. You work in bursts that leave everyone behind."},
+{mode:'light', type:'power', headline:'Feed the brain before the caffeine.', sub:'Coffee on an empty tank just makes the warning lights flash faster. Protein first. That is the difference between buzzing and actually building.'},
+{mode:'dark', type:'power', eyebrow:'Power Move #3', headline:"Your brain notices everything. That's not a bug. That's a sensor array most people don't have."},
+{mode:'light', type:'power', headline:'Get real light in your eyes early.', sub:'Ten minutes outside resets your whole system for the day. Skip it and you are on backup power by lunch, wondering why nothing loads.'},
+{mode:'dark', type:'power', eyebrow:'Power Move #4', headline:"You don't need motivation. You build momentum from nothing in about ninety seconds."},
+{mode:'light', type:'power', headline:'Start embarrassingly small.', sub:'Your brain refuses cold starts. Give it one stupid-easy win. Make the bed, open the doc, fill the water bottle. The next thing pulls you forward.'},
+{mode:'dark', type:'power', eyebrow:'Power Move #5', headline:"Silence isn't peaceful for you. The right sound is. That's your operating system, not a flaw."},
+{mode:'light', type:'power', headline:'Use sound on purpose.', sub:'Silence hands your brain a microphone and lets it narrate every worry. A steady beat gives it something to lock onto so the real work can happen underneath.'}
+],
+2: [
+{mode:'light', type:'intro', eyebrow:'', headline:'The Focus Challenge', sub:'Four unlocks for a brain that focuses like a laser once it locks in.'},
+{mode:'dark', type:'intro', headline:"Your focus isn't broken.\nIt's just selective.", sub:'Give it the right target and it does not let go.'},
+{mode:'dark', type:'power', eyebrow:'Focus Unlock #1', headline:"Your focus isn't weak. When it locks in, it's a laser nobody can pull away."},
+{mode:'light', type:'power', headline:'Pick ONE thing.', sub:'Close the other tabs. Your brain can do anything. It just cannot do everything at once. One target unlocks the laser.'},
+{mode:'dark', type:'power', eyebrow:'Focus Unlock #2', headline:"You don't get distracted by the room. You absorb it. So build the room on purpose."},
+{mode:'light', type:'power', headline:'Set the scene before the work.', sub:'Same desk, same playlist, same light. Your brain learns the cue and drops into focus faster every single time.'},
+{mode:'dark', type:'power', eyebrow:'Focus Unlock #3', headline:"You work better with a witness. That's not weakness. That's wiring."},
+{mode:'light', type:'power', headline:'Borrow a body.', sub:'Coworker on video, friend on a call, even a timer that is watching. Accountability is your cheat code, not your crutch.'},
+{mode:'dark', type:'power', eyebrow:'Focus Unlock #4', headline:"Deadlines don't scare you. They wake you up."},
+{mode:'light', type:'power', headline:'Shrink the timer.', sub:'Do not give yourself the afternoon. Give yourself fifteen minutes. Urgency is the switch that turns your brain on.'}
+],
+3: [
+{mode:'light', type:'intro', eyebrow:'', headline:'The Reset Challenge', sub:'Four moves for the days your brain stalls, floods, or crashes.'},
+{mode:'dark', type:'intro', headline:"A stall isn't laziness.\nIt's an overload.", sub:'You do not need more willpower. You need a reset.'},
+{mode:'dark', type:'power', eyebrow:'Reset #1', headline:"When your brain stalls, it's not lazy. It's overloaded. Big difference."},
+{mode:'light', type:'power', headline:'Reset the body, not the willpower.', sub:'Water, stand up, three slow breaths. The stall clears faster through your body than through force.'},
+{mode:'dark', type:'power', eyebrow:'Reset #2', headline:"Overwhelm means you can see all of it at once. Most people can't."},
+{mode:'light', type:'power', headline:'Dump it all out.', sub:'Brain to paper, no order, no editing. You cannot organize a thought that is still trapped in your head.'},
+{mode:'dark', type:'power', eyebrow:'Reset #3', headline:"You feel everything at full volume. Same wiring that makes you magnetic."},
+{mode:'light', type:'power', headline:'Name the feeling out loud.', sub:'Say it: I am overstimulated. Naming it shrinks it from a flood to a fact you can actually work with.'},
+{mode:'dark', type:'power', eyebrow:'Reset #4', headline:"Rest isn't quitting for you. It's how the next burst gets loaded."},
+{mode:'light', type:'power', headline:'Schedule the crash before it schedules you.', sub:'A real break, not scrolling, refuels the tank. Guilt-free recovery is part of the system.'}
+]
+};
+function headlineSize(text){ return text.length > 70 ? 'med' : 'big'; }
+function renderCard(s, index, deckNum) {
+const n = index + 1;
+const showFooter = s.type === 'power';
+return `<div class="card-wrapper">
+<div id="card-d${deckNum}-s${n}" class="card ${s.mode}">
+${s.eyebrow ? `<div class="card-eyebrow">${s.eyebrow}</div>` : ''}
+<div class="card-headline ${headlineSize(s.headline)}">${s.headline}</div>
+${s.sub ? `<div class="card-subtitle">${s.sub}</div>` : ''}
+${s.type === 'power' ? `<div class="card-tag">${s.mode==='dark'?'superpower':'the habit'}</div>` : ''}
+${showFooter ? `<div class="card-footer">@scribing.life</div>` : ''}
+</div>
+<button class="download-btn" onclick="downloadCard('card-d${deckNum}-s${n}','Challenge${deckNum}-Slide${n}')">📥 Download Slide ${n}</button>
+</div>`;
+}
+function renderDeck(d){ document.getElementById(`deck${d}Grid`).innerHTML = decks[d].map((s,i)=>renderCard(s,i,d)).join(''); }
+async function downloadCard(id, filename){
+const el = document.getElementById(id);
+try {
+const canvas = await html2canvas(el,{scale:2,useCORS:true,logging:false});
+const link = document.createElement('a');
+link.href = canvas.toDataURL('image/png'); link.download = filename + '.png'; link.click();
+} catch(e){ console.error(e); alert('Download failed, try again.'); }
+}
+async function downloadAll(){
+alert('Downloading all slides as PNG. This may take a moment.');
+for (let d=1; d<=3; d++){ for (let i=1; i<=decks[d].length; i++){ await downloadCard(`card-d${d}-s${i}`,`CardFlip-Challenge${d}-Slide${i}`); await new Promise(r=>setTimeout(r,300)); } }
+}
+function showDeck(id, ev){
+document.querySelectorAll('.control-btn').forEach(b=>{b.classList.remove('active');b.classList.add('inactive');});
+ev.target.classList.add('active'); ev.target.classList.remove('inactive');
+document.querySelectorAll('.deck-section').forEach(d=>d.style.display='none');
+if (id==='all'){ [1,2,3].forEach(n=>document.getElementById('deck'+n).style.display='block'); }
+else { document.getElementById('deck'+id).style.display='block'; }
+}
+renderDeck(1); renderDeck(2); renderDeck(3);
+</script>
+</body>
+</html>
