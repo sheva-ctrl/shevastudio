@@ -46,6 +46,14 @@ h1 .accent{ background:var(--grad); -webkit-background-clip:text; background-cli
 .download-btn { font-family:'Lexend',sans-serif; padding:0.7rem 1.4rem; background:var(--grad); color:#fff; border:none; border-radius:999px; font-weight:500; cursor:pointer; margin-top:1rem; width:100%; box-shadow:0 6px 18px rgba(96,32,208,.22); transition:transform .15s ease,box-shadow .15s ease; }
 .download-btn:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(96,32,208,.3); }
 .card-wrapper { position:relative; }
+.slide-order { position:absolute; top:1.1rem; left:1.2rem; z-index:2; font-family:'Space Mono',monospace; font-size:0.75rem; font-weight:700; color:#fff; background:rgba(0,0,0,0.35); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.card.light .slide-order { background:rgba(26,34,56,0.14); color:#1a2238; }
+.caption-box { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.25rem 1.5rem; margin-top:1.5rem; }
+.caption-label { font-family:'Space Mono',monospace; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--violet); display:block; margin-bottom:0.6rem; }
+.caption-text { font-size:0.92rem; line-height:1.6; color:var(--ink); margin-bottom:1rem; }
+.copy-btn { font-family:'Lexend',sans-serif; padding:0.6rem 1.2rem; background:transparent; color:var(--violet); border:1.5px solid var(--violet); border-radius:999px; font-weight:600; font-size:0.85rem; cursor:pointer; transition:all .15s ease; }
+.copy-btn:hover { background:var(--violet); color:#fff; }
+.copy-btn.copied { background:var(--teal); border-color:var(--teal); color:#fff; }
 .site-nav{position:sticky;top:0;z-index:100;background:rgba(252,252,254,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7E5EE;margin:calc(-1 * clamp(28px,6vw,56px)) calc(-1 * clamp(20px,5vw,48px)) clamp(24px,5vw,40px);padding:14px clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 .site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
 .site-nav .nav-home:hover{color:#6020D0;}
@@ -72,17 +80,15 @@ h1 .accent{ background:var(--grad); -webkit-background-clip:text; background-cli
 <span class="kicker rise">ADHD Learning Pack · Sheva Studio</span>
 <h1 class="rise">No-Brainer Decks <span class="accent">| Just Grab &amp; Post</span></h1>
 <p class="subtitle rise">Pre-made ADHD challenge carousels · zero design required</p>
-<div class="note rise">💡 All metaphors original to Sheva Studio. Intro slides stay clean; power slides carry a subtle @scribing.life.</div>
-<details class="howto rise" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.25rem;margin-bottom:2rem;" open>
-<summary style="font-weight:700;cursor:pointer;font-family:'Lexend',sans-serif;font-size:1.05rem;color:var(--ink);">How to use this ▾</summary>
-<ol style="margin:0.9rem 0 0 1.1rem;line-height:1.75;color:var(--muted);font-size:0.95rem;">
-<li>Pick a challenge up top, or leave it on <strong style="color:var(--ink);">All</strong> to see everything.</li>
-<li>Find the slide you want. Hit <strong style="color:var(--ink);">Download</strong> under it for one, or <strong style="color:var(--ink);">Download All</strong> for the whole deck.</li>
-<li>Post them <strong style="color:var(--ink);">in order</strong> as a carousel. The dark slide is the superpower. The light slide right after is the habit.</li>
-<li>Intro slides come first. They set up the challenge before the power moves start.</li>
-</ol>
-<p style="margin:0.85rem 0 0;color:var(--muted);font-size:0.9rem;">Every file saves as a PNG at 4:5, ready for TikTok, Instagram, and Facebook.</p>
-</details>
+<div class="howto rise" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+<p style="font-weight:700;font-family:'Lexend',sans-serif;font-size:1.05rem;color:var(--ink);margin-bottom:0.9rem;">How this works</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+<div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">1 · PICK</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Choose a challenge below, or view all three.</p></div>
+<div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">2 · DOWNLOAD</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Grab one slide or the whole deck as PNGs.</p></div>
+<div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">3 · POST IN ORDER</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Each slide is numbered. Dark = the superpower. Light right after = the habit.</p></div>
+<div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">4 · COPY CAPTION</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Each deck has a ready-made caption and hashtags below its slides.</p></div>
+</div>
+</div>
 <div class="controls">
 <span style="font-weight:600;">View:</span>
 <button class="control-btn active" onclick="showDeck('all',event)">All 3 Challenges</button>
@@ -93,18 +99,33 @@ h1 .accent{ background:var(--grad); -webkit-background-clip:text; background-cli
 </div>
 <div class="deck-section" id="deck1">
 <h2 class="deck-title">Challenge 1: The Dopamine Challenge</h2>
-<p class="deck-subtitle">3 intro slides + 5 power moves · 13 slides</p>
+<p class="deck-subtitle">13 slides, post in numbered order · 3 intro + 5 superpower/habit pairs</p>
 <div class="slides-grid" id="deck1Grid"></div>
+<div class="caption-box">
+<span class="caption-label">Caption + hashtags</span>
+<p class="caption-text" id="caption1">Your ADHD brain isn't broken. It just needs the right five moves. Swipe through, dark slide is the superpower, light slide is the habit. Which one hits home?<br><br>#ADHDChallenge #ADHDSuperpower #LateDiagnosedADHD #NeuroSpicy #ADHDHabits</p>
+<button class="copy-btn" onclick="copyCaption('caption1', this)">📋 Copy caption</button>
+</div>
 </div>
 <div class="deck-section" id="deck2">
 <h2 class="deck-title">Challenge 2: The Focus Challenge</h2>
-<p class="deck-subtitle">2 intro slides + 4 power moves · 10 slides</p>
+<p class="deck-subtitle">10 slides, post in numbered order · 2 intro + 4 superpower/habit pairs</p>
 <div class="slides-grid" id="deck2Grid"></div>
+<div class="caption-box">
+<span class="caption-label">Caption + hashtags</span>
+<p class="caption-text" id="caption2">Your focus isn't broken. It's just picky. Four unlocks for getting it to lock onto the right thing. Swipe through and tell me which one you already do.<br><br>#ADHDFocus #ADHDTips #NeuroSpicy #LateDiagnosedADHD #ADHDChallenge</p>
+<button class="copy-btn" onclick="copyCaption('caption2', this)">📋 Copy caption</button>
+</div>
 </div>
 <div class="deck-section" id="deck3">
 <h2 class="deck-title">Challenge 3: The Reset Challenge</h2>
-<p class="deck-subtitle">2 intro slides + 4 power moves · 10 slides</p>
+<p class="deck-subtitle">10 slides, post in numbered order · 2 intro + 4 superpower/habit pairs</p>
 <div class="slides-grid" id="deck3Grid"></div>
+<div class="caption-box">
+<span class="caption-label">Caption + hashtags</span>
+<p class="caption-text" id="caption3">When your brain stalls, it's not lazy. It's overloaded. Four resets for the days everything feels like too much.<br><br>#ADHDReset #ADHDSupport #NeuroSpicy #LateDiagnosedADHD #ADHDChallenge</p>
+<button class="copy-btn" onclick="copyCaption('caption3', this)">📋 Copy caption</button>
+</div>
 </div>
 </div>
 <script>
@@ -156,6 +177,7 @@ const n = index + 1;
 const showFooter = s.type === 'power';
 return `<div class="card-wrapper">
 <div id="card-d${deckNum}-s${n}" class="card ${s.mode}">
+<div class="slide-order">${n}</div>
 ${s.eyebrow ? `<div class="card-eyebrow">${s.eyebrow}</div>` : ''}
 <div class="card-headline ${headlineSize(s.headline)}">${s.headline}</div>
 ${s.sub ? `<div class="card-subtitle">${s.sub}</div>` : ''}
@@ -186,6 +208,14 @@ if (id==='all'){ [1,2,3].forEach(n=>document.getElementById('deck'+n).style.disp
 else { document.getElementById('deck'+id).style.display='block'; }
 }
 renderDeck(1); renderDeck(2); renderDeck(3);
+function copyCaption(id, btn){
+const text = document.getElementById(id).innerText;
+navigator.clipboard.writeText(text).then(()=>{
+btn.textContent = '✓ Copied — go paste it';
+btn.classList.add('copied');
+setTimeout(()=>{ btn.textContent = '📋 Copy caption'; btn.classList.remove('copied'); }, 2200);
+});
+}
 </script>
 </body>
 </html>
