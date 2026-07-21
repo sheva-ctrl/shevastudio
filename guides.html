@@ -49,6 +49,11 @@
   
   .lede { font-size:clamp(16px,2.2vw,19px); color:var(--muted); font-weight:300; max-width:64ch; margin-bottom:40px; }
 
+  .video-container { position:relative; width:100%; padding-bottom:56.25%; height:0; margin:0 0 44px; border-radius:16px; overflow:hidden; border:1px solid var(--line); box-shadow:0 10px 30px rgba(21,21,28,0.04); }
+  .video-container iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+  .video-label { font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--violet); margin-bottom:10px; display:block; }
+  .video-desc { font-size:15px; color:var(--muted); font-weight:300; max-width:64ch; margin-bottom:20px; line-height:1.6; }
+
   .section-label{
     font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase;
     color:var(--muted); margin:44px 0 20px; display:block;
@@ -137,6 +142,12 @@
 
   <h1 class="rise d1">Get Started <span class="accent">with AI.</span></h1>
   <p class="lede rise d2">Ask, analyze, create, and verify — with any AI assistant you have access to. Match the tool to how you naturally think and operate.</p>
+
+  <span class="video-label rise d2">Watch first · Build a Practical Foundation</span>
+  <p class="video-desc rise d2">How AI actually works, the five parts of a strong prompt, and the two rules that keep you safe: always verify the output, never paste in sensitive data.</p>
+  <div class="video-container rise d2">
+    <iframe src="https://www.youtube.com/embed/ls2BQ2RFYYo" title="Sheva Studio — Build a Practical Foundation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
 
 <p class="section-label rise d2">01 · Cross-Platform Core Engines</p>
 <div class="tools-container rise d2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px;">
