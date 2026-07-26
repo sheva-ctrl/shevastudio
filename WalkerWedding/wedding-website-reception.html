@@ -175,7 +175,7 @@ footer .fd{font-size:18px;letter-spacing:.05em;color:var(--gray);margin-top:8px}
   <div class="rows">
    <div class="item">
     <div class="ic"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
-    <div><div class="lab">When</div><div class="big">Friday, September 4, 2026</div><div class="sm"><strong>Ceremony 6:00 PM<br> Reception 7:00 &ndash; 10:00 PM</strong><br>Appetizers, drinks &amp; dancing</div></div>
+    <div><div class="lab">When</div><div class="big">Friday, September 4, 2026</div><div class="sm"><strong>Reception 7:00 &ndash; 10:00 PM</strong><br>Appetizers, drinks &amp; dancing</div></div>
    </div>
    <div class="item">
     <div class="ic"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
@@ -286,8 +286,8 @@ function icsText(){
   "CALSCALE:GREGORIAN","METHOD:PUBLISH","BEGIN:VEVENT",
   "UID:wedding-website-sheva-david-2026@shevastudio.com","DTSTAMP:20260101T000000Z",
   "DTSTART:20260905T020000Z","DTEND:20260905T050000Z",
-  "SUMMARY:Sheva & David's Wedding Ceremony & Reception",
-  "DESCRIPTION:Ceremony at 6:00 PM · Reception 7:00 – 10:00 PM\\ Appetizers\\, drinks and dancing.",
+  "SUMMARY:Sheva & David's Wedding Reception",
+  "DESCRIPTION: Wedding Reception 7:00 – 10:00 PM\\ Appetizers\\, drinks and dancing.",
   "LOCATION:Lake Wilderness Lodge\\, 22500 SE 248th St\\, Maple Valley\\, WA 98038",
   "BEGIN:VALARM","TRIGGER:-P1D","ACTION:DISPLAY","DESCRIPTION:Sheva & David tomorrow","END:VALARM",
   "END:VEVENT","END:VCALENDAR"];
@@ -308,7 +308,7 @@ function addToCalendar(){
 }
 function addToGoogle(){
  var p=new URLSearchParams({action:'TEMPLATE',text:"Sheva & David's Wedding Reception",
-  dates:'20260904T190000/20260904T220000',details:"Reception 7:00-10:00 PM. Appetizers, drinks and dancing.",
+  dates:'20260904T190000/20260904T220000',details:"Reception 7:00-10:00 PM. Appetizers, cake, drinks and dancing.",
   location:'Lake Wilderness Lodge, Maple Valley, WA'});
  window.open('https://calendar.google.com/calendar/render?'+p.toString(),'_blank');
  toast("Opening Google Calendar\u2026");
