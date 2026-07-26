@@ -53,9 +53,22 @@ footer .fd{font-size:18px;letter-spacing:.05em;color:var(--gray);margin-top:14px
 
 @media (max-width:420px){.cd{grid-template-columns:repeat(2,1fr)}}
 </style>
+
+<style id="sitenav-css">
+.sitenav{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+ gap:16px;padding:11px 22px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+ border-bottom:1px solid var(--ivory-dp,#DEE2E6);font-family:'Inter',sans-serif}
+.sitenav .sn-mark{font-family:'Fraunces',serif;font-size:16px;color:var(--ink,#2F3238);letter-spacing:.3px}
+.sitenav .sn-link{font-size:12.5px;letter-spacing:.02em;text-decoration:none;color:var(--teal-dk,#0A7C80);
+ padding:6px 13px;border-radius:20px;border:1px solid transparent;transition:border-color .15s}
+.sitenav .sn-link:hover{border-color:var(--teal,#00C4CC)}
+.sitenav .sn-link.current{color:var(--gray-dk,#5E6166);border-color:var(--ivory-dp,#DEE2E6);cursor:default}
+</style>
 </head>
 <body>
 <div class="stripe"></div>
+<nav class="sitenav"><span class="sn-mark">Sheva &amp; David</span><span class="sn-link current">Our Story</span></nav>
+
 
 <section class="hero">
  <p class="eyebrow">The Wedding of</p>
