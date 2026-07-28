@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="An ADHD-friendly field guide for locking in every event vendor — without holding it all in your head. Forty-two small steps, saved as you go.">
+<title>Vendor Lock-In — Field Guide · Sheva Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#6a3df0;
+    --teal:#17c3b2;
+    --ink:#1c1830;
+    --paper:#fbfaff;
+    --card:#ffffff;
+    --line:#e7e3f5;
+    --muted:#635d78;
+    --done:#0e9f8c;
+    --focus:#6a3df0;
+    --grad:linear-gradient(120deg,var(--violet),var(--teal));
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Lexend",system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    letter-spacing:.005em;
+    padding:0 20px 96px;
+  }
+  .wrap{max-width:680px;margin:0 auto;}
+
+  /* --- sticky progress bar --- */
+  .meter{
+    position:sticky;top:0;z-index:20;
+    background:rgba(251,250,255,.9);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    margin:0 -20px 0;
+    padding:14px 20px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  .meter-top{
+    display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  }
+  .meter-count{
+    font-family:"Space Mono",monospace;
+    font-size:.95rem;font-weight:700;letter-spacing:.02em;
+  }
+  .meter-count b{
+    font-family:"Syne",sans-serif;font-size:1.35rem;font-weight:800;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    padding-right:2px;
+  }
+  .reset{
+    font-family:"Space Mono",monospace;font-size:.78rem;
+    background:none;border:1px solid var(--line);border-radius:999px;
+    padding:5px 12px;color:var(--muted);cursor:pointer;
+  }
+  .reset:hover{border-color:var(--violet);color:var(--violet);}
+  .track{height:8px;border-radius:99px;background:var(--line);margin-top:10px;overflow:hidden;}
+  .fill{height:100%;width:0;border-radius:99px;background:var(--grad);transition:width .35s ease;}
+
+  /* --- header --- */
+  header{padding:34px 0 8px;}
+  .eyebrow{
+    font-family:"Space Mono",monospace;font-size:.74rem;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin:0 0 14px;
+  }
+  h1{
+    font-family:"Syne",sans-serif;font-weight:800;
+    font-size:clamp(2.1rem,8vw,3rem);line-height:1.02;letter-spacing:-.01em;margin:0;
+  }
+  h1 .hash{
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{font-size:1.06rem;color:var(--muted);margin:14px 0 0;max-width:52ch;}
+  .kind{
+    font-size:.98rem;margin:18px 0 0;padding:14px 16px;
+    background:#f3f0ff;border-radius:14px;border:1px solid var(--line);
+    max-width:56ch;
+  }
+
+  /* --- how to use --- */
+  section{margin-top:40px;}
+  h2{
+    font-family:"Syne",sans-serif;font-weight:700;font-size:1.3rem;
+    letter-spacing:-.01em;margin:0 0 4px;display:flex;align-items:center;gap:10px;
+  }
+  h2 .dot{width:9px;height:9px;border-radius:99px;background:var(--grad);flex:none;}
+  .lede{color:var(--muted);font-size:.96rem;margin:0 0 18px;}
+
+  ol.how{list-style:none;counter-reset:step;margin:0;padding:0;}
+  ol.how li{
+    counter-increment:step;position:relative;
+    padding:12px 0 12px 46px;border-bottom:1px dashed var(--line);font-size:1.02rem;
+  }
+  ol.how li:last-child{border-bottom:0;}
+  ol.how li::before{
+    content:counter(step);position:absolute;left:0;top:11px;
+    width:30px;height:30px;border-radius:99px;
+    font-family:"Space Mono",monospace;font-weight:700;font-size:.9rem;
+    display:grid;place-items:center;color:#fff;background:var(--grad);
+  }
+
+  /* --- meaning card --- */
+  .meaning{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:20px 22px;
+  }
+  .meaning p.tiny{font-size:.9rem;color:var(--muted);margin:0 0 12px;}
+  .meaning ul{margin:0;padding:0;list-style:none;display:grid;gap:9px;}
+  .meaning li{
+    display:flex;gap:11px;align-items:flex-start;font-size:.98rem;
+    font-family:"Lexend",sans-serif;
+  }
+  .meaning li .n{
+    font-family:"Space Mono",monospace;font-weight:700;color:var(--teal);flex:none;
+  }
+
+  /* --- vendor cards --- */
+  .vendor{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:16px 18px 6px;margin-top:16px;transition:border-color .25s ease;
+  }
+  .vendor.complete{border-color:var(--done);background:linear-gradient(0deg,#f2fdfb,#fff);}
+  .v-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 0 8px;}
+  .v-name{font-family:"Syne",sans-serif;font-weight:700;font-size:1.12rem;display:flex;align-items:center;gap:9px;}
+  .v-emoji{font-size:1.05rem;}
+  .v-mini{
+    font-family:"Space Mono",monospace;font-size:.8rem;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap;
+  }
+  .vendor.complete .v-mini{color:var(--done);border-color:var(--done);}
+
+  ul.steps{list-style:none;margin:0;padding:0;}
+  ul.steps li{border-top:1px solid var(--line);}
+  .step{
+    display:flex;align-items:flex-start;gap:13px;width:100%;
+    background:none;border:0;text-align:left;cursor:pointer;
+    padding:12px 2px;font-family:"Lexend",sans-serif;font-size:1.01rem;color:var(--ink);
+    line-height:1.45;
+  }
+  .box{
+    flex:none;width:26px;height:26px;border-radius:8px;margin-top:1px;
+    border:2px solid #c7bfe6;background:#fff;display:grid;place-items:center;
+    transition:all .18s ease;
+  }
+  .box svg{width:15px;height:15px;stroke:#fff;stroke-width:3.4;fill:none;opacity:0;transform:scale(.6);transition:all .18s ease;}
+  .step[aria-pressed="true"] .box{background:var(--done);border-color:var(--done);}
+  .step[aria-pressed="true"] .box svg{opacity:1;transform:scale(1);}
+  .step[aria-pressed="true"] .label{color:var(--muted);text-decoration:line-through;text-decoration-color:#bcb4d8;}
+  .step:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:10px;}
+  .btn{
+    font-family:"Space Mono",monospace;font-size:.85rem;font-weight:700;
+    border:1px solid var(--violet);background:#fff;color:var(--violet);
+    border-radius:999px;padding:11px 20px;cursor:pointer;letter-spacing:.02em;
+  }
+  .btn:hover{background:var(--violet);color:#fff;}
+  .btn:focus-visible{outline:3px solid var(--focus);outline-offset:3px;}
+
+  /* --- actions / footer --- */
+  .actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;}
+  footer{
+    margin-top:48px;padding-top:22px;border-top:1px solid var(--line);
+    font-family:"Space Mono",monospace;font-size:.8rem;color:var(--muted);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  }
+  footer a{color:var(--violet);text-decoration:none;}
+  .egg{opacity:.6;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;}
+  }
+
+  /* --- print: clean printable worksheet --- */
+  @media print{
+    :root{--paper:#fff;}
+    body{padding:0;color:#000;font-size:11pt;}
+    .meter,.actions,.reset,.btn,.kind{display:none!important;}
+    header{padding:0 0 6px;}
+    h1{font-size:26pt;}
+    h1 .hash{color:#000;-webkit-text-fill-color:#000;}
+    .sub{color:#333;}
+    section{margin-top:18px;page-break-inside:avoid;}
+    .vendor,.meaning{border:1px solid #999;box-shadow:none;background:#fff!important;page-break-inside:avoid;}
+    .vendor.complete{background:#fff!important;}
+    .box{border:2px solid #000;}
+    .step[aria-pressed="true"] .box{background:#000;}
+    .v-mini{border-color:#999;}
+    .egg{opacity:1;}
+    a{color:#000;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="meter" role="status" aria-live="polite">
+    <div class="meter-top">
+      <span class="meter-count"><b id="count">0</b>/ 42 locked in</span>
+      <button class="reset" id="reset" type="button">Reset all</button>
+    </div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <header>
+    <p class="eyebrow">Sheva Studio · Field Guide</p>
+    <h1><span class="hash">#</span>VendorLockIn</h1>
+    <p class="sub">Get every vendor fully locked in for your event — without holding it all in your head.</p>
+    <p class="kind">Built for planning brains that juggle a lot. Do one small thing, check it off, walk away. Nothing here has to happen in order, and none of it has to finish today. Your progress saves itself.</p>
+  </header>
+
+  <section aria-labelledby="how-h">
+    <h2 id="how-h"><span class="dot"></span>How to use this</h2>
+    <p class="lede">Three steps. That's the whole thing.</p>
+    <ol class="how">
+      <li>Pick <strong>one</strong> vendor below. Just one — the one already on your mind.</li>
+      <li>Work down its 6 boxes. Tap each one only when it's <em>truly</em> done, not "almost."</li>
+      <li>Stop whenever you want. It saves. A half-checked vendor is still real progress.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="mean-h">
+    <h2 id="mean-h"><span class="dot"></span>What "locked in" actually means</h2>
+    <p class="lede">Same 6 things for every vendor — so "done" is never a guess.</p>
+    <div class="meaning">
+      <p class="tiny">Every vendor below uses this exact checklist. When all six are true, they're locked.</p>
+      <ul>
+        <li><span class="n">1</span><span>Contract <strong>signed</strong> — by both of you, not just sent.</span></li>
+        <li><span class="n">2</span><span>Deposit <strong>paid</strong>, and you have the receipt.</span></li>
+        <li><span class="n">3</span><span>Date and times <strong>in writing</strong> (email counts).</span></li>
+        <li><span class="n">4</span><span>Exactly what they're doing, <strong>in writing</strong> — the scope.</span></li>
+        <li><span class="n">5</span><span>Their contact <strong>saved in your phone</strong> by name + role.</span></li>
+        <li><span class="n">6</span><span>Added to your <strong>master planning doc</strong> or calendar.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="v-h">
+    <h2 id="v-h"><span class="dot"></span>Your vendors</h2>
+    <p class="lede">Seven core roles. Swap or rename any to fit your event.</p>
+    <div id="vendors"></div>
+  </section>
+
+  <div class="actions">
+    <button class="btn" id="exportBtn" type="button">📤 Export Progress</button>
+    <button class="btn" id="importBtn" type="button">📥 Import Progress</button>
+    <button class="btn" id="printBtn" type="button">⭳ Print / Save as PDF</button>
+  </div>
+
+  <footer>
+    <span>Sheva Studio · <a href="https://shevastudio.com">shevastudio.com</a></span>
+    <span class="egg">42 steps, because of course it is.</span>
+  </footer>
+
+</div>
+
+<script>
+  const VENDORS = [
+    {key:"venue",    emoji:"📍", name:"Venue"},
+    {key:"catering", emoji:"🍽️", name:"Catering / Food"},
+    {key:"photo",    emoji:"📸", name:"Photo / Video"},
+    {key:"music",    emoji:"🎧", name:"Music / Entertainment"},
+    {key:"florals",  emoji:"🌿", name:"Florals / Decor"},
+    {key:"rentals",  emoji:"🪑", name:"Rentals (tables, chairs, AV)"},
+    {key:"coord",    emoji:"📋", name:"Coordinator / Day-of Help"}
+  ];
+  const STEPS = [
+    "Contract signed by both sides",
+    "Deposit paid + receipt saved",
+    "Date & times confirmed in writing",
+    "Scope confirmed in writing",
+    "Contact saved in your phone",
+    "Added to your master doc"
+  ];
+  const KEY = "sheva-vendor-lockin-v1";
+  const check = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ state = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} };
+
+  const mount = document.getElementById("vendors");
+  VENDORS.forEach(v => {
+    const card = document.createElement("div");
+    card.className = "vendor";
+    card.id = "card-" + v.key;
+    card.innerHTML =
+      '<div class="v-head"><span class="v-name"><span class="v-emoji" aria-hidden="true">'+v.emoji+'</span>'+v.name+
+      '</span><span class="v-mini" id="mini-'+v.key+'">0 / 6</span></div><ul class="steps"></ul>';
+    const ul = card.querySelector("ul");
+    STEPS.forEach((label, i) => {
+      const on = !!(state[v.key] && state[v.key][i]);
+      const li = document.createElement("li");
+      li.innerHTML =
+        '<button class="step" type="button" aria-pressed="'+on+'" data-v="'+v.key+'" data-i="'+i+'">'+
+        '<span class="box" aria-hidden="true">'+check+'</span>'+
+        '<span class="label">'+label+'</span></button>';
+      ul.appendChild(li);
+    });
+    mount.appendChild(card);
+  });
+
+  function render(){
+    let total = 0;
+    VENDORS.forEach(v => {
+      const arr = state[v.key] || [];
+      const n = arr.filter(Boolean).length;
+      total += n;
+      document.getElementById("mini-"+v.key).textContent = n + " / 6";
+      document.getElementById("card-"+v.key).classList.toggle("complete", n === 6);
+    });
+    document.getElementById("count").textContent = total;
+    document.getElementById("fill").style.width = (total/42*100) + "%";
+  }
+
+  // Handle checking boxes
+  document.getElementById("vendors").addEventListener("click", e => {
+    const btn = e.target.closest(".step");
+    if(!btn) return;
+    const k = btn.dataset.v, i = +btn.dataset.i;
+    if(!state[k]) state[k] = [];
+    state[k][i] = !state[k][i];
+    btn.setAttribute("aria-pressed", !!state[k][i]);
+    save(); render();
+  });
+
+  // Handle resets
+  document.getElementById("reset").addEventListener("click", () => {
+    if(!confirm("Clear every check and start fresh? This can't be undone.")) return;
+    state = {}; save();
+    document.querySelectorAll(".step").forEach(b => b.setAttribute("aria-pressed","false"));
+    render();
+  });
+
+  // Handle print
+  document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+  // Handle Export
+  document.getElementById("exportBtn").addEventListener("click", () => {
+    const progressCode = btoa(JSON.stringify(state));
+    prompt("Copy this code to transfer your progress to another device:", progressCode);
+  });
+
+  // Handle Import
+  document.getElementById("importBtn").addEventListener("click", () => {
+    const pastedCode = prompt("Paste your progress code here:");
+    if (!pastedCode) return;
+    
+    try {
+      const parsed = JSON.parse(atob(pastedCode));
+      if (typeof parsed === "object") {
+        state = parsed;
+        save();
+        
+        // Update DOM elements to match newly imported state
+        document.querySelectorAll(".step").forEach(btn => {
+          const k = btn.dataset.v, i = +btn.dataset.i;
+          const isOn = !!(state[k] && state[k][i]);
+          btn.setAttribute("aria-pressed", isOn);
+        });
+        
+        render();
+        alert("Success! Your progress has been imported.");
+      }
+    } catch (err) {
+      alert("Oops! That code doesn't look quite right. Make sure you copied the whole string.");
+    }
+  });
+
+  render();
+</script>
+</body>
+</html>
