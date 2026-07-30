@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Facebook Creator Field Guide · Sheva Studio</title>
+<meta name="description" content="Clean, tap-to-check-off Facebook creator tips from Sheva Studio. Start with the blue Follow button." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --lavender:#FAF8FC;
+    --purple:#7B3FF2;
+    --teal:#0F9B8A;
+    --charcoal:#1E1830;
+    --cream:#F7F4EF;
+    --gold:#D9B26C;
+    --line:#E7E0F2;
+    --muted:#6B6480;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--lavender);
+    color:var(--charcoal);
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:0 18px 40px;}
+
+  /* progress bar */
+  .tracker{
+    position:sticky;top:0;z-index:20;
+    background:rgba(250,248,252,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding:16px 0 14px;margin-bottom:8px;
+  }
+  .tracker-inner{max-width:560px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:14px;}
+  .bar{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden;}
+  .fill{height:100%;width:0;border-radius:99px;
+    background:linear-gradient(90deg,var(--purple),var(--teal));
+    transition:width .4s ease;}
+  .count{font-family:'Space Mono',monospace;font-size:13px;color:var(--charcoal);white-space:nowrap;}
+  .count b{color:var(--purple);}
+  .reset{font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);
+    background:none;border:none;cursor:pointer;letter-spacing:.05em;}
+  .reset:hover{color:var(--purple);}
+
+  /* header */
+  header{padding:22px 0 6px;}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;
+    color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .dot{width:9px;height:9px;border-radius:99px;background:var(--purple);}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(38px,11vw,72px);line-height:.9;letter-spacing:-.02em;}
+  h1 .grad{background:linear-gradient(100deg,var(--purple),var(--teal));
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  /* header intro row: text + portrait */
+  .intro{display:flex;align-items:center;gap:18px;margin-top:16px;}
+  .intro-text{flex:1;}
+  .lede{font-size:16px;color:var(--charcoal);}
+  .prepared{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);margin-top:10px;}
+  .portrait{flex:none;width:104px;height:104px;border-radius:50%;overflow:hidden;
+    border:3px solid #fff;box-shadow:0 6px 18px rgba(30,24,48,.12);}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+  @media (max-width:430px){
+    .portrait{width:88px;height:88px;}
+    .lede{font-size:15px;}
+  }
+
+  /* guide card — a self-contained screenshottable block */
+  .guide{margin-top:22px;padding:22px 20px 20px;border-radius:20px;
+    background:#fff;border:1px solid var(--line);}
+  .guide-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;}
+  .guide-num{font-family:'Space Mono',monospace;font-weight:700;font-size:14px;color:var(--teal);}
+  .guide-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+    font-size:clamp(24px,6.5vw,34px);letter-spacing:-.01em;line-height:1.0;}
+  .guide-sub{color:var(--muted);font-size:14px;margin:4px 0 4px;}
+
+  .step-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--purple);margin:16px 0 8px;}
+
+  /* checkable item */
+  .item{display:flex;gap:16px;align-items:flex-start;
+    padding:16px 18px;border-radius:13px;background:var(--cream);
+    border:1px solid transparent;cursor:pointer;user-select:none;
+    transition:border-color .2s,background .2s,transform .1s;margin-bottom:8px;}
+  .item:hover{border-color:var(--line);}
+  .item:active{transform:scale(.995);}
+  .box{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--purple);
+    display:grid;place-items:center;transition:background .2s;margin-top:1px;}
+  .box svg{width:15px;height:15px;stroke:#fff;stroke-width:3.5;fill:none;
+    opacity:0;transition:opacity .15s;}
+  .item.done .box{background:var(--purple);}
+  .item.done .box svg{opacity:1;}
+  .item.done .txt{opacity:.5;}
+  .item.done .txt strong{text-decoration:line-through;}
+  .txt{font-size:15px;transition:opacity .2s;}
+  .txt strong{font-weight:700;display:block;margin-bottom:4px;}
+  .txt .path{font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);
+    display:block;line-height:1.5;}
+  .txt .note{color:var(--muted);font-size:14px;display:block;margin-top:4px;}
+
+  /* callout */
+  .callout{margin-top:16px;padding:15px 16px;border-radius:13px;
+    background:var(--lavender);border:1px solid var(--line);
+    border-left:4px solid var(--gold);}
+  .callout .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+  .callout p{font-size:14px;color:var(--charcoal);}
+
+  /* more coming */
+  .more{margin-top:20px;padding:20px;border-radius:16px;border:1px dashed var(--line);
+    text-align:center;}
+  .more .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .more h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin-bottom:4px;}
+  .more p{color:var(--muted);font-size:14px;}
+
+  footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
+    font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  footer a{color:var(--purple);text-decoration:none;}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto;}}
+  :focus-visible{outline:3px solid var(--purple);outline-offset:3px;border-radius:8px;}
+</style>
+</head>
+<body>
+
+<div class="tracker">
+  <div class="tracker-inner">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <span class="count"><b id="done">0</b> / <span id="total">0</span> done</span>
+    <button class="reset" id="reset">RESET</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="kicker"><span class="dot"></span>Sheva Studio · Field Guide</div>
+    <h1>FACEBOOK<br><span class="grad">CREATOR</span></h1>
+    <div class="intro">
+      <div class="intro-text">
+        <p class="lede">Clean, no-fluff Facebook tips for creators. One switch at a time, in the order that actually works.</p>
+        <p class="prepared">Tap any step to check it off &middot; saves on this device</p>
+      </div>
+      <div class="portrait">
+        <img src="sheva.png" alt="Sheva" />
+      </div>
+    </div>
+  </header>
+
+  <!-- GUIDE 01 -->
+  <section class="guide">
+    <div class="guide-head">
+      <span class="guide-num">01</span>
+      <h2 class="guide-title">The Blue Follow Button</h2>
+    </div>
+    <p class="guide-sub">Free. Anyone can turn it on. Creator-ready in three switches.</p>
+
+    <div class="step-label" style="margin-top:10px;">Step 1 &mdash; the main switch</div>
+    <div class="item" data-id="fb-follow-1">
+      <span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt">
+        <strong>Turn on public followers</strong>
+        <span class="path">Settings &amp; privacy &rarr; Audience &amp; Visibility &rarr; Followers &amp; Public Content &rarr; Who Can Follow Me &rarr; Public</span>
+        <span class="note">Nothing else works without this. Once it's on, non-friends see a Follow button.</span>
+      </span>
+    </div>
+
+    <div class="step-label">Step 2 &mdash; the part most creators miss</div>
+    <div class="item" data-id="fb-follow-2">
+      <span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt">
+        <strong>Make Follow the default</strong>
+        <span class="path">Settings &amp; privacy &rarr; Privacy &rarr; Who can send friend requests? &rarr; Friends of Friends</span>
+        <span class="note">Pushes Facebook to show Follow first instead of Add Friend.</span>
+      </span>
+    </div>
+
+    <div class="step-label">Step 3 &mdash; front and center</div>
+    <div class="item" data-id="fb-follow-3">
+      <span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt">
+        <strong>Turn on Professional Mode</strong>
+        <span class="path">Profile &rarr; three dots &rarr; Turn on Professional Mode</span>
+        <span class="note">Makes the profile look creator-ready and puts Follow up top.</span>
+      </span>
+    </div>
+
+    <div class="callout">
+      <div class="tag">One thing to remember</div>
+      <p>The blue Follow button and the blue verified badge are not the same. Follow is free and anyone can switch it on. Verification is a whole different process.</p>
+    </div>
+  </section>
+
+  <!-- placeholder for the growing branch -->
+  <div class="more">
+    <div class="tag">More tips loading</div>
+    <h3>This guide grows</h3>
+    <p>New Facebook creator tips drop here. Follow the page so you catch each one.</p>
+  </div>
+
+  <footer>
+    <span>Sheva Studio &middot; Content &middot; AI &middot; Culture</span>
+    <a href="https://shevastudio.com/">shevastudio.com &rarr;</a>
+  </footer>
+</div>
+
+<script>
+  var KEY = 'sheva-fb-fieldguide-v1';
+  var items = Array.prototype.slice.call(document.querySelectorAll('.item'));
+  var fill = document.getElementById('fill');
+  var doneEl = document.getElementById('done');
+  var totalEl = document.getElementById('total');
+  totalEl.textContent = items.length;
+
+  function load(){
+    var saved;
+    try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ saved = {}; }
+    items.forEach(function(el){
+      if (saved[el.dataset.id]) el.classList.add('done');
+    });
+    update();
+  }
+  function save(){
+    var state = {};
+    items.forEach(function(el){ state[el.dataset.id] = el.classList.contains('done'); });
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+  }
+  function update(){
+    var n = items.filter(function(el){ return el.classList.contains('done'); }).length;
+    doneEl.textContent = n;
+    fill.style.width = (items.length ? (n/items.length*100) : 0) + '%';
+  }
+  items.forEach(function(el){
+    el.setAttribute('role','checkbox');
+    el.setAttribute('tabindex','0');
+    function toggle(){ el.classList.toggle('done'); el.setAttribute('aria-checked', el.classList.contains('done')); save(); update(); }
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', function(e){
+      if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); toggle(); }
+    });
+  });
+  document.getElementById('reset').addEventListener('click', function(){
+    items.forEach(function(el){ el.classList.remove('done'); el.setAttribute('aria-checked','false'); });
+    save(); update();
+  });
+  load();
+</script>
+</body>
+</html>
