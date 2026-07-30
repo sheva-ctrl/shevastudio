@@ -1,549 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You Have AI. Now What? — Sheva</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>You Have AI. Now What? · Sheva Studio Field Guide</title>
+<meta name="description" content="A self-guided field guide to spotting what to hand off to AI — at work and at home. Tap the ones that are you, build your list, pick one to try this week." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#faf8fc;
-    --bg-soft:#f2edf8;
-    --card:#ffffff;
-    --line:#e2dced;
-    --text:#1e1830;
-    --muted:#5c5470;
-    --accent:#7b3ff2;
-    --accent-2:#0f9b8a;
-    --accent-warm:#d97828;
+    --lavender:#FAF8FC;
+    --purple:#7B3FF2;
+    --teal:#0F9B8A;
+    --charcoal:#1E1830;
+    --cream:#F7F4EF;
+    --gold:#D9B26C;
+    --line:#E7E0F2;
+    --muted:#6B6480;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;background:var(--bg);}
+  html{scroll-behavior:smooth;}
   body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-    line-height:1.6;
+    background:var(--lavender);
+    color:var(--charcoal);
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:820px;margin:0 auto;padding:0 24px;background:var(--bg);}
+  .wrap{max-width:620px;margin:0 auto;padding:0 18px 56px;}
 
-  /* SERIES NAV */
-  .series-nav{
-    display:flex;justify-content:center;gap:0;background:var(--bg-soft);
-    border-bottom:1px solid var(--line);flex-wrap:wrap;
-  }
-  .series-nav a{
-    text-decoration:none;padding:12px 18px;font-size:0.82rem;font-weight:600;
-    color:var(--muted);border-bottom:3px solid transparent;transition:all 0.2s;
-    display:flex;align-items:center;gap:7px;
-  }
-  .series-nav a:hover{color:var(--accent);background:rgba(123,63,242,0.04);}
-  .series-nav a .pnum{
-    font-size:0.7rem;font-weight:800;background:var(--line);color:var(--muted);
-    width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
-  }
-  .series-nav a.current{color:var(--accent);border-bottom-color:var(--accent);font-weight:700;}
-  .series-nav a.current .pnum{background:var(--accent);color:#fff;}
-  @media(max-width:560px){.series-nav a{padding:10px 12px;font-size:0.75rem;}.series-nav a .label{display:none;}.series-nav a .pnum{width:24px;height:24px;}}
+  /* sticky progress */
+  .tracker{position:sticky;top:0;z-index:20;background:rgba(250,248,252,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:14px 0;}
+  .tracker-inner{max-width:620px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:14px;}
+  .bar{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden;}
+  .fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--purple),var(--teal));transition:width .4s ease;}
+  .count{font-family:'Space Mono',monospace;font-size:13px;color:var(--charcoal);white-space:nowrap;}
+  .count b{color:var(--purple);}
 
-  /* HERO */
-  .hero{
-    padding:90px 24px 70px;
-    text-align:center;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,63,242,0.12), transparent 70%),
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(15,155,138,0.08), transparent 70%),
-      var(--bg);
-    border-bottom:1px solid var(--line);
-  }
-  .kicker{
-    font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:22px;font-weight:700;
-  }
-  .hero h1{
-    font-size:clamp(2.2rem,6vw,3.6rem);
-    line-height:1.08;font-weight:800;letter-spacing:-0.02em;margin-bottom:18px;color:var(--text);
-  }
-  .hero .sub{
-    font-size:clamp(1.05rem,2.6vw,1.35rem);
-    color:var(--muted);max-width:560px;margin:0 auto 28px;font-weight:500;
-  }
-  .hero .meta{
-    font-size:0.85rem;color:var(--muted);letter-spacing:0.04em;
-    padding-top:22px;border-top:1px solid var(--line);
-    display:inline-block;margin-top:6px;
-  }
-  .hero .meta strong{color:var(--text);}
+  /* top nav */
+  .topnav{display:flex;flex-wrap:wrap;gap:6px;padding:18px 0 4px;}
+  .topnav a{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.04em;
+    color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:99px;background:#fff;border:1px solid var(--line);}
+  .topnav a.here{background:var(--purple);color:#fff;border-color:var(--purple);}
 
-  /* PROMISE STRIP */
-  .promise{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border-bottom:1px solid var(--line);
-  }
-  .promise div{
-    background:var(--bg-soft);padding:26px 20px;text-align:center;
-  }
-  .promise .n{color:var(--accent-2);font-size:0.75rem;letter-spacing:0.15em;font-weight:700;margin-bottom:8px;}
-  .promise p{font-size:0.95rem;color:var(--text);font-weight:500;}
-  @media(max-width:640px){.promise{grid-template-columns:1fr;}}
+  /* header */
+  header{padding:20px 0 4px;}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;color:var(--muted);
+    text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .dot{width:9px;height:9px;border-radius:99px;background:var(--purple);}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(40px,12vw,74px);line-height:.92;letter-spacing:-.02em;}
+  h1 .grad{background:linear-gradient(100deg,var(--purple),var(--teal));
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{font-size:17px;color:var(--charcoal);margin-top:16px;max-width:44ch;}
+  .howto{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);margin-top:14px;
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;line-height:1.6;}
 
-  /* SECTIONS */
-  section{padding:64px 0;border-bottom:1px solid var(--line);}
-  .sec-num{
-    font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;
-    color:var(--accent);font-weight:700;margin-bottom:14px;
-  }
-  h2{
-    font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.15;
-    font-weight:800;letter-spacing:-0.01em;margin-bottom:20px;color:var(--text);
-  }
-  h3{font-size:1.15rem;font-weight:700;margin:26px 0 10px;color:var(--text);}
-  p.lead{font-size:1.1rem;color:var(--muted);margin-bottom:20px;}
-  p{margin-bottom:14px;color:var(--text);}
-  .muted{color:var(--muted);}
+  /* section */
+  .sec{margin-top:30px;padding-top:26px;border-top:1px solid var(--line);}
+  .sec-kick{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--teal);font-weight:700;margin-bottom:8px;}
+  .sec h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+    font-size:clamp(26px,7vw,38px);letter-spacing:-.01em;line-height:1.02;margin-bottom:6px;}
+  .why{font-size:15px;color:var(--muted);margin-bottom:16px;}
 
-  /* CALLOUT */
-  .callout{
-    background:linear-gradient(135deg,rgba(123,63,242,0.07),rgba(15,155,138,0.05));
-    border:1px solid var(--line);border-left:3px solid var(--accent);
-    border-radius:14px;padding:22px 24px;margin:24px 0;
-  }
-  .callout .q{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:6px;}
-  .callout .a{color:#3a3350;font-size:0.98rem;}
+  /* plain info card */
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:12px;}
+  .card h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin-bottom:4px;}
+  .card p{font-size:14.5px;color:var(--muted);}
 
-  /* PATTERN CARDS */
-  .patterns{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
-  .pattern{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;
-    box-shadow:0 1px 3px rgba(30,24,48,0.04);
-  }
-  .pattern .tag{color:var(--accent-2);font-weight:700;font-size:1rem;margin-bottom:6px;}
-  .pattern p{font-size:0.92rem;color:#3a3350;margin:0;}
-  @media(max-width:640px){.patterns{grid-template-columns:1fr;}}
+  /* tappable "that's me" handoff */
+  .pick{display:flex;gap:14px;align-items:flex-start;background:var(--cream);
+    border:1px solid transparent;border-radius:14px;padding:15px 16px;margin-bottom:10px;
+    cursor:pointer;user-select:none;transition:border-color .2s,background .2s,transform .1s;}
+  .pick:hover{border-color:var(--line);}
+  .pick:active{transform:scale(.995);}
+  .box{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--purple);
+    display:grid;place-items:center;margin-top:1px;transition:background .2s;}
+  .box svg{width:15px;height:15px;stroke:#fff;stroke-width:3.5;fill:none;opacity:0;transition:opacity .15s;}
+  .pick.on .box{background:var(--purple);}
+  .pick.on .box svg{opacity:1;}
+  .pick .txt{font-size:15px;}
+  .pick .txt strong{display:block;font-weight:700;margin-bottom:3px;}
+  .pick .txt .say{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--purple);
+    background:rgba(123,63,242,.06);padding:7px 10px;border-radius:8px;display:block;margin-top:6px;line-height:1.5;}
+  .pick.on{background:#fff;border-color:var(--line);}
+  .pick.on .txt strong{color:var(--purple);}
 
-  /* HANDOFF LISTS */
-  .handoffs{margin-top:10px;}
-  .handoff{
-    background:var(--card);border:1px solid var(--line);border-radius:12px;
-    padding:18px 20px;margin-bottom:12px;box-shadow:0 1px 3px rgba(30,24,48,0.04);
-  }
-  .handoff .title{font-weight:700;color:var(--text);margin-bottom:4px;font-size:1.02rem;}
-  .handoff .do{color:var(--accent);font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
-  .handoff .example{color:#3a3350;font-size:0.94rem;font-style:italic;}
+  /* callout */
+  .callout{margin-top:14px;padding:16px;border-radius:14px;background:var(--lavender);
+    border:1px solid var(--line);border-left:4px solid var(--gold);}
+  .callout .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+  .callout p{font-size:14.5px;color:var(--charcoal);}
+  .callout.teal{border-left-color:var(--teal);}
+  .callout.teal .tag{color:var(--teal);}
 
-  /* GUARDRAILS */
-  .guard{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
-  .guard div{
-    background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:18px;
-  }
-  .guard .h{color:var(--accent-warm);font-weight:700;margin-bottom:6px;font-size:1rem;}
-  .guard p{font-size:0.9rem;color:#3a3350;margin:0;}
-  @media(max-width:640px){.guard{grid-template-columns:1fr;}}
+  /* solo reflection (was "in the room") */
+  .solo{margin-top:14px;padding:16px;border-radius:14px;background:#fff;border:1px dashed var(--purple);}
+  .solo .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--purple);margin-bottom:6px;}
+  .solo p{font-size:14.5px;color:var(--charcoal);}
 
-  /* MOVE / INTERACTIVE PROMPT */
-  .move{
-    background:rgba(15,155,138,0.08);border:1px dashed var(--accent-2);
-    border-radius:14px;padding:20px 24px;margin:24px 0;
-  }
-  .move .lbl{color:var(--accent-2);font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;margin-bottom:8px;}
-  .move p{margin:0;color:var(--text);font-size:1.02rem;}
+  /* worked example */
+  .flow{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:12px;}
+  .flow .step-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    font-weight:700;margin:14px 0 6px;color:var(--muted);}
+  .flow .step-tag:first-child{margin-top:0;}
+  .flow .msg{font-size:14.5px;color:var(--charcoal);background:var(--lavender);border:1px solid var(--line);
+    border-radius:10px;padding:12px;font-style:italic;}
+  .flow .say{font-family:'Space Mono',monospace;font-size:13px;color:var(--purple);
+    background:rgba(123,63,242,.06);border-radius:10px;padding:12px;line-height:1.5;}
+  .flow .out{font-size:14.5px;color:var(--charcoal);background:var(--cream);border-radius:10px;padding:12px;}
 
-  /* BUILDER */
-  .builder{
-    background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:26px;margin-top:24px;box-shadow:0 2px 8px rgba(30,24,48,0.05);
-  }
-  .builder h3{margin-top:0;}
-  .step-label{
-    display:inline-block;background:rgba(123,63,242,0.1);color:var(--accent);
-    font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;
-    padding:4px 10px;border-radius:20px;margin:18px 0 10px;
-  }
+  /* build-your-list inputs */
   .field{margin-bottom:14px;}
-  .field label{display:block;font-size:0.9rem;color:var(--muted);margin-bottom:6px;}
-  .field input,.field textarea{
-    width:100%;background:var(--bg);border:1px solid var(--line);
-    border-radius:10px;padding:12px 14px;color:var(--text);font-size:0.98rem;
-    font-family:inherit;resize:vertical;
-  }
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
-  .field input::placeholder,.field textarea::placeholder{color:#a39ab5;}
-  .builder .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  @media(max-width:640px){.builder .row{grid-template-columns:1fr;}}
-  .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
-  button{
-    font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;
-    border-radius:30px;padding:13px 26px;border:1px solid var(--line);
-    transition:transform .15s ease,background .15s ease;
-  }
-  button:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--accent);color:#ffffff;border-color:var(--accent);}
-  .btn-ghost{background:transparent;color:var(--text);}
+  .field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:5px;}
+  .field .hint{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .field input,.field textarea{width:100%;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;
+    color:var(--charcoal);background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 13px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--purple);border-color:var(--purple);}
 
-  /* COMMIT */
-  .commit-box{
-    background:linear-gradient(135deg,rgba(217,120,40,0.08),rgba(123,63,242,0.06));
-    border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:20px;text-align:center;
-  }
-  .commit-box .fill{font-size:1.15rem;font-weight:700;line-height:1.7;color:var(--text);margin-bottom:6px;}
-  .commit-input{
-    width:100%;max-width:460px;background:var(--card);border:1px solid var(--line);
-    border-radius:10px;padding:12px 16px;color:var(--text);font-size:1rem;
-    font-family:inherit;text-align:center;margin:4px auto 16px;display:block;
-  }
-  .commit-input:focus{outline:none;border-color:var(--accent);}
-  .commit-input::placeholder{color:#a39ab5;}
+  .picked-list{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px;}
+  .picked-list .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:10px;}
+  .picked-list ul{list-style:none;}
+  .picked-list li{font-size:14.5px;padding:7px 0;border-bottom:1px solid var(--line);display:flex;gap:8px;}
+  .picked-list li:last-child{border-bottom:none;}
+  .picked-list li::before{content:"→";color:var(--purple);font-weight:700;}
+  .picked-empty{font-size:14px;color:var(--muted);font-style:italic;}
 
-  /* RESOURCES */
-  ul.res{list-style:none;margin-top:8px;}
-  ul.res li{
-    padding:14px 0;border-bottom:1px solid var(--line);color:#3a3350;font-size:0.98rem;
-  }
-  ul.res li:last-child{border-bottom:none;}
-  ul.res strong{color:var(--text);}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .btn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px;border-radius:99px;
+    padding:11px 20px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+  .btn-primary{background:var(--purple);color:#fff;}
+  .btn-primary:hover{background:#6a2fe0;}
+  .btn-ghost{background:#fff;color:var(--charcoal);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--purple);color:var(--purple);}
 
-  /* FOOTER CTA */
-  .footer{
-    text-align:center;padding:70px 24px;
-    background:radial-gradient(ellipse 70% 60% at 50% 100%, rgba(123,63,242,0.1), transparent 70%), var(--bg-soft);
-  }
-  .footer .big{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;margin-bottom:10px;line-height:1.2;color:var(--text);}
-  .footer .sub{color:var(--muted);margin-bottom:28px;}
-  .footer a.cta{
-    display:inline-block;background:var(--accent);color:#ffffff;text-decoration:none;
-    font-weight:700;padding:14px 32px;border-radius:30px;margin:6px;
-  }
-  .footer a.cta.ghost{background:transparent;color:var(--text);border:1px solid var(--accent);}
-  .socials{margin-top:26px;font-size:0.9rem;}
-  .socials a{color:var(--accent-2);text-decoration:none;margin:0 10px;font-weight:600;}
+  /* final CTA */
+  .cta{margin-top:30px;padding:24px;border-radius:18px;background:var(--charcoal);color:#fff;}
+  .cta .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:8px;}
+  .cta h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:26px;line-height:1.05;
+    margin-bottom:8px;color:#fff;}
+  .cta p{font-size:15px;color:#d8d2e6;margin-bottom:16px;}
+  .cta a{display:inline-block;font-weight:600;font-size:14px;text-decoration:none;
+    background:#fff;color:var(--charcoal);border-radius:99px;padding:11px 20px;margin:0 8px 8px 0;}
+  .cta a.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);}
 
-  /* SAMPLE OUTPUT */
-  .sample{
-    background:var(--card);border:1px solid var(--line);
-    border-left:3px solid var(--accent-2);border-radius:12px;padding:20px 22px;margin:14px 0 6px;
-    box-shadow:0 1px 3px rgba(30,24,48,0.04);
-  }
-  .sample-tag{
-    color:var(--accent-2);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;
-    font-weight:700;margin-bottom:12px;
-  }
-  .sample p{color:var(--text);font-size:0.95rem;}
-  .sample-actions{list-style:none;margin:0;}
-  .sample-actions li{
-    padding:7px 0 7px 22px;position:relative;color:var(--text);font-size:0.94rem;
-    border-bottom:1px solid var(--line);
-  }
-  .sample-actions li:last-child{border-bottom:none;}
-  .sample-actions li:before{content:"→";position:absolute;left:0;color:var(--accent);}
-  .sample-actions em{color:var(--muted);font-style:normal;font-size:0.85rem;}
+  footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);
+    font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  footer a{color:var(--purple);text-decoration:none;}
 
-  /* QR */
-  .qr-block{
-    display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center;
-    background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:28px;margin-top:26px;text-align:center;box-shadow:0 2px 8px rgba(30,24,48,0.05);
-  }
-  .qr-img{
-    width:150px;height:150px;background:#fff;border:1px solid var(--line);border-radius:12px;
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;
-    color:#a39ab5;font-size:0.75rem;padding:10px;text-align:center;line-height:1.4;
-    overflow:hidden;
-  }
-  .qr-img img{width:100%;height:100%;object-fit:contain;}
-  .qr-text{text-align:left;max-width:360px;}
-  .qr-text .h{font-size:1.15rem;font-weight:700;margin-bottom:6px;color:var(--text);}
-  .qr-text p{color:var(--muted);font-size:0.94rem;margin:0;}
-  @media(max-width:560px){.qr-block{flex-direction:column;}.qr-text{text-align:center;}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto;}}
+  :focus-visible{outline:3px solid var(--purple);outline-offset:3px;border-radius:8px;}
 
-  /* PRINT */
   @media print{
-    body{background:#fff;color:#000;}
-    .hero,.promise,.move,.footer,.series-nav,.no-print{display:none!important;}
-    section{border:none;padding:20px 0;page-break-inside:avoid;}
-    .builder,.commit-box{border:1px solid #999;background:#fff!important;}
-    input,textarea,.commit-input{border:1px solid #999!important;color:#000!important;background:#fff!important;}
-    h2,h3,.commit-box .fill{color:#000!important;}
-    .callout,.sample{background:#f4f4f4!important;}
-    .sample p,.sample-actions li,ul.res li{color:#000!important;}
+    .tracker,.topnav,.pick .box,.btn-row,.cta,.solo{display:none!important;}
+    body{background:#fff;}
+    .sec{border-color:#ccc;}
   }
 </style>
 </head>
 <body>
 
-<!-- SERIES NAV -->
-<nav class="series-nav">
-  <a href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html"><span class="pnum">1</span><span class="label">Choose Your Tool</span></a>
-  <a href="#" class="current"><span class="pnum">2</span><span class="label">Now What?</span></a>
-  <a href="https://shevastudio.com/now-build-it.html"><span class="pnum">3</span><span class="label">Now Build It</span></a>
-  <a href="https://shevastudio.com/run-it-safely.html"><span class="pnum">4</span><span class="label">Run It Safely</span></a>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="kicker">Sheva · AI Expo 2026</div>
-  <h1>You Have AI.<br>Now What?</h1>
-  <p class="sub">Spotting what to hand off — at work and at home.</p>
-  <div class="meta">A hands-on workshop · <strong>Everything from today lives on this page</strong></div>
-</header>
-
-<!-- PROMISE -->
-<div class="promise">
-  <div><div class="n">CORE TAKEAWAY</div><p>A skill you can reuse</p></div>
-  <div><div class="n">ACTIONABLE GOAL</div><p>Three handoffs to try this week</p></div>
-  <div><div class="n">PERSONAL OUTPUT</div><p>Your own handoff list</p></div>
+<div class="tracker">
+  <div class="tracker-inner">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <span class="count"><b id="count">0</b> handoffs picked</span>
+  </div>
 </div>
 
 <div class="wrap">
 
-  <!-- RECAP -->
-  <section>
-    <div class="sec-num">Quick Recap · The Big Five</div>
-    <h2>First — which tool fits you?</h2>
-    <p class="lead">A 30-second refresher from last year. Match the tool to how you already work — then we go further, no matter which one you chose.</p>
-    <div class="patterns">
-      <div class="pattern"><div class="tag">Copilot</div><p>Microsoft 365 — Word, Excel, Teams, Outlook.</p></div>
-      <div class="pattern"><div class="tag">Gemini</div><p>Google Workspace, plus images, audio, and video.</p></div>
-      <div class="pattern"><div class="tag">ChatGPT</div><p>Flexible do-everything tool. New to AI? Start here.</p></div>
-      <div class="pattern"><div class="tag">Claude</div><p>Long documents, contracts, careful analysis, and coding.</p></div>
-      <div class="pattern"><div class="tag">Grok</div><p>Real-time, current-events answers; the X / xAI world.</p></div>
-      <div class="pattern" style="border-color:var(--accent);background:linear-gradient(135deg,rgba(123,63,242,0.08),rgba(15,155,138,0.05));"><div class="tag" style="color:var(--accent);">New this year</div><p>We go further — from picking a tool to actually building with it.</p></div>
+  <nav class="topnav">
+    <a href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html">1 · Choose a tool</a>
+    <a href="now-what.html" class="here">2 · Handoffs</a>
+    <a href="now-build-it.html">3 · Build</a>
+    <a href="run-it-safely.html">4 · Safety</a>
+  </nav>
+
+  <header>
+    <div class="kicker"><span class="dot"></span>Sheva Studio · Field Guide</div>
+    <h1>YOU HAVE AI.<br><span class="grad">NOW WHAT?</span></h1>
+    <p class="lede">Spotting what to hand off — at work and at home. Whatever tool you have, this one skill works.</p>
+    <p class="howto">Tap the handoffs that sound like you. Your list builds as you scroll, saves on this device, and you pick one to try this week. No notes needed.</p>
+  </header>
+
+  <!-- WHY -->
+  <section class="sec">
+    <div class="sec-kick">Start here · why this matters</div>
+    <h2>The tool isn't the question anymore</h2>
+    <p class="why">You already know which tool fits. And often it's picked for you anyway — your work chose one for security, and at home you use whatever's built into your phone.</p>
+    <div class="card">
+      <h3>Here's the freeing part</h3>
+      <p>Copilot, ChatGPT, Claude, Gemini, Grok — for everyday stuff they all do the same core things. Read, write, summarize, brainstorm, organize. So the real question isn't "which one?" It's "what do I actually hand to it?"</p>
     </div>
+    <div class="callout teal">
+      <div class="tag">The whole skill</div>
+      <p>Spotting the handoff. It works no matter which tool you have, or how new you are to this.</p>
+    </div>
+  </section>
+
+  <!-- THE SKILL -->
+  <section class="sec">
+    <div class="sec-kick">The one skill</div>
+    <h2>What makes a good handoff</h2>
+    <p class="why">Good handoffs fit one of four patterns. Once you can spot them, you see them everywhere.</p>
+    <div class="card"><h3>Repetitive</h3><p>You do it over and over — weekly reports, similar emails, meal planning.</p></div>
+    <div class="card"><h3>Time-consuming, low-stakes</h3><p>Eats your time, but a rough first draft is enough to get going.</p></div>
+    <div class="card"><h3>Brain-draining</h3><p>The blank page. The thing you keep procrastinating on.</p></div>
+    <div class="card"><h3>Translation work</h3><p>Turning one form into another — messy notes into a clean summary.</p></div>
     <div class="callout">
-      <div class="q">Want last year's full tool breakdown?</div>
-      <div class="a">It lives on my site: <a href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html" style="color:var(--accent);font-weight:700;">shevastudio.com → Intro to AI</a>. But you don't need it — everything here stands on its own.</div>
+      <div class="tag">The magic question</div>
+      <p>"Am I the only one who can do this — or do I just happen to be the one doing it?" If AI could take the first pass and you edit, that's a handoff.</p>
     </div>
   </section>
 
-  <!-- 01 THE MOMENT -->
-  <section>
-    <div class="sec-num">01 · The Moment We're All In</div>
-    <h2>The tool isn't the question anymore.</h2>
-    <p class="lead">You know which tool fits. This year, the tool is often already chosen for you anyway.</p>
-    <p><strong>At work:</strong> your organization picked one based on security and guardrails — you might not even get a vote.<br>
-    <strong>At home:</strong> you're using whatever's built into your phone, browser, and apps.</p>
-    <p>Here's the good news: Copilot, ChatGPT, Claude, Gemini, Grok — for the everyday stuff, they all do the same core things. Read, write, summarize, brainstorm, organize.</p>
+  <!-- KEEP IN YOUR HANDS -->
+  <section class="sec">
+    <div class="sec-kick">Keep these in your hands</div>
+    <h2>What AI shouldn't do</h2>
+    <p class="why">Handing off a task doesn't mean handing off responsibility. You stay the editor, the decider, the human.</p>
+    <div class="card"><h3>Final decisions</h3><p>AI drafts. You decide. Always.</p></div>
+    <div class="card"><h3>Sensitive info</h3><p>At work, follow your organization's rules. At home, keep passwords and account numbers out of it.</p></div>
+    <div class="card"><h3>Anything unverified</h3><p>AI can sound confident and be wrong. If you can't check it, don't ship it.</p></div>
+    <div class="card"><h3>The human touch</h3><p>Hard conversations, condolences, your kid's birthday card. AI helps you start; you make it real.</p></div>
     <div class="callout">
-      <div class="q">So the real question isn't "which one?"</div>
-      <div class="a">It's "what do I actually hand to it?" That's the whole skill. And it works no matter which tool you have, or how new you are to this.</div>
+      <div class="tag">Rule of thumb</div>
+      <p>AI is a very capable intern — not a replacement for your judgment.</p>
     </div>
   </section>
 
-  <!-- 02 THE SKILL -->
-  <section>
-    <div class="sec-num">02 · The One Skill</div>
-    <h2>What makes a good handoff?</h2>
-    <p class="lead">Look for tasks that fit one of these four patterns. Once you can spot them, you'll see handoffs everywhere.</p>
-    <div class="patterns">
-      <div class="pattern">
-        <div class="tag">Repetitive</div>
-        <p>You do it over and over — weekly reports, similar emails, meal planning.</p>
-      </div>
-      <div class="pattern">
-        <div class="tag">Time-consuming, low-stakes</div>
-        <p>Eats your time, but a rough first draft is enough to get going.</p>
-      </div>
-      <div class="pattern">
-        <div class="tag">Brain-draining</div>
-        <p>The blank page. The thing you keep procrastinating on.</p>
-      </div>
-      <div class="pattern">
-        <div class="tag">Translation work</div>
-        <p>Turning one form into another — messy notes into a clean summary.</p>
-      </div>
-    </div>
-    <div class="callout">
-      <div class="q">The magic question:</div>
-      <div class="a">"Am I the only one who can do this — or do I just happen to be the one doing it?" If AI could take the first pass and you edit, that's a handoff.</div>
+  <!-- AT WORK -->
+  <section class="sec">
+    <div class="sec-kick">That's me · at work</div>
+    <h2>Real handoffs, any job</h2>
+    <p class="why">Tap the ones that are your daily reality. Each adds to your list.</p>
+
+    <div class="pick" data-id="w1"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The inbox avalanche</strong>
+        <span class="say">"Draft a reply to this email — professional but friendly." Then you edit and send.</span></span></div>
+
+    <div class="pick" data-id="w2"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The meeting that needed a summary</strong>
+        <span class="say">Paste your messy notes → "Turn this into a summary with action items and who owns what."</span></span></div>
+
+    <div class="pick" data-id="w3"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The report you rewrite every week</strong>
+        <span class="say">"Here are my updates — write this week's status report in the same format as last week's."</span></span></div>
+
+    <div class="pick" data-id="w4"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The thing you don't know how to start</strong>
+        <span class="say">"I need to write a proposal for X. Ask me 5 questions first, then draft an outline."</span></span></div>
+
+    <div class="pick" data-id="w5"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The document you don't have time to read</strong>
+        <span class="say">"Summarize this — what are the 5 things I actually need to know?"</span></span></div>
+
+    <div class="solo">
+      <div class="tag">Make it real</div>
+      <p>Hold the one that's most you in mind. That's your first project.</p>
     </div>
   </section>
 
-  <!-- 03 GUARDRAILS -->
-  <section>
-    <div class="sec-num">03 · Keep These In Your Hands</div>
-    <h2>What AI shouldn't do.</h2>
-    <p class="lead">Handing off a task doesn't mean handing off responsibility. You stay the editor, the decider, the human.</p>
-    <div class="guard">
-      <div><div class="h">Final decisions</div><p>AI drafts. You decide. Always.</p></div>
-      <div><div class="h">Sensitive info</div><p>At work, follow your organization's rules. At home, keep passwords and account numbers out of it.</p></div>
-      <div><div class="h">Anything unverified</div><p>AI can sound confident and be wrong. If you can't check it, don't ship it.</p></div>
-      <div><div class="h">The human touch</div><p>Hard conversations, condolences, your kid's birthday card. AI helps you start; you make it real.</p></div>
-    </div>
-    <div class="callout">
-      <div class="q">Rule of thumb:</div>
-      <div class="a">AI is a very capable intern — not a replacement for your judgment.</div>
-    </div>
-  </section>
-
-  <!-- 04 WORK -->
-  <section>
-    <div class="sec-num">04 · "That's Me!" — At Work</div>
-    <h2>Real handoffs, any job.</h2>
-    <div class="handoffs">
-      <div class="handoff"><div class="title">The inbox avalanche</div><div class="do">Hand off</div><div class="example">"Draft a reply to this email — professional but friendly." Then you edit and send.</div></div>
-      <div class="handoff"><div class="title">The meeting that needed a summary</div><div class="do">Hand off</div><div class="example">Paste your messy notes → "Turn this into a summary with action items and who owns what."</div></div>
-      <div class="handoff"><div class="title">The report you rewrite every week</div><div class="do">Hand off</div><div class="example">"Here are my updates — write this week's status report in the same format as last week's."</div></div>
-      <div class="handoff"><div class="title">The thing you don't know how to start</div><div class="do">Hand off</div><div class="example">"I need to write a proposal for X. Ask me 5 questions first, then draft an outline."</div></div>
-      <div class="handoff"><div class="title">The document you don't have time to read</div><div class="do">Hand off</div><div class="example">"Summarize this — what are the 5 things I actually need to know?"</div></div>
-    </div>
-    <div class="move">
-      <div class="lbl">In the room</div>
-      <p>Which of these is <em>your</em> daily reality? Hands up — then hold that one in mind.</p>
-    </div>
-  </section>
-
-  <!-- 05 HOME -->
-  <section>
-    <div class="sec-num">05 · "That's Me!" — At Home</div>
+  <!-- AT HOME -->
+  <section class="sec">
+    <div class="sec-kick">That's me · at home</div>
     <h2>Same skill. Your real life.</h2>
-    <div class="handoffs">
-      <div class="handoff"><div class="title">The "what's for dinner?" spiral</div><div class="do">Hand off</div><div class="example">"I have chicken, rice, and whatever's wilting in my fridge. Give me 3 dinner ideas and a grocery list."</div></div>
-      <div class="handoff"><div class="title">The trip you keep meaning to plan</div><div class="do">Hand off</div><div class="example">"Plan a 3-day weekend in [place] for a family with two kids — budget-friendly, with a rough daily schedule."</div></div>
-      <div class="handoff"><div class="title">The awkward message you're avoiding</div><div class="do">Hand off</div><div class="example">"Help me write a kind but firm message to a neighbor about [issue]."</div></div>
-      <div class="handoff"><div class="title">The homework you forgot how to do</div><div class="do">Hand off</div><div class="example">"Explain 6th-grade fractions like a patient tutor, with an example I can walk through with my kid."</div></div>
-      <div class="handoff"><div class="title">The overwhelming life admin</div><div class="do">Hand off</div><div class="example">"Help me make a step-by-step plan to tackle the closet / plan the party / organize the move."</div></div>
-    </div>
-    <div class="move">
-      <div class="lbl">In the room</div>
-      <p>Now — which of <em>these</em> hit home? Literally.</p>
-    </div>
+    <p class="why">Tap the ones that hit home — literally.</p>
+
+    <div class="pick" data-id="h1"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The "what's for dinner?" spiral</strong>
+        <span class="say">"I have chicken, rice, and whatever's wilting in my fridge. Give me 3 dinner ideas and a grocery list."</span></span></div>
+
+    <div class="pick" data-id="h2"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The trip you keep meaning to plan</strong>
+        <span class="say">"Plan a 3-day weekend in [place] for a family with two kids — budget-friendly, with a rough daily schedule."</span></span></div>
+
+    <div class="pick" data-id="h3"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The awkward message you're avoiding</strong>
+        <span class="say">"Help me write a kind but firm message to a neighbor about [issue]."</span></span></div>
+
+    <div class="pick" data-id="h4"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The homework you forgot how to do</strong>
+        <span class="say">"Explain 6th-grade fractions like a patient tutor, with an example I can walk through with my kid."</span></span></div>
+
+    <div class="pick" data-id="h5"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+      <span class="txt"><strong>The overwhelming life admin</strong>
+        <span class="say">"Help me make a step-by-step plan to tackle the closet / plan the party / organize the move."</span></span></div>
   </section>
 
-  <!-- 06 DEMO -->
-  <section>
-    <div class="sec-num">06 · Watch It Work</div>
-    <h2>One handoff, start to finish.</h2>
-    <p class="lead">The messy input — sound familiar?</p>
+  <!-- WATCH IT WORK -->
+  <section class="sec">
+    <div class="sec-kick">Watch it work</div>
+    <h2>One handoff, start to finish</h2>
+    <p class="why">The point isn't the polish — it's the time you get back.</p>
+    <div class="flow">
+      <div class="step-tag">The messy input — sound familiar?</div>
+      <div class="msg">"Team meeting today — talked about the new training program everyone's been asking for, budget approval needs to happen first but timeline is tight, someone suggested phases, legal probably needs to review, want to launch before the holidays but January's the backup."</div>
+      <div class="step-tag">The handoff</div>
+      <div class="say">"Turn these notes into a short summary for my manager, plus a list of action items with owners."</div>
+      <div class="step-tag">What comes back, in seconds</div>
+      <div class="out">Summary: The team is ready to move forward on the new training program, which has strong internal demand. Before launch, we need budget approval and a legal review. A phased rollout was proposed to manage the tight timeline. Target launch is before the holidays, with January as backup.<br><br>Action items: secure budget approval · send materials to legal · draft phased rollout plan · confirm launch window.</div>
+    </div>
     <div class="callout">
-      <div class="a" style="font-style:italic;">"Team meeting today — talked about the new training program everyone's been asking for, budget approval needs to happen first but timeline is tight, someone suggested doing it in phases, legal probably needs to review, everyone's excited, want to launch before the holidays but January's the backup."</div>
-    </div>
-    <h3>The handoff:</h3>
-    <p style="color:#3a3350;">"Turn these notes into a short summary for my manager, plus a list of action items with owners."</p>
-    <h3>What comes back, in seconds:</h3>
-    <div class="sample">
-      <div class="sample-tag">Sample output</div>
-      <p style="margin-bottom:14px;"><strong>Summary for manager:</strong> The team is ready to move forward on the new training program, which has strong internal demand. Before launch, we need budget approval and a legal review of materials. A phased rollout was proposed to manage the tight timeline. Target launch is before the holidays, with January as a backup.</p>
-      <p style="margin-bottom:8px;"><strong>Action items:</strong></p>
-      <ul class="sample-actions">
-        <li>Secure budget approval — <em>owner: TBD</em></li>
-        <li>Send materials to legal for review — <em>owner: TBD</em></li>
-        <li>Draft phased rollout plan &amp; timeline — <em>owner: TBD</em></li>
-        <li>Confirm launch window (holidays vs. January) — <em>owner: TBD</em></li>
-      </ul>
-    </div>
-    <div class="callout">
-      <div class="q">The point isn't the output — it's the time.</div>
-      <div class="a">That's 15 minutes of your Friday afternoon, handed off. Now multiply that across everything on the last two sections.</div>
+      <div class="tag">The real win</div>
+      <p>That's 15 minutes of your Friday afternoon, handed off. Now multiply it across everything you tapped above.</p>
     </div>
   </section>
 
-  <!-- 07 BUILDER -->
-  <section>
-    <div class="sec-num">07 · Your Turn</div>
-    <h2>Build your handoff list.</h2>
-    <p class="lead">Think about your last week — work <em>and</em> home. The annoying stuff is the good stuff here. Fill this in, then <strong>hit Print to save it</strong> — it won't save on its own.</p>
+  <!-- BUILD YOUR LIST -->
+  <section class="sec">
+    <div class="sec-kick">Your turn</div>
+    <h2>Build your handoff list</h2>
+    <p class="why">The annoying stuff is the good stuff here. Everything you tapped is below — now phrase what you'd actually type.</p>
 
-    <div class="builder">
-      <div class="step-label">Step 1 · Brain dump</div>
-      <div class="row">
-        <div class="field"><label>A work task that felt repetitive or draining</label><input type="text" placeholder="e.g. writing my weekly update"></div>
-        <div class="field"><label>Another work task that ate your time</label><input type="text" placeholder="e.g. replying to the same kinds of emails"></div>
-      </div>
-      <div class="row">
-        <div class="field"><label>Something at home you keep putting off</label><input type="text" placeholder="e.g. planning meals for the week"></div>
-        <div class="field"><label>Something at home you wish were easier</label><input type="text" placeholder="e.g. organizing the family calendar"></div>
-      </div>
-
-      <div class="step-label">Step 2 · Pick your two</div>
-      <div class="field"><label>Your #1 WORK handoff to try</label><input type="text" placeholder="Pick one from above"></div>
-      <div class="field"><label>What would you actually type into the AI?</label><textarea rows="2" placeholder="e.g. 'Draft my weekly update from these bullet points, same format as last week...'"></textarea></div>
-      <div class="field"><label>Your #1 HOME handoff to try</label><input type="text" placeholder="Pick one from above"></div>
-      <div class="field"><label>What would you actually type into the AI?</label><textarea rows="2" placeholder="e.g. 'Give me 3 easy dinners from what's in my fridge, plus a grocery list...'"></textarea></div>
-
-      <div class="btn-row no-print">
-        <button class="btn-primary" onclick="window.print()">Print / Save My List</button>
-        <button class="btn-ghost" onclick="clearBuilder()">Clear</button>
-      </div>
+    <div class="picked-list">
+      <div class="tag">Handoffs you picked</div>
+      <ul id="pickedOut"><li class="picked-empty">Nothing yet — tap the handoffs above and they'll land here.</li></ul>
     </div>
 
-    <div class="move" style="margin-top:26px;">
-      <div class="lbl">In the room</div>
-      <p>Stand up. Find someone whose handoff is different from yours. Trade — help each other phrase what you'd actually type. You just found your first projects.</p>
+    <div class="field">
+      <label for="work1">Your #1 work handoff to try</label>
+      <div class="hint">What would you actually type into the AI?</div>
+      <textarea id="work1" rows="2" placeholder="Draft my weekly update from these bullet points, same format as last week..."></textarea>
+    </div>
+    <div class="field">
+      <label for="home1">Your #1 home handoff to try</label>
+      <div class="hint">What would you actually type into the AI?</div>
+      <textarea id="home1" rows="2" placeholder="Give me 3 easy dinners from what's in my fridge, plus a grocery list..."></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="window.print()">Print / save my list</button>
+      <button class="btn btn-ghost" id="clearBtn">Clear everything</button>
     </div>
   </section>
 
-  <!-- 08 COMMIT -->
-  <section>
-    <div class="sec-num">08 · Make It Stick</div>
-    <h2>Pick just one.</h2>
-    <p class="lead">People who start with one small win come back for ten. People who try to overhaul everything burn out by Tuesday.</p>
-    <div class="commit-box">
-      <div class="fill">This week, I'll ask AI to</div>
-      <input type="text" class="commit-input" placeholder="e.g. draft my weekly update">
-      <div class="fill">so I can save time on</div>
-      <input type="text" class="commit-input" placeholder="e.g. Friday afternoon reports">
-      <div class="btn-row no-print" style="justify-content:center;">
-        <button class="btn-primary" onclick="window.print()">Print / Save My Plan</button>
-      </div>
+  <!-- MAKE IT STICK -->
+  <section class="sec">
+    <div class="sec-kick">Make it stick</div>
+    <h2>Pick just one</h2>
+    <p class="why">People who start with one small win come back for ten. People who overhaul everything burn out by Tuesday.</p>
+    <div class="field">
+      <label for="commit">This week, I'll ask AI to…</label>
+      <textarea id="commit" rows="2" placeholder="draft my weekly update — so I can get my Friday afternoon back"></textarea>
     </div>
-    <div class="move">
-      <div class="lbl">In the room</div>
-      <p>Turn to your partner. Swap the one thing you each committed to. That's your check-in buddy for next week.</p>
+    <div class="solo">
+      <div class="tag">Make it stick</div>
+      <p>Tell one person the thing you're trying this week. Saying it out loud makes it real — and they're your check-in for next week.</p>
     </div>
   </section>
 
-  <!-- 09 RESOURCES -->
-  <section style="border-bottom:none;">
-    <div class="sec-num">09 · Keep Going</div>
+  <!-- KEEP GOING + CTA -->
+  <section class="sec">
+    <div class="sec-kick">Keep going</div>
     <h2>You came curious. Leave capable.</h2>
-    <div class="callout" style="margin-top:0;margin-bottom:24px;border-left-color:var(--accent-2);">
-      <div class="q" style="color:var(--accent-2);">And the next step? Agents.</div>
-      <div class="a">Once handoffs feel natural, the same skill scales up — setting AI loose to handle whole multi-step tasks while you supervise. That's where this is heading. Start with one handoff; you're already on the path.</div>
-    </div>
-    <ul class="res">
-      <li><strong>Just start asking.</strong> The best way to learn is to hand off something small — today.</li>
-      <li><strong>Whatever tool you have,</strong> search "[your tool] + getting started" for the official basics.</li>
-      <li><strong>One prompt trick:</strong> end any request with "ask me questions first if you need more info." It makes AI dramatically more useful.</li>
-      <li><strong>Want more?</strong> My Intro to AI series and guides are jargon-free and built for real life — links below.</li>
-    </ul>
-    <div class="callout" style="margin-top:24px;">
-      <div class="q">The one thing to remember:</div>
-      <div class="a">You don't need a better tool. You need to start handing things off.</div>
-    </div>
-
-    <div class="qr-block no-print">
-      <div class="qr-img">
-        <!-- Drop your QR code image here: <img src="your-qr.png" alt="Scan for this page"> -->
-        Your QR<br>code here
-      </div>
-      <div class="qr-text">
-        <div class="h">Take this page with you.</div>
-        <p>Scan to keep everything from today — the handoff examples, your list, and the resources. No notes needed.</p>
-      </div>
+    <p class="why">Once handoffs feel natural, the same skill scales up — setting AI loose on whole multi-step tasks while you supervise. That's agents. Start with one handoff; you're already on the path.</p>
+    <div class="callout teal">
+      <div class="tag">One prompt trick</div>
+      <p>End any request with "ask me questions first if you need more info." It makes AI dramatically more useful.</p>
     </div>
   </section>
+
+  <div class="cta">
+    <div class="tag">Ready to put AI to work?</div>
+    <h2>You don't need a better tool. You need to start handing things off.</h2>
+    <p>Making AI human, practical, and a little bit fun.</p>
+    <a href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html">Start the Intro to AI Series →</a>
+    <a href="https://shevastudio.com/guides.html" class="ghost">Browse the Guides</a>
+  </div>
+
+  <footer>
+    <span>Sheva Studio · Content · AI · Culture</span>
+    <a href="https://shevastudio.com/">shevastudio.com →</a>
+  </footer>
 
 </div>
 
-<!-- FOOTER CTA -->
-<footer class="footer">
-  <div class="big">Ready to put AI to work in your day?</div>
-  <div class="sub">Making AI human, practical, and a little bit fun.</div>
-  <a class="cta" href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html">Start the Intro to AI Series →</a>
-  <a class="cta ghost" href="https://shevastudio.com/guides.html">Browse the Guides</a>
-  <div class="socials">
-    <a href="https://tiktok.com/@sheva.studio">TikTok</a>
-    <a href="https://youtube.com/@sheva.studio">YouTube</a>
-    <a href="https://instagram.com/sheva.studios">Instagram</a>
-    <a href="https://linkedin.com/in/elishevanoland">LinkedIn</a>
-  </div>
-</footer>
-
 <script>
-  function clearBuilder(){
-    document.querySelectorAll('.builder input, .builder textarea').forEach(function(el){el.value='';});
-    document.querySelector('.builder input').focus();
-  }
-</script>
+  var KEY='sheva-nowwhat-v1';
+  var picks=Array.prototype.slice.call(document.querySelectorAll('.pick'));
+  var fill=document.getElementById('fill');
+  var count=document.getElementById('count');
+  var pickedOut=document.getElementById('pickedOut');
+  var fields=['work1','home1','commit'];
 
+  function labelFor(el){ return el.querySelector('strong').textContent; }
+
+  function save(){
+    var state={picks:{},fields:{}};
+    picks.forEach(function(p){ state.picks[p.dataset.id]=p.classList.contains('on'); });
+    fields.forEach(function(f){ var el=document.getElementById(f); if(el) state.fields[f]=el.value; });
+    try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){}
+  }
+  function load(){
+    var s; try{ s=JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ s={}; }
+    if(s.picks){ picks.forEach(function(p){ if(s.picks[p.dataset.id]) p.classList.add('on'); }); }
+    if(s.fields){ fields.forEach(function(f){ var el=document.getElementById(f); if(el&&s.fields[f]) el.value=s.fields[f]; }); }
+    update();
+  }
+  function update(){
+    var chosen=picks.filter(function(p){ return p.classList.contains('on'); });
+    count.textContent=chosen.length;
+    fill.style.width=(picks.length?(chosen.length/picks.length*100):0)+'%';
+    if(chosen.length===0){
+      pickedOut.innerHTML='<li class="picked-empty">Nothing yet — tap the handoffs above and they\'ll land here.</li>';
+    }else{
+      pickedOut.innerHTML=chosen.map(function(p){ return '<li>'+labelFor(p)+'</li>'; }).join('');
+    }
+  }
+  picks.forEach(function(p){
+    p.setAttribute('role','checkbox');
+    p.setAttribute('tabindex','0');
+    function toggle(){ p.classList.toggle('on'); p.setAttribute('aria-checked',p.classList.contains('on')); save(); update(); }
+    p.addEventListener('click',toggle);
+    p.addEventListener('keydown',function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
+  });
+  fields.forEach(function(f){ var el=document.getElementById(f); if(el) el.addEventListener('input',save); });
+  document.getElementById('clearBtn').addEventListener('click',function(){
+    picks.forEach(function(p){ p.classList.remove('on'); p.setAttribute('aria-checked','false'); });
+    fields.forEach(function(f){ var el=document.getElementById(f); if(el) el.value=''; });
+    save(); update();
+  });
+  load();
+</script>
 </body>
 </html>
