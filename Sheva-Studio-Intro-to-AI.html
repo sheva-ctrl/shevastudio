@@ -6,7 +6,7 @@
 <title>Sheva Studio — AI Starter Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght=600;700;800&family=Space+Mono:wght=400;700&family=Lexend:wght=300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --violet:#6020D0; --violet-2:#7C3AED; --teal:#0891B2;
@@ -38,7 +38,33 @@
     -webkit-text-fill-color:transparent;color:transparent}
   .lede{font-size:clamp(17px,2.4vw,21px);color:var(--muted);font-weight:300;max-width:60ch;margin-bottom:24px;}
   .lede strong{color:var(--ink);font-weight:500}
-  
+
+  /* ---- SERIES STRIP ---- */
+  .series-strip{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:16px 18px;margin:8px 0 28px;}
+  .series-strip .series-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
+  .series-pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .series-pill{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;text-decoration:none;
+    color:var(--muted);background:#F5F3FA;border:1px solid var(--line);border-radius:999px;
+    padding:8px 14px;display:inline-flex;align-items:center;gap:8px;transition:all .15s ease;white-space:nowrap;}
+  .series-pill:hover{border-color:var(--violet);color:var(--violet);transform:translateY(-1px);}
+  .series-pill b{font-size:11px;background:var(--line);color:var(--muted);width:20px;height:20px;
+    border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .series-pill.current{background:var(--grad);color:#fff;border-color:transparent;}
+  .series-pill.current b{background:rgba(255,255,255,0.25);color:#fff;}
+
+  /* ---- next-up link ---- */
+  .next-up{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    background:var(--card);border:1px solid var(--line);border-left:4px solid var(--violet);
+    border-radius:0 14px 14px 0;padding:18px 20px;margin:0 0 32px;text-decoration:none;
+    transition:transform .15s ease,box-shadow .15s ease;}
+  .next-up:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(96,32,208,.1);}
+  .next-up .nu-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+  .next-up .nu-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:var(--ink);}
+  .next-up .nu-arrow{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--violet);flex:0 0 auto;}
+
   /* ---- video embed container ---- */
   .video-container {
     position: relative;
@@ -206,6 +232,17 @@
   <h1 class="rise d1">Start using AI <span class="accent">today.</span></h1>
   <p class="lede rise d2">One page, no jargon. Run your first prompt, build a habit, then pick a tool and go. <strong>Keep this open in a tab</strong> — it's built to be used, not just read.</p>
 
+  <!-- SERIES STRIP -->
+  <div class="series-strip rise d2">
+    <span class="series-label">The AI Series · Part 1 of 4</span>
+    <div class="series-pills">
+      <span class="series-pill current"><b>1</b> Choose a Tool</span>
+      <a href="now-what.html" class="series-pill"><b>2</b> Now What?</a>
+      <a href="now-build-it.html" class="series-pill"><b>3</b> Now Build It</a>
+      <a href="run-it-safely.html" class="series-pill"><b>4</b> Run It Safely</a>
+    </div>
+  </div>
+
   <a class="jumplink rise d2" href="#video">▶ Prefer to watch? Skip to the video ↓</a>
   
   <p class="objective rise d2"><b>The goal</b>By the time you reach the bottom, you'll know how to talk to AI, how to make it stick, and which tool to open first — even if today is your very first time using AI.</p>
@@ -324,6 +361,15 @@
       <p><b>Verify before you trust.</b> AI sounds certain even when it's wrong. For anything that matters — numbers, names, legal or medical specifics — check it yourself. Use it to draft and think, not as the final word.</p>
     </div>
   </section>
+
+  <!-- NEXT IN SERIES -->
+  <a class="next-up rise d2" href="now-what.html">
+    <span>
+      <span class="nu-label">Next in the series · Part 2</span>
+      <span class="nu-title">Now What? — Spotting what to hand off</span>
+    </span>
+    <span class="nu-arrow">→</span>
+  </a>
 
   <!-- VIDEO EMBED MOVED HERE (BEFORE FOOTER) -->
   <div class="video-container rise d2" id="video">
