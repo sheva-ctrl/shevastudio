@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Run It Safely: Agents in the Real World — Sheva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#faf8fc;
@@ -13,27 +16,21 @@
     --text:#1e1830;
     --muted:#5c5470;
     --accent:#7b3ff2;
-    --accent-2:#0f9b8a;
+    --accent-2:#0891B2;        /* was #0f9b8a green — now brand teal (colorblind-safe) */
     --accent-warm:#d97828;
+    --font-heading:'Bricolage Grotesque',-apple-system,BlinkMacSystemFont,sans-serif;
+    --font-body:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --font-mono:'Space Mono',ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;background:var(--bg);}
-  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:820px;margin:0 auto;padding:0 24px;background:var(--bg);}
 
-  /* SERIES NAV */
-  .series-nav{display:flex;justify-content:center;gap:0;background:var(--bg-soft);border-bottom:1px solid var(--line);flex-wrap:wrap;}
-  .series-nav a{text-decoration:none;padding:12px 16px;font-size:0.8rem;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;transition:all 0.2s;display:flex;align-items:center;gap:7px;}
-  .series-nav a:hover{color:var(--accent);background:rgba(123,63,242,0.04);}
-  .series-nav a .pnum{font-size:0.7rem;font-weight:800;background:var(--line);color:var(--muted);width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;}
-  .series-nav a.current{color:var(--accent);border-bottom-color:var(--accent);font-weight:700;}
-  .series-nav a.current .pnum{background:var(--accent);color:#fff;}
-  @media(max-width:600px){.series-nav a{padding:10px 11px;font-size:0.72rem;}.series-nav a .label{display:none;}.series-nav a .pnum{width:24px;height:24px;}}
-
   /* HERO */
-  .hero{padding:80px 24px 60px;text-align:center;background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,63,242,0.12), transparent 70%),radial-gradient(ellipse 60% 50% at 80% 30%, rgba(15,155,138,0.08), transparent 70%),var(--bg);border-bottom:1px solid var(--line);}
-  .kicker{font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-weight:700;}
-  .hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.08;font-weight:800;letter-spacing:-0.02em;margin-bottom:18px;color:var(--text);}
+  .hero{padding:80px 24px 60px;text-align:center;background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,63,242,0.12), transparent 70%),radial-gradient(ellipse 60% 50% at 80% 30%, rgba(8,145,178,0.08), transparent 70%),var(--bg);border-bottom:1px solid var(--line);}
+  .kicker{font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-weight:700;}
+  .hero h1{font-family:var(--font-heading);font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.08;font-weight:800;letter-spacing:-0.02em;margin-bottom:18px;color:var(--text);}
   .hero .sub{font-size:clamp(1.05rem,2.6vw,1.35rem);color:var(--muted);max-width:580px;margin:0 auto 28px;font-weight:500;}
   .hero .meta{font-size:0.85rem;color:var(--muted);letter-spacing:0.04em;padding-top:22px;border-top:1px solid var(--line);display:inline-block;margin-top:6px;}
   .hero .meta strong{color:var(--text);}
@@ -41,7 +38,7 @@
   /* PROMISE */
   .promise{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line);}
   .promise div{background:var(--bg-soft);padding:26px 20px;text-align:center;}
-  .promise .n{color:var(--accent-2);font-size:0.75rem;letter-spacing:0.15em;font-weight:700;margin-bottom:8px;}
+  .promise .n{font-family:var(--font-mono);color:var(--accent-2);font-size:0.75rem;letter-spacing:0.15em;font-weight:700;margin-bottom:8px;}
   .promise p{font-size:0.95rem;color:var(--text);font-weight:500;}
   @media(max-width:640px){.promise{grid-template-columns:1fr;}}
 
@@ -58,25 +55,25 @@
   .lane-tab.active .dot{background:#fff;}
 
   .lane-badge{display:inline-block;font-size:0.72rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-  .lane-badge.everyday{background:rgba(15,155,138,0.12);color:var(--accent-2);}
+  .lane-badge.everyday{background:rgba(8,145,178,0.12);color:var(--accent-2);}
   .lane-badge.dev{background:rgba(123,63,242,0.12);color:var(--accent);}
 
   /* SECTIONS */
   section{padding:56px 0;border-bottom:1px solid var(--line);}
   .lane-hidden{display:none;}
-  .sec-num{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px;}
+  .sec-num{font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px;}
   .sec-num.tealnum{color:var(--accent-2);}
-  h2{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.15;font-weight:800;letter-spacing:-0.01em;margin-bottom:20px;color:var(--text);}
-  h3{font-size:1.15rem;font-weight:700;margin:26px 0 10px;color:var(--text);}
+  h2{font-family:var(--font-heading);font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.15;font-weight:800;letter-spacing:-0.01em;margin-bottom:20px;color:var(--text);}
+  h3{font-family:var(--font-heading);font-size:1.15rem;font-weight:700;margin:26px 0 10px;color:var(--text);}
   p.lead{font-size:1.1rem;color:var(--muted);margin-bottom:20px;}
   p{margin-bottom:14px;color:var(--text);}
   .muted{color:var(--muted);}
 
   /* CALLOUT */
-  .callout{background:linear-gradient(135deg,rgba(123,63,242,0.07),rgba(15,155,138,0.05));border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:14px;padding:22px 24px;margin:24px 0;}
+  .callout{background:linear-gradient(135deg,rgba(123,63,242,0.07),rgba(8,145,178,0.05));border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:14px;padding:22px 24px;margin:24px 0;}
   .callout.teal{border-left-color:var(--accent-2);}
   .callout.warn{border-left-color:var(--accent-warm);background:linear-gradient(135deg,rgba(217,120,40,0.08),rgba(123,63,242,0.04));}
-  .callout .q{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+  .callout .q{font-family:var(--font-heading);font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:6px;}
   .callout.warn .q{color:var(--accent-warm);}
   .callout.teal .q{color:var(--accent-2);}
   .callout .a{color:#3a3350;font-size:0.98rem;}
@@ -112,9 +109,20 @@
   .pattern p{font-size:0.92rem;color:#3a3350;margin:0;}
   @media(max-width:640px){.patterns{grid-template-columns:1fr;}}
 
+  /* ===== LEARNING PATH BLOCK (shared across all four pages) ===== */
+  .series-strip{max-width:820px;margin:44px auto 8px;background:#fff;border:1px solid #E7E5EE;border-radius:16px;padding:16px 18px;}
+  .series-strip .series-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#55555F;display:block;margin-bottom:10px;}
+  .series-pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .series-pill{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;text-decoration:none;color:#55555F;background:#F5F3FA;border:1px solid #E7E5EE;border-radius:999px;padding:8px 14px;display:inline-flex;align-items:center;gap:8px;transition:all .15s ease;white-space:nowrap;}
+  .series-pill:hover{border-color:#6020D0;color:#6020D0;transform:translateY(-1px);}
+  .series-pill:focus-visible{outline:2px solid #0891B2;outline-offset:2px;}
+  .series-pill b{font-size:11px;background:#E7E5EE;color:#55555F;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .series-pill.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;border-color:transparent;}
+  .series-pill.current b{background:rgba(255,255,255,0.25);color:#fff;}
+
   /* FOOTER */
   .footer{text-align:center;padding:70px 24px;background:radial-gradient(ellipse 70% 60% at 50% 100%, rgba(123,63,242,0.1), transparent 70%), var(--bg-soft);}
-  .footer .big{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;margin-bottom:10px;line-height:1.2;color:var(--text);}
+  .footer .big{font-family:var(--font-heading);font-size:clamp(1.4rem,4vw,2rem);font-weight:800;margin-bottom:10px;line-height:1.2;color:var(--text);}
   .footer .sub{color:var(--muted);margin-bottom:28px;}
   .footer a.cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:14px 32px;border-radius:30px;margin:6px;}
   .footer a.cta.ghost{background:transparent;color:var(--text);border:1px solid var(--accent);}
@@ -123,7 +131,7 @@
 
   @media print{
     body{background:#fff;color:#000;}
-    .hero,.promise,.footer,.series-nav,.lane-tabs,.no-print{display:none!important;}
+    .hero,.promise,.footer,.series-strip,.lane-tabs,.no-print{display:none!important;}
     .lane-hidden{display:block!important;}
     section{border:none;padding:20px 0;page-break-inside:avoid;}
     .callout,.rung,.dodont .col,.pattern{background:#f4f4f4!important;}
@@ -133,14 +141,6 @@
 </style>
 </head>
 <body>
-
-<!-- SERIES NAV -->
-<nav class="series-nav">
-  <a href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html"><span class="pnum">1</span><span class="label">Choose Your Tool</span></a>
-  <a href="https://shevastudio.com/now-what.html"><span class="pnum">2</span><span class="label">Now What?</span></a>
-  <a href="https://shevastudio.com/now-build-it.html"><span class="pnum">3</span><span class="label">Now Build It</span></a>
-  <a href="#" class="current"><span class="pnum">4</span><span class="label">Run It Safely</span></a>
-</nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -308,6 +308,17 @@
     <p class="muted" style="margin-top:20px;">This is the frontier, and it moves fast — treat specific tools as a snapshot, not gospel. The principle is what lasts.</p>
   </section>
 
+</div>
+
+<!-- ===== LEARNING PATH (shared block · this page = step 4) ===== -->
+<div class="series-strip" aria-label="The AI Series — your path">
+  <span class="series-label">The AI Series · Your Path</span>
+  <div class="series-pills">
+    <a href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html" class="series-pill"><b>1</b> Choose a Tool</a>
+    <a href="https://shevastudio.com/now-what.html" class="series-pill"><b>2</b> Now What?</a>
+    <a href="https://shevastudio.com/now-build-it.html" class="series-pill"><b>3</b> Now Build It</a>
+    <span class="series-pill current"><b>4</b> Run It Safely</span>
+  </div>
 </div>
 
 <!-- FOOTER -->
