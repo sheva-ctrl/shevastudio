@@ -105,6 +105,11 @@
     transition:transform .15s ease,box-shadow .15s ease;
   }
   .download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.35)}
+  .download-btn.is-soon{
+    background:none;border:1px dashed var(--line);color:var(--muted);
+    cursor:default;font-weight:500;
+  }
+  .download-btn.is-soon:hover{transform:none;box-shadow:none}
 
   /* filmstrip */
   .filmstrip{margin-top:24px;display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
@@ -168,11 +173,11 @@
 
       <aside class="sidebar" id="sidebar">
         <!-- bullets injected here -->
-        <a class="download-btn" href="#" id="downloadBtn">Download all slides (zip)</a>
+        <span class="download-btn is-soon" aria-disabled="true">Downloads coming soon</span>
       </aside>
     </div>
 
-    <p class="note">Concept demo — copy and deck list are placeholders pulled from your existing content ideas. Swap in your real decks and slide counts before this goes live.</p>
+    <p class="note">These decks are previews &mdash; downloads open here soon. In the meantime, <a href="index.html#connect" style="color:var(--teal-2);">find me where you already scroll</a> for the same ideas in short form.</p>
   </div>
 </main>
 
@@ -254,7 +259,7 @@
           <div class="bullet-text">${b.text}</div>
         </div>
       </div>
-    `).join('') + '<a class="download-btn" href="#" id="downloadBtn">Download all slides (zip)</a>';
+    `).join('') + '<span class="download-btn is-soon" aria-disabled="true">Downloads coming soon</span>';
 
     Array.from(filmstrip.children).forEach((el,i)=>{
       el.classList.toggle('active', i===current);
