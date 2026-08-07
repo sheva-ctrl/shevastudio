@@ -1,332 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charSet="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <!-- Using the original fonts (Syne, Space Mono, Lexend) -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No-Brainer Decks — Sheva Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#6020D0;
+    --violet-2:#7C3AED;
+    --teal:#0891B2;
+    --teal-2:#06B6D4;
+    --grad-full:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
+    --bg:#100E1A;
+    --card:#1B1830;
+    --card-2:#221E3B;
+    --line:#332E52;
+    --ink:#F3F1F8;
+    --muted:#A9A3BE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Lexend',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .shell{max-width:1100px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}
 
-    <title>No-Brainer Decks (Sheva Studio Remake) — ADHD Carousels</title>
-    
-    <style>
-        /* =========================================
-           CORE BRAND COLOR VARIABLES (SHEVASTUDIO.COM)
-           ========================================= */
-        :root {
-            /* Background: Near-Black */
-            --bg-page: #121212; 
-            /* Text (Primary): Cream/Gold */
-            --text-sheva: #E4D0A0; 
-            /* Text (Secondary/Accent): White */
-            --text-white: #FFFFFF; 
-            
-            /* UI Elements & Lines */
-            --color-border: #333333; /* Dark subtle line */
-            --color-card-bg: #1A1A1A; /* Slightly lighter card background */
-            --color-muted-text: #888888; /* Dimmed gray text */
-            
-            /* Gradient defined by brand grey/black */
-            --gradient-brand: linear-gradient(135deg, #1A1A1A 0%, #000000 100%);
-            
-            /* Base definitions (mapping to Tailwind-style utility classes used in the HTML) */
-            --background: var(--bg-page);
-            --foreground: var(--text-sheva);
-            --primary-foreground: var(--text-sheva);
-            --muted: #2A2A2A;
-            --muted-foreground: var(--color-muted-text);
-            --border: var(--color-border);
-            --accent: var(--text-white);
-            --accent-foreground: var(--text-sheva);
-            --card: var(--color-card-bg);
-            --shadow-brand: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
+  /* nav */
+  .site-nav{border-bottom:1px solid var(--line);background:rgba(16,14,26,.9);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
+  .site-nav .shell{padding:16px clamp(18px,4vw,48px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .nav-home{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
+  .nav-mark{width:24px;height:24px;border-radius:7px;background:var(--grad-full);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:#fff}
+  .nav-word{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.06em}
+  .nav-links{display:flex;gap:4px;flex-wrap:wrap}
+  .nav-link{font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease}
+  .nav-link:hover{background:var(--card-2);color:var(--ink)}
+  .nav-link.current{background:var(--grad-full);color:#fff}
 
-        /* Basic Setup and Reset */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Lexend", system-ui, sans-serif;
-            background-color: var(--background);
-            color: var(--foreground);
-            line-height: 1.5;
-        }
+  main{padding:clamp(36px,6vw,60px) 0 80px}
+  .page-eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+  .page-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,3.6vw,34px);margin-bottom:clamp(28px,5vw,44px)}
 
-        /* =========================================
-           SHEVA STUDIO THEME CSS (OVERRIDING DEFAULTS)
-           ========================================= */
+  /* deck viewer */
+  .deck-viewer{display:grid;grid-template-columns:1fr;gap:20px}
+  @media (min-width:860px){.deck-viewer{grid-template-columns:1fr 300px}}
 
-        /* Text Contrast and Gradients */
-        .text-gradient-brand {
-            background-color: var(--text-white); /* High contrast accent */
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
+  .hero-row{display:flex;align-items:center;gap:14px}
+  .arrow-btn{
+    flex-shrink:0;width:40px;height:40px;border-radius:50%;
+    background:var(--card);border:1px solid var(--line);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    transition:border-color .15s ease,transform .15s ease;
+  }
+  .arrow-btn:hover{border-color:var(--teal);transform:scale(1.06)}
+  .arrow-btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .arrow-btn svg{width:18px;height:18px}
 
-        /* Buttons & Badges (Standard Layout) */
-        .bg-gradient-brand {
-            background: var(--gradient-brand);
-            border: 1px solid #444; /* Give the black buttons a subtle border */
-        }
+  .hero-card{
+    flex:1;min-width:0;position:relative;overflow:hidden;border-radius:20px;
+    background:linear-gradient(160deg,var(--card-2) 0%,var(--card) 100%);
+    border:1px solid var(--line);padding:clamp(28px,5vw,48px);min-height:280px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .hero-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad-full);
+  }
+  .hero-card::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    box-shadow:0 0 60px -10px rgba(124,58,237,.25) inset;
+  }
+  .deck-eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-2);margin-bottom:14px}
+  .deck-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);line-height:1.12;margin-bottom:16px;max-width:20ch}
+  .deck-desc{color:var(--muted);font-size:15.5px;font-weight:300;max-width:52ch;line-height:1.65}
+  .deck-counter{
+    position:absolute;right:clamp(20px,4vw,40px);bottom:clamp(14px,3vw,24px);
+    font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(40px,7vw,64px);
+    color:var(--line);line-height:1;
+  }
 
-        b, strong { font-weight: 600; color: var(--text-white); }
+  /* sidebar */
+  .sidebar{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:26px 24px;display:flex;flex-direction:column;gap:20px;
+  }
+  .bullet{display:flex;gap:12px;align-items:flex-start}
+  .bullet-icon{
+    flex-shrink:0;width:34px;height:34px;border-radius:10px;
+    background:var(--card-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--teal-2);
+  }
+  .bullet-icon svg{width:17px;height:17px}
+  .bullet-label{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px}
+  .bullet-text{font-size:13px;color:var(--muted);font-weight:300;line-height:1.5}
+  .download-btn{
+    margin-top:4px;width:100%;text-align:center;
+    background:var(--grad-full);color:#fff;border:none;border-radius:12px;
+    padding:13px 16px;font-family:'Lexend',sans-serif;font-weight:600;font-size:14px;
+    cursor:pointer;text-decoration:none;display:block;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.35)}
 
-        /* Kicker (Subtitle line) */
-        .kicker {
-            font-family: "Space Mono", monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-size: 11px;
-            color: var(--muted-foreground);
-        }
+  /* filmstrip */
+  .filmstrip{margin-top:24px;display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+  .film-item{
+    flex-shrink:0;width:150px;height:96px;border-radius:12px;padding:14px;
+    background:var(--card);border:1.5px solid var(--line);cursor:pointer;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:border-color .15s ease,transform .15s ease;
+    font-family:'Lexend',sans-serif;
+  }
+  .film-item:hover{transform:translateY(-2px)}
+  .film-item.active{border-color:var(--teal-2);box-shadow:0 0 0 1px var(--teal-2),0 8px 20px -6px rgba(6,182,212,.4)}
+  .film-num{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)}
+  .film-title{font-size:12.5px;font-weight:500;line-height:1.3}
 
-        /* Navigation links (Active state) */
-        a[data-status="active"] {
-            border: 1px solid var(--text-sheva);
-        }
-
-        /* Utility Helpers */
-        .min-h-screen { min-height: 100vh; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .max-w-6xl { max-w: 1200px; }
-        .flex { display: flex; }
-        .flex-wrap { flex-wrap: wrap; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .gap-1 { gap: 0.25rem; }
-        .gap-2 { gap: 0.5rem; }
-        .gap-3 { gap: 0.75rem; }
-        .grid { display: grid; }
-        .pt-12 { padding-top: 3rem; }
-        .pb-8 { padding-bottom: 2rem; }
-        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
-        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-        .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
-        .px-8 { padding-left: 2rem; padding-right: 2rem; }
-        .pb-24 { padding-bottom: 6rem; }
-        .mt-4 { margin-top: 1rem; }
-        .mt-8 { margin-top: 2rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .rounded-full { border-radius: 9999px; }
-        .font-mono { font-family: "Space Mono", monospace; }
-        .font-extrabold { font-weight: 800; }
-        .font-semibold { font-weight: 600; }
-        .font-medium { font-weight: 500; }
-        .font-light { font-weight: 300; }
-        .transition-colors { transition: color 0.2s, background-color 0.2s; }
-        .sticky { position: sticky; }
-        .top-0 { top: 0; }
-        .z-50 { z-index: 50; }
-        .w-full { width: 100%; }
-        .border-b { border-bottom: 1px solid var(--border); }
-        .border-y { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .border-dashed { border-style: dashed; }
-        .text-foreground { color: var(--foreground); }
-        .text-muted-foreground { color: var(--muted-foreground); }
-        .shadow-\[var\(--shadow-brand\)\] { box-shadow: var(--shadow-brand); }
-        .hover\:border-accent:hover { border-color: var(--accent); }
-        .hover\:text-foreground:hover { color: var(--foreground); }
-
-        /* =========================================
-           TAILWIND-STYLE RESPONSIVE OVERRIDES (GRID)
-           ========================================= */
-        @media (min-width: 640px) {
-            .sm\:px-8 { padding-left: 2rem; padding-right: 2rem; }
-            .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .sm\:flex { display: flex; }
-        }
-        @media (min-width: 1024px) {
-            .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-            .lg\:grid-cols-\[minmax\(0\2c 1fr\)_320px\] {
-                grid-template-columns: minmax(0, 1fr) 320px;
-            }
-        }
-
-        /* Small components that rely on Tailwind structure */
-        header.pt-12.pb-8 h1 {
-            font-size: clamp(2.1rem, 6vw, 3.4rem);
-            line-height: 1.02;
-        }
-
-        ol.grid li .bg-gradient-brand {
-            display: flex; height: 1.75rem; width: 1.75rem;
-            align-items: center; justify-content: center;
-            border-radius: 9999px;
-            font-size: 12px;
-        }
-
-        .relative.w-\[74px\].flex-none { width: 74px; }
-        .aspect-\[4\/5\] { aspect-ratio: 4 / 5; }
-        .aspect-\[1\/1\] { aspect-ratio: 1 / 1; }
-        
-        button { cursor: pointer; border: none; font-family: inherit; }
-        button:disabled { opacity: 0.3; cursor: default; }
-
-        /* =========================================
-           SLIDE PREVIEW (FILMSTRIP / MAIN FRAME)
-           ========================================= */
-        .border-accent { border-color: var(--accent) !important; }
-        .-translate-y-1 { transform: translateY(-0.25rem); }
-        .card-topline::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(100deg, #1A1A1A 0%, #333 45%, #FFFFFF 100%);
-        }
-        
-    </style>
+  .note{margin-top:32px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);max-width:60ch;line-height:1.7}
+</style>
 </head>
-<body data-tsd-source="/src/routes/__root.tsx:112:7">
-    <div class="min-h-screen bg-background">
-        
-        <!-- SITE NAVIGATION -->
-        <header class="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-            <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-3 sm:px-8">
-                <a href="/" class="font-mono text-[13px] font-bold tracking-[0.08em] text-foreground transition-colors hover:text-primary">
-                    🏠 SHEVA STUDIO
-                </a>
-                <ul class="flex flex-wrap gap-1">
-                    <li><a href="/" class="inline-block rounded-full px-3.5 py-1.5 text-[13.5px] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">Home</a></li>
-                    <li><a class="bg-gradient-brand inline-block rounded-full px-3.5 py-1.5 text-[13.5px] font-medium text-primary-foreground active" href="/decks" data-status="active" aria-current="page">No-Brainer Decks</a></li>
-                    <li><a href="/decks/build" class="inline-block rounded-full px-3.5 py-1.5 text-[13.5px] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">Build Your Own</a></li>
-                </ul>
-            </nav>
-        </header>
+<body>
 
-        <!-- MAIN CONTENT AREA -->
-        <main class="mx-auto max-w-6xl px-5 pb-24 sm:px-8">
-            <header class="pt-12 pb-8">
-                <p class="kicker">ADHD Learning Pack · Sheva Studio</p>
-                <h1 class="mt-4 text-[clamp(2.1rem,6vw,3.4rem)] leading-[1.02] font-extrabold">
-                    No-brainer decks.<br/>
-                    <span class="text-gradient-brand">Just grab and post.</span>
-                </h1>
-                <p class="mt-4 max-w-xl text-[17px] leading-relaxed font-light text-muted-foreground">Three finished ADHD challenge carousels. Nothing to design, nothing to decide. Flip through, download, post in order.</p>
-            </header>
-
-            <!-- STEPS LIST -->
-            <ol class="grid gap-3 border-y border-border py-5 sm:grid-cols-2 lg:grid-cols-4">
-                <li class="flex gap-3">
-                    <span class="bg-gradient-brand">1</span>
-                    <span class="text-[14px] leading-snug"><b class="font-semibold">Pick.</b> <span class="text-muted-foreground">Choose a challenge. Each one stands alone.</span></span>
-                </li>
-                <li class="flex gap-3">
-                    <span class="bg-gradient-brand">2</span>
-                    <span class="text-[14px] leading-snug"><b class="font-semibold">Flip.</b> <span class="text-muted-foreground">Arrow keys or the filmstrip. Dark = superpower, light = habit.</span></span>
-                </li>
-                <li class="flex gap-3">
-                    <span class="bg-gradient-brand">3</span>
-                    <span class="text-[14px] leading-snug"><b class="font-semibold">Grab.</b> <span class="text-muted-foreground">One slide as PNG, or the whole deck as a zip.</span></span>
-                </li>
-                <li class="flex gap-3">
-                    <span class="bg-gradient-brand">4</span>
-                    <span class="text-[14px] leading-snug"><b class="font-semibold">Post.</b> <span class="text-muted-foreground">Copy the caption below. Post the slides in number order.</span></span>
-                </li>
-            </ol>
-
-            <!-- CHALLENGE PICKER -->
-            <div class="mt-8 flex flex-wrap gap-2">
-                <button class="bg-gradient-brand rounded-full px-4 py-2 text-[14px] font-semibold text-primary-foreground shadow-[var(--shadow-brand)]">
-                    <span aria-hidden="true" class="mr-1.5">🔥</span>The Dopamine Challenge
-                </button>
-                <button class="rounded-full border border-border px-4 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:border-accent hover:text-foreground">
-                    <span aria-hidden="true" class="mr-1.5">🎯</span>The Focus Challenge
-                </button>
-                <button class="rounded-full border border-border px-4 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:border-accent hover:text-foreground">
-                    <span aria-hidden="true" class="mr-1.5">🧘</span>The Reset Challenge
-                </button>
-            </div>
-
-            <!-- CAROUSEL SECTION -->
-            <section class="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-                
-                <!-- Slide Preview Column -->
-                <div>
-                    <div class="relative mx-auto w-full max-w-[440px]">
-                        <!-- Main slide frame -->
-                        <div class="relative aspect-[4/5] w-full overflow-hidden rise rounded-2xl border border-border shadow-[var(--shadow-brand)] bg-card">
-                            
-                            <!-- Slide 1 Content (Sheva Dark Remake) -->
-                            <div style="width:1080px;height:1350px;position:absolute;top:0;left:0;transform:scale(0.2);transform-origin:top left;overflow:hidden;font-family:'Lexend', sans-serif;color:#FFFFFF;display:flex;flex-direction:column;padding:96px 88px;background:#1A1A1A">
-                                <div style="position:absolute;top:0;left:0;right:0;height:10px;background:linear-gradient(100deg, #000 0%, #1A1A1A 45%, #FFFFFF 100%)"></div>
-                                <div style="position:absolute;top:60px;right:88px;font-family:'Space Mono', monospace;font-size:26px;letter-spacing:0.18em;opacity:0.5;">01</div>
-                                <div style="position:relative;z-index:2;margin-top:auto;margin-bottom:auto;display:flex;flex-direction:column;gap:40px">
-                                    <div style="font-family:'Syne', sans-serif;font-weight:800;font-size:124px;line-height:1.04;letter-spacing:-0.02em;color:#E4D0A0;white-space:pre-wrap">Introducing:
-The Dopamine Challenge</div>
-                                    <div style="font-size:40px;line-height:1.42;font-weight:300;max-width:860px;color:#FFFFFF;opacity:0.85">Five power moves for the brain that needs a running start. Save it, then start with move one.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Navigation Buttons -->
-                        <button disabled aria-label="Previous slide" class="absolute top-1/2 -left-3 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm sm:flex">←</button>
-                        <button aria-label="Next slide" class="absolute top-1/2 -right-3 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm sm:flex">→</button>
-                    </div>
-
-                    <!-- Slide Info/Controls -->
-                    <div class="mx-auto mt-4 flex max-w-[440px] items-center justify-between gap-3">
-                        <span class="font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase">01 / 13 · habit</span>
-                        <button class="rounded-full border border-border px-3.5 py-1.5 font-mono text-[12px] font-bold text-muted-foreground transition-colors hover:border-accent hover:text-foreground">↓ THIS SLIDE</button>
-                    </div>
-
-                    <!-- Filmstrip (Small previews) -->
-                    <div class="mt-6 -mx-5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0">
-                        <div class="flex gap-2.5">
-                            <!-- Thumb 1 -->
-                            <button aria-label="Go to slide 1" aria-current="true" class="relative w-[74px] flex-none overflow-hidden rounded-lg border-2 transition-all border-accent -translate-y-1 shadow-[var(--shadow-brand)]">
-                                <div class="aspect-[4/5] bg-[#1A1A1A]">
-                                    <div style="transform:scale(0.04);transform-origin:top left;width:1080px;height:1350px;color:#E4D0A0;background:#1A1A1A;padding:100px;font-family:Syne;font-size:100px;">INTRO: DOPAMINE</div>
-                                </div>
-                                <span class="absolute right-1 bottom-1 rounded bg-background/85 px-1 font-mono text-[9px] font-bold">1</span>
-                            </button>
-                            <!-- Thumb 2 (Muted) -->
-                            <button aria-label="Go to slide 2" class="relative w-[74px] flex-none overflow-hidden rounded-lg border-2 transition-all border-border opacity-60 hover:opacity-100">
-                                <div class="aspect-[4/5] bg-card">
-                                    <div style="transform:scale(0.04);transform-origin:top left;width:1080px;height:1350px;color:#E4D0A0;background:#1A1A1A;padding:100px;font-family:Syne;font-size:100px;">SUPERPOWER FUEL</div>
-                                </div>
-                                <span class="absolute right-1 bottom-1 rounded bg-background/85 px-1 font-mono text-[9px] font-bold">2</span>
-                            </button>
-                             <!-- Thumb 3 (Muted) -->
-                            <button aria-label="Go to slide 3" class="relative w-[74px] flex-none overflow-hidden rounded-lg border-2 transition-all border-border opacity-60 hover:opacity-100">
-                                <div class="aspect-[4/5] bg-card">
-                                    <div style="transform:scale(0.04);transform-origin:top left;width:1080px;height:1350px;color:#E4D0A0;background:#1A1A1A;padding:100px;font-family:Syne;font-size:100px;">ADHD ENGINE</div>
-                                </div>
-                                <span class="absolute right-1 bottom-1 rounded bg-background/85 px-1 font-mono text-[9px] font-bold">3</span>
-                            </button>
-                            <!-- Thumb 4 (Muted) -->
-                            <button aria-label="Go to slide 4" class="relative w-[74px] flex-none overflow-hidden rounded-lg border-2 transition-all border-border opacity-60 hover:opacity-100">
-                                <div class="aspect-[4/5] bg-card">
-                                    <div style="transform:scale(0.04);transform-origin:top left;width:1080px;height:1350px;color:#E4D0A0;background:#1A1A1A;padding:100px;font-family:Syne;font-size:100px;">MOVE ONE: PACING</div>
-                                </div>
-                                <span class="absolute right-1 bottom-1 rounded bg-background/85 px-1 font-mono text-[9px] font-bold">4</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aside Details Column -->
-                <aside class="space-y-4">
-                    <div class="card-topline relative overflow-hidden rounded-2xl border border-border bg-card p-5">
-                        <h2 class="mt-2 text-[19px] font-bold text-white">The Dopamine Challenge</h2>
-                        <p class="mt-1 text-[14px] leading-relaxed font-light text-muted-foreground">Five power moves for a brain that needs a running start</p>
-                        <p class="mt-3 font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase">13 slides · 4:5 · post in order</p>
-                        <button class="bg-gradient-brand mt-4 w-full rounded-full px-5 py-2.5 text-[14px] font-medium text-primary-foreground shadow-[var(--shadow-brand)] transition-transform hover:-translate-y-0.5 disabled:opacity-70">↓ Download all slides (zip)</button>
-                    </div>
-
-                    <div class="rounded-2xl border border-border bg-card p-5">
-                        <h3 class="font-mono text-[11px] font-bold tracking-[0.18em] text-muted-foreground uppercase">Caption + hashtags</h3>
-                        <p class="mt-3 text-[14.5px] leading-relaxed font-light text-foreground">Your ADHD brain isn't broken. It's just idling. Five moves that turn the engine over — dark slide is the superpower, light slide is the habit. Which one are you stealing?</p>
-                        <p class="mt-2 text-[13.5px] leading-relaxed text-accent-foreground/80 font-semibold">#ADHDChallenge #ADHDSuperpower #LateDiagnosedADHD #NeuroSpicy #ADHDHabits</p>
-                        <button class="mt-4 w-full rounded-full border border-border px-4 py-2 text-[13.5px] font-medium transition-colors hover:border-accent">Copy caption</button>
-                    </div>
-
-                    <div class="rounded-2xl border border-dashed border-border p-5">
-                        <p class="text-[14px] leading-relaxed font-light text-muted-foreground">Want it in your own words? Remix any of these, or let AI draft a whole new one.</p>
-                        <a href="/decks/build" class="mt-3 inline-flex rounded-full border border-border px-4 py-2 text-[13.5px] font-medium transition-colors hover:border-accent">Build your own →</a>
-                    </div>
-                </aside>
-            </section>
-        </main>
+<nav class="site-nav">
+  <div class="shell">
+    <a href="index.html" class="nav-home">
+      <span class="nav-mark">S</span>
+      <span class="nav-word">SHEVA STUDIO</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="guides.html">Guides</a>
+      <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
+      <a class="nav-link current" href="no-brainer-decks.html">No-Brainer Decks</a>
+      <a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
     </div>
+  </div>
+</nav>
+
+<main>
+  <div class="shell">
+    <p class="page-eyebrow">Grab &amp; Go</p>
+    <h1 class="page-title">No-Brainer Decks</h1>
+
+    <div class="deck-viewer">
+      <div>
+        <div class="hero-row">
+          <button class="arrow-btn" id="prevBtn" aria-label="Previous deck">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="hero-card" id="heroCard">
+            <p class="deck-eyebrow" id="deckEyebrow">Introducing</p>
+            <h2 class="deck-title" id="deckTitle"></h2>
+            <p class="deck-desc" id="deckDesc"></p>
+            <span class="deck-counter" id="deckCounter"></span>
+          </div>
+          <button class="arrow-btn" id="nextBtn" aria-label="Next deck">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="filmstrip" id="filmstrip"></div>
+      </div>
+
+      <aside class="sidebar" id="sidebar">
+        <!-- bullets injected here -->
+        <a class="download-btn" href="#" id="downloadBtn">Download all slides (zip)</a>
+      </aside>
+    </div>
+
+    <p class="note">Concept demo — copy and deck list are placeholders pulled from your existing content ideas. Swap in your real decks and slide counts before this goes live.</p>
+  </div>
+</main>
+
+<script>
+  const ICONS = {
+    flame: '<path d="M12 2c1 3-2 4-2 7a4 4 0 008 0c0-2-1-3-1-3s2 2 2 6a7 7 0 11-14 0c0-5 4-7 7-10z"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    star: '<path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7.1L12 17.8l-6.2 3.5L7 14.2 2 9.3l7.1-.7z"/>',
+    timer: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/>',
+    repeat: '<path d="M17 2l4 4-4 4M3 12v-2a4 4 0 014-4h14M7 22l-4-4 4-4M21 12v2a4 4 0 01-4 4H3"/>',
+    users: '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>',
+    eye: '<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>'
+  };
+  function svg(name){
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ICONS[name]+'</svg>';
+  }
+
+  const decks = [
+    {
+      title:"The Dopamine Challenge",
+      desc:"Your brain skips the easy task and races toward the impossible one. This deck gives it a target it actually wants to chase — one spark, one timer, one win at a time.",
+      bullets:[
+        {icon:"flame", label:"The Challenge", text:"Your brain refuses to start. This deck gives it a reason to."},
+        {icon:"target", label:"Your Target", text:"Pick one task. Set a 2-minute timer. Beat it."},
+        {icon:"star", label:"The Payoff", text:"Small wins stack. That's the whole system."}
+      ]
+    },
+    {
+      title:"The 2-Minute Rule",
+      desc:"Gamification wakes up an ADHD brain faster than willpower ever will. Set the timer. Race it. Watch what happens when the task becomes a game instead of a wall.",
+      bullets:[
+        {icon:"timer", label:"Set It", text:"Two minutes on the clock. No negotiating."},
+        {icon:"target", label:"Beat It", text:"Race the timer, not the to-do list."},
+        {icon:"repeat", label:"Repeat It", text:"Momentum builds on the second round, not the first."}
+      ]
+    },
+    {
+      title:"Object Permanence Fix",
+      desc:"If you can't see it, it doesn't exist — until it reappears somewhere else entirely. A deck for the wrench that vanished and the keys that never stay put.",
+      bullets:[
+        {icon:"eye", label:"The Glitch", text:"Out of sight really does mean out of mind."},
+        {icon:"target", label:"The Fix", text:"Visible storage beats organized storage, every time."},
+        {icon:"star", label:"The Win", text:"You stop losing the thing. That's the whole goal."}
+      ]
+    },
+    {
+      title:"Body Double Mode",
+      desc:"Pick your mode: silent coworker, hype coach, or accountability stare. Three ways to borrow focus when yours won't show up on its own.",
+      bullets:[
+        {icon:"users", label:"Silent Mode", text:"Someone just... in the room. That's enough."},
+        {icon:"flame", label:"Hype Mode", text:"Loud encouragement, on purpose, out loud."},
+        {icon:"eye", label:"Stare Mode", text:"The gentle pressure of being watched, working."}
+      ]
+    }
+  ];
+
+  let current = 0;
+  const heroCard = document.getElementById('heroCard');
+  const deckTitle = document.getElementById('deckTitle');
+  const deckDesc = document.getElementById('deckDesc');
+  const deckCounter = document.getElementById('deckCounter');
+  const sidebar = document.getElementById('sidebar');
+  const filmstrip = document.getElementById('filmstrip');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  function pad(n){ return n < 10 ? '0'+n : ''+n; }
+
+  function render(){
+    const d = decks[current];
+    deckTitle.textContent = d.title;
+    deckDesc.textContent = d.desc;
+    deckCounter.textContent = pad(current+1);
+
+    sidebar.innerHTML = d.bullets.map(b => `
+      <div class="bullet">
+        <span class="bullet-icon">${svg(b.icon)}</span>
+        <div>
+          <div class="bullet-label">${b.label}</div>
+          <div class="bullet-text">${b.text}</div>
+        </div>
+      </div>
+    `).join('') + '<a class="download-btn" href="#" id="downloadBtn">Download all slides (zip)</a>';
+
+    Array.from(filmstrip.children).forEach((el,i)=>{
+      el.classList.toggle('active', i===current);
+    });
+  }
+
+  filmstrip.innerHTML = decks.map((d,i) => `
+    <div class="film-item" data-i="${i}">
+      <span class="film-num">${pad(i+1)}</span>
+      <span class="film-title">${d.title}</span>
+    </div>
+  `).join('');
+
+  filmstrip.querySelectorAll('.film-item').forEach(el=>{
+    el.addEventListener('click', ()=>{ current = parseInt(el.dataset.i,10); render(); });
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', ()=>{
+    current = (current - 1 + decks.length) % decks.length; render();
+  });
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    current = (current + 1) % decks.length; render();
+  });
+
+  render();
+</script>
+
 </body>
 </html>
