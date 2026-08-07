@@ -63,27 +63,40 @@
     transition:background .15s ease,color .15s ease;white-space:nowrap;
   }
   .nav-link:hover{background:#F0EFF5;color:var(--ink)}
+  .nav-link.current{background:var(--grad-full);color:#fff}
   .nav-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 
-  main{padding:clamp(48px,8vw,84px) 0 0}
+  main{padding:clamp(40px,7vw,72px) 0 0}
+
+  /* ---- hero photo ---- */
+  .hero-sticker{text-align:center;margin-bottom:26px}
+  .hero-sticker a{display:inline-block;text-decoration:none}
+  .brand-sticker{
+    width:140px;height:auto;background:transparent;
+    filter:drop-shadow(0px 10px 20px rgba(21,21,28,0.12));
+    transition:transform .3s cubic-bezier(.2,.7,.3,1);
+    cursor:pointer;margin:0 auto;
+  }
+  .hero-sticker a:hover .brand-sticker{transform:translateY(-4px) scale(1.03) rotate(2deg);filter:drop-shadow(0px 14px 24px rgba(96,32,208,0.18))}
 
   /* ---- hero ---- */
+  .hero-copy{text-align:center}
   .kicker{
     font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
     color:var(--violet);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
   }
-  .kicker::before{content:"";width:30px;height:2px;background:var(--grad-full);border-radius:2px}
+  .kicker::before,.kicker::after{content:"";width:26px;height:2px;background:var(--grad-full);border-radius:2px}
   h1{
     font-family:'Syne',sans-serif;font-weight:800;
-    font-size:clamp(32px,5.2vw,52px);line-height:1.08;letter-spacing:-0.01em;
-    max-width:15ch;margin-bottom:16px;
+    font-size:clamp(30px,5vw,48px);line-height:1.1;letter-spacing:-0.01em;
+    margin:0 auto 16px;max-width:16ch;
   }
   h1 .accent{background:var(--grad-full);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
   .sub-headline{
     font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
     color:var(--teal);font-weight:700;margin-bottom:22px;
   }
-  .lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);font-weight:300;max-width:56ch;margin-bottom:8px}
+  .lede{font-size:clamp(16.5px,2vw,19px);color:var(--muted);font-weight:300;max-width:52ch;margin:0 auto}
   .lede strong{color:var(--ink);font-weight:500}
 
   /* ---- fork (signature element) ---- */
@@ -105,20 +118,12 @@
   }
   @media (min-width:640px){
     .fork-grid{grid-template-columns:1fr 1fr;gap:0}
-    .fork-connector{
-      position:absolute;top:0;left:0;right:0;height:26px;pointer-events:none;
-    }
-    .fork-connector::before,.fork-connector::after{
-      content:"";position:absolute;top:0;width:52%;height:2px;
-      transform-origin:top center;
-    }
+    .fork-connector{position:absolute;top:0;left:0;right:0;height:26px;pointer-events:none}
+    .fork-connector::before,.fork-connector::after{content:"";position:absolute;top:0;width:52%;height:2px;transform-origin:top center}
     .fork-connector::before{left:0;background:var(--violet-2);transform:rotate(7deg) translateY(4px)}
     .fork-connector::after{right:0;background:var(--teal-2);transform:rotate(-7deg) translateY(4px)}
   }
-  .lane-card{
-    background:var(--card);border:1px solid var(--line);border-radius:18px;
-    padding:30px 26px;display:flex;flex-direction:column;
-  }
+  .lane-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px;display:flex;flex-direction:column}
   @media (min-width:640px){
     .lane-card--a{border-radius:18px 4px 18px 18px;margin-right:8px}
     .lane-card--b{border-radius:4px 18px 18px 18px;margin-left:8px}
@@ -126,10 +131,7 @@
   .lane-card::before{content:"";display:block;width:36px;height:4px;border-radius:4px;margin-bottom:18px}
   .lane-card--a::before{background:var(--grad-violet)}
   .lane-card--b::before{background:var(--grad-teal)}
-  .lane-tag{
-    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;
-    text-transform:uppercase;display:block;margin-bottom:10px;
-  }
+  .lane-tag{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:10px}
   .lane-card--a .lane-tag{color:var(--violet)}
   .lane-card--b .lane-tag{color:var(--teal)}
   .lane-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:23px;line-height:1.2;margin-bottom:10px}
@@ -142,70 +144,47 @@
   /* ---- lane sections ---- */
   .lane-section{margin-top:clamp(72px,10vw,110px);scroll-margin-top:90px}
   .section-head{margin-bottom:28px}
-  .section-eyebrow{
-    font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
-    font-weight:700;margin-bottom:10px;
-  }
+  .section-eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
   #lead .section-eyebrow{color:var(--violet)}
   #create .section-eyebrow{color:var(--teal)}
   .section-head h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,3.4vw,28px);letter-spacing:-0.01em}
 
   .grid{display:grid;grid-template-columns:1fr;gap:18px}
   @media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
-  #lead .grid{grid-template-columns:1fr}
-  @media (min-width:640px){#lead .grid{grid-template-columns:repeat(2,1fr)}}
 
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:26px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column;
-  }
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column}
   .card::before{content:"";position:absolute;left:0;top:0;right:0;height:3px}
   #lead .card::before{background:var(--grad-violet)}
   #create .card::before{background:var(--grad-teal)}
-  .card .tag{
-    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;
-    text-transform:uppercase;display:block;margin-bottom:12px;
-  }
+  .card .tag{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:12px}
   #lead .card .tag{color:var(--violet)}
   #create .card .tag{color:var(--teal)}
   .card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:19px;line-height:1.25;margin-bottom:10px;letter-spacing:-0.01em}
   .card p{font-size:14.5px;color:var(--muted);font-weight:300;line-height:1.6;margin-bottom:18px}
-  .card .card-link{
-    font-size:14px;font-weight:500;text-decoration:none;margin-top:auto;
-    display:inline-flex;align-items:center;gap:4px;
-  }
+  .card .card-link{font-size:14px;font-weight:500;text-decoration:none;margin-top:auto;display:inline-flex;align-items:center;gap:4px}
   #lead .card .card-link{color:var(--violet)}
   #create .card .card-link{color:var(--teal)}
   .card .card-link:hover{text-decoration:underline}
 
   /* ---- connect ---- */
-  .social-grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;
-  }
+  .social-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
   .social-link{
-    display:flex;flex-direction:column;gap:2px;
+    display:flex;align-items:center;gap:12px;
     background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;
     text-decoration:none;color:var(--ink);transition:transform .15s ease,border-color .15s ease;
   }
   .social-link:hover{transform:translateY(-2px);border-color:var(--violet)}
-  .social-platform{
-    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;
-    color:var(--violet);text-transform:uppercase;margin-bottom:2px;
-  }
-  .social-handle{font-size:14px;color:var(--muted)}
+  .social-link img{flex-shrink:0;border-radius:4px;object-fit:contain}
+  .social-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .social-platform{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--violet);text-transform:uppercase}
+  .social-handle{font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
   /* ---- cta ---- */
-  .cta{
-    margin-top:clamp(64px,10vw,100px);border-top:1px solid var(--line);padding-top:36px;
-  }
+  .cta{margin-top:clamp(64px,10vw,100px);border-top:1px solid var(--line);padding-top:36px}
   .cta h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);letter-spacing:-0.01em;margin-bottom:14px}
   .cta p{color:var(--muted);font-weight:300;max-width:52ch;margin-bottom:24px}
   .btns{display:flex;flex-wrap:wrap;gap:12px}
-  .btn{
-    font-family:'Lexend',sans-serif;font-weight:500;font-size:15px;text-decoration:none;
-    border-radius:999px;padding:13px 24px;display:inline-flex;align-items:center;gap:8px;
-    transition:transform .15s ease,box-shadow .15s ease;
-  }
+  .btn{font-family:'Lexend',sans-serif;font-weight:500;font-size:15px;text-decoration:none;border-radius:999px;padding:13px 24px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,box-shadow .15s ease}
   .btn-primary{background:var(--grad-full);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
   .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
   .btn:hover{transform:translateY(-2px)}
@@ -213,10 +192,7 @@
   .btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
   .btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
 
-  footer{
-    margin-top:clamp(48px,8vw,72px);padding:28px 0 56px;
-    font-family:'Space Mono',monospace;font-size:12.5px;color:var(--muted);
-  }
+  footer{margin-top:clamp(48px,8vw,72px);padding:28px 0 56px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--muted)}
   footer a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
   footer a:hover{border-bottom-color:var(--violet)}
 
@@ -235,11 +211,11 @@
       <span class="nav-word">SHEVA STUDIO</span>
     </a>
     <div class="nav-links">
-      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link current" href="index.html">Home</a>
       <a class="nav-link" href="guides.html">Guides</a>
       <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
       <a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
-      <a class="nav-link" href="build-your-own.html">Build Your Own</a>
+      <a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
     </div>
   </div>
 </nav>
@@ -249,13 +225,20 @@
 
     <!-- HERO -->
     <section class="rise d1">
-      <p class="kicker">AI Transformation Leader · Seattle</p>
-      <h1>AI, translated for <span class="accent">actual humans.</span></h1>
-      <p class="sub-headline">Microsoft + Blue Origin Alumni</p>
-      <p class="lede">
-        I turn complex AI into clear, cinematic stories &mdash; for the boardroom and for brains wired like mine.
-        <strong>Enterprise strategy by day. ADHD creator by night.</strong> Same person, same clarity.
-      </p>
+      <div class="hero-sticker">
+        <a href="#connect">
+          <img src="sheva.png" alt="Sheva Studio Sticker" class="brand-sticker">
+        </a>
+      </div>
+      <div class="hero-copy">
+        <p class="kicker">AI Transformation Leader · Seattle</p>
+        <h1>AI, translated for <span class="accent">actual humans.</span></h1>
+        <p class="sub-headline">Microsoft + Blue Origin Alumni</p>
+        <p class="lede">
+          I turn complex AI into clear, cinematic stories &mdash; for the boardroom and for brains wired like mine.
+          <strong>Enterprise strategy by day. ADHD creator by night.</strong> Same person, same clarity.
+        </p>
+      </div>
     </section>
 
     <!-- FORK -->
@@ -290,7 +273,7 @@
           <span class="tag">Training</span>
           <h3>Intro to AI</h3>
           <p>A short series for people who want to actually use AI minus the jargon, the hype, and the open-tabs rabbit hole.</p>
-          <a class="card-link" href="guides.html#intro">Start Series →</a>
+          <a class="card-link" href="Sheva-Studio-Intro-to-AI.html">Start Series →</a>
         </div>
         <div class="card">
           <span class="tag">Guides</span>
@@ -302,7 +285,7 @@
           <span class="tag">Community</span>
           <h3>Side by Side Collective</h3>
           <p>Real connection, not curated. Systems built for different brains.</p>
-          <a class="card-link" href="#connect">Join Group →</a>
+          <a class="card-link" href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" rel="noopener">Join Group →</a>
         </div>
         <div class="card">
           <span class="tag">Tool</span>
@@ -330,7 +313,7 @@
           <span class="tag">Make Your Own</span>
           <h3>Build-Your-Own Decks</h3>
           <p>Same dark/light carousel format, but editable. Swap the words, add slides, make it yours.</p>
-          <a class="card-link" href="build-your-own.html">Start Building →</a>
+          <a class="card-link" href="card-flip-generator.html">Start Building →</a>
         </div>
       </div>
     </section>
@@ -343,22 +326,28 @@
       </div>
       <div class="social-grid">
         <a class="social-link" href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">
-          <span class="social-platform">TikTok</span><span class="social-handle">@sheva.studio</span>
+          <img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=128" alt="TikTok logo" width="20" height="20" loading="lazy">
+          <div class="social-text"><span class="social-platform">TikTok</span><span class="social-handle">@sheva.studio</span></div>
         </a>
         <a class="social-link" href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">
-          <span class="social-platform">YouTube</span><span class="social-handle">@sheva.studio</span>
+          <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="YouTube logo" width="20" height="20" loading="lazy">
+          <div class="social-text"><span class="social-platform">YouTube</span><span class="social-handle">@sheva.studio</span></div>
         </a>
         <a class="social-link" href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">
-          <span class="social-platform">Instagram</span><span class="social-handle">@sheva.studios</span>
+          <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=128" alt="Instagram logo" width="20" height="20" loading="lazy">
+          <div class="social-text"><span class="social-platform">Instagram</span><span class="social-handle">@sheva.studios</span></div>
         </a>
-        <a class="social-link" href="https://linkedin.com/in/shevanoland" target="_blank" rel="noopener">
-          <span class="social-platform">LinkedIn</span><span class="social-handle">shevanoland</span>
+        <a class="social-link" href="https://linkedin.com/in/elishevanoland" target="_blank" rel="noopener">
+          <img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=128" alt="LinkedIn logo" width="20" height="20" loading="lazy">
+          <div class="social-text"><span class="social-platform">LinkedIn</span><span class="social-handle">shevanoland</span></div>
         </a>
         <a class="social-link" href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">
-          <span class="social-platform">Facebook</span><span class="social-handle">Sheva Kay Studio</span>
+          <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=128" alt="Facebook logo" width="20" height="20" loading="lazy">
+          <div class="social-text"><span class="social-platform">Facebook</span><span class="social-handle">ShevaKayStudio</span></div>
         </a>
         <a class="social-link" href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">
-          <span class="social-platform">Amazon Shop</span><span class="social-handle">Scribing Life</span>
+          <img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=128" alt="Amazon logo" width="20" height="20" loading="lazy">
+          <div class="social-text"><span class="social-platform">Amazon Shop</span><span class="social-handle">scribinglife</span></div>
         </a>
       </div>
     </section>
@@ -369,7 +358,7 @@
       <p>1:1 consultations, team workshops, conference talks. No generic playbook &mdash; just a plan that fits how you actually work.</p>
       <div class="btns">
         <a class="btn btn-primary" href="mailto:sheva@shevastudio.com?subject=Consultation%20Inquiry">Book a Consultation →</a>
-        <a class="btn btn-ghost" href="#lead">See Free Tools ↑</a>
+        <a class="btn btn-ghost" href="Sheva-Studio-Intro-to-AI.html">Get Started with AI</a>
       </div>
     </section>
 
