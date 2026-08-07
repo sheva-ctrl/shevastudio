@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sheva Studio — AI Transformation Leader</title>
+<meta name="description" content="AI transformation leader and ADHD creator. Enterprise AI strategy and free ADHD-friendly creator tools, from one person who does both.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,15 +13,19 @@
     --violet:#6020D0;
     --violet-2:#7C3AED;
     --teal:#0891B2;
+    --teal-2:#06B6D4;
     --ink:#15151C;
     --muted:#55555F;
     --line:#E7E5EE;
     --bg:#FCFCFE;
     --card:#FFFFFF;
-    --grad:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
+    --grad-violet:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 100%);
+    --grad-teal:linear-gradient(100deg,var(--teal) 0%,var(--teal-2) 100%);
+    --grad-full:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
     font-family:'Lexend',system-ui,sans-serif;
     background:var(--bg);
@@ -28,331 +33,353 @@
     line-height:1.65;
     font-weight:400;
     -webkit-font-smoothing:antialiased;
-    padding:clamp(28px,6vw,72px) clamp(20px,5vw,64px);
   }
-  .wrap{max-width:880px;margin:0 auto}
+  .shell{max-width:960px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+  img{max-width:100%;display:block}
+  a{color:inherit}
 
-  .brand-sticker{width:140px;height:auto;background:transparent;filter:drop-shadow(0px 10px 20px rgba(21,21,28,0.12));transition:transform .3s cubic-bezier(.2,.7,.3,1);cursor:pointer}
-  .brand-sticker:hover{transform:translateY(-4px) scale(1.03) rotate(2deg);filter:drop-shadow(0px 14px 24px rgba(96,32,208,0.18))}
-  /* ---- intro ---- */
+  /* ---- nav ---- */
+  .site-nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(252,252,254,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav .shell{
+    padding:14px clamp(20px,5vw,64px);
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+  .nav-home{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
+  .nav-mark{
+    width:26px;height:26px;border-radius:8px;flex-shrink:0;
+    background:var(--grad-violet);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#fff;
+  }
+  .nav-word{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em}
+  .nav-links{display:flex;gap:4px;flex-wrap:wrap}
+  .nav-link{
+    font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:var(--muted);
+    text-decoration:none;padding:7px 14px;border-radius:999px;
+    transition:background .15s ease,color .15s ease;white-space:nowrap;
+  }
+  .nav-link:hover{background:#F0EFF5;color:var(--ink)}
+  .nav-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+  main{padding:clamp(48px,8vw,84px) 0 0}
+
+  /* ---- hero ---- */
   .kicker{
-    font-family:'Space Mono',monospace;
-    font-size:13px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--violet);
-    display:inline-flex;align-items:center;gap:10px;
-    margin-bottom:22px;
+    font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--violet);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
   }
-  .kicker::before{content:"";width:34px;height:2px;background:var(--grad);border-radius:2px}
-
+  .kicker::before{content:"";width:30px;height:2px;background:var(--grad-full);border-radius:2px}
   h1{
-    font-family:'Syne',sans-serif;
-    font-weight:800;
-    font-size:clamp(28px,4.5vw,42px);
-    line-height:1.12;
-    letter-spacing:-0.01em;
-    margin-bottom:12px;
+    font-family:'Syne',sans-serif;font-weight:800;
+    font-size:clamp(32px,5.2vw,52px);line-height:1.08;letter-spacing:-0.01em;
+    max-width:15ch;margin-bottom:16px;
   }
-  h1 .accent{
-    background:var(--grad);
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;color:transparent;
+  h1 .accent{background:var(--grad-full);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .sub-headline{
+    font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--teal);font-weight:700;margin-bottom:22px;
   }
-  .sub-headline {
-    font-family:'Space Mono',monospace;
-    font-size: clamp(14px, 2vw, 18px);
-    color: var(--teal);
-    margin-bottom: 28px;
-    font-weight: 700;
-  }
-  .lede{
-    font-size:clamp(17px,2.4vw,21px);
-    color:var(--muted);
-    font-weight:300;
-    max-width:64ch;
-    margin-bottom:34px;
-  }
+  .lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);font-weight:300;max-width:56ch;margin-bottom:8px}
   .lede strong{color:var(--ink);font-weight:500}
 
-  /* ---- pillars ---- */
-  .section-label{
-    font-family:'Space Mono',monospace;
-    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--muted);
-    margin:clamp(40px,7vw,54px) 0 20px;
+  /* ---- fork (signature element) ---- */
+  .fork{margin-top:clamp(56px,9vw,88px)}
+  .fork-label{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);text-align:center;margin-bottom:28px;
   }
-  .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:20px;margin-bottom:40px;}
-  @media (min-width: 640px) {
-    .grid { grid-template-columns: repeat(3, 1fr); }
+  .fork-hub{display:flex;justify-content:center;margin-bottom:-1px;position:relative;z-index:2}
+  .fork-hub-dot{
+    width:44px;height:44px;border-radius:50%;background:var(--grad-full);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:#fff;
+    box-shadow:0 8px 20px rgba(96,32,208,.28);
   }
+  .fork-grid{
+    display:grid;grid-template-columns:1fr;gap:20px;
+    position:relative;padding-top:26px;
+  }
+  @media (min-width:640px){
+    .fork-grid{grid-template-columns:1fr 1fr;gap:0}
+    .fork-connector{
+      position:absolute;top:0;left:0;right:0;height:26px;pointer-events:none;
+    }
+    .fork-connector::before,.fork-connector::after{
+      content:"";position:absolute;top:0;width:52%;height:2px;
+      transform-origin:top center;
+    }
+    .fork-connector::before{left:0;background:var(--violet-2);transform:rotate(7deg) translateY(4px)}
+    .fork-connector::after{right:0;background:var(--teal-2);transform:rotate(-7deg) translateY(4px)}
+  }
+  .lane-card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:30px 26px;display:flex;flex-direction:column;
+  }
+  @media (min-width:640px){
+    .lane-card--a{border-radius:18px 4px 18px 18px;margin-right:8px}
+    .lane-card--b{border-radius:4px 18px 18px 18px;margin-left:8px}
+  }
+  .lane-card::before{content:"";display:block;width:36px;height:4px;border-radius:4px;margin-bottom:18px}
+  .lane-card--a::before{background:var(--grad-violet)}
+  .lane-card--b::before{background:var(--grad-teal)}
+  .lane-tag{
+    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;display:block;margin-bottom:10px;
+  }
+  .lane-card--a .lane-tag{color:var(--violet)}
+  .lane-card--b .lane-tag{color:var(--teal)}
+  .lane-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:23px;line-height:1.2;margin-bottom:10px}
+  .lane-card p{font-size:15px;color:var(--muted);font-weight:300;margin-bottom:20px}
+  .lane-link{font-size:14px;font-weight:600;text-decoration:none;margin-top:auto;display:inline-flex;align-items:center;gap:5px}
+  .lane-card--a .lane-link{color:var(--violet)}
+  .lane-card--b .lane-link{color:var(--teal)}
+  .lane-link:hover{text-decoration:underline}
+
+  /* ---- lane sections ---- */
+  .lane-section{margin-top:clamp(72px,10vw,110px);scroll-margin-top:90px}
+  .section-head{margin-bottom:28px}
+  .section-eyebrow{
+    font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:700;margin-bottom:10px;
+  }
+  #lead .section-eyebrow{color:var(--violet)}
+  #create .section-eyebrow{color:var(--teal)}
+  .section-head h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,3.4vw,28px);letter-spacing:-0.01em}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:18px}
+  @media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+  #lead .grid{grid-template-columns:1fr}
+  @media (min-width:640px){#lead .grid{grid-template-columns:repeat(2,1fr)}}
+
   .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:28px 24px;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column;
   }
-  .card::before{
-    content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--grad);
-  }
+  .card::before{content:"";position:absolute;left:0;top:0;right:0;height:3px}
+  #lead .card::before{background:var(--grad-violet)}
+  #create .card::before{background:var(--grad-teal)}
   .card .tag{
-    font-family:'Space Mono',monospace;
-    font-size:11px;font-weight:700;letter-spacing:.14em;
-    color:var(--violet);
-    display:block;margin-bottom:12px;
+    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;display:block;margin-bottom:12px;
   }
-  .card h3{
-    font-family:'Syne',sans-serif;font-weight:700;
-    font-size:20px;line-height:1.25;margin-bottom:10px;letter-spacing:-0.01em;
-  }
-  .card p{font-size:14.5px;color:var(--muted);font-weight:300;line-height:1.6;margin-bottom:20px;}
-  .card .card-link {
-    font-size:14px;font-weight:500;color:var(--violet);text-decoration:none;margin-top:auto;
+  #lead .card .tag{color:var(--violet)}
+  #create .card .tag{color:var(--teal)}
+  .card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:19px;line-height:1.25;margin-bottom:10px;letter-spacing:-0.01em}
+  .card p{font-size:14.5px;color:var(--muted);font-weight:300;line-height:1.6;margin-bottom:18px}
+  .card .card-link{
+    font-size:14px;font-weight:500;text-decoration:none;margin-top:auto;
     display:inline-flex;align-items:center;gap:4px;
   }
-  .card .card-link:hover { text-decoration: underline; }
+  #lead .card .card-link{color:var(--violet)}
+  #create .card .card-link{color:var(--teal)}
+  .card .card-link:hover{text-decoration:underline}
 
-  /* ---- social connections links ---- */
-  .social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 40px;
+  /* ---- connect ---- */
+  .social-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;
   }
-  .social-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 16px;
-  text-decoration: none;
-  color: var(--ink);
-  transition: transform .15s ease, border-color .15s ease;
-}
-
-.social-link:hover {
-  transform: translateY(-2px);
-  border-color: var(--violet);
-}
-
-/* Keeps the logos perfectly crisp and square */
-.social-link img {
-  flex-shrink: 0;
-  border-radius: 4px;
-  object-fit: contain;
-}
-
-/* Stacks your platform name and handle cleanly */
-.social-text {
-  display: flex;
-  flex-direction: column;
-}
-  .social-platform {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    color: var(--violet);
-    text-transform: uppercase;
-    margin-bottom: 4px;
+  .social-link{
+    display:flex;flex-direction:column;gap:2px;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;
+    text-decoration:none;color:var(--ink);transition:transform .15s ease,border-color .15s ease;
   }
-  .social-handle {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .social-link:hover{transform:translateY(-2px);border-color:var(--violet)}
+  .social-platform{
+    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;
+    color:var(--violet);text-transform:uppercase;margin-bottom:2px;
   }
+  .social-handle{font-size:14px;color:var(--muted)}
 
-  /* ---- CTA ---- */
+  /* ---- cta ---- */
   .cta{
-    margin-top:clamp(40px,7vw,64px);
-    border-top:1px solid var(--line);
-    padding-top:36px;
+    margin-top:clamp(64px,10vw,100px);border-top:1px solid var(--line);padding-top:36px;
   }
-  .cta h2{
-    font-family:'Syne',sans-serif;font-weight:700;
-    font-size:clamp(22px,4vw,30px);letter-spacing:-0.01em;margin-bottom:20px;
-  }
+  .cta h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);letter-spacing:-0.01em;margin-bottom:14px}
+  .cta p{color:var(--muted);font-weight:300;max-width:52ch;margin-bottom:24px}
   .btns{display:flex;flex-wrap:wrap;gap:12px}
   .btn{
-    font-family:'Lexend',sans-serif;font-weight:500;font-size:15px;
-    text-decoration:none;border-radius:999px;padding:13px 24px;
-    display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,box-shadow .15s ease;
+    font-family:'Lexend',sans-serif;font-weight:500;font-size:15px;text-decoration:none;
+    border-radius:999px;padding:13px 24px;display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s ease,box-shadow .15s ease;
   }
-  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
+  .btn-primary{background:var(--grad-full);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
   .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
   .btn:hover{transform:translateY(-2px)}
   .btn-primary:hover{box-shadow:0 10px 28px rgba(96,32,208,.34)}
-  .btn-ghost:hover{border-color:var(--violet);color:var(--violet)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
   .btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
 
-  .signoff{
-    font-family:'Space Mono',monospace;
-    font-size:13px;color:var(--muted);
-    margin-top:34px;line-height:1.7;
+  footer{
+    margin-top:clamp(48px,8vw,72px);padding:28px 0 56px;
+    font-family:'Space Mono',monospace;font-size:12.5px;color:var(--muted);
   }
-  .signoff a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
-  .signoff a:hover{border-bottom-color:var(--violet)}
+  footer a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
+  footer a:hover{border-bottom-color:var(--violet)}
 
-  /* ---- load animation ---- */
-  .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
+  .rise{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
   .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}
-  .d4{animation-delay:.35s}.d5{animation-delay:.45s}
   @keyframes rise{to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
-.site-nav{position:sticky;top:0;z-index:100;background:rgba(252,252,254,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7E5EE;margin:calc(-1 * clamp(28px,6vw,72px)) calc(-1 * clamp(20px,5vw,64px)) clamp(24px,5vw,40px);padding:14px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
-.site-nav .nav-home:hover{color:#6020D0;}
-.site-nav .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
-.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#55555F;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
-.site-nav .nav-link:hover{background:#F0EFF5;color:#15151C;}
-.site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
-@media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
 </style>
 </head>
 <body>
+
 <nav class="site-nav">
-  <a href="index.html" class="nav-home">🏠 Sheva Studio</a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link current">Home</a>
-    <a href="guides.html" class="nav-link">Guides</a>
-    <a href="prompt-builder.html" class="nav-link">Prompt Builder</a>
-    <a href="no-brainer-decks.html" class="nav-link">No-Brainer Decks</a>
-    <a href="card-flip-generator.html" class="nav-link">Build Your Own</a>
+  <div class="shell">
+    <a href="index.html" class="nav-home">
+      <span class="nav-mark">S</span>
+      <span class="nav-word">SHEVA STUDIO</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="guides.html">Guides</a>
+      <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
+      <a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
+      <a class="nav-link" href="build-your-own.html">Build Your Own</a>
+    </div>
   </div>
 </nav>
 
-<div class="wrap">
+<main>
+  <div class="shell">
 
-<div style="text-align:center; margin-bottom:28px;" class="rise d1">
-  <a href="#connect" style="text-decoration: none; display: inline-block;">
-    <img src="sheva.png" alt="Sheva Studio Sticker" class="brand-sticker">
-  </a>
-</div>
+    <!-- HERO -->
+    <section class="rise d1">
+      <p class="kicker">AI Transformation Leader · Seattle</p>
+      <h1>AI, translated for <span class="accent">actual humans.</span></h1>
+      <p class="sub-headline">Microsoft + Blue Origin Alumni</p>
+      <p class="lede">
+        I turn complex AI into clear, cinematic stories &mdash; for the boardroom and for brains wired like mine.
+        <strong>Enterprise strategy by day. ADHD creator by night.</strong> Same person, same clarity.
+      </p>
+    </section>
 
-  <h1 class="rise d2">AI Transformation Leader <span class="accent">| Seattle Based</span></h1>
-  <p class="sub-headline rise d2">Microsoft + Blue Origin Alumni</p>
+    <!-- FORK -->
+    <section class="fork rise d2">
+      <p class="fork-label">Pick your lane</p>
+      <div class="fork-hub"><span class="fork-hub-dot">S</span></div>
+      <div class="fork-grid">
+        <div class="fork-connector" aria-hidden="true"></div>
+        <div class="lane-card lane-card--a">
+          <span class="lane-tag">Lead with AI</span>
+          <h3>Enterprise AI Leadership</h3>
+          <p>Strategy, workshops, and 1:1 consulting for teams ready to make AI part of the culture, not just the tech stack.</p>
+          <a class="lane-link" href="#lead">Explore this lane →</a>
+        </div>
+        <div class="lane-card lane-card--b">
+          <span class="lane-tag">Create with ADHD</span>
+          <h3>ADHD Creator Tools</h3>
+          <p>Free tools, guides, and a community built for brains that don't work in straight lines.</p>
+          <a class="lane-link" href="#create">Explore this lane →</a>
+        </div>
+      </div>
+    </section>
 
-  <p class="lede rise d3">I translate complex tech into clean, cinematic stories for you. As an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver — <strong>I'm making AI human, practical, and a little bit fun</strong>.</p>
+    <!-- LEAD WITH AI -->
+    <section id="lead" class="lane-section">
+      <div class="section-head">
+        <p class="section-eyebrow">Lead with AI</p>
+        <h2>Learn AI With Me</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Training</span>
+          <h3>Intro to AI</h3>
+          <p>A short series for people who want to actually use AI minus the jargon, the hype, and the open-tabs rabbit hole.</p>
+          <a class="card-link" href="guides.html#intro">Start Series →</a>
+        </div>
+        <div class="card">
+          <span class="tag">Guides</span>
+          <h3>Actionable Guides</h3>
+          <p>Deep dives, quick recipes, and custom frameworks built for instant productivity.</p>
+          <a class="card-link" href="guides.html">View Guides →</a>
+        </div>
+        <div class="card">
+          <span class="tag">Community</span>
+          <h3>Side by Side Collective</h3>
+          <p>Real connection, not curated. Systems built for different brains.</p>
+          <a class="card-link" href="#connect">Join Group →</a>
+        </div>
+        <div class="card">
+          <span class="tag">Tool</span>
+          <h3>The Prompt Builder</h3>
+          <p>Fill in five blanks &mdash; Goal, Context, Audience, Format, Check &mdash; and watch a clean, copy-ready prompt build itself.</p>
+          <a class="card-link" href="prompt-builder.html">Build a Prompt →</a>
+        </div>
+      </div>
+    </section>
 
-  <p class="lede rise d3">Everything on these pages is free. Enjoy these learning tools and activities at your leisure. If at the end you'd like additional individual, team, or group consultation, you can request a consultation at the bottom of the page.</p>
+    <!-- CREATE WITH ADHD -->
+    <section id="create" class="lane-section">
+      <div class="section-head">
+        <p class="section-eyebrow">Create with ADHD</p>
+        <h2>ADHD Learning Pack</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Grab &amp; Go</span>
+          <h3>No-Brainer Decks</h3>
+          <p>Pre-made ADHD challenge carousels. Pick one, download the slides, post. Zero design required.</p>
+          <a class="card-link" href="no-brainer-decks.html">Grab a Deck →</a>
+        </div>
+        <div class="card">
+          <span class="tag">Make Your Own</span>
+          <h3>Build-Your-Own Decks</h3>
+          <p>Same dark/light carousel format, but editable. Swap the words, add slides, make it yours.</p>
+          <a class="card-link" href="build-your-own.html">Start Building →</a>
+        </div>
+      </div>
+    </section>
 
-  <p class="lede rise d3">Helping organizations and individuals turn AI from an "initiative" into culture. Welcome to Sheva Studio, where enterprise AI meets everyday life, and <strong>connection beats perfection every time</strong>.</p>
+    <!-- CONNECT -->
+    <section id="connect" class="lane-section">
+      <div class="section-head">
+        <p class="section-eyebrow">Connect</p>
+        <h2>Let's Connect</h2>
+      </div>
+      <div class="social-grid">
+        <a class="social-link" href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">
+          <span class="social-platform">TikTok</span><span class="social-handle">@sheva.studio</span>
+        </a>
+        <a class="social-link" href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">
+          <span class="social-platform">YouTube</span><span class="social-handle">@sheva.studio</span>
+        </a>
+        <a class="social-link" href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">
+          <span class="social-platform">Instagram</span><span class="social-handle">@sheva.studios</span>
+        </a>
+        <a class="social-link" href="https://linkedin.com/in/shevanoland" target="_blank" rel="noopener">
+          <span class="social-platform">LinkedIn</span><span class="social-handle">shevanoland</span>
+        </a>
+        <a class="social-link" href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">
+          <span class="social-platform">Facebook</span><span class="social-handle">Sheva Kay Studio</span>
+        </a>
+        <a class="social-link" href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">
+          <span class="social-platform">Amazon Shop</span><span class="social-handle">Scribing Life</span>
+        </a>
+      </div>
+    </section>
 
-  <p class="lede rise d3" style="font-weight:500; color:var(--ink);">Now let's have some fun!</p>
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Let's talk about what AI could do for you.</h2>
+      <p>1:1 consultations, team workshops, conference talks. No generic playbook &mdash; just a plan that fits how you actually work.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="mailto:sheva@shevastudio.com?subject=Consultation%20Inquiry">Book a Consultation →</a>
+        <a class="btn btn-ghost" href="#lead">See Free Tools ↑</a>
+      </div>
+    </section>
 
-  <p class="section-label rise d4">Learn AI With Me</p>
-  <div class="grid rise d4">
-    <div class="card">
-      <span class="tag">01 · TRAINING</span>
-      <h3>Intro to AI</h3>
-      <p>A short series for people who want to actually use AI minus the jargon, the hype, and the open-tabs rabbit hole.</p>
-      <a href="Sheva-Studio-Intro-to-AI.html" class="card-link">Start Series →</a>
-    </div>
-    
-    <div class="card">
-      <span class="tag">02 · GUIDES</span>
-      <h3>Actionable Guides</h3>
-      <p>Deep dives, quick recipes, and custom frameworks designed for instant productivity.</p>
-      <a href="guides.html" class="card-link">View Guides →</a>
-    </div>
+    <footer>
+      1:1 · Team Workshops · Conference Workshops — all welcome. &nbsp;→&nbsp;
+      <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a>
+    </footer>
 
-    <div class="card">
-      <span class="tag">03 · COMMUNITY</span>
-      <h3>Side by Side Collective</h3>
-      <p>Real-life connection — not perfect, not curated. Systems built for different brains.</p>
-      <a href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" class="card-link">Join Group →</a>
-    </div>
-
-    <div class="card">
-      <span class="tag">04 · AI LEARNING PACK</span>
-      <h3>The Prompt Builder</h3>
-      <p>Fill in five blanks — Goal, Context, Audience, Format, Check — and watch a clean, copy-ready prompt build itself.</p>
-      <a href="prompt-builder.html" class="card-link">Build a Prompt →</a>
-    </div>
   </div>
+</main>
 
-  <p class="section-label rise d4">ADHD Learning Pack</p>
-  <div class="grid rise d4">
-    <div class="card">
-      <span class="tag">01 · GRAB &amp; GO</span>
-      <h3>No-Brainer Decks</h3>
-      <p>Pre-made ADHD challenge carousels. Pick one, download the slides, post. Zero design required.</p>
-      <a href="no-brainer-decks.html" class="card-link">Grab a Deck →</a>
-    </div>
-
-    <div class="card">
-      <span class="tag">02 · MAKE YOUR OWN</span>
-      <h3>Build-Your-Own Decks</h3>
-      <p>Same dark/light carousel format, but editable. Swap the words, add slides, make it yours.</p>
-      <a href="card-flip-generator.html" class="card-link">Start Building →</a>
-    </div>
-  </div>
-
-  <div class="section-label rise d4" id="connect">Let's Connect</div>
-  <div class="social-grid rise d4">
-    <a href="https://tiktok.com/@sheva.studio" class="social-link" target="_blank" rel="noopener">
-      <img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=128" alt="TikTok logo" width="20" height="20" loading="lazy">
-      <div class="social-text">
-        <span class="social-platform">TikTok</span>
-        <span class="social-handle">@sheva.studio</span>
-      </div>
-    </a>
-    <a href="https://youtube.com/@sheva.studio" class="social-link" target="_blank" rel="noopener">
-      <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="YouTube logo" width="20" height="20" loading="lazy">
-      <div class="social-text">
-        <span class="social-platform">YouTube</span>
-        <span class="social-handle">@sheva.studio</span>
-      </div>
-    </a>
-    <a href="https://instagram.com/sheva.studios" class="social-link" target="_blank" rel="noopener">
-      <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=128" alt="Instagram logo" width="20" height="20" loading="lazy">
-      <div class="social-text">
-        <span class="social-platform">Instagram</span>
-        <span class="social-handle">@sheva.studios</span>
-      </div>
-    </a>
-    <a href="https://linkedin.com/in/elishevanoland" class="social-link" target="_blank" rel="noopener">
-      <img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=128" alt="LinkedIn logo" width="20" height="20" loading="lazy">
-      <div class="social-text">
-        <span class="social-platform">LinkedIn</span>
-        <span class="social-handle">shevanoland</span>
-      </div>
-    </a>
-    <a href="https://facebook.com/ShevaKayStudio" class="social-link" target="_blank" rel="noopener">
-      <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=128" alt="Facebook logo" width="20" height="20" loading="lazy">
-      <div class="social-text">
-        <span class="social-platform">Facebook</span>
-        <span class="social-handle">ShevaKayStudio</span>
-      </div>
-    </a>
-    <a href="https://amazon.com/shop/scribinglife" class="social-link" target="_blank" rel="noopener">
-      <img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=128" alt="Amazon logo" width="20" height="20" loading="lazy">
-      <div class="social-text">
-        <span class="social-platform">Amazon Shop</span>
-        <span class="social-handle">scribinglife</span>
-      </div>
-    </a>
-  </div>
-
-  <div class="cta rise d5">
-    <h2>Let's talk about what AI could do for you.</h2>
-    <p class="lede" style="max-width:60ch; margin-bottom:24px; font-size:16px;">I offer 1:1 consultations, team workshops, and conference workshops. No jargon, no generic playbook. Just a plan that fits how you actually work.</p>
-    <div class="btns">
-      <a class="btn btn-primary" href="mailto:sheva@shevastudio.com?subject=Consultation%20Inquiry">Book a Consultation →</a>
-      <a class="btn btn-ghost" href="Sheva-Studio-Intro-to-AI.html">Get Started with AI</a>
-    </div>
-    <p class="signoff">1:1 · Team Workshops · Conference Workshops — all welcome. &nbsp;→&nbsp; <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></p>
-  </div>
-
-</div>
 </body>
 </html>
