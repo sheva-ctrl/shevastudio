@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Sheva Studio</title>
+<meta name="description" content="Request a 1:1 AI consultation, a team workshop, or a conference talk with Elisheva Noland of Sheva Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#6020D0;
+    --violet-2:#7C3AED;
+    --teal:#0891B2;
+    --teal-2:#06B6D4;
+    --ink:#15151C;
+    --muted:#55555F;
+    --line:#E7E5EE;
+    --bg:#FCFCFE;
+    --card:#FFFFFF;
+    --grad-violet:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 100%);
+    --grad-teal:linear-gradient(100deg,var(--teal) 0%,var(--teal-2) 100%);
+    --grad-full:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:'Lexend',system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);
+    -webkit-font-smoothing:antialiased;line-height:1.55;
+  }
+  .shell{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+  /* ---- nav ---- */
+  .site-nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(252,252,254,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav .shell{
+    padding:14px clamp(20px,5vw,64px);
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+  .nav-home{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
+  .nav-mark{
+    width:26px;height:26px;border-radius:8px;flex-shrink:0;
+    background:var(--grad-violet);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#fff;
+  }
+  .nav-word{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em}
+  .nav-links{display:flex;gap:4px;flex-wrap:wrap}
+  .nav-link{
+    font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:var(--muted);
+    text-decoration:none;padding:7px 14px;border-radius:999px;
+    transition:background .15s ease,color .15s ease;white-space:nowrap;
+  }
+  .nav-link:hover{background:#F0EFF5;color:var(--ink)}
+  .nav-link.current{background:var(--grad-full);color:#fff}
+  .nav-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+  main{padding:clamp(40px,7vw,72px) 0 0}
+
+  /* ---- head ---- */
+  .page-kicker{
+    font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--violet);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;
+  }
+  .page-kicker::after{content:"";width:38px;height:2px;background:var(--grad-full);border-radius:2px}
+  h1{
+    font-family:'Syne',sans-serif;font-weight:800;
+    font-size:clamp(30px,5.4vw,50px);line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;
+  }
+  .lede{font-size:clamp(16px,2.1vw,18px);color:var(--muted);max-width:60ch}
+
+  /* ---- layout ---- */
+  .grid{
+    display:grid;grid-template-columns:1.35fr .85fr;gap:clamp(22px,3.4vw,42px);
+    margin-top:clamp(30px,4.5vw,48px);align-items:start;
+  }
+  @media (max-width:860px){.grid{grid-template-columns:1fr}}
+
+  .panel{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:clamp(22px,3.2vw,34px);
+    box-shadow:0 8px 30px rgba(21,21,28,.05);
+  }
+  .panel h2{font-family:'Syne',sans-serif;font-weight:700;font-size:22px;line-height:1.2;margin-bottom:8px}
+  .panel-note{font-size:14.5px;color:var(--muted);margin-bottom:26px}
+
+  /* ---- form ---- */
+  .field{margin-bottom:20px}
+  .field label{
+    display:block;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;
+  }
+  .field .opt{color:var(--muted);letter-spacing:.06em}
+  .field input,.field select,.field textarea{
+    width:100%;font-family:'Lexend',sans-serif;font-size:15.5px;color:var(--ink);
+    background:#FBFAFD;border:1.5px solid var(--line);border-radius:12px;
+    padding:13px 15px;transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .field textarea{min-height:130px;resize:vertical;line-height:1.55}
+  .field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2355555F' stroke-width='2.2' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:42px}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--violet-2);background:#fff;
+    box-shadow:0 0 0 4px rgba(124,58,237,.12);
+  }
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:560px){.row{grid-template-columns:1fr}}
+
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .btn{
+    font-family:'Lexend',sans-serif;font-weight:500;font-size:15px;text-decoration:none;
+    border-radius:999px;padding:14px 26px;display:inline-flex;align-items:center;gap:8px;
+    border:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--grad-full);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(96,32,208,.34)}
+  .btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+  .form-foot{font-size:13.5px;color:var(--muted);margin-top:14px}
+
+  /* ---- side ---- */
+  .side-block{margin-bottom:26px}
+  .side-block:last-child{margin-bottom:0}
+  .side-tag{
+    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--violet);display:block;margin-bottom:9px;
+  }
+  .side-block h3{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;line-height:1.25;margin-bottom:6px}
+  .side-block p{font-size:14.5px;color:var(--muted)}
+  .side-divider{height:1px;background:var(--line);margin:24px 0}
+  .direct a{color:var(--violet);font-weight:500;text-decoration:none;border-bottom:1.5px solid rgba(96,32,208,.25)}
+  .direct a:hover{border-bottom-color:var(--violet)}
+
+  footer{
+    margin-top:clamp(48px,7vw,80px);padding:30px 0 44px;
+    border-top:1px solid var(--line);
+    font-size:14px;color:var(--muted);text-align:center;
+  }
+  footer a{color:var(--violet);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="shell">
+    <a href="index.html" class="nav-home">
+      <span class="nav-mark">S</span>
+      <span class="nav-word">SHEVA STUDIO</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="guides.html">Guides</a>
+      <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
+      <a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
+      <a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
+      <a class="nav-link current" href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="shell">
+
+    <p class="page-kicker">Contact</p>
+    <h1>Tell me what you're trying to fix.</h1>
+    <p class="lede">Most AI rollouts stall because everyone got the tool and nobody got a reason to open it twice. Send me the actual problem and I'll tell you whether I'm the right person for it.</p>
+
+    <div class="grid">
+
+      <!-- FORM -->
+      <div class="panel">
+        <h2>Request a consultation</h2>
+        <p class="panel-note">Six fields. Two minutes. I read every one myself.</p>
+
+        <!--
+          GOOGLE FORM SETUP — do this once, three steps:
+
+          1. Create a Google Form (forms.google.com) with these six fields,
+             SAME ORDER, all set to "required" except Organization:
+                Your name        (Short answer)
+                Email             (Short answer)
+                Organization      (Short answer, NOT required)
+                Engagement type   (Multiple choice: 1:1 consultation /
+                                    Team workshop / Conference talk /
+                                    Ongoing advisory / Not sure yet)
+                Timeline          (Multiple choice: This month /
+                                    Next 1–3 months / Later this year /
+                                    Just exploring)
+                What's going on   (Paragraph)
+
+          2. Click Send -> the <> (embed) icon -> copy the URL inside
+             the src="..." quotes. It looks like:
+             https://docs.google.com/forms/d/e/1FAIpQLSc.../viewform
+             Take that ID (the 1FAIpQLSc... part) and paste it into the
+             FORM_ID placeholder below, in the form action.
+
+          3. On the live form, click the three dots -> Get pre-filled link.
+             Fill in a dummy answer for every field, click "Get link,"
+             then open that link and view its page source (or just look
+             at the URL — each field appears as entry.123456789=...).
+             Copy each entry.NNNNNNNNN number into the matching input's
+             name="" attribute below, replacing the ENTRY_* placeholders.
+
+          Once all seven are swapped in, submissions go straight into
+          your Google Form's Responses tab and Sheet. Delete this
+          comment block when you're done — it's just for setup.
+        -->
+        <form action="https://docs.google.com/forms/d/e/FORM_ID/formResponse" method="POST" target="hidden_iframe" id="consultForm" onsubmit="document.getElementById('formOk').style.display='block';document.getElementById('consultForm').style.display='none';">
+
+          <!-- spam trap: hidden from people, filled by bots -->
+          <div class="hp" aria-hidden="true">
+            <label for="company-website">Leave this empty</label>
+            <input type="text" id="company-website" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="entry.ENTRY_NAME" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="entry.ENTRY_EMAIL" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="org">Organization <span class="opt">(optional)</span></label>
+            <input type="text" id="org" name="entry.ENTRY_ORG" autocomplete="organization">
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="type">What you're after</label>
+              <select id="type" name="entry.ENTRY_TYPE" required>
+                <option value="">Pick one</option>
+                <option>1:1 consultation</option>
+                <option>Team workshop</option>
+                <option>Conference talk</option>
+                <option>Ongoing advisory</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="timing">Timeline</label>
+              <select id="timing" name="entry.ENTRY_TIMELINE" required>
+                <option value="">Pick one</option>
+                <option>This month</option>
+                <option>Next 1–3 months</option>
+                <option>Later this year</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="detail">What's going on</label>
+            <textarea id="detail" name="entry.ENTRY_DETAILS" required placeholder="The task, the team, the thing that keeps not working. Plain language is fine."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send it →</button>
+          <p class="form-foot">I read every one myself. You'll hear back within two business days.</p>
+        </form>
+
+        <div id="formOk" style="display:none;text-align:center;padding:40px 10px;">
+          <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;margin-bottom:10px;">Got it.</p>
+          <p style="color:var(--muted);font-size:15px;">That landed. You'll hear back within two business days.</p>
+        </div>
+
+        <iframe name="hidden_iframe" style="display:none;" title="form submit target"></iframe>
+      </div>
+
+      <!-- SIDE -->
+      <div class="panel">
+        <div class="side-block">
+          <span class="side-tag">1:1</span>
+          <h3>One person, one workflow</h3>
+          <p>We pick a task you already hate and build it together until it works once. That's the session.</p>
+        </div>
+
+        <div class="side-block">
+          <span class="side-tag">Teams</span>
+          <h3>Workshops that stick past day nine</h3>
+          <p>Built around what your team actually does all day, not a tour of features.</p>
+        </div>
+
+        <div class="side-block">
+          <span class="side-tag">Stage</span>
+          <h3>Conference talks</h3>
+          <p>Practical AI adoption for rooms that are tired of hype decks.</p>
+        </div>
+
+        <div class="side-divider"></div>
+
+        <div class="side-block direct">
+          <span class="side-tag">Rather just email</span>
+          <p><a href="mailto:sheva@shevastudio.com?subject=Consultation%20Inquiry">sheva@shevastudio.com</a></p>
+        </div>
+
+        <div class="side-block direct">
+          <span class="side-tag">Start free first</span>
+          <p><a href="Sheva-Studio-Intro-to-AI.html">Intro to AI series →</a></p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      1:1 · Team Workshops · Conference Workshops — all welcome. &nbsp;→&nbsp;
+      <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a>
+    </footer>
+
+  </div>
+</main>
+
+</body>
+</html>
