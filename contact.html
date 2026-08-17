@@ -87,6 +87,11 @@
     padding:clamp(22px,3.2vw,34px);
     box-shadow:0 8px 30px rgba(21,21,28,.05);
   }
+  .free-badge{
+    display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--grad-teal);
+    padding:6px 14px;border-radius:999px;margin-bottom:12px;
+  }
   .panel h2{font-family:'Syne',sans-serif;font-weight:700;font-size:22px;line-height:1.2;margin-bottom:8px}
   .panel-note{font-size:14.5px;color:var(--muted);margin-bottom:26px}
 
@@ -169,14 +174,15 @@
 
     <p class="page-kicker">Contact</p>
     <h1>Tell me what you're trying to fix.</h1>
-    <p class="lede">Most AI rollouts stall because everyone got the tool and nobody got a reason to open it twice. Send me the actual problem and I'll tell you whether I'm the right person for it.</p>
+    <p class="lede">Whether it's one workflow that's driving you up the wall or a whole team that got the tool and never opened it twice — send me the actual problem and I'll tell you whether I'm the right person for it.</p>
 
     <div class="grid">
 
       <!-- FORM -->
       <div class="panel">
+        <span class="free-badge">First 15 minutes free</span>
         <h2>Request a consultation</h2>
-        <p class="panel-note">Six fields. Two minutes. I read every one myself.</p>
+        <p class="panel-note">A short call to see if we're a fit. No pitch, no obligation — if I'm not the right person, I'll say so.</p>
 
         <!--
           GOOGLE FORM SETUP — do this once, three steps:
@@ -185,7 +191,7 @@
              SAME ORDER, all set to "required" except Organization:
                 Your name        (Short answer)
                 Email             (Short answer)
-                Organization      (Short answer, NOT required)
+                Company or team   (Short answer, NOT required)
                 Engagement type   (Multiple choice: 1:1 consultation /
                                     Team workshop / Conference talk /
                                     Ongoing advisory / Not sure yet)
@@ -231,7 +237,7 @@
           </div>
 
           <div class="field">
-            <label for="org">Organization <span class="opt">(optional)</span></label>
+            <label for="org">Company or team <span class="opt">(optional — skip if it's just you)</span></label>
             <input type="text" id="org" name="entry.ENTRY_ORG" autocomplete="organization">
           </div>
 
@@ -281,7 +287,7 @@
         <div class="side-block">
           <span class="side-tag">1:1</span>
           <h3>One person, one workflow</h3>
-          <p>We pick a task you already hate and build it together until it works once. That's the session.</p>
+          <p>We pick a task you already hate and build it together until it works once. That's the session — and the first fifteen minutes are free.</p>
         </div>
 
         <div class="side-block">
