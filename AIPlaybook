@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Complete AI Playbook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+  :root {
+    --primary: #7B3FF2;
+    --background: #FAF8FC;
+    --secondary: #1E1830;
+    --accent: #0F9B8A;
+    
+    --font-heading: 'Bricolage Grotesque', 'Space Grotesk', 'Syne', 'Montserrat', sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Inter', 'Manrope', 'DM Sans', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #E2DFE8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    padding: 24px;
+  }
+
+  .card {
+    background-color: var(--background);
+    color: var(--secondary);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 16px 40px rgba(30, 24, 48, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    border: 1px solid rgba(30, 24, 48, 0.08);
+  }
+
+  /* Header Bar */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1.5px solid rgba(30, 24, 48, 0.12);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .header-left {
+    color: var(--secondary);
+  }
+
+  .header-right {
+    color: var(--primary);
+  }
+
+  /* Title Section */
+  .title {
+    font-family: var(--font-heading);
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: center;
+    color: var(--secondary);
+    letter-spacing: -0.02em;
+  }
+
+  /* SVG Graphic */
+  .graphic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .graphic-svg {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  /* List Items */
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .badge {
+    background-color: var(--accent);
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.15rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .item-text {
+    font-size: 1.05rem;
+    color: var(--secondary);
+    line-height: 1.3;
+  }
+
+  .item-text strong {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .item-text span {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: rgba(30, 24, 48, 0.8);
+  }
+
+  /* Footer Bar */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1.5px solid rgba(30, 24, 48, 0.12);
+    font-size: 1.05rem;
+  }
+
+  .cta {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--secondary);
+  }
+
+  .cta strong {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-icon {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.25rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.85rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--secondary);
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Header -->
+    <div class="header">
+      <span class="header-left">Practical AI Education • Sheva Studio</span>
+      <span class="header-right">Sheva Studio</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="title">The Complete AI Playbook:<br>From Setup to Flow</h1>
+
+    <!-- Isometric Graphic Visual -->
+    <div class="graphic-container">
+      <svg class="graphic-svg" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Isometric Base Screen -->
+        <path d="M150 20 L270 80 L150 140 L30 80 Z" fill="#7B3FF2" fill-opacity="0.1" stroke="#7B3FF2" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M30 80 L30 95 L150 155 L270 95 L270 80" stroke="#7B3FF2" stroke-width="3" stroke-linejoin="round" fill="none"/>
+        
+        <!-- Bar Charts on Isometric Base -->
+        <rect x="180" y="55" width="14" height="40" rx="3" fill="#7B3FF2" transform="rotate(-30 180 55) skewX(30)"/>
+        <rect x="205" y="45" width="14" height="55" rx="3" fill="#0F9B8A" transform="rotate(-30 205 45) skewX(30)"/>
+        <rect x="230" y="35" width="14" height="70" rx="3" fill="#7B3FF2" fill-opacity="0.4" transform="rotate(-30 230 35) skewX(30)"/>
+        
+        <!-- Central Processing Block -->
+        <path d="M150 80 L180 95 L150 110 L120 95 Z" fill="#7B3FF2" stroke="#1E1830" stroke-width="2"/>
+        <path d="M120 95 L120 105 L150 120 L180 105 L180 95" fill="#1E1830" stroke="#1E1830" stroke-width="2"/>
+        
+        <!-- Lightbulb Element -->
+        <circle cx="150" cy="45" r="14" fill="#0F9B8A"/>
+        <path d="M150 37 L150 53 M142 45 L158 45" stroke="#FAF8FC" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Numbered Points -->
+    <div class="list-container">
+      <div class="list-item">
+        <div class="badge">1</div>
+        <div class="item-text">
+          <strong>Start with what you have</strong> <span>(ChatGPT, Gemini, Copilot)</span>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <div class="badge">2</div>
+        <div class="item-text">
+          <strong>Delegate routine tasks</strong> <span>(emails / drafts / summaries)</span>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <div class="badge">3</div>
+        <div class="item-text">
+          <strong>Build human-AI workflows</strong> <span>(review &amp; verify)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="cta">
+        Watch &rarr; <strong>YouTube: @sheva.studio</strong>
+      </div>
+      <div class="brand-logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">
+          Sheva<br>Studio
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</body>
+</html>
