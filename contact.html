@@ -183,7 +183,7 @@
         <span class="free-badge">First 15 minutes free</span>
         <h2>Request a consultation</h2>
         <p class="panel-note">A short call to see if we're a fit. No pitch, no obligation — if I'm not the right person, I'll say so.</p>
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdUTfFbTQp5Hd76nWyIgTCgD5ggsaMkrdw_VYZ2jC8fpBL9Lg/formResponse" method="POST" target="hidden_iframe" id="consultForm" onsubmit="document.getElementById('formOk').style.display='block';document.getElementById('consultForm').style.display='none';">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSdUTfFbTQp5Hd76nWyIgTCgD5ggsaMkrdw_VYZ2jC8fpBL9Lg/formResponse" method="POST" target="hidden_iframe" id="consultForm" onsubmit="return shevaFormCheck(this);">
 
           <!-- spam trap: hidden from people, filled by bots -->
           <div class="hp" aria-hidden="true">
@@ -290,6 +290,29 @@
 
   </div>
 </main>
+
+<script>
+  // Time the page load so we can reject instant submissions.
+  var shevaLoadedAt = Date.now();
+
+  function shevaFormCheck(form) {
+    // 1. Honeypot: people never see this field. Bots fill it.
+    var trap = form.elements['_gotcha'];
+    if (trap && trap.value.trim() !== '') return false;
+
+    // 2. Speed: a human cannot fill this form in under 3 seconds.
+    if (Date.now() - shevaLoadedAt < 3000) return false;
+
+    // 3. Link spam: real inquiries rarely paste URLs into the name field.
+    var nameField = form.elements['entry.1062205736'];
+    if (nameField && /https?:\/\//i.test(nameField.value)) return false;
+
+    // Passed. Show the thank-you and let it submit.
+    document.getElementById('formOk').style.display = 'block';
+    form.style.display = 'none';
+    return true;
+  }
+</script>
 
 </body>
 </html>
