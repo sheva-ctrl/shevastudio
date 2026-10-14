@@ -16,14 +16,13 @@
     --muted:#5A5470;
     --line:#E4DCF0;
     --violet:#7B3FF2;
+    --violet-soft:#F3EEFD;
     --teal:#0F9B8A;
     --gold:#D9B26C;
     --night:#1E1830;
     --radius:16px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
   body{
     background:var(--bg); color:var(--ink);
     font-family:'Plus Jakarta Sans',system-ui,sans-serif;
@@ -31,7 +30,7 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:var(--violet)}
-  a:focus-visible,button:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:6px}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:10px}
   .wrap{max-width:860px;margin:0 auto;padding:0 16px}
   @media (min-width:700px){ .wrap{padding:0 32px} }
 
@@ -46,44 +45,59 @@
 
   /* Hero */
   .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .hero{padding:48px 0 24px}
+  .hero{padding:48px 0 8px}
   h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;line-height:1.1;letter-spacing:-.01em}
   h1{font-size:clamp(36px,8vw,60px);margin:12px 0 14px}
   h1 .bar{color:var(--violet)}
   .lede{font-size:clamp(18px,2.6vw,21px);color:var(--muted);max-width:60ch}
   .goal{margin-top:24px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:16px 18px}
   .goal strong{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
-  .jump{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:28px;list-style:none}
-  .jump a{display:flex;gap:12px;align-items:baseline;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;line-height:1.35}
-  .jump a:hover{border-color:var(--violet)}
-  .jump span{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:var(--violet);min-width:22px}
-  .series-links{margin-top:18px;font-size:15px;color:var(--muted)}
+  .series-links{margin-top:16px;font-size:15px;color:var(--muted)}
 
-  /* Lessons */
-  .lesson{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 18px;margin:28px 0;scroll-margin-top:16px}
-  @media (min-width:700px){ .lesson{padding:36px 40px} }
-  .lesson-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-  .num{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
-  .date{font-size:13px;color:var(--muted)}
-  .lesson h2{font-size:clamp(26px,5vw,36px);margin:8px 0 18px}
+  /* Lesson list header */
+  .list-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:36px 0 12px}
+  .toggle-all{background:none;border:0;font:inherit;font-size:14px;font-weight:700;color:var(--violet);cursor:pointer;padding:6px 2px}
+  .toggle-all:hover{color:var(--teal)}
+
+  /* Collapsible lessons */
+  .lesson{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:0 0 12px;scroll-margin-top:16px;transition:border-color .2s}
+  .lesson[open]{border-color:#D4C6EE;box-shadow:0 6px 24px rgba(30,24,48,.05)}
+  .lesson summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:16px 16px}
+  @media (min-width:700px){ .lesson summary{padding:20px 24px;gap:18px} }
+  .lesson summary::-webkit-details-marker{display:none}
+  .s-num{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--violet-soft);color:var(--violet);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;transition:background .2s,color .2s}
+  .lesson[open] .s-num{background:var(--violet);color:#fff}
+  .s-meta{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .s-title{font-size:clamp(18px,3.4vw,22px);line-height:1.25}
+  .chev{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s,border-color .2s}
+  .chev::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-2px) rotate(45deg)}
+  .lesson[open] .chev{transform:rotate(180deg);border-color:var(--violet)}
+  .lesson summary:hover .chev{border-color:var(--violet)}
+  .lesson-body{border-top:1px solid var(--line);margin:0 16px;padding:20px 0 20px}
+  @media (min-width:700px){ .lesson-body{margin:0 24px} }
+  @media (prefers-reduced-motion: no-preference){
+    .lesson[open] .lesson-body{animation:reveal .3s ease}
+    @keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  }
+
   .lesson figure{margin:0 0 20px}
   .lesson figure img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line)}
   .lesson p{margin-bottom:14px;max-width:64ch}
   .questions{margin:0 0 14px 0;padding-left:22px}
   .label{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;margin:22px 0 10px}
   ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px}
-  ol.steps li{counter-increment:s;position:relative;padding:4px 0 4px 44px;border-left:3px solid var(--teal);padding-left:52px}
-  ol.steps li::before{content:counter(s);position:absolute;left:14px;top:4px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:var(--violet)}
+  ol.steps li{counter-increment:s;position:relative;padding:4px 0 4px 52px;border-left:3px solid var(--teal)}
+  ol.steps li::before{content:counter(s);position:absolute;left:16px;top:4px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:var(--violet)}
   ol.steps strong{display:block}
   .payoff{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;line-height:1.3;margin:22px 0 4px;max-width:40ch}
-  .try{margin-top:20px;background:#F3EEFD;border-radius:12px;padding:14px 16px;font-weight:600}
+  .try{margin-top:20px;background:var(--violet-soft);border-radius:12px;padding:14px 16px;font-weight:600}
   .try span{color:var(--violet);font-weight:700}
 
   /* Video (loads only when clicked) */
   .video{margin-top:22px}
   .video-label{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
   .yt{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--night);border:0;padding:0;cursor:pointer;display:block}
-  .yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+  .yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88}
   .yt .play{position:absolute;inset:0;display:grid;place-items:center}
   .yt .play i{width:68px;height:48px;border-radius:12px;background:var(--violet);display:grid;place-items:center}
   .yt .play i::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
@@ -93,13 +107,21 @@
   .more{margin-top:12px;font-size:15px}
   .more a{font-weight:600}
 
+  /* Next lesson */
+  .next{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:flex-end}
+  .next a{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 16px;max-width:100%;transition:border-color .2s,background .2s}
+  .next a:hover{border-color:var(--violet);background:var(--violet-soft)}
+  .next small{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}
+  .next b{display:block;font-weight:700;line-height:1.35}
+  .next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-weight:700}
+
   /* Bookend */
-  .covered{background:var(--night);color:#F4F0FA;border-radius:var(--radius);padding:28px 18px;margin:36px 0}
+  .covered{background:var(--night);color:#F4F0FA;border-radius:var(--radius);padding:28px 18px;margin:28px 0 36px;scroll-margin-top:16px}
   @media (min-width:700px){ .covered{padding:40px} }
   .covered h2{font-size:clamp(26px,5vw,34px);color:#fff;margin-bottom:14px}
   .covered ul{padding-left:20px;display:grid;gap:8px}
-  .covered .next{margin-top:18px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;font-weight:600}
-  .covered .next span{color:var(--gold)}
+  .covered .nextstep{margin-top:18px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;font-weight:600}
+  .covered .nextstep span{color:var(--gold)}
 
   /* Quick reference */
   .ref h2{font-size:clamp(24px,4.5vw,30px);margin:8px 0 14px}
@@ -143,182 +165,218 @@
   <section class="hero">
     <p class="eyebrow">Practical AI Education · Sheva Studio</p>
     <h1>AI <span class="bar">|</span> What Actually Works</h1>
-    <p class="lede">Six lessons from 50+ AI projects. Plain language, no hype. Read one, try one, then come back for the next.</p>
+    <p class="lede">Six lessons from 50+ AI projects. Plain language, no hype. Open one, try it, then come back for the next.</p>
 
     <div class="goal">
       <strong>What you'll be able to do</strong>
       By the end of this page, you'll know how to get your first real win with AI at work — and how to help your team keep using it.
     </div>
 
-    <ol class="jump" aria-label="Jump to a lesson">
-      <li><a href="#card-1"><span>1</span>Get your first real win</a></li>
-      <li><a href="#card-2"><span>2</span>Turn pushback into use</a></li>
-      <li><a href="#card-3"><span>3</span>Ask so the answer is usable</a></li>
-      <li><a href="#card-4"><span>4</span>Use the first draft safely</a></li>
-      <li><a href="#card-5"><span>5</span>Pick a helper that lasts</a></li>
-      <li><a href="#card-6"><span>6</span>Get past day nine</a></li>
-    </ol>
-
-    <p class="series-links">New card every Tuesday on <a href="https://www.linkedin.com/company/18615452/" target="_blank" rel="noopener">LinkedIn</a>. Prefer video? <a href="https://www.youtube.com/playlist?list=PLdMgFKibvlYBMeyzpnB3ahecEMJL3sxhf" target="_blank" rel="noopener">Watch the Learn AI playlist</a>.</p>
+    <p class="series-links">New lesson every Tuesday on <a href="https://www.linkedin.com/company/18615452/" target="_blank" rel="noopener">LinkedIn</a>. Prefer video? <a href="https://www.youtube.com/playlist?list=PLdMgFKibvlYBMeyzpnB3ahecEMJL3sxhf" target="_blank" rel="noopener">Watch the Learn AI playlist</a>.</p>
   </section>
 
+  <div class="list-head">
+    <p class="eyebrow">The six lessons</p>
+    <button class="toggle-all" type="button" aria-controls="lessons">Open all</button>
+  </div>
+
+  <div id="lessons">
+
   <!-- 1 -->
-  <article class="lesson" id="card-1">
-    <div class="lesson-head"><p class="num">1 of 6</p><p class="date">On LinkedIn Oct 13</p></div>
-    <h2>How to get your first real win with AI</h2>
-    <figure><img src="what-works-01.png" alt="Card 1: The moment it clicked wasn't a training. Tool you have, task you dread, it works once." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
-    <p>AI didn't click for me in a training class. It clicked when I sat down with one boring task I did over and over, and used the AI tool I already had to set it up so it mostly does itself.</p>
-    <p class="label">Here's how</p>
-    <ol class="steps">
-      <li><strong>Use the AI tool you already have.</strong>No new logins. A new login kills momentum on day one.</li>
-      <li><strong>Pick the task you dread most.</strong>The repetitive one, not the hardest one.</li>
-      <li><strong>Stay with it until it works once.</strong>The first try will be wrong. Tell it what's wrong. Try again.</li>
-    </ol>
-    <p class="payoff">It took me 40 minutes. It gives me five hours a month back.</p>
-    <p class="try"><span>Try it this week:</span> pick one task and give it 40 minutes.</p>
-    <div class="video">
-      <p class="video-label">Watch · 3 min</p>
-      <button class="yt" data-id="bTn4lZsoTBU" aria-label="Play video: Your First 15 Minutes With AI">
-        <img src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
-      </button>
-      <p class="video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p>
+  <details class="lesson" id="card-1" open>
+    <summary>
+      <span class="s-num" aria-hidden="true">1</span>
+      <span><span class="s-meta">1 of 6 · Oct 13</span><h2 class="s-title">How to get your first real win with AI</h2></span>
+      <span class="chev" aria-hidden="true"></span>
+    </summary>
+    <div class="lesson-body">
+      <figure><img src="what-works-01.png" alt="Card 1: The moment it clicked wasn't a training. Tool you have, task you dread, it works once." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
+      <p>AI didn't click for me in a training class. It clicked when I sat down with one boring task I did over and over, and used the AI tool I already had to set it up so it mostly does itself.</p>
+      <p class="label">Here's how</p>
+      <ol class="steps">
+        <li><strong>Use the AI tool you already have.</strong>No new logins. A new login kills momentum on day one.</li>
+        <li><strong>Pick the task you dread most.</strong>The repetitive one, not the hardest one.</li>
+        <li><strong>Stay with it until it works once.</strong>The first try will be wrong. Tell it what's wrong. Try again.</li>
+      </ol>
+      <p class="payoff">It took me 40 minutes. It gives me five hours a month back.</p>
+      <p class="try"><span>Try it this week:</span> pick one task and give it 40 minutes.</p>
+      <div class="video">
+        <p class="video-label">Watch · 3 min</p>
+        <button class="yt" data-id="bTn4lZsoTBU" aria-label="Play video: Your First 15 Minutes With AI">
+          <img src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
+        </button>
+        <p class="video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p>
+      </div>
+      <p class="more">Not sure which tool to open? <a href="Sheva-Studio-Intro-to-AI.html">Start with the Intro to AI guide →</a></p>
+      <nav class="next" aria-label="Next lesson"><a href="#card-2" data-next><span><small>Next · 2 of 6</small><b>How to turn pushback on AI into people actually using it</b></span><span class="arrow" aria-hidden="true">→</span></a></nav>
     </div>
-    <p class="more">Not sure which tool to open? <a href="Sheva-Studio-Intro-to-AI.html">Start with the Intro to AI guide →</a></p>
-  </article>
+  </details>
 
   <!-- 2 -->
-  <article class="lesson" id="card-2">
-    <div class="lesson-head"><p class="num">2 of 6</p><p class="date">On LinkedIn Oct 20</p></div>
-    <h2>How to turn pushback on AI into people actually using it</h2>
-    <figure><img src="what-works-02.png" alt="Card 2: The team that pushed back hardest adopted fastest. Hard questions, one-page rule, they adopt." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
-    <p>The team that pushed back hardest on AI ended up using it the most. They weren't saying no. They were asking fair questions:</p>
-    <ul class="questions">
-      <li>Where does our information go?</li>
-      <li>Who can see it?</li>
-      <li>What gets saved?</li>
-    </ul>
-    <p class="label">Here's how</p>
-    <ol class="steps">
-      <li><strong>Ask what they're actually worried about.</strong>The most careful people ask the sharpest questions.</li>
-      <li><strong>Answer the information questions first.</strong>Where it goes, who sees it, what is kept.</li>
-      <li><strong>Write the answers on one page, in plain words.</strong>People follow rules they can find.</li>
-    </ol>
-    <p class="payoff">Once the rules were written down, the pushback stopped.</p>
-    <p class="try"><span>Try it this week:</span> ask your team their #1 worry about AI, then write down the answer.</p>
-    <div class="video">
-      <p class="video-label">Watch · 6 min</p>
-      <button class="yt" data-id="ls2BQ2RFYYo" aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation">
-        <img src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
-      </button>
-      <p class="video-title">Where Do I Start With AI? Build a Practical Foundation — includes the two rules that keep you safe</p>
+  <details class="lesson" id="card-2">
+    <summary>
+      <span class="s-num" aria-hidden="true">2</span>
+      <span><span class="s-meta">2 of 6 · Oct 20</span><h2 class="s-title">How to turn pushback on AI into people actually using it</h2></span>
+      <span class="chev" aria-hidden="true"></span>
+    </summary>
+    <div class="lesson-body">
+      <figure><img src="what-works-02.png" alt="Card 2: The team that pushed back hardest adopted fastest. Hard questions, one-page rule, they adopt." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
+      <p>The team that pushed back hardest on AI ended up using it the most. They weren't saying no. They were asking fair questions:</p>
+      <ul class="questions">
+        <li>Where does our information go?</li>
+        <li>Who can see it?</li>
+        <li>What gets saved?</li>
+      </ul>
+      <p class="label">Here's how</p>
+      <ol class="steps">
+        <li><strong>Ask what they're actually worried about.</strong>The most careful people ask the sharpest questions.</li>
+        <li><strong>Answer the information questions first.</strong>Where it goes, who sees it, what is kept.</li>
+        <li><strong>Write the answers on one page, in plain words.</strong>People follow rules they can find.</li>
+      </ol>
+      <p class="payoff">Once the rules were written down, the pushback stopped.</p>
+      <p class="try"><span>Try it this week:</span> ask your team their #1 worry about AI, then write down the answer.</p>
+      <div class="video">
+        <p class="video-label">Watch · 6 min</p>
+        <button class="yt" data-id="ls2BQ2RFYYo" aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation">
+          <img src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
+        </button>
+        <p class="video-title">Where Do I Start With AI? Build a Practical Foundation — includes the two rules that keep you safe</p>
+      </div>
+      <nav class="next" aria-label="Next lesson"><a href="#card-3" data-next><span><small>Next · 3 of 6</small><b>How to ask AI for something and get an answer you can use</b></span><span class="arrow" aria-hidden="true">→</span></a></nav>
     </div>
-  </article>
+  </details>
 
   <!-- 3 -->
-  <article class="lesson" id="card-3">
-    <div class="lesson-head"><p class="num">3 of 6</p><p class="date">On LinkedIn Oct 27</p></div>
-    <h2>How to ask AI for something and get an answer you can use</h2>
-    <figure><img src="what-works-03.png" alt="Card 3: Five lines that fix a vague prompt. Goal, context, audience, format, check lead to an answer you can use." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
-    <p>Vague answers come from vague requests. Most of us have never had to write down exactly what we want.</p>
-    <p class="label">Here's how — say these five things, in order</p>
-    <ol class="steps">
-      <li><strong>Goal</strong>What you want done.</li>
-      <li><strong>Context</strong>The background it needs.</li>
-      <li><strong>Audience</strong>Who will read it.</li>
-      <li><strong>Format</strong>A list, an email, a table.</li>
-      <li><strong>Check</strong>Ask what it assumed before you trust the answer.</li>
-    </ol>
-    <p class="payoff">Most people skip audience and format. Add those two and the answer gets usable.</p>
-    <p class="try"><span>Try it this week:</span> rewrite one request using all five lines and compare the answers.</p>
-    <div class="video">
-      <p class="video-label">Watch · 5 min</p>
-      <button class="yt" data-id="77PcQZEa5_0" aria-label="Play video: How to Talk to AI So It Actually Understands You">
-        <img src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
-      </button>
-      <p class="video-title">How to Talk to AI So It Actually Understands You</p>
+  <details class="lesson" id="card-3">
+    <summary>
+      <span class="s-num" aria-hidden="true">3</span>
+      <span><span class="s-meta">3 of 6 · Oct 27</span><h2 class="s-title">How to ask AI for something and get an answer you can use</h2></span>
+      <span class="chev" aria-hidden="true"></span>
+    </summary>
+    <div class="lesson-body">
+      <figure><img src="what-works-03.png" alt="Card 3: Five lines that fix a vague prompt. Goal, context, audience, format, check lead to an answer you can use." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
+      <p>Vague answers come from vague requests. Most of us have never had to write down exactly what we want.</p>
+      <p class="label">Here's how — say these five things, in order</p>
+      <ol class="steps">
+        <li><strong>Goal</strong>What you want done.</li>
+        <li><strong>Context</strong>The background it needs.</li>
+        <li><strong>Audience</strong>Who will read it.</li>
+        <li><strong>Format</strong>A list, an email, a table.</li>
+        <li><strong>Check</strong>Ask what it assumed before you trust the answer.</li>
+      </ol>
+      <p class="payoff">Most people skip audience and format. Add those two and the answer gets usable.</p>
+      <p class="try"><span>Try it this week:</span> rewrite one request using all five lines and compare the answers.</p>
+      <div class="video">
+        <p class="video-label">Watch · 5 min</p>
+        <button class="yt" data-id="77PcQZEa5_0" aria-label="Play video: How to Talk to AI So It Actually Understands You">
+          <img src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
+        </button>
+        <p class="video-title">How to Talk to AI So It Actually Understands You</p>
+      </div>
+      <p class="more"><a href="prompt-builder.html">Fill in the five blanks with the free Prompt Builder →</a><br>
+      Go deeper: <a href="https://www.youtube.com/watch?v=mTKFka8m4RA" target="_blank" rel="noopener">How to Write Better AI Prompts (3 min)</a></p>
+      <nav class="next" aria-label="Next lesson"><a href="#card-4" data-next><span><small>Next · 4 of 6</small><b>How to use AI's first draft without getting burned</b></span><span class="arrow" aria-hidden="true">→</span></a></nav>
     </div>
-    <p class="more"><a href="prompt-builder.html">Fill in the five blanks with the free Prompt Builder →</a><br>
-    Go deeper: <a href="https://www.youtube.com/watch?v=mTKFka8m4RA" target="_blank" rel="noopener">How to Write Better AI Prompts (3 min)</a></p>
-  </article>
+  </details>
 
   <!-- 4 -->
-  <article class="lesson" id="card-4">
-    <div class="lesson-head"><p class="num">4 of 6</p><p class="date">On LinkedIn Nov 3</p></div>
-    <h2>How to use AI's first draft without getting burned</h2>
-    <figure><img src="what-works-04.png" alt="Card 4: Where the handoff actually breaks. AI drafts it, you verify it, you decide." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
-    <p>AI writes a first draft 10 times faster than I can. That's the easy part. The real work is checking it — and that's where the saved time should go.</p>
-    <p class="label">Here's how</p>
-    <ol class="steps">
-      <li><strong>Never send the first version.</strong>It's a starting point, not the finish.</li>
-      <li><strong>Check every number and every source.</strong>That's where AI is wrong while sounding sure.</li>
-      <li><strong>Keep the judgment calls.</strong>Tone, risk, and who hears what stay with you.</li>
-    </ol>
-    <p class="payoff">AI drafts it. You check it. You decide.</p>
-    <p class="try"><span>Try it this week:</span> before you send anything AI wrote, check every number in it.</p>
-    <div class="video">
-      <p class="video-label">Watch · 2 min</p>
-      <button class="yt" data-id="AMTiGFmoD3g" aria-label="Play video: How to Use AI at Work Without Losing Your Judgment">
-        <img src="https://i.ytimg.com/vi/AMTiGFmoD3g/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
-      </button>
-      <p class="video-title">How to Use AI at Work Without Losing Your Judgment</p>
+  <details class="lesson" id="card-4">
+    <summary>
+      <span class="s-num" aria-hidden="true">4</span>
+      <span><span class="s-meta">4 of 6 · Nov 3</span><h2 class="s-title">How to use AI's first draft without getting burned</h2></span>
+      <span class="chev" aria-hidden="true"></span>
+    </summary>
+    <div class="lesson-body">
+      <figure><img src="what-works-04.png" alt="Card 4: Where the handoff actually breaks. AI drafts it, you verify it, you decide." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
+      <p>AI writes a first draft 10 times faster than I can. That's the easy part. The real work is checking it — and that's where the saved time should go.</p>
+      <p class="label">Here's how</p>
+      <ol class="steps">
+        <li><strong>Never send the first version.</strong>It's a starting point, not the finish.</li>
+        <li><strong>Check every number and every source.</strong>That's where AI is wrong while sounding sure.</li>
+        <li><strong>Keep the judgment calls.</strong>Tone, risk, and who hears what stay with you.</li>
+      </ol>
+      <p class="payoff">AI drafts it. You check it. You decide.</p>
+      <p class="try"><span>Try it this week:</span> before you send anything AI wrote, check every number in it.</p>
+      <div class="video">
+        <p class="video-label">Watch · 2 min</p>
+        <button class="yt" data-id="AMTiGFmoD3g" aria-label="Play video: How to Use AI at Work Without Losing Your Judgment">
+          <img src="https://i.ytimg.com/vi/AMTiGFmoD3g/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
+        </button>
+        <p class="video-title">How to Use AI at Work Without Losing Your Judgment</p>
+      </div>
+      <p class="more"><a href="guides.html">The 5-step habit, including the checking step →</a></p>
+      <nav class="next" aria-label="Next lesson"><a href="#card-5" data-next><span><small>Next · 5 of 6</small><b>How to pick an AI helper that keeps working</b></span><span class="arrow" aria-hidden="true">→</span></a></nav>
     </div>
-    <p class="more"><a href="guides.html">The 5-step habit, including the checking step →</a></p>
-  </article>
+  </details>
 
   <!-- 5 -->
-  <article class="lesson" id="card-5">
-    <div class="lesson-head"><p class="num">5 of 6</p><p class="date">On LinkedIn Nov 10</p></div>
-    <h2>How to pick an AI helper that keeps working</h2>
-    <figure><img src="what-works-05.png" alt="Card 5: The agents that survived were the boring ones. Boring task, one trigger, you review." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
-    <p>An "agent" is AI that does one job on its own, without you asking each time. Across 50+ AI projects, the big, exciting ones stalled. The boring ones are still running: a weekly summary, a folder that sorts itself, a monthly report.</p>
-    <p class="label">Here's how</p>
-    <ol class="steps">
-      <li><strong>Start with something boring.</strong>A weekly summary. A messy folder.</li>
-      <li><strong>Give it one thing that tells it to start.</strong>When you click, at a set time, or when something new arrives. Pick one.</li>
-      <li><strong>Test it on a copy first.</strong>So a mistake costs you nothing.</li>
-    </ol>
-    <p class="payoff">Small and boring beats big and exciting.</p>
-    <p class="try"><span>Try it this week:</span> name the most boring task you repeat every week. That's your first one.</p>
-    <div class="video">
-      <p class="video-label">Watch · 5 min</p>
-      <button class="yt" data-id="uAuiAE7f1Yw" aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide">
-        <img src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
-      </button>
-      <p class="video-title">How to Start Using AI: A No-Jargon Beginner's Guide — includes building one small workflow</p>
+  <details class="lesson" id="card-5">
+    <summary>
+      <span class="s-num" aria-hidden="true">5</span>
+      <span><span class="s-meta">5 of 6 · Nov 10</span><h2 class="s-title">How to pick an AI helper that keeps working</h2></span>
+      <span class="chev" aria-hidden="true"></span>
+    </summary>
+    <div class="lesson-body">
+      <figure><img src="what-works-05.png" alt="Card 5: The agents that survived were the boring ones. Boring task, one trigger, you review." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
+      <p>An "agent" is AI that does one job on its own, without you asking each time. Across 50+ AI projects, the big, exciting ones stalled. The boring ones are still running: a weekly summary, a folder that sorts itself, a monthly report.</p>
+      <p class="label">Here's how</p>
+      <ol class="steps">
+        <li><strong>Start with something boring.</strong>A weekly summary. A messy folder.</li>
+        <li><strong>Give it one thing that tells it to start.</strong>When you click, at a set time, or when something new arrives. Pick one.</li>
+        <li><strong>Test it on a copy first.</strong>So a mistake costs you nothing.</li>
+      </ol>
+      <p class="payoff">Small and boring beats big and exciting.</p>
+      <p class="try"><span>Try it this week:</span> name the most boring task you repeat every week. That's your first one.</p>
+      <div class="video">
+        <p class="video-label">Watch · 5 min</p>
+        <button class="yt" data-id="uAuiAE7f1Yw" aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide">
+          <img src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
+        </button>
+        <p class="video-title">How to Start Using AI: A No-Jargon Beginner's Guide — includes building one small workflow</p>
+      </div>
+      <nav class="next" aria-label="Next lesson"><a href="#card-6" data-next><span><small>Next · 6 of 6</small><b>Why AI at work fades by day nine — and the fix</b></span><span class="arrow" aria-hidden="true">→</span></a></nav>
     </div>
-  </article>
+  </details>
 
   <!-- 6 -->
-  <article class="lesson" id="card-6">
-    <div class="lesson-head"><p class="num">6 of 6</p><p class="date">On LinkedIn Nov 17</p></div>
-    <h2>Why AI at work fades by day nine — and the fix</h2>
-    <figure><img src="what-works-06.png" alt="Card 6: Why AI rollouts flatline at day nine. Everyone logs in, then nothing. One person, one hated task, built until it worked. They told their team." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
-    <p>Week one, everyone logs in. Everyone gets access, there's a sales demo, a big announcement. By day nine, almost nobody has a reason to open it again.</p>
-    <p class="label">What happened</p>
-    <ol class="steps">
-      <li><strong>What didn't work</strong>Access for everyone, a demo, and an announcement.</li>
-      <li><strong>What changed it</strong>One person, one hated task, built until it worked.</li>
-      <li><strong>What spread it</strong>They told their team. Not me.</li>
-    </ol>
-    <p class="try"><span>Try it this week:</span> pick one person and one task they hate. Sit with them until it works once.</p>
-    <div class="video">
-      <p class="video-label">Watch · 4 min</p>
-      <button class="yt" data-id="_XlGERRwVLU" aria-label="Play video: Feeling Overwhelmed by AI? Start Here">
-        <img src="https://i.ytimg.com/vi/_XlGERRwVLU/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
-      </button>
-      <p class="video-title">Feeling Overwhelmed by AI? Start Here</p>
+  <details class="lesson" id="card-6">
+    <summary>
+      <span class="s-num" aria-hidden="true">6</span>
+      <span><span class="s-meta">6 of 6 · Nov 17</span><h2 class="s-title">Why AI at work fades by day nine — and the fix</h2></span>
+      <span class="chev" aria-hidden="true"></span>
+    </summary>
+    <div class="lesson-body">
+      <figure><img src="what-works-06.png" alt="Card 6: Why AI rollouts flatline at day nine. Everyone logs in, then nothing. One person, one hated task, built until it worked. They told their team." loading="lazy" width="1080" height="1080" onerror="this.parentElement.remove()"></figure>
+      <p>Week one, everyone logs in. Everyone gets access, there's a sales demo, a big announcement. By day nine, almost nobody has a reason to open it again.</p>
+      <p class="label">What happened</p>
+      <ol class="steps">
+        <li><strong>What didn't work</strong>Access for everyone, a demo, and an announcement.</li>
+        <li><strong>What changed it</strong>One person, one hated task, built until it worked.</li>
+        <li><strong>What spread it</strong>They told their team. Not me.</li>
+      </ol>
+      <p class="try"><span>Try it this week:</span> pick one person and one task they hate. Sit with them until it works once.</p>
+      <div class="video">
+        <p class="video-label">Watch · 4 min</p>
+        <button class="yt" data-id="_XlGERRwVLU" aria-label="Play video: Feeling Overwhelmed by AI? Start Here">
+          <img src="https://i.ytimg.com/vi/_XlGERRwVLU/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"><span class="play"><i></i></span>
+        </button>
+        <p class="video-title">Feeling Overwhelmed by AI? Start Here</p>
+      </div>
+      <nav class="next" aria-label="Next section"><a href="#covered" data-next><span><small>Finish</small><b>What we covered</b></span><span class="arrow" aria-hidden="true">→</span></a></nav>
     </div>
-  </article>
+  </details>
+
+  </div>
 
   <!-- Bookend -->
-  <section class="covered" aria-labelledby="covered-h">
+  <section class="covered" id="covered" aria-labelledby="covered-h" tabindex="-1">
     <h2 id="covered-h">What we covered</h2>
     <ul>
       <li>Start with the tool you have and the task you dread. Stay until it works once.</li>
       <li>Write your rules on one page, ask with five lines, and check every number.</li>
       <li>Keep it small and boring — then let people share their own win.</li>
     </ul>
-    <p class="next"><span>Your next step:</span> pick one task this week. Stay with it until it works once. Then show someone.</p>
+    <p class="nextstep"><span>Your next step:</span> pick one task this week. Stay with it until it works once. Then show someone.</p>
   </section>
 
   <!-- Quick reference -->
@@ -359,17 +417,71 @@
 </footer>
 
 <script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lessons = Array.prototype.slice.call(document.querySelectorAll('details.lesson'));
+  var toggleBtn = document.querySelector('.toggle-all');
+
+  function go(id, fromEl){
+    var target = document.getElementById(id);
+    if(!target) return;
+    // Close the lesson you came from, so the page stays tidy
+    if(fromEl){ var from = fromEl.closest('details.lesson'); if(from && from !== target) from.open = false; }
+    if(target.tagName === 'DETAILS') target.open = true;
+    target.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    var focusEl = target.tagName === 'DETAILS' ? target.querySelector('summary') : target;
+    try{ focusEl.focus({preventScroll:true}); }catch(e){}
+    if(history.replaceState) history.replaceState(null, '', '#' + id);
+    syncToggle();
+  }
+
+  // "Next" buttons
+  document.querySelectorAll('a[data-next]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      go(a.getAttribute('href').slice(1), a);
+    });
+  });
+
+  // Deep links like ai-at-work.html#card-3 (from LinkedIn comments)
+  function openFromHash(){
+    var id = (location.hash || '').slice(1);
+    if(!/^card-[1-6]$/.test(id) && id !== 'covered') return;
+    lessons.forEach(function(d){ d.open = (d.id === id); });
+    var t = document.getElementById(id);
+    if(t) setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+    syncToggle();
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  // Open all / Close all
+  function syncToggle(){
+    var allOpen = lessons.every(function(d){ return d.open; });
+    toggleBtn.textContent = allOpen ? 'Close all' : 'Open all';
+    toggleBtn.setAttribute('aria-expanded', allOpen ? 'true' : 'false');
+  }
+  toggleBtn.addEventListener('click', function(){
+    var open = !lessons.every(function(d){ return d.open; });
+    lessons.forEach(function(d){ d.open = open; });
+    syncToggle();
+  });
+  lessons.forEach(function(d){ d.addEventListener('toggle', syncToggle); });
+  syncToggle();
+
+  // Videos load only when tapped
   document.querySelectorAll('.yt').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var id = btn.getAttribute('data-id');
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + btn.getAttribute('data-id') + '?autoplay=1&rel=0';
       f.title = btn.getAttribute('aria-label').replace('Play video: ','');
       f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       f.allowFullscreen = true;
-      btn.replaceWith((function(){ var d=document.createElement('div'); d.className='yt'; d.appendChild(f); return d; })());
+      var wrap = document.createElement('div'); wrap.className = 'yt'; wrap.appendChild(f);
+      btn.replaceWith(wrap);
     });
   });
+})();
 </script>
 </body>
 </html>
