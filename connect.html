@@ -22,12 +22,13 @@
 
   .top{text-align:center;margin-bottom:28px}
   .avatar{width:112px;height:112px;object-fit:contain;display:block;margin:0 auto 14px;filter:drop-shadow(0 10px 20px rgba(96,32,208,.15))}
-  h1{font-family:'Syne',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em}
-  .handle{font-family:'Space Mono',monospace;font-size:13px;color:var(--violet);margin-top:2px}
-  .bio{color:var(--muted);font-weight:300;margin:12px auto 0;max-width:36ch}
+  h1{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.01em;line-height:1.1}
+  .handle{font-family:'Space Mono',monospace;font-size:14px;color:var(--violet);margin-top:2px}
+  .bio{color:var(--muted);font-weight:300;font-size:17px;margin:12px auto 0;max-width:34ch}
+  .cta-line{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-.01em;margin:14px auto 0;max-width:20ch;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:var(--violet);-webkit-text-fill-color:transparent}
 
-  .group{margin-top:26px}
-  .label{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 4px 10px}
+  .group{margin-top:34px}
+  .label{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.01em;color:var(--ink);margin:0 4px 12px}
   .links{display:grid;gap:10px}
   .link{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:var(--ink);min-height:64px;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
   .link:hover{transform:translateY(-2px);border-color:var(--violet-2);box-shadow:0 8px 22px rgba(96,32,208,.10)}
@@ -35,7 +36,7 @@
   .ico img{width:22px;height:22px}
   .ico.txt{font-size:20px}
   .t{flex:1;min-width:0}
-  .t b{display:block;font-weight:600;font-size:16px}
+  .t b{display:block;font-weight:600;font-size:17px}
   .t small{display:block;color:var(--muted);font-size:13.5px;font-weight:300}
   .go{flex:none;color:var(--violet);font-weight:600}
 
@@ -58,11 +59,12 @@
     <img class="avatar" src="sheva.png" alt="Sheva Studio sticker" onerror="this.remove()">
     <h1>Sheva Studio</h1>
     <p class="handle">@sheva.studio</p>
-    <p class="bio">ADHD tools, soft-glam chaos, and AI made human. Pick where you like to hang out.</p>
+    <p class="bio">ADHD tools, soft-glam chaos, and AI made human.</p>
+    <p class="cta-line">Follow along wherever you already scroll.</p>
   </header>
 
   <section class="group" aria-labelledby="g-follow">
-    <p class="label" id="g-follow">Watch &amp; follow</p>
+    <p class="label" id="g-follow">Find me here</p>
     <div class="links">
       <a class="link" href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">
         <span class="ico"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=64" alt="" loading="lazy"></span>
@@ -84,10 +86,14 @@
   </section>
 
   <section class="group" aria-labelledby="g-free">
-    <p class="label" id="g-free">Free tools</p>
+    <p class="label" id="g-free">Grab a free tool</p>
     <div class="links">
-      <a class="link feature" href="no-brainer-decks.html">
-        <span class="ico txt" aria-hidden="true">🧠</span>
+      <a class="link feature" href="field-guides.html">
+        <span class="ico txt" aria-hidden="true">📍</span>
+        <span class="t"><b>Creator Field Guides</b><small>7 free Instagram + Facebook guides. Tap to check off.</small></span><span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="link" href="no-brainer-decks.html">
+        <span class="ico txt" aria-hidden="true">🗂️</span>
         <span class="t"><b>No-Brainer Decks</b><small>Ready-made ADHD carousels. Pick one, download, post.</small></span><span class="go" aria-hidden="true">→</span>
       </a>
       <a class="link" href="card-flip-generator.html">
@@ -106,12 +112,18 @@
   </section>
 
   <section class="group" aria-labelledby="g-more">
-    <p class="label" id="g-more">Community &amp; shop</p>
+    <p class="label" id="g-more">Find your people</p>
     <div class="links">
       <a class="link" href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" rel="noopener">
         <span class="ico txt" aria-hidden="true">🤝</span>
         <span class="t"><b>Side by Side Collective</b><small>Real connection, not curated. Join the group.</small></span><span class="go" aria-hidden="true">→</span>
       </a>
+    </div>
+  </section>
+
+  <section class="group" aria-labelledby="g-shop">
+    <p class="label" id="g-shop">Shop what I use</p>
+    <div class="links">
       <a class="link" href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">
         <span class="ico"><img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=64" alt="" loading="lazy"></span>
         <span class="t"><b>My Amazon Shop</b><small>Everything I actually use, in one place.</small></span><span class="go" aria-hidden="true">→</span>
