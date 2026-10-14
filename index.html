@@ -57,6 +57,11 @@
   }
   .nav-word{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em}
   .nav-links{display:flex;gap:4px;flex-wrap:wrap}
+  @media (max-width:640px){
+    .nav-links{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
+    .nav-links::-webkit-scrollbar{display:none}
+    .nav-link{white-space:nowrap}
+  }
   .nav-link{
     font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:var(--muted);
     text-decoration:none;padding:7px 14px;border-radius:999px;
@@ -99,6 +104,9 @@
   .lede-block{max-width:60ch;margin:0 auto;text-align:left}
   .lede-block p{font-size:clamp(16px,1.9vw,18px);color:var(--muted);font-weight:300;margin-bottom:18px}
   .lede-block p strong{color:var(--ink);font-weight:500}
+  .hero-lede{text-align:center}
+  .hero-lede p{margin-bottom:0}
+  .hero-btns{justify-content:center;margin-top:26px}
   .lede-block p.lede-transition{color:var(--ink);font-weight:500;margin-bottom:0;margin-top:28px}
 
   /* ---- fork (signature element) ---- */
@@ -153,6 +161,8 @@
 
   .grid{display:grid;grid-template-columns:1fr;gap:18px}
   @media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:640px) and (max-width:899px){.grid--3 .card:last-child{grid-column:1/-1}}
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column}
   .card::before{content:"";position:absolute;left:0;top:0;right:0;height:3px}
@@ -217,8 +227,8 @@
       <a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
       <a class="nav-link" href="guides.html">Guides</a>
       <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-      <a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
-      <a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
+      <a class="nav-link" href="ai-at-work.html">AI at Work</a>
+      <a class="nav-link" href="#create">ADHD Tools</a>
       <a class="nav-link" href="contact.html">Contact</a>
     </div>
   </div>
@@ -240,11 +250,12 @@
         <p class="sub-headline">Microsoft + Blue Origin Alumni</p>
       </div>
 
-      <div class="lede-block">
-        <p>I translate complex tech into clean, cinematic stories for you. As an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver &mdash; <strong>I'm making AI human, practical, and a little bit fun</strong>.</p>
-        <p>Everything on these pages is free. Enjoy these learning tools and activities at your leisure. If at the end you'd like additional individual, team, or group consultation, you can request a consultation at the bottom of the page.</p>
-        <p>Helping organizations and individuals turn AI from an "initiative" into culture. Welcome to Sheva Studio, where enterprise AI meets everyday life, and <strong>connection beats perfection every time</strong>.</p>
-        <p class="lede-transition">Now let's have some fun!</p>
+      <div class="lede-block hero-lede">
+        <p>I help teams and individuals turn AI into something people actually use. <strong>Free tools to start. Consulting when you're ready.</strong></p>
+        <div class="btns hero-btns">
+          <a class="btn btn-primary" href="contact.html">Book a Consultation →</a>
+          <a class="btn btn-ghost" href="#lead">Start learning free</a>
+        </div>
       </div>
     </section>
 
@@ -263,7 +274,7 @@
         <div class="lane-card lane-card--b">
           <span class="lane-tag">Create with ADHD</span>
           <h3>ADHD Creator Tools</h3>
-          <p>Free tools, guides, and a community built for brains that don't work in straight lines.</p>
+          <p>Free tools, guides, and a community built for brains that don't work in straight lines. From an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver.</p>
           <a class="lane-link" href="#create">Explore this lane →</a>
         </div>
       </div>
@@ -275,7 +286,13 @@
         <p class="section-eyebrow">Lead with AI</p>
         <h2>Learn AI With Me</h2>
       </div>
-      <div class="grid">
+      <div class="grid grid--3">
+        <div class="card" style="grid-column:1/-1">
+          <span class="tag">New · Weekly series</span>
+          <h3>AI | What Actually Works</h3>
+          <p>Six lessons from 50+ AI projects. How to get your first real win with AI at work, and how to help your team keep using it. Plain language, one lesson every Tuesday.</p>
+          <a class="card-link" href="ai-at-work.html">Start Lesson 1 →</a>
+        </div>
         <div class="card">
           <span class="tag">Training</span>
           <h3>Intro to AI</h3>
@@ -287,12 +304,6 @@
           <h3>Actionable Guides</h3>
           <p>Deep dives, quick recipes, and custom frameworks built for instant productivity.</p>
           <a class="card-link" href="guides.html">View Guides →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Community</span>
-          <h3>Side by Side Collective</h3>
-          <p>Real connection, not curated. Systems built for different brains.</p>
-          <a class="card-link" href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" rel="noopener">Join Group →</a>
         </div>
         <div class="card">
           <span class="tag">Tool</span>
@@ -310,6 +321,12 @@
         <h2>ADHD Learning Pack</h2>
       </div>
       <div class="grid">
+        <div class="card" style="grid-column:1/-1">
+          <span class="tag">Community</span>
+          <h3>Side by Side Collective</h3>
+          <p>Real connection, not curated. Systems built for different brains.</p>
+          <a class="card-link" href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" rel="noopener">Join Group →</a>
+        </div>
         <div class="card">
           <span class="tag">Grab &amp; Go</span>
           <h3>No-Brainer Decks</h3>
