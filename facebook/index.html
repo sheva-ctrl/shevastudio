@@ -3,29 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Facebook Creator Field Guide · Sheva Studio</title>
-<meta name="description" content="Clean, tap-to-check-off Facebook creator tips from Sheva Studio. Start with the blue Follow button.">
+<title>How to Get the Blue Follow Button on Facebook (Not Add Friend) · Sheva Studio</title>
+<meta name="description" content="Free, and anyone can turn it on. Three switches give your Facebook profile a blue Follow button instead of Add Friend, so new people can follow your content.">
+<link rel="canonical" href="https://shevastudio.com/facebook/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Get the Blue Follow Button on Facebook (Not Add Friend)">
+<meta property="og:description" content="Free, and anyone can turn it on. Three switches give your Facebook profile a blue Follow button instead of Add Friend, so new people can follow your content.">
+<meta property="og:url" content="https://shevastudio.com/facebook/">
+<meta property="og:image" content="https://shevastudio.com/facebook/sheva.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f6f4fc;
-    --card:#ffffff;
-    --step:#f5f3ef;
-    --ink:#1a1530;
-    --muted:#5b566e;
-    --mono-muted:#6b6680;
-    --purple:#6c3ce0;
-    --teal:#3f8f7f;
-    --gold:#c9a75a;
-    --gold-ink:#b8954a;
-    --line:#e4e0ef;
-    --done:#eaf5f1;
+    --bg:#f6f4fc; --card:#ffffff; --step:#f5f3ef; --ink:#1a1530; --muted:#5b566e; --mono-muted:#6b6680;
+    --purple:#6c3ce0; --teal:#3f8f7f; --gold:#c9a75a; --gold-ink:#8a6d2c; --line:#e4e0ef; --done:#eaf5f1;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.45}
+  a{color:var(--purple)}
   .mono{font-family:'Space Mono',ui-monospace,monospace}
   .wrap{max-width:720px;margin:0 auto;padding:0 16px 48px}
 
@@ -37,21 +34,25 @@
   .count b{color:var(--purple)}
   .reset{font-family:'Space Mono',monospace;font-size:15px;letter-spacing:.06em;color:var(--mono-muted);background:none;border:0;cursor:pointer}
 
-  .eyebrow{display:flex;align-items:center;gap:10px;margin-top:40px;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--mono-muted)}
+  .back{display:inline-block;margin-top:22px;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none}
+  .eyebrow{display:flex;align-items:center;gap:10px;margin-top:22px;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--mono-muted)}
   .eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--purple)}
-  h1{font-size:clamp(44px,13vw,72px);line-height:.98;font-weight:700;letter-spacing:-.03em;margin:18px 0 22px}
+  h1{font-size:clamp(40px,11.5vw,72px);line-height:.98;font-weight:700;letter-spacing:-.03em;margin:18px 0 22px;overflow-wrap:anywhere}
   h1 .grad{background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero{display:flex;gap:18px;align-items:center}
   .hero-text{flex:1}
   .lede{font-size:19px;line-height:1.5}
   .hint{margin-top:14px;font-family:'Space Mono',monospace;font-size:13px;color:var(--mono-muted);line-height:1.7}
   .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 8px 24px rgba(26,21,48,.14);flex-shrink:0}
+  .objective{margin-top:22px;padding:14px 16px;border-radius:14px;background:#ece7fb;font-size:16px}
+  .objective strong{color:var(--purple)}
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:30px 20px;margin-top:30px}
   .card-head{display:flex;align-items:baseline;gap:12px}
   .num{font-family:'Space Mono',monospace;font-weight:700;color:var(--teal);font-size:18px}
   h2{font-size:clamp(26px,7vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
   .sub{color:var(--muted);font-size:17px;margin-top:8px}
+  .card p.body{font-size:17px;margin-top:14px}
   .label{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin:26px 0 12px}
 
   .stepbtn{width:100%;text-align:left;display:flex;gap:16px;background:var(--step);border:1px solid transparent;border-radius:18px;padding:22px 18px;cursor:pointer;font:inherit;color:inherit;transition:background .2s,border-color .2s}
@@ -66,18 +67,41 @@
   .path{display:block;font-family:'Space Mono',monospace;font-size:14px;color:var(--mono-muted);margin-top:8px;line-height:1.65}
   .why{display:block;font-size:16px;color:var(--muted);margin-top:8px}
   .tip{display:block;margin-top:10px;font-size:14px;color:var(--teal)}
+  .aim{display:inline-block;margin-top:10px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:#e3f1ec;padding:4px 10px;border-radius:99px}
+  .after{margin-top:10px;font-size:15px}
+
+  ul.clean{list-style:none;margin-top:14px}
+  ul.clean li{position:relative;padding:12px 0 12px 26px;border-bottom:1px solid var(--line);font-size:16px}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:"";position:absolute;left:4px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  ul.keep li::before{background:var(--purple)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chips span{font-family:'Space Mono',monospace;font-size:13px;background:#f1edfb;border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+  ol.rules{list-style:none;counter-reset:r;margin-top:14px}
+  ol.rules li{counter-increment:r;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+  ol.rules li:last-child{border-bottom:0}
+  ol.rules li::before{content:counter(r,decimal-leading-zero);font-family:'Space Mono',monospace;font-weight:700;color:var(--purple);font-size:14px;padding-top:2px}
+  ol.rules strong{display:block}
+  ol.rules span{color:var(--muted)}
 
   .callout{margin-top:26px;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:20px 18px;background:#faf9fd}
   .callout .label{color:var(--gold-ink);margin:0 0 8px}
   .callout p{font-size:17px}
 
-  .grows{margin-top:30px;border:2px dashed var(--line);border-radius:22px;padding:30px 20px;text-align:center}
-  .grows .label{color:var(--mono-muted);margin:0 0 10px}
-  .grows h3{font-size:28px;letter-spacing:-.01em}
-  .grows p{color:var(--muted);font-size:17px;margin-top:8px}
+  .covered{background:linear-gradient(135deg,#ece7fb,#e3f1ec)}
+  .nextstep{margin-top:18px;padding:14px 16px;border-radius:14px;background:#fff;font-size:16px}
+  .nextstep strong{color:var(--purple)}
+
+  .upnext{display:flex;align-items:center;gap:16px;margin-top:30px;padding:22px 20px;border-radius:22px;background:var(--ink);color:#fff;text-decoration:none;transition:transform .15s}
+  .upnext:hover{transform:translateY(-2px)}
+  .upnext:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+  .upnext small{display:block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#bfb3f5}
+  .upnext b{display:block;font-size:22px;letter-spacing:-.01em;margin-top:4px;line-height:1.2}
+  .upnext .arrow{flex:none;margin-left:auto;width:44px;height:44px;border-radius:50%;background:linear-gradient(90deg,var(--purple),var(--teal));display:grid;place-items:center;font-size:20px}
+  .allguides{display:block;text-align:center;margin-top:14px;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none}
 
   footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:14px;color:var(--mono-muted)}
-  footer a{display:inline-block;margin-top:12px;color:var(--purple);text-decoration:none}
+  footer a{display:inline-block;margin-top:12px;text-decoration:none}
   .trust{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line);font-size:12px;line-height:1.7;color:var(--mono-muted)}
   .trust p+p{margin-top:6px}
   .trust a{display:inline;margin:0;text-decoration:underline;text-underline-offset:2px}
@@ -86,6 +110,7 @@
     .hero{flex-direction:column-reverse;align-items:flex-start}
     .avatar{width:96px;height:96px}
   }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
@@ -100,7 +125,8 @@
 
 <main class="wrap">
 
-  <div class="eyebrow">Sheva Studio · Field Guide</div>
+  <a class="back" href="/field-guides.html">← All field guides</a>
+  <div class="eyebrow">Field Guide 02 · Facebook</div>
   <h1>FACEBOOK<br><span class="grad">CREATOR</span></h1>
 
   <div class="hero">
@@ -108,13 +134,14 @@
       <p class="lede">Clean, no-fluff Facebook tips for creators. One switch at a time, in the order that actually works.</p>
       <p class="hint">Tap any step to check it off · saves on this device</p>
     </div>
-    <img class="avatar" src="https://shevastudio.com/facebook/sheva.png" alt="Sheva">
+    <img class="avatar" src="/facebook/sheva.png" alt="Sheva">
   </div>
+
+  <p class="objective"><strong>By the end:</strong> people who aren't your friends will see a Follow button on your profile instead of Add Friend.</p>
 
   <section class="card">
     <div class="card-head"><span class="num">01</span><h2>The Blue Follow Button</h2></div>
     <p class="sub">Free. Anyone can turn it on. Creator-ready in three switches.</p>
-
     <div class="label">Step 1 — the main switch</div>
     <button class="stepbtn" type="button" data-step="s1">
       <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
@@ -124,7 +151,6 @@
         <span class="why">Nothing else works without this. Once it's on, non-friends see a Follow button.</span>
       </span>
     </button>
-
     <div class="label">Step 2 — the part most creators miss</div>
     <button class="stepbtn" type="button" data-step="s2">
       <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
@@ -135,7 +161,6 @@
         <span class="tip">Paths vary by app version. Don't see it? Search "Followers" in Settings.</span>
       </span>
     </button>
-
     <div class="label">Step 3 — front and center</div>
     <button class="stepbtn" type="button" data-step="s3">
       <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
@@ -145,22 +170,29 @@
         <span class="why">Makes the profile look creator-ready and puts Follow up top.</span>
       </span>
     </button>
-
     <div class="callout">
       <div class="label mono">One thing to remember</div>
       <p>The blue Follow button and the blue verified badge are not the same. Follow is free and anyone can switch it on. Verification is a whole different process.</p>
     </div>
   </section>
+  <section class="card covered">
+    <div class="card-head"><span class="num">✓</span><h2>What We Covered</h2></div>
+    <ul class="clean">
+      <li>Public followers turns the Follow button on.</li>
+      <li>Friends of Friends pushes Follow ahead of Add Friend.</li>
+      <li>Professional Mode puts Follow front and center.</li>
+    </ul>
+    <p class="nextstep"><strong>Next step:</strong> open Facebook and do Step 1. It takes under a minute.</p>
+  </section>
 
-  <div class="grows">
-    <div class="label mono">More tips loading</div>
-    <h3>This guide grows</h3>
-    <p>New Facebook creator tips drop here. Follow the page so you catch each one.</p>
-  </div>
+  <a class="upnext" href="/instagram/quiet-filters.html">
+    <span><small>Next up · Guide 03</small><b>The Quiet Filters</b></span><span class="arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="allguides" href="/field-guides.html">See all 7 field guides →</a>
 
   <footer>
     Sheva Studio · Content · AI · Culture<br>
-    <a href="https://shevastudio.com/">shevastudio.com →</a>
+    <a href="/">shevastudio.com →</a>
     <div class="trust">
       <p>Last updated: October 13, 2026</p>
       <p>Not affiliated with Meta or Facebook. Menus change often — for the most current steps, visit the <a href="https://www.facebook.com/help/" target="_blank" rel="noopener">Facebook Help Center</a> or <a href="https://www.facebook.com/business/help" target="_blank" rel="noopener">Meta Business Help Center</a>.</p>

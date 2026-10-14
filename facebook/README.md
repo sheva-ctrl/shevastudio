@@ -1,18 +1,11 @@
-# Facebook Field Guide
+# Facebook Field Guides
 
-Live at: shevastudio.com/facebook/
+Built with the shared field-guide template (same look as /instagram/).
+Hub: shevastudio.com/field-guides.html
 
-Creator tips for Facebook, in the Sheva Studio field-guide format
-(tap-to-check-off steps, progress saves per device).
+- index.html         → 02 · The Blue Follow Button
+- reach.html         → 05 · The Reach Rescue
+- feed-cleanse.html  → 06 · Facebook Feed Cleanse
+- sheva.png          → portrait used by every field guide (keep it here)
 
-## Files
-- index.html  → the guide itself
-- sheva.png   → header portrait (must stay in this folder)
-
-## Adding a new tip
-Copy an existing <section class="guide"> block in index.html,
-bump the number (01 → 02), swap the title + steps. The progress
-counter and save logic pick it up automatically — no other changes.
-
-## Current tips
-01 · The Blue Follow Button
+Each guide saves progress per device. Update the "Last updated" line when you change a guide.

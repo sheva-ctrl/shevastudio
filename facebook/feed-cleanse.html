@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Clean Your Facebook Feed Without Unfriending Anyone · Sheva Studio</title>
+<meta name="description" content="Don&#x27;t mass unfriend. Use Unfollow, Snooze, and Favorites to clean your Facebook feed. Unfollow keeps you friends, and none of these notify anyone.">
+<link rel="canonical" href="https://shevastudio.com/facebook/feed-cleanse.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Clean Your Facebook Feed Without Unfriending Anyone">
+<meta property="og:description" content="Don&#x27;t mass unfriend. Use Unfollow, Snooze, and Favorites to clean your Facebook feed. Unfollow keeps you friends, and none of these notify anyone.">
+<meta property="og:url" content="https://shevastudio.com/facebook/feed-cleanse.html">
+<meta property="og:image" content="https://shevastudio.com/facebook/sheva.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4fc; --card:#ffffff; --step:#f5f3ef; --ink:#1a1530; --muted:#5b566e; --mono-muted:#6b6680;
+    --purple:#6c3ce0; --teal:#3f8f7f; --gold:#c9a75a; --gold-ink:#8a6d2c; --line:#e4e0ef; --done:#eaf5f1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.45}
+  a{color:var(--purple)}
+  .mono{font-family:'Space Mono',ui-monospace,monospace}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px 48px}
+
+  .topbar{position:sticky;top:0;z-index:10;background:rgba(246,244,252,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .topbar-inner{max-width:720px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:14px}
+  .bar{flex:1;height:8px;border-radius:99px;background:#e2def0;overflow:hidden}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--teal));transition:width .4s ease}
+  .count{font-family:'Space Mono',monospace;font-size:15px;white-space:nowrap}
+  .count b{color:var(--purple)}
+  .reset{font-family:'Space Mono',monospace;font-size:15px;letter-spacing:.06em;color:var(--mono-muted);background:none;border:0;cursor:pointer}
+
+  .back{display:inline-block;margin-top:22px;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none}
+  .eyebrow{display:flex;align-items:center;gap:10px;margin-top:22px;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--mono-muted)}
+  .eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--purple)}
+  h1{font-size:clamp(40px,11.5vw,72px);line-height:.98;font-weight:700;letter-spacing:-.03em;margin:18px 0 22px;overflow-wrap:anywhere}
+  h1 .grad{background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero{display:flex;gap:18px;align-items:center}
+  .hero-text{flex:1}
+  .lede{font-size:19px;line-height:1.5}
+  .hint{margin-top:14px;font-family:'Space Mono',monospace;font-size:13px;color:var(--mono-muted);line-height:1.7}
+  .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 8px 24px rgba(26,21,48,.14);flex-shrink:0}
+  .objective{margin-top:22px;padding:14px 16px;border-radius:14px;background:#ece7fb;font-size:16px}
+  .objective strong{color:var(--purple)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:30px 20px;margin-top:30px}
+  .card-head{display:flex;align-items:baseline;gap:12px}
+  .num{font-family:'Space Mono',monospace;font-weight:700;color:var(--teal);font-size:18px}
+  h2{font-size:clamp(26px,7vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .sub{color:var(--muted);font-size:17px;margin-top:8px}
+  .card p.body{font-size:17px;margin-top:14px}
+  .label{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin:26px 0 12px}
+
+  .stepbtn{width:100%;text-align:left;display:flex;gap:16px;background:var(--step);border:1px solid transparent;border-radius:18px;padding:22px 18px;cursor:pointer;font:inherit;color:inherit;transition:background .2s,border-color .2s}
+  .stepbtn:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+  .box{width:30px;height:30px;border-radius:9px;border:3px solid var(--purple);flex-shrink:0;display:grid;place-items:center;margin-top:2px;transition:background .2s}
+  .box svg{width:16px;height:16px;opacity:0;transition:opacity .2s}
+  .stepbtn.done{background:var(--done);border-color:#cfe7de}
+  .stepbtn.done .box{background:var(--teal);border-color:var(--teal)}
+  .stepbtn.done .box svg{opacity:1}
+  .stepbtn.done .step-title{text-decoration:line-through;text-decoration-color:var(--teal)}
+  .step-title{font-weight:700;font-size:19px;display:block}
+  .path{display:block;font-family:'Space Mono',monospace;font-size:14px;color:var(--mono-muted);margin-top:8px;line-height:1.65}
+  .why{display:block;font-size:16px;color:var(--muted);margin-top:8px}
+  .tip{display:block;margin-top:10px;font-size:14px;color:var(--teal)}
+  .aim{display:inline-block;margin-top:10px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:#e3f1ec;padding:4px 10px;border-radius:99px}
+  .after{margin-top:10px;font-size:15px}
+
+  ul.clean{list-style:none;margin-top:14px}
+  ul.clean li{position:relative;padding:12px 0 12px 26px;border-bottom:1px solid var(--line);font-size:16px}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:"";position:absolute;left:4px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  ul.keep li::before{background:var(--purple)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chips span{font-family:'Space Mono',monospace;font-size:13px;background:#f1edfb;border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+  ol.rules{list-style:none;counter-reset:r;margin-top:14px}
+  ol.rules li{counter-increment:r;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+  ol.rules li:last-child{border-bottom:0}
+  ol.rules li::before{content:counter(r,decimal-leading-zero);font-family:'Space Mono',monospace;font-weight:700;color:var(--purple);font-size:14px;padding-top:2px}
+  ol.rules strong{display:block}
+  ol.rules span{color:var(--muted)}
+
+  .callout{margin-top:26px;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:20px 18px;background:#faf9fd}
+  .callout .label{color:var(--gold-ink);margin:0 0 8px}
+  .callout p{font-size:17px}
+
+  .covered{background:linear-gradient(135deg,#ece7fb,#e3f1ec)}
+  .nextstep{margin-top:18px;padding:14px 16px;border-radius:14px;background:#fff;font-size:16px}
+  .nextstep strong{color:var(--purple)}
+
+  .upnext{display:flex;align-items:center;gap:16px;margin-top:30px;padding:22px 20px;border-radius:22px;background:var(--ink);color:#fff;text-decoration:none;transition:transform .15s}
+  .upnext:hover{transform:translateY(-2px)}
+  .upnext:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+  .upnext small{display:block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#bfb3f5}
+  .upnext b{display:block;font-size:22px;letter-spacing:-.01em;margin-top:4px;line-height:1.2}
+  .upnext .arrow{flex:none;margin-left:auto;width:44px;height:44px;border-radius:50%;background:linear-gradient(90deg,var(--purple),var(--teal));display:grid;place-items:center;font-size:20px}
+  .allguides{display:block;text-align:center;margin-top:14px;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none}
+
+  footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:14px;color:var(--mono-muted)}
+  footer a{display:inline-block;margin-top:12px;text-decoration:none}
+  .trust{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line);font-size:12px;line-height:1.7;color:var(--mono-muted)}
+  .trust p+p{margin-top:6px}
+  .trust a{display:inline;margin:0;text-decoration:underline;text-underline-offset:2px}
+
+  @media (max-width:420px){
+    .hero{flex-direction:column-reverse;align-items:flex-start}
+    .avatar{width:96px;height:96px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <div class="count"><b id="doneCount">0</b> / <span id="totalCount">0</span> done</div>
+    <button class="reset" id="resetBtn" type="button">RESET</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <a class="back" href="/field-guides.html">← All field guides</a>
+  <div class="eyebrow">Field Guide 06 · Facebook</div>
+  <h1>FEED<br><span class="grad">CLEANSE</span></h1>
+
+  <div class="hero">
+    <div class="hero-text">
+      <p class="lede">Your feed is your research desk. Clean it up without unfriending a single person.</p>
+      <p class="hint">Tap any step to check it off · saves on this device</p>
+    </div>
+    <img class="avatar" src="/facebook/sheva.png" alt="Sheva">
+  </div>
+
+  <p class="objective"><strong>By the end:</strong> your feed shows the people and Pages you actually want, and nobody gets unfriended or notified.</p>
+
+  <section class="card">
+    <div class="card-head"><span class="num">01</span><h2>Why Facebook Is Different</h2></div>
+    <p class="sub">Gentler tools than Instagram.</p>
+    <p class="body">On Instagram, cleanup means unfollowing. Facebook gives you gentler tools. Unfollow hides someone's posts but keeps you friends. Snooze hides them for 30 days. Favorites puts the people you care about first. None of these notify anyone.</p>
+    <div class="callout">
+      <div class="label mono">One thing to remember</div>
+      <p>Unfollow is not unfriend. You stay friends, and they can still see what you post. You just stop seeing theirs.</p>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span class="num">02</span><h2>Four Tools</h2></div>
+    <p class="sub">Use the gentlest one that works.</p>
+    <div class="label">Tool 1 — favorites first</div>
+    <button class="stepbtn" type="button" data-step="c1">
+      <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+      <span>
+        <span class="step-title">Pick your Favorites</span>
+        <span class="path">Settings &amp; privacy → Settings → Feeds → Favorites</span>
+        <span class="why">Choose up to 30 people and Pages. Their posts show higher in your feed.</span>
+        <span class="tip">Don't see Feeds? Type "Favorites" into the search bar in Settings.</span>
+      </span>
+    </button>
+    <div class="label">Tool 2 — snooze</div>
+    <button class="stepbtn" type="button" data-step="c2">
+      <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+      <span>
+        <span class="step-title">Snooze the noisy ones</span>
+        <span class="path">On any post → ••• → Snooze [name] for 30 days</span>
+        <span class="why">Good for a friend in a heavy posting phase or a Page running a sale. It ends on its own.</span>
+      </span>
+    </button>
+    <div class="label">Tool 3 — unfollow</div>
+    <button class="stepbtn" type="button" data-step="c3">
+      <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+      <span>
+        <span class="step-title">Unfollow without unfriending</span>
+        <span class="path">On any post → ••• → Unfollow [name]</span>
+        <span class="why">Their posts leave your feed for good. You stay friends.</span>
+      </span>
+    </button>
+    <div class="label">Tool 4 — pages</div>
+    <button class="stepbtn" type="button" data-step="c4">
+      <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+      <span>
+        <span class="step-title">Clean Pages before people</span>
+        <span class="path">Go to the Page → Following → Unfollow</span>
+        <span class="why">Old brand, meme, and contest Pages crowd your feed more than friends do. Start with them.</span>
+        <span class="tip">Some apps show everyone and every Page you follow in one list under Settings → Feeds → Unfollow.</span>
+      </span>
+    </button>
+  </section>
+  <section class="card">
+    <div class="card-head"><span class="num">03</span><h2>Fast Start Today</h2></div>
+    <p class="sub">Five, five, ten.</p>
+    <div class="label">Move 1</div>
+    <button class="stepbtn" type="button" data-step="f1">
+      <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+      <span>
+        <span class="step-title">Favorite 5 people or Pages</span>
+        <span class="path">Settings → Feeds → Favorites</span>
+      </span>
+    </button>
+    <div class="label">Move 2</div>
+    <button class="stepbtn" type="button" data-step="f2">
+      <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+      <span>
+        <span class="step-title">Snooze 5 noisy accounts</span>
+        <span class="path">Post → ••• → Snooze for 30 days</span>
+      </span>
+    </button>
+    <div class="label">Move 3</div>
+    <button class="stepbtn" type="button" data-step="f3">
+      <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+      <span>
+        <span class="step-title">Unfollow 10 Pages you don't read</span>
+        <span class="path">Page → Following → Unfollow</span>
+      </span>
+    </button>
+  </section>
+  <section class="card covered">
+    <div class="card-head"><span class="num">✓</span><h2>What We Covered</h2></div>
+    <ul class="clean">
+      <li>Favorites puts up to 30 people and Pages first.</li>
+      <li>Snooze is a 30-day break. Unfollow is permanent, but you stay friends.</li>
+      <li>Clean Pages before people. Nobody gets notified either way.</li>
+    </ul>
+    <p class="nextstep"><strong>Next step:</strong> do Move 1 now. Pick your five favorites.</p>
+  </section>
+
+  <a class="upnext" href="/instagram/cross-posting.html">
+    <span><small>Next up · Guide 07</small><b>The Cross-Posting Trap</b></span><span class="arrow" aria-hidden="true">→</span>
+  </a>
+  <a class="allguides" href="/field-guides.html">See all 7 field guides →</a>
+
+  <footer>
+    Sheva Studio · Content · AI · Culture<br>
+    <a href="/">shevastudio.com →</a>
+    <div class="trust">
+      <p>Last updated: October 13, 2026</p>
+      <p>Not affiliated with Meta or Facebook. Menus change often — for the most current steps, visit the <a href="https://www.facebook.com/help/" target="_blank" rel="noopener">Facebook Help Center</a> or <a href="https://www.facebook.com/business/help" target="_blank" rel="noopener">Meta Business Help Center</a>.</p>
+      <p>For educational purposes. Results vary by account.</p>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var KEY = 'sheva-fb-feed-v1';
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.stepbtn'));
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { state = {}; }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+  function render(){
+    var done = 0;
+    steps.forEach(function(btn){
+      var on = !!state[btn.dataset.step];
+      btn.classList.toggle('done', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) done++;
+    });
+    document.getElementById('doneCount').textContent = done;
+    document.getElementById('totalCount').textContent = steps.length;
+    document.getElementById('barFill').style.width = (steps.length ? (done / steps.length * 100) : 0) + '%';
+  }
+  steps.forEach(function(btn){
+    btn.addEventListener('click', function(){ state[btn.dataset.step] = !state[btn.dataset.step]; save(); render(); });
+  });
+  document.getElementById('resetBtn').addEventListener('click', function(){ state = {}; save(); render(); });
+  render();
+})();
+</script>
+</body>
+</html>
