@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>The Prompt Builder — Sheva Studio</title>
-<meta name="description" content="Learn to write AI prompts that actually work. A no-jargon, ADHD-friendly builder that turns your idea into a clean, copy-ready prompt for ChatGPT, Gemini, or Claude.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<meta content="Learn to write AI prompts that actually work. A no-jargon, ADHD-friendly builder that turns your idea into a clean, copy-ready prompt for ChatGPT, Gemini, or Claude." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
     --violet:#6020D0; --violet-2:#7C3AED; --teal:#0891B2;
@@ -138,110 +139,170 @@
 .site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
 @media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
 </style>
-</head>
+<style>:root{--f-accent:#6020D0;--f-accent2:#0891B2;--f-ink:#15151C;--f-muted:#55555F;--f-line:#E7E5EE;--f-soft:#F5F3FA;--f-card:#fff;--f-accent-line:rgba(96,32,208,.35);--f-head:'Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+/* ===== Sheva Studio collapsible steps ===== */
+.fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
+  font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--f-ink)}
+.fold-help p{margin:0}
+.fold-help b{color:var(--f-accent);font-weight:700}
+button.fold-all{all:unset;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--f-accent);
+  padding:8px 14px;border-radius:999px;border:1.5px solid var(--f-line);background:var(--f-card,#fff);white-space:nowrap}
+button.fold-all:hover{border-color:var(--f-accent)}
+button.fold-all:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+
+details.fold{background:var(--f-card,#fff);border:1px solid var(--f-line);border-radius:16px;margin:0 0 12px;scroll-margin-top:84px;
+  transition:border-color .2s,box-shadow .2s}
+details.fold[open]{border-color:var(--f-accent-line);box-shadow:0 6px 24px rgba(30,24,48,.06)}
+details.fold > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:14px;padding:16px}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px;border-radius:14px}
+.fold-num{min-width:42px;height:42px;padding:0 8px;border-radius:12px;display:grid;place-items:center;background:var(--f-soft);
+  color:var(--f-accent);font-family:var(--f-head);font-weight:800;font-size:18px;transition:background .2s,color .2s}
+details.fold[open] .fold-num{background:var(--f-accent);color:#fff}
+.fold-meta{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--f-muted);margin:0 0 2px}
+details.fold > summary h2.fold-title{font-family:var(--f-head);font-weight:800;font-size:clamp(19px,3.6vw,24px);line-height:1.2;
+  letter-spacing:-.01em;margin:0;padding:0;border:0;color:var(--f-ink)}
+.fold-chev{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--f-line);display:grid;place-items:center;
+  transition:transform .25s,border-color .2s;flex:none}
+.fold-chev::after{content:"";width:8px;height:8px;border-right:2px solid var(--f-ink);border-bottom:2px solid var(--f-ink);
+  transform:translateY(-2px) rotate(45deg)}
+details.fold[open] .fold-chev{transform:rotate(180deg);border-color:var(--f-accent)}
+details.fold > summary:hover .fold-chev{border-color:var(--f-accent)}
+.fold-body{border-top:1px solid var(--f-line);margin:0 16px;padding:20px 0 20px}
+@media (min-width:700px){details.fold > summary{padding:20px 24px;gap:18px}.fold-body{margin:0 24px}}
+.fold-body > :not(.fold-video):not(.fold-next-wrap):not(.fold-lede){margin:0!important;padding:0!important;border:0!important;
+  background:transparent!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;
+  max-width:none!important;width:auto}
+.fold-body > section.fz > *:first-child:last-child{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important}
+.fold-lede{font-family:var(--f-body);font-size:16px;color:var(--f-muted);margin:0 0 16px;line-height:1.55}
+@media (prefers-reduced-motion:no-preference){details.fold[open] .fold-body{animation:foldIn .3s ease}
+  @keyframes foldIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+
+.fold-video,.page-video{margin:0 0 22px}
+.page-video{margin:26px 0 8px}
+.fold-video-label{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--f-accent);margin:0 0 8px}
+.fold-video-title{font-family:var(--f-body);font-size:15px;font-weight:600;color:var(--f-ink);margin:8px 0 0;line-height:1.4}
+button.yt,div.yt{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:14px;
+  overflow:hidden;background:#1E1830;cursor:pointer}
+button.yt:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center}
+.yt .play i{width:68px;height:48px;border-radius:12px;background:var(--f-accent);display:grid;place-items:center}
+.yt .play i::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+button.yt:hover .play i{background:var(--f-accent2)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.fold-next-wrap{margin-top:24px;padding-top:18px;border-top:1px solid var(--f-line);display:flex;justify-content:flex-end}
+a.fold-next{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--f-ink);background:var(--f-soft);
+  border:1px solid var(--f-line);border-radius:12px;padding:12px 16px;max-width:100%;transition:border-color .2s}
+a.fold-next:hover{border-color:var(--f-accent)}
+a.fold-next:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+a.fold-next small{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--f-accent)}
+a.fold-next b{display:block;font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.35}
+a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background:var(--f-accent);color:#fff;display:grid;place-items:center;font-weight:700}
+@media (max-width:600px){.site-nav{flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important}
+  .site-nav .nav-home{flex:none}
+  .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+  .site-nav .nav-links::-webkit-scrollbar{display:none}}
+@media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
+#your-prompt{scroll-margin-top:84px} .blocks > details.fold{margin-bottom:12px}</style></head>
 <body>
 <nav class="site-nav">
-  <a href="index.html" class="nav-home">🏠 Sheva Studio</a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="guides.html" class="nav-link">Guides</a>
-    <a href="prompt-builder.html" class="nav-link current">Prompt Builder</a>
-    <a href="no-brainer-decks.html" class="nav-link">No-Brainer Decks</a>
-    <a href="card-flip-generator.html" class="nav-link">Build Your Own</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <span class="kicker rise d1">AI Learning Pack · Sheva Studio</span>
-  <h1 class="rise d1">The Prompt Builder <span class="accent">| No Jargon</span></h1>
-  <p class="sub-headline rise d2">Goal · Context · Audience · Format · Check</p>
-  <p class="lede rise d2">A blank AI chat may seem like the scariest thing on the internet. But it doesn't have to be. Use this prompt generator to get started: <strong>fill in the blanks below</strong> and watch a clean, copy-ready prompt build itself.</p>
-  <p class="lede rise d2">Only the first box is required. The rest just make the answer better. <strong>Frozen? Hit Surprise Me.</strong></p>
-
-  <p class="section-label rise d3">Not sure where to start? Tap one to fill it in</p>
-  <div class="chips rise d3">
-    <button class="chip" onclick="loadTemplate('email')">✉️ Draft an email</button>
-    <button class="chip" onclick="loadTemplate('summarize')">📝 Summarize something</button>
-    <button class="chip" onclick="loadTemplate('explain')">💡 Explain a concept</button>
-    <button class="chip" onclick="loadTemplate('compare')">⚖️ Compare options</button>
-    <button class="chip" onclick="loadTemplate('brainstorm')">🧠 Brainstorm ideas</button>
-    <button class="chip surprise" onclick="surprise()">✨ Surprise Me</button>
-    <button class="chip" onclick="clearAll()">🧹 Clear</button>
-  </div>
-  <p style="font-size:13px;color:var(--muted);margin-top:10px;font-weight:300;">Starts with an example so you're not staring at a blank page. Edit it, swap the template, or clear it and build your own.</p>
-
-  <div class="builder rise d4">
-    <div class="blocks">
-      <div class="block" id="block-goal">
-        <div class="block-head"><span class="block-tag">STEP 01</span><span class="block-req">required</span></div>
-        <h3>Goal</h3>
-        <p class="hint">What you want it to do. One clear job. Start with a verb: draft, summarize, explain, plan, compare.</p>
-        <textarea id="goal" rows="2" placeholder="e.g., Draft a friendly email asking my landlord to fix the heater" oninput="update()"></textarea>
-      </div>
-      <div class="block" id="block-context">
-        <div class="block-head"><span class="block-tag">STEP 02</span></div>
-        <h3>Context</h3>
-        <p class="hint">What it should know first. Background, the situation, anything you'd tell a coworker before handing this off.</p>
-        <textarea id="context" rows="2" placeholder="e.g., The heater's been out for 3 days, it's winter, I've already called once with no answer" oninput="update()"></textarea>
-      </div>
-      <div class="block" id="block-audience">
-        <div class="block-head"><span class="block-tag">STEP 03</span></div>
-        <h3>Audience</h3>
-        <p class="hint">Who it's for. Who reads or uses the result. This sets the tone.</p>
-        <textarea id="audience" rows="1" placeholder="e.g., My landlord — polite but firm" oninput="update()"></textarea>
-      </div>
-      <div class="block" id="block-format">
-        <div class="block-head"><span class="block-tag">STEP 04</span></div>
-        <h3>Format</h3>
-        <p class="hint">What it should look like. Bullets, a table, a short email, an outline, five sentences. Be specific.</p>
-        <textarea id="format" rows="1" placeholder="e.g., A short email with a subject line, under 120 words" oninput="update()"></textarea>
-      </div>
-      <div class="block" id="block-check">
-        <div class="block-head"><span class="block-tag">STEP 05</span></div>
-        <h3>Check</h3>
-        <p class="hint">How to keep it honest. Tell it to flag guesses or ask questions, so you catch AI making things up.</p>
-        <textarea id="check" rows="1" placeholder="e.g., Ask me anything you're unsure about before writing the final version" oninput="update()"></textarea>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="meter-wrap">
-        <div class="meter-top">
-          <span class="meter-label">Prompt Strength</span>
-          <span class="meter-status" id="meterStatus">Start typing</span>
-        </div>
-        <div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
-      </div>
-
-      <div class="output-card">
-        <h3>Your prompt</h3>
-        <div class="output-text" id="output"><span class="ph">Fill in the Goal box and your prompt appears here…</span></div>
-        <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">📋 Copy prompt</button>
-        <div class="launch">
-          <p>Now paste it into your AI:</p>
-          <div class="launch-row">
-            <a class="launch-btn" href="https://claude.ai" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="" width="18" height="18">Claude</a>
-            <a class="launch-btn" href="https://chatgpt.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="" width="18" height="18">ChatGPT</a>
-            <a class="launch-btn" href="https://gemini.google.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="" width="18" height="18">Gemini</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tip">
-    <p class="section-label">Why this works</p>
-    <p>Most bad AI answers come from vague prompts, not a bad tool. When you name the <strong>goal, the context, the audience, the format, and the check</strong>, you stop making the AI guess. Same recipe works in any tool. Learn it once, use it forever.</p>
-  </div>
-
-  <div class="footer">
-    Built by Sheva Studio · Making AI human, practical, and a little bit fun.<br>
-    → <a href="index.html">Back to the ecosystem</a> &nbsp;·&nbsp; <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a>
-  </div>
-
+<a class="nav-home" href="index.html">🏠 Sheva Studio</a>
+<div class="nav-links">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="guides.html">Guides</a>
+<a class="nav-link current" href="prompt-builder.html">Prompt Builder</a>
+<a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
+<a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
 </div>
+</nav>
+<div class="wrap">
+<span class="kicker rise d1">AI Learning Pack · Sheva Studio</span>
+<h1 class="rise d1">The Prompt Builder <span class="accent">| No Jargon</span></h1>
+<p class="sub-headline rise d2">Goal · Context · Audience · Format · Check</p>
+<p class="lede rise d2">A blank AI chat may seem like the scariest thing on the internet. But it doesn't have to be. Use this prompt generator to get started: <strong>fill in the blanks below</strong> and watch a clean, copy-ready prompt build itself.</p><div class="page-video"><p class="fold-video-label">Watch first · 2:52</p><button aria-label="Play video: How to Write Better AI Prompts: Context, Task, Format" class="yt" data-id="mTKFka8m4RA" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/mTKFka8m4RA/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Write Better AI Prompts: Context, Task, Format</p></div>
+<p class="lede rise d2">Only the first box is required. The rest just make the answer better. <strong>Frozen? Hit Surprise Me.</strong></p>
+<p class="section-label rise d3">Not sure where to start? Tap one to fill it in</p>
+<div class="chips rise d3">
+<button class="chip" onclick="loadTemplate('email')">✉️ Draft an email</button>
+<button class="chip" onclick="loadTemplate('summarize')">📝 Summarize something</button>
+<button class="chip" onclick="loadTemplate('explain')">💡 Explain a concept</button>
+<button class="chip" onclick="loadTemplate('compare')">⚖️ Compare options</button>
+<button class="chip" onclick="loadTemplate('brainstorm')">🧠 Brainstorm ideas</button>
+<button class="chip surprise" onclick="surprise()">✨ Surprise Me</button>
+<button class="chip" onclick="clearAll()">🧹 Clear</button>
+</div>
+<p style="font-size:13px;color:var(--muted);margin-top:10px;font-weight:300;">Starts with an example so you're not staring at a blank page. Edit it, swap the template, or clear it and build your own.</p>
+<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><div class="builder rise d4">
+<div class="blocks">
+<details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Required</span><h2 class="fold-title">Goal</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-goal">
 
+
+<p class="hint">What you want it to do. One clear job. Start with a verb: draft, summarize, explain, plan, compare.</p>
+<textarea id="goal" oninput="update()" placeholder="e.g., Draft a friendly email asking my landlord to fix the heater" rows="2"></textarea>
+</div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-2"><span><small>Next · Step 2</small><b>Context</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Context</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-context">
+
+
+<p class="hint">What it should know first. Background, the situation, anything you'd tell a coworker before handing this off.</p>
+<textarea id="context" oninput="update()" placeholder="e.g., The heater's been out for 3 days, it's winter, I've already called once with no answer" rows="2"></textarea>
+</div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-3"><span><small>Next · Step 3</small><b>Audience</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-3"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Audience</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-audience">
+
+
+<p class="hint">Who it's for. Who reads or uses the result. This sets the tone.</p>
+<textarea id="audience" oninput="update()" placeholder="e.g., My landlord — polite but firm" rows="1"></textarea>
+</div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-4"><span><small>Next · Step 4</small><b>Format</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-4"><summary><span aria-hidden="true" class="fold-num">4</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Format</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-format">
+
+
+<p class="hint">What it should look like. Bullets, a table, a short email, an outline, five sentences. Be specific.</p>
+<textarea id="format" oninput="update()" placeholder="e.g., A short email with a subject line, under 120 words" rows="1"></textarea>
+</div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-5"><span><small>Next · Step 5</small><b>Check</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-5"><summary><span aria-hidden="true" class="fold-num">5</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Check</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-check">
+
+
+<p class="hint">How to keep it honest. Tell it to flag guesses or ask questions, so you catch AI making things up.</p>
+<textarea id="check" oninput="update()" placeholder="e.g., Ask me anything you're unsure about before writing the final version" rows="1"></textarea>
+</div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#your-prompt"><span><small>Next · Last step</small><b>Copy your prompt</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+</div>
+<div class="panel">
+<div class="meter-wrap">
+<div class="meter-top">
+<span class="meter-label">Prompt Strength</span>
+<span class="meter-status" id="meterStatus">Start typing</span>
+</div>
+<div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
+</div>
+<div class="output-card" id="your-prompt">
+<h3>Your prompt</h3>
+<div class="output-text" id="output"><span class="ph">Fill in the Goal box and your prompt appears here…</span></div>
+<button class="copy-btn" id="copyBtn" onclick="copyPrompt()">📋 Copy prompt</button>
+<div class="launch">
+<p>Now paste it into your AI:</p>
+<div class="launch-row">
+<a class="launch-btn" href="https://claude.ai" rel="noopener" target="_blank"><img alt="" height="18" src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=64" width="18"/>Claude</a>
+<a class="launch-btn" href="https://chatgpt.com" rel="noopener" target="_blank"><img alt="" height="18" src="https://www.google.com/s2/favicons?domain=chatgpt.com&amp;sz=64" width="18"/>ChatGPT</a>
+<a class="launch-btn" href="https://gemini.google.com" rel="noopener" target="_blank"><img alt="" height="18" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=64" width="18"/>Gemini</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tip">
+<p class="section-label">Why this works</p>
+<p>Most bad AI answers come from vague prompts, not a bad tool. When you name the <strong>goal, the context, the audience, the format, and the check</strong>, you stop making the AI guess. Same recipe works in any tool. Learn it once, use it forever.</p>
+</div>
+<div class="footer">
+    Built by Sheva Studio · Making AI human, practical, and a little bit fun.<br/>
+    → <a href="index.html">Back to the ecosystem</a>  ·  <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a>
+</div>
+</div>
 <script>
 const templates = {
   email: { goal:"Draft a friendly but professional email", context:"", audience:"", format:"A short email with a subject line", check:"Ask me anything you're unsure about before writing the final version" },
@@ -316,5 +377,71 @@ function copyPrompt(){
 }
 fill(starter);
 </script>
-</body>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
+  var btn = document.querySelector('button.fold-all');
+  function visible(d){ return d.offsetParent !== null; }
+  function sync(){
+    if(!btn) return;
+    var shown = folds.filter(visible);
+    var all = shown.length && shown.every(function(d){ return d.open; });
+    btn.textContent = all ? 'Close all' : 'Open all';
+    btn.setAttribute('aria-expanded', all ? 'true' : 'false');
+  }
+  function go(id, from){
+    var t = document.getElementById(id);
+    if(!t) return false;
+    if(from){ var f = from.closest('details.fold'); if(f && f !== t) f.open = false; }
+    if(t.tagName === 'DETAILS') t.open = true;
+    t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    var s = t.tagName === 'DETAILS' ? t.querySelector('summary') : t;
+    try{ s.focus({preventScroll:true}); }catch(e){}
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+    sync(); return true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1), t = id && document.getElementById(id);
+    if(!t) return;
+    var isNext = a.hasAttribute('data-fold-next');
+    if(isNext || (t.tagName === 'DETAILS' && t.classList.contains('fold'))){ e.preventDefault(); go(id, isNext ? a : null); }
+  });
+  function fromHash(){
+    var id = (location.hash || '').slice(1);
+    var t = id && document.getElementById(id);
+    if(!t || t.tagName !== 'DETAILS' || !t.classList.contains('fold')) return;
+    folds.forEach(function(d){ d.open = (d === t); });
+    setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+    sync();
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  if(btn) btn.addEventListener('click', function(){
+    var shown = folds.filter(visible);
+    var open = !(shown.length && shown.every(function(d){ return d.open; }));
+    shown.forEach(function(d){ d.open = open; }); sync();
+  });
+  folds.forEach(function(d){ d.addEventListener('toggle', sync); });
+  sync();
+  // Print or save: open everything, then put it back
+  var before = null;
+  window.addEventListener('beforeprint', function(){ before = folds.map(function(d){ return d.open; }); folds.forEach(function(d){ d.open = true; }); });
+  window.addEventListener('afterprint', function(){ if(before) folds.forEach(function(d,i){ d.open = before[i]; }); before = null; sync(); });
+  // Videos load only when tapped
+  document.querySelectorAll('button.yt').forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0';
+      f.title = b.getAttribute('aria-label').replace('Play video: ','');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      var w = document.createElement('div'); w.className = 'yt'; w.appendChild(f);
+      b.replaceWith(w);
+    });
+  });
+})();
+</script></body>
 </html>

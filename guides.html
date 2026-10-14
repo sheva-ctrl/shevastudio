@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Sheva Studio — Quick-Glance Prompt Frameworks</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
     --violet:#6020D0;
@@ -120,204 +121,316 @@
   .site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
   @media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
 </style>
-</head>
+<style>:root{--f-accent:#6020D0;--f-accent2:#0891B2;--f-ink:#15151C;--f-muted:#55555F;--f-line:#E7E5EE;--f-soft:#F5F3FA;--f-card:#fff;--f-accent-line:rgba(96,32,208,.35);--f-head:'Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+/* ===== Sheva Studio collapsible steps ===== */
+.fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
+  font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--f-ink)}
+.fold-help p{margin:0}
+.fold-help b{color:var(--f-accent);font-weight:700}
+button.fold-all{all:unset;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--f-accent);
+  padding:8px 14px;border-radius:999px;border:1.5px solid var(--f-line);background:var(--f-card,#fff);white-space:nowrap}
+button.fold-all:hover{border-color:var(--f-accent)}
+button.fold-all:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+
+details.fold{background:var(--f-card,#fff);border:1px solid var(--f-line);border-radius:16px;margin:0 0 12px;scroll-margin-top:84px;
+  transition:border-color .2s,box-shadow .2s}
+details.fold[open]{border-color:var(--f-accent-line);box-shadow:0 6px 24px rgba(30,24,48,.06)}
+details.fold > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:14px;padding:16px}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px;border-radius:14px}
+.fold-num{min-width:42px;height:42px;padding:0 8px;border-radius:12px;display:grid;place-items:center;background:var(--f-soft);
+  color:var(--f-accent);font-family:var(--f-head);font-weight:800;font-size:18px;transition:background .2s,color .2s}
+details.fold[open] .fold-num{background:var(--f-accent);color:#fff}
+.fold-meta{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--f-muted);margin:0 0 2px}
+details.fold > summary h2.fold-title{font-family:var(--f-head);font-weight:800;font-size:clamp(19px,3.6vw,24px);line-height:1.2;
+  letter-spacing:-.01em;margin:0;padding:0;border:0;color:var(--f-ink)}
+.fold-chev{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--f-line);display:grid;place-items:center;
+  transition:transform .25s,border-color .2s;flex:none}
+.fold-chev::after{content:"";width:8px;height:8px;border-right:2px solid var(--f-ink);border-bottom:2px solid var(--f-ink);
+  transform:translateY(-2px) rotate(45deg)}
+details.fold[open] .fold-chev{transform:rotate(180deg);border-color:var(--f-accent)}
+details.fold > summary:hover .fold-chev{border-color:var(--f-accent)}
+.fold-body{border-top:1px solid var(--f-line);margin:0 16px;padding:20px 0 20px}
+@media (min-width:700px){details.fold > summary{padding:20px 24px;gap:18px}.fold-body{margin:0 24px}}
+.fold-body > :not(.fold-video):not(.fold-next-wrap):not(.fold-lede){margin:0!important;padding:0!important;border:0!important;
+  background:transparent!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;
+  max-width:none!important;width:auto}
+.fold-body > section.fz > *:first-child:last-child{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important}
+.fold-lede{font-family:var(--f-body);font-size:16px;color:var(--f-muted);margin:0 0 16px;line-height:1.55}
+@media (prefers-reduced-motion:no-preference){details.fold[open] .fold-body{animation:foldIn .3s ease}
+  @keyframes foldIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+
+.fold-video,.page-video{margin:0 0 22px}
+.page-video{margin:26px 0 8px}
+.fold-video-label{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--f-accent);margin:0 0 8px}
+.fold-video-title{font-family:var(--f-body);font-size:15px;font-weight:600;color:var(--f-ink);margin:8px 0 0;line-height:1.4}
+button.yt,div.yt{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:14px;
+  overflow:hidden;background:#1E1830;cursor:pointer}
+button.yt:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center}
+.yt .play i{width:68px;height:48px;border-radius:12px;background:var(--f-accent);display:grid;place-items:center}
+.yt .play i::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+button.yt:hover .play i{background:var(--f-accent2)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.fold-next-wrap{margin-top:24px;padding-top:18px;border-top:1px solid var(--f-line);display:flex;justify-content:flex-end}
+a.fold-next{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--f-ink);background:var(--f-soft);
+  border:1px solid var(--f-line);border-radius:12px;padding:12px 16px;max-width:100%;transition:border-color .2s}
+a.fold-next:hover{border-color:var(--f-accent)}
+a.fold-next:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+a.fold-next small{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--f-accent)}
+a.fold-next b{display:block;font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.35}
+a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background:var(--f-accent);color:#fff;display:grid;place-items:center;font-weight:700}
+@media (max-width:600px){.site-nav{flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important}
+  .site-nav .nav-home{flex:none}
+  .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+  .site-nav .nav-links::-webkit-scrollbar{display:none}}
+@media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
+</style></head>
 <body>
 <nav class="site-nav">
-  <a href="index.html" class="nav-home">🏠 Sheva Studio</a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="Sheva-Studio-Intro-to-AI.html" class="nav-link">Intro to AI</a>
-    <a href="guides.html" class="nav-link current">Quick-Glance Guide</a>
-    <a href="ai-at-work.html" class="nav-link">AI at Work</a>
-    <a href="prompt-builder.html" class="nav-link">Prompt Builder</a>
-    <a href="no-brainer-decks.html" class="nav-link">No-Brainer Decks</a>
-    <a href="card-flip-generator.html" class="nav-link">Build Your Own</a>
-  </div>
+<a class="nav-home" href="index.html">🏠 Sheva Studio</a>
+<div class="nav-links">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
+<a class="nav-link current" href="guides.html">Quick-Glance Guide</a>
+<a class="nav-link" href="ai-at-work.html">AI at Work</a>
+<a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
+<a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
+<a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
+</div>
 </nav>
 <div class="wrap">
-
-<div style="text-align:center; margin-bottom:28px;" class="rise d1">
-  <a href="#connect" style="text-decoration: none; display: inline-block;">
-    <img src="sheva.png" alt="Sheva Studio Sticker" class="brand-sticker">
-  </a>
+<div class="rise d1" style="text-align:center; margin-bottom:28px;">
+<a href="#connect" style="text-decoration: none; display: inline-block;">
+<img alt="Sheva Studio Sticker" class="brand-sticker" src="sheva.png"/>
+</a>
 </div>
+<h1 class="rise d1">Get Started <span class="accent">with AI.</span></h1>
+<p class="lede rise d2">Ask, analyze, create, and verify — with any AI assistant you have access to. Match the tool to how you naturally think and operate.</p><div class="page-video"><p class="fold-video-label">Watch first · 5:55</p><button aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation" class="yt" data-id="ls2BQ2RFYYo" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Where Do I Start With AI? Build a Practical Foundation</p></div>
 
-  <h1 class="rise d1">Get Started <span class="accent">with AI.</span></h1>
-  <p class="lede rise d2">Ask, analyze, create, and verify — with any AI assistant you have access to. Match the tool to how you naturally think and operate.</p>
+<p class="lede">How AI actually works, the five parts of a strong prompt, and the two rules that keep you safe: always verify the output, never paste in sensitive data.</p>
 
-  <span class="video-label rise d2">Watch first · Build a Practical Foundation</span>
-  <p class="video-desc rise d2">How AI actually works, the five parts of a strong prompt, and the two rules that keep you safe: always verify the output, never paste in sensitive data.</p>
-  <div class="video-container rise d2">
-    <iframe src="https://www.youtube.com/embed/ls2BQ2RFYYo" title="Sheva Studio — Build a Practical Foundation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
-
-<p class="section-label rise d2">01 · Cross-Platform Core Engines</p>
+<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Step 1 of 6</span><h2 class="fold-title">Cross-Platform Core Engines</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:04</p><button aria-label="Play video: Your First 15 Minutes With AI: Pick One Tool and Go" class="yt" data-id="bTn4lZsoTBU" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p></div><section class="gsec">
 <div class="tools-container rise d2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px;">
-
-  <a href="https://chatgpt.com" target="_blank" rel="noopener" class="tool-tag recommended" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;">
-    <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128" alt="ChatGPT" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;">
-    <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
-      <span class="rec-tag">Start here</span>
-      <span style="font-weight: 700; color:var(--ink);">ChatGPT</span>
-      <span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Writing &amp; Brainstorming</span>
-    </div>
-  </a>
-
-  <a href="https://gemini.google.com" target="_blank" rel="noopener" class="tool-tag" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;">
-    <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Gemini" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;">
-    <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
-      <span style="font-weight: 700; color:var(--ink);">Google Gemini</span>
-      <span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Google &amp; Visuals</span>
-    </div>
-  </a>
-
-  <a href="https://claude.ai" target="_blank" rel="noopener" class="tool-tag" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;">
-    <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;">
-    <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
-      <span style="font-weight: 700; color:var(--ink);">Claude</span>
-      <span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Documents &amp; Code</span>
-    </div>
-  </a>
-
-  <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="tool-tag" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;">
-    <img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=128" alt="Copilot" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;">
-    <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
-      <span style="font-weight: 700; color:var(--ink);">Copilot</span>
-      <span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Microsoft 365</span>
-    </div>
-  </a>
-
-  <a href="https://grok.com" target="_blank" rel="noopener" class="tool-tag" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;">
-    <img src="https://www.google.com/s2/favicons?domain=grok.com&sz=128" alt="Grok" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;">
-    <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
-      <span style="font-weight: 700; color:var(--ink);">Grok</span>
-      <span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Real-Time &amp; X Data</span>
-    </div>
-  </a>
-
-  <a href="https://fellow.app" target="_blank" rel="noopener" class="tool-tag" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;">
-    <img src="https://www.google.com/s2/favicons?domain=fellow.app&sz=128" alt="Fellow" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;">
-    <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
-      <span style="font-weight: 700; color:var(--ink);">Fellow</span>
-      <span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Meeting Notes &amp; Actions</span>
-    </div>
-  </a>
-
+<a class="tool-tag recommended" href="https://chatgpt.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
+<img alt="ChatGPT" src="https://www.google.com/s2/favicons?domain=chatgpt.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
+<div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
+<span class="rec-tag">Start here</span>
+<span style="font-weight: 700; color:var(--ink);">ChatGPT</span>
+<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Writing &amp; Brainstorming</span>
 </div>
-
-  <p class="section-label rise d3">02 · The 5-Step Workflow Habit</p>
-  <div class="workflow-list rise d3">
-    <div class="workflow-item">
-      <div class="workflow-num">1</div>
-      <div class="workflow-content">
-        <h3>Start a fresh conversation</h3>
-        <p>Open your tool and begin a clean slate — context doesn't carry over between distinct sessions.</p>
-      </div>
-    </div>
-    <div class="workflow-item">
-      <div class="workflow-num">2</div>
-      <div class="workflow-content">
-        <h3>Give it clear context</h3>
-        <p>State your primary goal, target audience, and any constraints upfront. The more specific you are, the sharper the output.</p>
-      </div>
-    </div>
-    <div class="workflow-item">
-      <div class="workflow-num">3</div>
-      <div class="workflow-content">
-        <h3>Add your source material</h3>
-        <p>Paste explicit text, upload documents, or share approved asset links. Work from your own validated systems.</p>
-      </div>
-    </div>
-    <div class="workflow-item">
-      <div class="workflow-num">4</div>
-      <div class="workflow-content">
-        <h3>Use it for everyday tasks</h3>
-        <p>Draft quick emails, summarize dense documents, brainstorm strategic content ideas, compare choices, or frame operational outlines.</p>
-      </div>
-    </div>
-    <div class="workflow-item">
-      <div class="workflow-num">5</div>
-      <div class="workflow-content">
-        <h3>Review before you use it</h3>
-        <p>AI can make errors. Always track and verify metrics, logic, figures, and sources before deploying or acting on any output.</p>
-      </div>
-    </div>
-  </div>
-
-  <p class="section-label rise d4">03 · The Perfect Prompt Recipe</p>
-  <div class="table-container rise d4">
-    <table>
-      <thead>
-        <tr>
-          <th>Component</th>
-          <th>Execution Framework</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Goal</td><td>What exactly you want completed or built.</td></tr>
-        <tr><td>Context</td><td>Background layout, core files, and specific parameters.</td></tr>
-        <tr><td>Audience</td><td>Precisely who will be reading, watching, or using it.</td></tr>
-        <tr><td>Format</td><td>Bullets, data tables, structural emails, or markdown outlines.</td></tr>
-        <tr><td>Check</td><td>Ask the model explicitly for its logical sources or assumptions.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <a class="try-it-link rise d4" href="prompt-builder.html">Want to build one right now? → Try the Prompt Builder</a>
-
-  <span class="video-label rise d4">Watch · How to Write Better AI Prompts</span>
-  <p class="video-desc rise d4">Context, task, and format — the three pieces that turn a vague prompt into one that actually gets you what you need.</p>
-  <div class="video-container rise d4">
-    <iframe src="https://www.youtube.com/embed/mTKFka8m4RA" title="Sheva Studio — How to Write Better AI Prompts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
-
-  <p class="section-label rise d4">04 · Try These Formulas First</p>
-  <div class="prompts-box rise d4">
-    <div class="prompt-line">Summarize this for <span>[audience]</span> in exactly 5 high-impact bullets.</div>
-    <div class="prompt-line">Compare <span>[Tool/Option A]</span> vs <span>[Tool/Option B]</span> using <span>[your explicit criteria]</span>.</div>
-    <div class="prompt-line">Draft a professional, clean <span>[type]</span> email regarding <span>[topic]</span>.</div>
-    <div class="prompt-line">Explain <span>[complex tech concept]</span> simply using an accessible everyday analogy.</div>
-    <div class="prompt-line">List the potential pros, blindspots, and structural cons of <span>[decision]</span>.</div>
-  </div>
-
-  <p class="section-label rise d4">05 · Always Remember</p>
-  <div class="workflow-list rise d4">
-    <div class="workflow-item">
-      <div class="workflow-num">✓</div>
-      <div class="workflow-content">
-        <h3>You own the final output</h3>
-        <p>Verify facts, numbers, and sources before sharing or acting on anything an AI tells you.</p>
-      </div>
-    </div>
-    <div class="workflow-item">
-      <div class="workflow-num">🔒</div>
-      <div class="workflow-content">
-        <h3>Keep sensitive data private</h3>
-        <p>No passwords, personal data, or confidential content unless your IT policy explicitly allows it.</p>
-      </div>
-    </div>
-    <div class="workflow-item">
-      <div class="workflow-num">!</div>
-      <div class="workflow-content">
-        <h3>AI can be wrong</h3>
-        <p>Treat every output as a starting draft. Ask for sources, push back, use your own judgment.</p>
-      </div>
-    </div>
-  </div>
-
-  <p class="section-label rise d4">06 · Working in an Enterprise Workspace</p>
-  <a href="ai-at-work.html" class="workflow-item rise d4" style="text-decoration:none; margin-bottom:40px; display:flex;">
-    <div class="workflow-num">→</div>
-    <div class="workflow-content">
-      <h3>AI at Work: Enterprise Quick Glance</h3>
-      <p>Work accounts, approved data sources, and what never gets pasted — the enterprise version of this guide, tool-agnostic.</p>
-    </div>
-  </a>
-
-  <div class="footer-cta">
-    <a class="back-btn" href="index.html">← Back To Homepage Hub</a>
-  </div>
-
+</a>
+<a class="tool-tag" href="https://gemini.google.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
+<img alt="Gemini" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
+<div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
+<span style="font-weight: 700; color:var(--ink);">Google Gemini</span>
+<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Google &amp; Visuals</span>
 </div>
-</body>
+</a>
+<a class="tool-tag" href="https://claude.ai" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
+<img alt="Claude" src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
+<div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
+<span style="font-weight: 700; color:var(--ink);">Claude</span>
+<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Documents &amp; Code</span>
+</div>
+</a>
+<a class="tool-tag" href="https://copilot.microsoft.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
+<img alt="Copilot" src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
+<div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
+<span style="font-weight: 700; color:var(--ink);">Copilot</span>
+<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Microsoft 365</span>
+</div>
+</a>
+<a class="tool-tag" href="https://grok.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
+<img alt="Grok" src="https://www.google.com/s2/favicons?domain=grok.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
+<div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
+<span style="font-weight: 700; color:var(--ink);">Grok</span>
+<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Real-Time &amp; X Data</span>
+</div>
+</a>
+<a class="tool-tag" href="https://fellow.app" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
+<img alt="Fellow" src="https://www.google.com/s2/favicons?domain=fellow.app&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
+<div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
+<span style="font-weight: 700; color:var(--ink);">Fellow</span>
+<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Meeting Notes &amp; Actions</span>
+</div>
+</a>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-2"><span><small>Next · Step 2</small><b>The 5-Step Workflow Habit</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details><details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Step 2 of 6</span><h2 class="fold-title">The 5-Step Workflow Habit</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="gsec">
+<div class="workflow-list rise d3">
+<div class="workflow-item">
+<div class="workflow-num">1</div>
+<div class="workflow-content">
+<h3>Start a fresh conversation</h3>
+<p>Open your tool and begin a clean slate — context doesn't carry over between distinct sessions.</p>
+</div>
+</div>
+<div class="workflow-item">
+<div class="workflow-num">2</div>
+<div class="workflow-content">
+<h3>Give it clear context</h3>
+<p>State your primary goal, target audience, and any constraints upfront. The more specific you are, the sharper the output.</p>
+</div>
+</div>
+<div class="workflow-item">
+<div class="workflow-num">3</div>
+<div class="workflow-content">
+<h3>Add your source material</h3>
+<p>Paste explicit text, upload documents, or share approved asset links. Work from your own validated systems.</p>
+</div>
+</div>
+<div class="workflow-item">
+<div class="workflow-num">4</div>
+<div class="workflow-content">
+<h3>Use it for everyday tasks</h3>
+<p>Draft quick emails, summarize dense documents, brainstorm strategic content ideas, compare choices, or frame operational outlines.</p>
+</div>
+</div>
+<div class="workflow-item">
+<div class="workflow-num">5</div>
+<div class="workflow-content">
+<h3>Review before you use it</h3>
+<p>AI can make errors. Always track and verify metrics, logic, figures, and sources before deploying or acting on any output.</p>
+</div>
+</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-3"><span><small>Next · Step 3</small><b>The Perfect Prompt Recipe</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details><details class="fold" id="step-3"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Step 3 of 6</span><h2 class="fold-title">The Perfect Prompt Recipe</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 2:52</p><button aria-label="Play video: How to Write Better AI Prompts: Context, Task, Format" class="yt" data-id="mTKFka8m4RA" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/mTKFka8m4RA/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Write Better AI Prompts: Context, Task, Format</p></div><section class="gsec">
+<div class="table-container rise d4">
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Execution Framework</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Goal</td><td>What exactly you want completed or built.</td></tr>
+<tr><td>Context</td><td>Background layout, core files, and specific parameters.</td></tr>
+<tr><td>Audience</td><td>Precisely who will be reading, watching, or using it.</td></tr>
+<tr><td>Format</td><td>Bullets, data tables, structural emails, or markdown outlines.</td></tr>
+<tr><td>Check</td><td>Ask the model explicitly for its logical sources or assumptions.</td></tr>
+</tbody>
+</table>
+</div>
+<a class="try-it-link rise d4" href="prompt-builder.html">Want to build one right now? → Try the Prompt Builder</a>
+
+
+
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-4"><span><small>Next · Step 4</small><b>Try These Formulas First</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details><details class="fold" id="step-4"><summary><span aria-hidden="true" class="fold-num">4</span><span><span class="fold-meta">Step 4 of 6</span><h2 class="fold-title">Try These Formulas First</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 4:52</p><button aria-label="Play video: How to Talk to AI So It Actually Understands You" class="yt" data-id="77PcQZEa5_0" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Talk to AI So It Actually Understands You</p></div><section class="gsec">
+<div class="prompts-box rise d4">
+<div class="prompt-line">Summarize this for <span>[audience]</span> in exactly 5 high-impact bullets.</div>
+<div class="prompt-line">Compare <span>[Tool/Option A]</span> vs <span>[Tool/Option B]</span> using <span>[your explicit criteria]</span>.</div>
+<div class="prompt-line">Draft a professional, clean <span>[type]</span> email regarding <span>[topic]</span>.</div>
+<div class="prompt-line">Explain <span>[complex tech concept]</span> simply using an accessible everyday analogy.</div>
+<div class="prompt-line">List the potential pros, blindspots, and structural cons of <span>[decision]</span>.</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-5"><span><small>Next · Step 5</small><b>Always Remember</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details><details class="fold" id="step-5"><summary><span aria-hidden="true" class="fold-num">5</span><span><span class="fold-meta">Step 5 of 6</span><h2 class="fold-title">Always Remember</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 1:57</p><button aria-label="Play video: How to Use AI at Work Without Losing Your Judgment" class="yt" data-id="AMTiGFmoD3g" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/AMTiGFmoD3g/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Use AI at Work Without Losing Your Judgment</p></div><section class="gsec">
+<div class="workflow-list rise d4">
+<div class="workflow-item">
+<div class="workflow-num">✓</div>
+<div class="workflow-content">
+<h3>You own the final output</h3>
+<p>Verify facts, numbers, and sources before sharing or acting on anything an AI tells you.</p>
+</div>
+</div>
+<div class="workflow-item">
+<div class="workflow-num">🔒</div>
+<div class="workflow-content">
+<h3>Keep sensitive data private</h3>
+<p>No passwords, personal data, or confidential content unless your IT policy explicitly allows it.</p>
+</div>
+</div>
+<div class="workflow-item">
+<div class="workflow-num">!</div>
+<div class="workflow-content">
+<h3>AI can be wrong</h3>
+<p>Treat every output as a starting draft. Ask for sources, push back, use your own judgment.</p>
+</div>
+</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-6"><span><small>Next · Step 6</small><b>Working in an Enterprise Workspace</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details><details class="fold" id="step-6"><summary><span aria-hidden="true" class="fold-num">6</span><span><span class="fold-meta">Step 6 of 6</span><h2 class="fold-title">Working in an Enterprise Workspace</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="gsec">
+<a class="workflow-item rise d4" href="ai-at-work.html" style="text-decoration:none; margin-bottom:40px; display:flex;">
+<div class="workflow-num">→</div>
+<div class="workflow-content">
+<h3>AI at Work: Enterprise Quick Glance</h3>
+<p>Work accounts, approved data sources, and what never gets pasted — the enterprise version of this guide, tool-agnostic.</p>
+</div>
+</a>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="ai-at-work.html"><span><small>Keep going</small><b>AI | What Actually Works: six lessons from 50+ AI projects</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details><div class="footer-cta">
+<a class="back-btn" href="index.html">← Back To Homepage Hub</a>
+</div>
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
+  var btn = document.querySelector('button.fold-all');
+  function visible(d){ return d.offsetParent !== null; }
+  function sync(){
+    if(!btn) return;
+    var shown = folds.filter(visible);
+    var all = shown.length && shown.every(function(d){ return d.open; });
+    btn.textContent = all ? 'Close all' : 'Open all';
+    btn.setAttribute('aria-expanded', all ? 'true' : 'false');
+  }
+  function go(id, from){
+    var t = document.getElementById(id);
+    if(!t) return false;
+    if(from){ var f = from.closest('details.fold'); if(f && f !== t) f.open = false; }
+    if(t.tagName === 'DETAILS') t.open = true;
+    t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    var s = t.tagName === 'DETAILS' ? t.querySelector('summary') : t;
+    try{ s.focus({preventScroll:true}); }catch(e){}
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+    sync(); return true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1), t = id && document.getElementById(id);
+    if(!t) return;
+    var isNext = a.hasAttribute('data-fold-next');
+    if(isNext || (t.tagName === 'DETAILS' && t.classList.contains('fold'))){ e.preventDefault(); go(id, isNext ? a : null); }
+  });
+  function fromHash(){
+    var id = (location.hash || '').slice(1);
+    var t = id && document.getElementById(id);
+    if(!t || t.tagName !== 'DETAILS' || !t.classList.contains('fold')) return;
+    folds.forEach(function(d){ d.open = (d === t); });
+    setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+    sync();
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  if(btn) btn.addEventListener('click', function(){
+    var shown = folds.filter(visible);
+    var open = !(shown.length && shown.every(function(d){ return d.open; }));
+    shown.forEach(function(d){ d.open = open; }); sync();
+  });
+  folds.forEach(function(d){ d.addEventListener('toggle', sync); });
+  sync();
+  // Print or save: open everything, then put it back
+  var before = null;
+  window.addEventListener('beforeprint', function(){ before = folds.map(function(d){ return d.open; }); folds.forEach(function(d){ d.open = true; }); });
+  window.addEventListener('afterprint', function(){ if(before) folds.forEach(function(d,i){ d.open = before[i]; }); before = null; sync(); });
+  // Videos load only when tapped
+  document.querySelectorAll('button.yt').forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0';
+      f.title = b.getAttribute('aria-label').replace('Play video: ','');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      var w = document.createElement('div'); w.className = 'yt'; w.appendChild(f);
+      b.replaceWith(w);
+    });
+  });
+})();
+</script></body>
 </html>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Sheva Studio — AI Transformation Leader</title>
-<meta name="description" content="AI transformation leader and ADHD creator. Enterprise AI strategy and free ADHD-friendly creator tools, from one person who does both.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta content="AI transformation leader and ADHD creator. Enterprise AI strategy and free ADHD-friendly creator tools, from one person who does both." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
     --violet:#6020D0;
@@ -213,188 +214,303 @@
   @keyframes rise{to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
 </style>
-</head>
+<style>:root{--f-accent:#6020D0;--f-accent2:#0891B2;--f-ink:#15151C;--f-muted:#55555F;--f-line:#E7E5EE;--f-soft:#F5F3FA;--f-card:#fff;--f-accent-line:rgba(96,32,208,.35);--f-head:'Syne','Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+/* ===== Sheva Studio collapsible steps ===== */
+.fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
+  font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--f-ink)}
+.fold-help p{margin:0}
+.fold-help b{color:var(--f-accent);font-weight:700}
+button.fold-all{all:unset;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--f-accent);
+  padding:8px 14px;border-radius:999px;border:1.5px solid var(--f-line);background:var(--f-card,#fff);white-space:nowrap}
+button.fold-all:hover{border-color:var(--f-accent)}
+button.fold-all:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+
+details.fold{background:var(--f-card,#fff);border:1px solid var(--f-line);border-radius:16px;margin:0 0 12px;scroll-margin-top:84px;
+  transition:border-color .2s,box-shadow .2s}
+details.fold[open]{border-color:var(--f-accent-line);box-shadow:0 6px 24px rgba(30,24,48,.06)}
+details.fold > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:14px;padding:16px}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px;border-radius:14px}
+.fold-num{min-width:42px;height:42px;padding:0 8px;border-radius:12px;display:grid;place-items:center;background:var(--f-soft);
+  color:var(--f-accent);font-family:var(--f-head);font-weight:800;font-size:18px;transition:background .2s,color .2s}
+details.fold[open] .fold-num{background:var(--f-accent);color:#fff}
+.fold-meta{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--f-muted);margin:0 0 2px}
+details.fold > summary h2.fold-title{font-family:var(--f-head);font-weight:800;font-size:clamp(19px,3.6vw,24px);line-height:1.2;
+  letter-spacing:-.01em;margin:0;padding:0;border:0;color:var(--f-ink)}
+.fold-chev{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--f-line);display:grid;place-items:center;
+  transition:transform .25s,border-color .2s;flex:none}
+.fold-chev::after{content:"";width:8px;height:8px;border-right:2px solid var(--f-ink);border-bottom:2px solid var(--f-ink);
+  transform:translateY(-2px) rotate(45deg)}
+details.fold[open] .fold-chev{transform:rotate(180deg);border-color:var(--f-accent)}
+details.fold > summary:hover .fold-chev{border-color:var(--f-accent)}
+.fold-body{border-top:1px solid var(--f-line);margin:0 16px;padding:20px 0 20px}
+@media (min-width:700px){details.fold > summary{padding:20px 24px;gap:18px}.fold-body{margin:0 24px}}
+.fold-body > :not(.fold-video):not(.fold-next-wrap):not(.fold-lede){margin:0!important;padding:0!important;border:0!important;
+  background:transparent!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;
+  max-width:none!important;width:auto}
+.fold-body > section.fz > *:first-child:last-child{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important}
+.fold-lede{font-family:var(--f-body);font-size:16px;color:var(--f-muted);margin:0 0 16px;line-height:1.55}
+@media (prefers-reduced-motion:no-preference){details.fold[open] .fold-body{animation:foldIn .3s ease}
+  @keyframes foldIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+
+.fold-video,.page-video{margin:0 0 22px}
+.page-video{margin:26px 0 8px}
+.fold-video-label{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--f-accent);margin:0 0 8px}
+.fold-video-title{font-family:var(--f-body);font-size:15px;font-weight:600;color:var(--f-ink);margin:8px 0 0;line-height:1.4}
+button.yt,div.yt{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:14px;
+  overflow:hidden;background:#1E1830;cursor:pointer}
+button.yt:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center}
+.yt .play i{width:68px;height:48px;border-radius:12px;background:var(--f-accent);display:grid;place-items:center}
+.yt .play i::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+button.yt:hover .play i{background:var(--f-accent2)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.fold-next-wrap{margin-top:24px;padding-top:18px;border-top:1px solid var(--f-line);display:flex;justify-content:flex-end}
+a.fold-next{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--f-ink);background:var(--f-soft);
+  border:1px solid var(--f-line);border-radius:12px;padding:12px 16px;max-width:100%;transition:border-color .2s}
+a.fold-next:hover{border-color:var(--f-accent)}
+a.fold-next:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+a.fold-next small{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--f-accent)}
+a.fold-next b{display:block;font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.35}
+a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background:var(--f-accent);color:#fff;display:grid;place-items:center;font-weight:700}
+@media (max-width:600px){.site-nav{flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important}
+  .site-nav .nav-home{flex:none}
+  .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+  .site-nav .nav-links::-webkit-scrollbar{display:none}}
+@media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
+.page-video{max-width:720px;margin-left:auto!important;margin-right:auto!important} #book{scroll-margin-top:84px}</style></head>
 <body>
-
 <nav class="site-nav">
-  <div class="shell">
-    <a href="index.html" class="nav-home">
-      <span class="nav-mark">S</span>
-      <span class="nav-word">SHEVA STUDIO</span>
-    </a>
-    <div class="nav-links">
-      <a class="nav-link current" href="index.html">Home</a>
-      <a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
-      <a class="nav-link" href="guides.html">Guides</a>
-      <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-      <a class="nav-link" href="ai-at-work.html">AI at Work</a>
-      <a class="nav-link" href="#create">ADHD Tools</a>
-      <a class="nav-link" href="contact.html">Contact</a>
-    </div>
-  </div>
+<div class="shell">
+<a class="nav-home" href="index.html">
+<span class="nav-mark">S</span>
+<span class="nav-word">SHEVA STUDIO</span>
+</a>
+<div class="nav-links">
+<a class="nav-link current" href="index.html">Home</a>
+<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
+<a class="nav-link" href="guides.html">Guides</a>
+<a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
+<a class="nav-link" href="ai-at-work.html">AI at Work</a>
+<a class="nav-link" href="#create">ADHD Tools</a>
+<a class="nav-link" href="contact.html">Contact</a>
+</div>
+</div>
 </nav>
-
 <main>
-  <div class="shell">
+<div class="shell">
+<!-- HERO -->
+<section class="rise d1">
+<div class="hero-sticker">
+<a href="#connect">
+<img alt="Sheva Studio Sticker" class="brand-sticker" src="sheva.png"/>
+</a>
+</div>
+<div class="hero-copy">
+<p class="kicker">AI Transformation Leader · Seattle</p>
+<h1>AI, translated for <span class="accent">actual humans.</span></h1>
+<p class="sub-headline">Microsoft + Blue Origin Alumni</p>
+</div>
+<div class="lede-block hero-lede">
+<p>I help teams and individuals turn AI into something people actually use. <strong>Free tools to start. Consulting when you're ready.</strong></p>
+<div class="btns hero-btns">
+<a class="btn btn-primary" href="contact.html">Book a Consultation →</a>
+<a class="btn btn-ghost" href="#lead">Start learning free</a>
+</div>
+</div>
+</section><div class="page-video"><p class="fold-video-label">Watch first · 4:35</p><button aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide" class="yt" data-id="uAuiAE7f1Yw" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Start Using AI: A No-Jargon Beginner's Guide</p></div>
+<!-- FORK -->
+<section class="fork rise d2">
+<p class="fork-label">Pick your lane</p>
+<div class="fork-hub"><span class="fork-hub-dot">S</span></div>
+<div class="fork-grid">
+<div aria-hidden="true" class="fork-connector"></div>
+<div class="lane-card lane-card--a">
+<span class="lane-tag">Lead with AI</span>
+<h3>Enterprise AI Leadership</h3>
+<p>Strategy, workshops, and 1:1 consulting for teams ready to make AI part of the culture, not just the tech stack.</p>
+<a class="lane-link" href="#lead">Explore this lane →</a>
+</div>
+<div class="lane-card lane-card--b">
+<span class="lane-tag">Create with ADHD</span>
+<h3>ADHD Creator Tools</h3>
+<p>Free tools, guides, and a community built for brains that don't work in straight lines. From an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver.</p>
+<a class="lane-link" href="#create">Explore this lane →</a>
+</div>
+</div>
+</section>
+<!-- LEAD WITH AI -->
+<div class="fold-help"><p><b>How this page works:</b> tap a section to open it. Each section ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="lead" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Lead with AI</span><h2 class="fold-title">Learn AI With Me</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 5:55</p><button aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation" class="yt" data-id="ls2BQ2RFYYo" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Where Do I Start With AI? Build a Practical Foundation</p></div><section class="lane-section">
 
-    <!-- HERO -->
-    <section class="rise d1">
-      <div class="hero-sticker">
-        <a href="#connect">
-          <img src="sheva.png" alt="Sheva Studio Sticker" class="brand-sticker">
-        </a>
-      </div>
-      <div class="hero-copy">
-        <p class="kicker">AI Transformation Leader · Seattle</p>
-        <h1>AI, translated for <span class="accent">actual humans.</span></h1>
-        <p class="sub-headline">Microsoft + Blue Origin Alumni</p>
-      </div>
+<div class="grid grid--3">
+<div class="card" style="grid-column:1/-1">
+<span class="tag">New · Weekly series</span>
+<h3>AI | What Actually Works</h3>
+<p>Six lessons from 50+ AI projects. How to get your first real win with AI at work, and how to help your team keep using it. Plain language, one lesson every Tuesday.</p>
+<a class="card-link" href="ai-at-work.html">Start Lesson 1 →</a>
+</div>
+<div class="card">
+<span class="tag">Training</span>
+<h3>Intro to AI</h3>
+<p>A short series for people who want to actually use AI minus the jargon, the hype, and the open-tabs rabbit hole.</p>
+<a class="card-link" href="Sheva-Studio-Intro-to-AI.html">Start Series →</a>
+</div>
+<div class="card">
+<span class="tag">Guides</span>
+<h3>Actionable Guides</h3>
+<p>Deep dives, quick recipes, and custom frameworks built for instant productivity.</p>
+<a class="card-link" href="guides.html">View Guides →</a>
+</div>
+<div class="card">
+<span class="tag">Tool</span>
+<h3>The Prompt Builder</h3>
+<p>Fill in five blanks — Goal, Context, Audience, Format, Check — and watch a clean, copy-ready prompt build itself.</p>
+<a class="card-link" href="prompt-builder.html">Build a Prompt →</a>
+</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#create"><span><small>Next · Section 2</small><b>ADHD Learning Pack</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<!-- CREATE WITH ADHD -->
+<details class="fold" id="create"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Create with ADHD</span><h2 class="fold-title">ADHD Learning Pack</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="lane-section">
 
-      <div class="lede-block hero-lede">
-        <p>I help teams and individuals turn AI into something people actually use. <strong>Free tools to start. Consulting when you're ready.</strong></p>
-        <div class="btns hero-btns">
-          <a class="btn btn-primary" href="contact.html">Book a Consultation →</a>
-          <a class="btn btn-ghost" href="#lead">Start learning free</a>
-        </div>
-      </div>
-    </section>
+<div class="grid grid--3">
+<div class="card" style="grid-column:1/-1">
+<span class="tag">New · 7 free guides</span>
+<h3>Creator Field Guides</h3>
+<p>Tap-to-check-off Instagram and Facebook settings for growing your audience. Clean up who you follow, stop spam comments, fix your profile, and get your reels in front of new people.</p>
+<a class="card-link" href="field-guides.html">Open the Guides →</a>
+</div>
+<div class="card">
+<span class="tag">Community</span>
+<h3>Side by Side Collective</h3>
+<p>Real connection, not curated. Systems built for different brains.</p>
+<a class="card-link" href="https://www.facebook.com/share/g/1D73WaXiEy/" rel="noopener" target="_blank">Join Group →</a>
+</div>
+<div class="card">
+<span class="tag">Grab &amp; Go</span>
+<h3>No-Brainer Decks</h3>
+<p>Pre-made ADHD challenge carousels. Pick one, download the slides, post. Zero design required.</p>
+<a class="card-link" href="no-brainer-decks.html">Grab a Deck →</a>
+</div>
+<div class="card">
+<span class="tag">Make Your Own</span>
+<h3>Build-Your-Own Decks</h3>
+<p>Same dark/light carousel format, but editable. Swap the words, add slides, make it yours.</p>
+<a class="card-link" href="card-flip-generator.html">Start Building →</a>
+</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#connect"><span><small>Next · Section 3</small><b>Let's Connect</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<!-- CONNECT -->
+<details class="fold" id="connect"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Connect</span><h2 class="fold-title">Let's Connect</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="lane-section">
 
-    <!-- FORK -->
-    <section class="fork rise d2">
-      <p class="fork-label">Pick your lane</p>
-      <div class="fork-hub"><span class="fork-hub-dot">S</span></div>
-      <div class="fork-grid">
-        <div class="fork-connector" aria-hidden="true"></div>
-        <div class="lane-card lane-card--a">
-          <span class="lane-tag">Lead with AI</span>
-          <h3>Enterprise AI Leadership</h3>
-          <p>Strategy, workshops, and 1:1 consulting for teams ready to make AI part of the culture, not just the tech stack.</p>
-          <a class="lane-link" href="#lead">Explore this lane →</a>
-        </div>
-        <div class="lane-card lane-card--b">
-          <span class="lane-tag">Create with ADHD</span>
-          <h3>ADHD Creator Tools</h3>
-          <p>Free tools, guides, and a community built for brains that don't work in straight lines. From an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver.</p>
-          <a class="lane-link" href="#create">Explore this lane →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- LEAD WITH AI -->
-    <section id="lead" class="lane-section">
-      <div class="section-head">
-        <p class="section-eyebrow">Lead with AI</p>
-        <h2>Learn AI With Me</h2>
-      </div>
-      <div class="grid grid--3">
-        <div class="card" style="grid-column:1/-1">
-          <span class="tag">New · Weekly series</span>
-          <h3>AI | What Actually Works</h3>
-          <p>Six lessons from 50+ AI projects. How to get your first real win with AI at work, and how to help your team keep using it. Plain language, one lesson every Tuesday.</p>
-          <a class="card-link" href="ai-at-work.html">Start Lesson 1 →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Training</span>
-          <h3>Intro to AI</h3>
-          <p>A short series for people who want to actually use AI minus the jargon, the hype, and the open-tabs rabbit hole.</p>
-          <a class="card-link" href="Sheva-Studio-Intro-to-AI.html">Start Series →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Guides</span>
-          <h3>Actionable Guides</h3>
-          <p>Deep dives, quick recipes, and custom frameworks built for instant productivity.</p>
-          <a class="card-link" href="guides.html">View Guides →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Tool</span>
-          <h3>The Prompt Builder</h3>
-          <p>Fill in five blanks &mdash; Goal, Context, Audience, Format, Check &mdash; and watch a clean, copy-ready prompt build itself.</p>
-          <a class="card-link" href="prompt-builder.html">Build a Prompt →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CREATE WITH ADHD -->
-    <section id="create" class="lane-section">
-      <div class="section-head">
-        <p class="section-eyebrow">Create with ADHD</p>
-        <h2>ADHD Learning Pack</h2>
-      </div>
-      <div class="grid grid--3">
-        <div class="card" style="grid-column:1/-1">
-          <span class="tag">New · 7 free guides</span>
-          <h3>Creator Field Guides</h3>
-          <p>Tap-to-check-off Instagram and Facebook settings for growing your audience. Clean up who you follow, stop spam comments, fix your profile, and get your reels in front of new people.</p>
-          <a class="card-link" href="field-guides.html">Open the Guides →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Community</span>
-          <h3>Side by Side Collective</h3>
-          <p>Real connection, not curated. Systems built for different brains.</p>
-          <a class="card-link" href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" rel="noopener">Join Group →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Grab &amp; Go</span>
-          <h3>No-Brainer Decks</h3>
-          <p>Pre-made ADHD challenge carousels. Pick one, download the slides, post. Zero design required.</p>
-          <a class="card-link" href="no-brainer-decks.html">Grab a Deck →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Make Your Own</span>
-          <h3>Build-Your-Own Decks</h3>
-          <p>Same dark/light carousel format, but editable. Swap the words, add slides, make it yours.</p>
-          <a class="card-link" href="card-flip-generator.html">Start Building →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONNECT -->
-    <section id="connect" class="lane-section">
-      <div class="section-head">
-        <p class="section-eyebrow">Connect</p>
-        <h2>Let's Connect</h2>
-      </div>
-      <div class="social-grid">
-        <a class="social-link" href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">
-          <img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=128" alt="TikTok logo" width="20" height="20" loading="lazy">
-          <div class="social-text"><span class="social-platform">TikTok</span><span class="social-handle">@sheva.studio</span></div>
-        </a>
-        <a class="social-link" href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">
-          <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="YouTube logo" width="20" height="20" loading="lazy">
-          <div class="social-text"><span class="social-platform">YouTube</span><span class="social-handle">@sheva.studio</span></div>
-        </a>
-        <a class="social-link" href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">
-          <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=128" alt="Instagram logo" width="20" height="20" loading="lazy">
-          <div class="social-text"><span class="social-platform">Instagram</span><span class="social-handle">@sheva.studios</span></div>
-        </a>
-        <a class="social-link" href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">
-          <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=128" alt="Facebook logo" width="20" height="20" loading="lazy">
-          <div class="social-text"><span class="social-platform">Facebook</span><span class="social-handle">ShevaKayStudio</span></div>
-        </a>
-        <a class="social-link" href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">
-          <img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=128" alt="Amazon logo" width="20" height="20" loading="lazy">
-          <div class="social-text"><span class="social-platform">Amazon Shop</span><span class="social-handle">scribinglife</span></div>
-        </a>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-      <h2>Let's talk about what AI could do for you.</h2>
-      <p>1:1 consultations, team workshops, conference talks. No generic playbook &mdash; just a plan that fits how you actually work.</p>
-      <div class="btns">
-        <a class="btn btn-primary" href="contact.html">Book a Consultation →</a>
-        <a class="btn btn-ghost" href="Sheva-Studio-Intro-to-AI.html">Get Started with AI</a>
-      </div>
-    </section>
-
-    <footer>
-      1:1 · Team Workshops · Conference Workshops — all welcome. &nbsp;→&nbsp;
+<div class="social-grid">
+<a class="social-link" href="https://tiktok.com/@sheva.studio" rel="noopener" target="_blank">
+<img alt="TikTok logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=tiktok.com&amp;sz=128" width="20"/>
+<div class="social-text"><span class="social-platform">TikTok</span><span class="social-handle">@sheva.studio</span></div>
+</a>
+<a class="social-link" href="https://youtube.com/@sheva.studio" rel="noopener" target="_blank">
+<img alt="YouTube logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=128" width="20"/>
+<div class="social-text"><span class="social-platform">YouTube</span><span class="social-handle">@sheva.studio</span></div>
+</a>
+<a class="social-link" href="https://instagram.com/sheva.studios" rel="noopener" target="_blank">
+<img alt="Instagram logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=instagram.com&amp;sz=128" width="20"/>
+<div class="social-text"><span class="social-platform">Instagram</span><span class="social-handle">@sheva.studios</span></div>
+</a>
+<a class="social-link" href="https://facebook.com/ShevaKayStudio" rel="noopener" target="_blank">
+<img alt="Facebook logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=facebook.com&amp;sz=128" width="20"/>
+<div class="social-text"><span class="social-platform">Facebook</span><span class="social-handle">ShevaKayStudio</span></div>
+</a>
+<a class="social-link" href="https://amazon.com/shop/scribinglife" rel="noopener" target="_blank">
+<img alt="Amazon logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=amazon.com&amp;sz=128" width="20"/>
+<div class="social-text"><span class="social-platform">Amazon Shop</span><span class="social-handle">scribinglife</span></div>
+</a>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#book"><span><small>Next · Last stop</small><b>Let's talk about what AI could do for you</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<!-- CTA -->
+<section class="cta" id="book">
+<h2>Let's talk about what AI could do for you.</h2>
+<p>1:1 consultations, team workshops, conference talks. No generic playbook — just a plan that fits how you actually work.</p>
+<div class="btns">
+<a class="btn btn-primary" href="contact.html">Book a Consultation →</a>
+<a class="btn btn-ghost" href="Sheva-Studio-Intro-to-AI.html">Get Started with AI</a>
+</div>
+</section>
+<footer>
+      1:1 · Team Workshops · Conference Workshops — all welcome.  → 
       <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a>
-    </footer>
-
-  </div>
+</footer>
+</div>
 </main>
-
-</body>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
+  var btn = document.querySelector('button.fold-all');
+  function visible(d){ return d.offsetParent !== null; }
+  function sync(){
+    if(!btn) return;
+    var shown = folds.filter(visible);
+    var all = shown.length && shown.every(function(d){ return d.open; });
+    btn.textContent = all ? 'Close all' : 'Open all';
+    btn.setAttribute('aria-expanded', all ? 'true' : 'false');
+  }
+  function go(id, from){
+    var t = document.getElementById(id);
+    if(!t) return false;
+    if(from){ var f = from.closest('details.fold'); if(f && f !== t) f.open = false; }
+    if(t.tagName === 'DETAILS') t.open = true;
+    t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    var s = t.tagName === 'DETAILS' ? t.querySelector('summary') : t;
+    try{ s.focus({preventScroll:true}); }catch(e){}
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+    sync(); return true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1), t = id && document.getElementById(id);
+    if(!t) return;
+    var isNext = a.hasAttribute('data-fold-next');
+    if(isNext || (t.tagName === 'DETAILS' && t.classList.contains('fold'))){ e.preventDefault(); go(id, isNext ? a : null); }
+  });
+  function fromHash(){
+    var id = (location.hash || '').slice(1);
+    var t = id && document.getElementById(id);
+    if(!t || t.tagName !== 'DETAILS' || !t.classList.contains('fold')) return;
+    folds.forEach(function(d){ d.open = (d === t); });
+    setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+    sync();
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  if(btn) btn.addEventListener('click', function(){
+    var shown = folds.filter(visible);
+    var open = !(shown.length && shown.every(function(d){ return d.open; }));
+    shown.forEach(function(d){ d.open = open; }); sync();
+  });
+  folds.forEach(function(d){ d.addEventListener('toggle', sync); });
+  sync();
+  // Print or save: open everything, then put it back
+  var before = null;
+  window.addEventListener('beforeprint', function(){ before = folds.map(function(d){ return d.open; }); folds.forEach(function(d){ d.open = true; }); });
+  window.addEventListener('afterprint', function(){ if(before) folds.forEach(function(d,i){ d.open = before[i]; }); before = null; sync(); });
+  // Videos load only when tapped
+  document.querySelectorAll('button.yt').forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0';
+      f.title = b.getAttribute('aria-label').replace('Play video: ','');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      var w = document.createElement('div'); w.className = 'yt'; w.appendChild(f);
+      b.replaceWith(w);
+    });
+  });
+})();
+</script></body>
 </html>

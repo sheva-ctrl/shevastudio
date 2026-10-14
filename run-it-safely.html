@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Run It Safely: Agents in the Real World — Sheva</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
     --bg:#faf8fc;
@@ -139,202 +140,249 @@
     .dodont li,.rung .body p,.pattern p{color:#000!important;}
   }
 </style>
-</head>
-<body>
+<style>:root{--f-accent:#7b3ff2;--f-accent2:#0891B2;--f-ink:#1e1830;--f-muted:#5c5470;--f-line:#e2dced;--f-soft:#f2edf8;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:var(--font-heading);--f-body:var(--font-body)}
+/* ===== Sheva Studio collapsible steps ===== */
+.fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
+  font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--f-ink)}
+.fold-help p{margin:0}
+.fold-help b{color:var(--f-accent);font-weight:700}
+button.fold-all{all:unset;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--f-accent);
+  padding:8px 14px;border-radius:999px;border:1.5px solid var(--f-line);background:var(--f-card,#fff);white-space:nowrap}
+button.fold-all:hover{border-color:var(--f-accent)}
+button.fold-all:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
 
+details.fold{background:var(--f-card,#fff);border:1px solid var(--f-line);border-radius:16px;margin:0 0 12px;scroll-margin-top:84px;
+  transition:border-color .2s,box-shadow .2s}
+details.fold[open]{border-color:var(--f-accent-line);box-shadow:0 6px 24px rgba(30,24,48,.06)}
+details.fold > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:14px;padding:16px}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px;border-radius:14px}
+.fold-num{min-width:42px;height:42px;padding:0 8px;border-radius:12px;display:grid;place-items:center;background:var(--f-soft);
+  color:var(--f-accent);font-family:var(--f-head);font-weight:800;font-size:18px;transition:background .2s,color .2s}
+details.fold[open] .fold-num{background:var(--f-accent);color:#fff}
+.fold-meta{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--f-muted);margin:0 0 2px}
+details.fold > summary h2.fold-title{font-family:var(--f-head);font-weight:800;font-size:clamp(19px,3.6vw,24px);line-height:1.2;
+  letter-spacing:-.01em;margin:0;padding:0;border:0;color:var(--f-ink)}
+.fold-chev{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--f-line);display:grid;place-items:center;
+  transition:transform .25s,border-color .2s;flex:none}
+.fold-chev::after{content:"";width:8px;height:8px;border-right:2px solid var(--f-ink);border-bottom:2px solid var(--f-ink);
+  transform:translateY(-2px) rotate(45deg)}
+details.fold[open] .fold-chev{transform:rotate(180deg);border-color:var(--f-accent)}
+details.fold > summary:hover .fold-chev{border-color:var(--f-accent)}
+.fold-body{border-top:1px solid var(--f-line);margin:0 16px;padding:20px 0 20px}
+@media (min-width:700px){details.fold > summary{padding:20px 24px;gap:18px}.fold-body{margin:0 24px}}
+.fold-body > :not(.fold-video):not(.fold-next-wrap):not(.fold-lede){margin:0!important;padding:0!important;border:0!important;
+  background:transparent!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;
+  max-width:none!important;width:auto}
+.fold-body > section.fz > *:first-child:last-child{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important}
+.fold-lede{font-family:var(--f-body);font-size:16px;color:var(--f-muted);margin:0 0 16px;line-height:1.55}
+@media (prefers-reduced-motion:no-preference){details.fold[open] .fold-body{animation:foldIn .3s ease}
+  @keyframes foldIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+
+.fold-video,.page-video{margin:0 0 22px}
+.page-video{margin:26px 0 8px}
+.fold-video-label{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--f-accent);margin:0 0 8px}
+.fold-video-title{font-family:var(--f-body);font-size:15px;font-weight:600;color:var(--f-ink);margin:8px 0 0;line-height:1.4}
+button.yt,div.yt{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:14px;
+  overflow:hidden;background:#1E1830;cursor:pointer}
+button.yt:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center}
+.yt .play i{width:68px;height:48px;border-radius:12px;background:var(--f-accent);display:grid;place-items:center}
+.yt .play i::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+button.yt:hover .play i{background:var(--f-accent2)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.fold-next-wrap{margin-top:24px;padding-top:18px;border-top:1px solid var(--f-line);display:flex;justify-content:flex-end}
+a.fold-next{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--f-ink);background:var(--f-soft);
+  border:1px solid var(--f-line);border-radius:12px;padding:12px 16px;max-width:100%;transition:border-color .2s}
+a.fold-next:hover{border-color:var(--f-accent)}
+a.fold-next:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+a.fold-next small{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--f-accent)}
+a.fold-next b{display:block;font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.35}
+a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background:var(--f-accent);color:#fff;display:grid;place-items:center;font-weight:700}
+@media (max-width:600px){.site-nav{flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important}
+  .site-nav .nav-home{flex:none}
+  .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+  .site-nav .nav-links::-webkit-scrollbar{display:none}}
+@media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
+</style></head>
+<body>
 <!-- HERO -->
 <header class="hero">
-  <div class="kicker">Sheva · Part 4 · AI Integrations</div>
-  <h1>Run It Safely.<br>Agents in the Real World.</h1>
-  <p class="sub">Letting agents do more — without letting them do damage.</p>
-  <div class="meta">Two tracks · <strong>Everyday for everyone, Developer for the builders.</strong></div>
+<div class="kicker">Sheva · Part 4 · AI Integrations</div>
+<h1>Run It Safely.<br/>Agents in the Real World.</h1>
+<p class="sub">Letting agents do more — without letting them do damage.</p>
+<div class="meta">Two tracks · <strong>Everyday for everyone, Developer for the builders.</strong></div>
 </header>
-
 <!-- PROMISE -->
 <div class="promise">
-  <div><div class="n">CORE IDEA</div><p>Limit the blast radius</p></div>
-  <div><div class="n">EVERYDAY TRACK</div><p>Safe guardrails, no code</p></div>
-  <div><div class="n">DEVELOPER TRACK</div><p>Sandboxes & test environments</p></div>
+<div><div class="n">CORE IDEA</div><p>Limit the blast radius</p></div>
+<div><div class="n">EVERYDAY TRACK</div><p>Safe guardrails, no code</p></div>
+<div><div class="n">DEVELOPER TRACK</div><p>Sandboxes &amp; test environments</p></div>
 </div>
-
 <div class="wrap">
-
-  <!-- INTRO + LANE PICKER -->
-  <section style="border-bottom:none;padding-bottom:20px;">
-    <div class="sec-num">Pick Your Track</div>
-    <h2>This one splits in two.</h2>
-    <p class="lead">Agents that act on your behalf are powerful — and that power needs boundaries. The <strong>principle</strong> is the same for everyone: give an agent room to help, but wall off what it could hurt. <strong>How</strong> you do it depends on who you are.</p>
-    <div class="lane-tabs">
-      <button class="lane-tab everyday active" onclick="showLane('everyday')"><span class="dot"></span>Everyday Track</button>
-      <button class="lane-tab dev" onclick="showLane('dev')"><span class="dot"></span>Developer Track</button>
-    </div>
-    <p class="muted" style="text-align:center;margin-top:16px;font-size:0.9rem;">Tap a track to jump to it — or just scroll; both are below.</p>
-  </section>
-
-  <!-- ============ EVERYDAY LANE ============ -->
-  <div id="lane-everyday">
-
-  <section>
-    <div class="lane-badge everyday">Everyday Track</div>
-    <div class="sec-num tealnum">E1 · The Big Idea</div>
-    <h2>Limit the blast radius.</h2>
-    <p class="lead">When an agent can open files, browse the web, and run tasks for you, the goal is simple: if it ever makes a mistake — or gets tricked — the damage stays small and contained.</p>
-    <div class="patterns">
-      <div class="pattern"><div class="tag">Give it a sandbox</div><p>A dedicated folder for agent work — copy files in, don't point it at your originals.</p></div>
-      <div class="pattern"><div class="tag">Give it a short leash</div><p>Only the access it needs for the task. Not your whole drive, inbox, or accounts.</p></div>
-      <div class="pattern"><div class="tag">Watch it first</div><p>Supervise the first few runs before you trust it to work unattended.</p></div>
-      <div class="pattern"><div class="tag">Know the off switch</div><p>Be able to pause it, revoke access, and stop a scheduled task at any time.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="lane-badge everyday">Everyday Track</div>
-    <div class="sec-num tealnum">E2 · The Practical Rules</div>
-    <h2>Do this. Not that.</h2>
-    <p class="lead">These are the habits that prevent almost every everyday agent mishap.</p>
-    <div class="dodont">
-      <div class="col do">
-        <div class="lbl">Do</div>
-        <ul>
-          <li>Make one dedicated "agent work" folder and copy files into it.</li>
-          <li>Tell it plainly what it may not touch: "don't delete anything."</li>
-          <li>Be specific about the outcome — vague tasks invite guesswork.</li>
-          <li>Limit any browser helper to sites you trust.</li>
-          <li>Review its output before anything gets sent or published.</li>
-        </ul>
-      </div>
-      <div class="col dont">
-        <div class="lbl">Don't</div>
-        <ul>
-          <li>Put passwords, financial files, or credentials in the working folder.</li>
-          <li>Give it standing access to your whole drive or inbox "just in case."</li>
-          <li>Let it act on untrusted web pages, emails, or documents unchecked.</li>
-          <li>Assume org settings protect you on a personal account — they may not.</li>
-          <li>Trust an unattended, scheduled agent you've never watched run.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout warn">
-      <div class="q">Why the caution?</div>
-      <div class="a">Agents that read the web and your files can be fooled by hidden instructions buried in a page or document — "prompt injection." It's the #1 risk. The folder trick and a short leash are what keep a bad instruction from becoming a bad outcome.</div>
-    </div>
-  </section>
-
-  <section>
-    <div class="lane-badge everyday">Everyday Track</div>
-    <div class="sec-num tealnum">E3 · At Work</div>
-    <h2>If it's for your job, loop in IT.</h2>
-    <p class="lead">Workplace agents touch company data — so the rules aren't just yours to set.</p>
-    <div class="ladder">
-      <div class="rung teal"><div class="step">1</div><div class="body"><div class="t">Use only approved tools and connections</div><p>Your organization vets agents for a reason. Don't wire one into company systems on your own.</p></div></div>
-      <div class="rung teal"><div class="step">2</div><div class="body"><div class="t">Assume someone should be able to audit it</div><p>Know what your agent did and when. If you can't show your work, slow down.</p></div></div>
-      <div class="rung teal"><div class="step">3</div><div class="body"><div class="t">Ask before you automate anything sensitive</div><p>Customer data, finances, personnel info — get a yes from the people who own the risk.</p></div></div>
-    </div>
-    <div class="callout teal">
-      <div class="q">The everyday takeaway:</div>
-      <div class="a">You don't need to be technical to be responsible. A dedicated folder, a short leash, a quick review, and looping in IT at work — that's 90% of safe agent use.</div>
-    </div>
-  </section>
-
-  </div><!-- /everyday -->
-
-  <!-- ============ DEVELOPER LANE ============ -->
-  <div id="lane-dev" class="lane-hidden">
-
-  <section>
-    <div class="lane-badge dev">Developer Track</div>
-    <div class="sec-num">D1 · Test Before You Trust</div>
-    <h2>Never let an agent run loose on your real machine.</h2>
-    <p class="lead">Coding agents write and run code you haven't reviewed. The pattern in 2026 is to run them in an isolated environment — a sandbox — so a bad command destroys a disposable container, not your system.</p>
-    <div class="patterns">
-      <div class="pattern"><div class="tag">Isolation</div><p>Own filesystem, network, and process space — walled off from your host, credentials, and production data.</p></div>
-      <div class="pattern"><div class="tag">Ephemeral</div><p>Spin up, run, tear down. Nothing persists unless you choose it to.</p></div>
-      <div class="pattern"><div class="tag">Reproducible</div><p>Same environment every run — so a test result actually means something.</p></div>
-      <div class="pattern"><div class="tag">Recoverable</div><p>If it breaks, you throw it away and start fresh. No cleanup on your real box.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="lane-badge dev">Developer Track</div>
-    <div class="sec-num">D2 · The Tooling Landscape</div>
-    <h2>Where people run agents safely.</h2>
-    <p class="lead">A fast-moving space — verify current specs before you commit. As of mid-2026, roughly:</p>
-
-    <h3>Agent-native sandboxes (built into the coding agent)</h3>
-    <p class="muted" style="font-size:0.94rem;">Isolate for safety while the agent writes and runs code. Great for generation; the "last mile" of real deployment/verification often stays manual.</p>
-    <div class="chips"><span class="chip">Claude Code</span><span class="chip">OpenAI Codex</span><span class="chip">Cursor (cloud agents)</span><span class="chip">GitHub Copilot agent</span></div>
-
-    <h3>Dedicated sandbox infrastructure (bring your own agent)</h3>
-    <p class="muted" style="font-size:0.94rem;">Purpose-built isolated compute — microVM-level separation, SDKs, fast boot. For running untrusted code at scale.</p>
-    <div class="chips"><span class="chip">E2B</span><span class="chip">Modal</span><span class="chip">Daytona (open-source)</span><span class="chip">Fly.io Sprites</span><span class="chip">Vercel Sandbox</span><span class="chip">CodeSandbox</span></div>
-
-    <h3>Self-hosted dev environments (your own hardware)</h3>
-    <p class="muted" style="font-size:0.94rem;">Run environments on your own servers — or that old machine in the closet — for full control and data residency.</p>
-    <div class="chips"><span class="chip">Coder</span><span class="chip">Daytona (self-hosted)</span><span class="chip">Docker / dev containers</span><span class="chip">Northflank (BYOC)</span></div>
-
-    <div class="callout warn">
-      <div class="q">Sandboxes solve execution — not verification.</div>
-      <div class="a">Most can run tests, but can't hit real databases or hand you a working preview. That last mile — proving it works end-to-end — still needs a human. Isolation buys safety, not certainty.</div>
-    </div>
-  </section>
-
-  <section>
-    <div class="lane-badge dev">Developer Track</div>
-    <div class="sec-num">D3 · Guardrails in Code</div>
-    <h2>Permissions ask. Hooks enforce.</h2>
-    <p class="lead">For production agents, "please don't" isn't a control. Two layers matter:</p>
-    <div class="ladder">
-      <div class="rung"><div class="step">1</div><div class="body"><div class="t">Permissions / allow-lists</div><p>Define a narrow set of tools and actions the agent may use. The model still decides within them.</p></div></div>
-      <div class="rung"><div class="step">2</div><div class="body"><div class="t">Deterministic hooks</div><p>Your own code firing at fixed points — block destructive commands, inject context, audit every action. The final word, not a suggestion.</p></div></div>
-      <div class="rung"><div class="step">3</div><div class="body"><div class="t">An enforcement point outside the model</div><p>A proxy or gateway that intercepts agent traffic. Because you can't trust the thing you're trying to constrain to constrain itself.</p></div></div>
-    </div>
-    <div class="callout">
-      <div class="q">The developer takeaway:</div>
-      <div class="a">Isolate execution, constrain with allow-lists, enforce with code the model can't override, and keep a human on the last mile. Same "limit the blast radius" idea as the Everyday track — just with real teeth.</div>
-    </div>
-  </section>
-
-  </div><!-- /dev -->
-
-  <!-- SHARED CLOSE -->
-  <section style="border-bottom:none;">
-    <div class="sec-num">Both Tracks · The Through-Line</div>
-    <h2>Powerful and careful aren't opposites.</h2>
-    <p class="lead">Whether you're copying files into a folder or wiring up a microVM, it's the same instinct: let the agent help freely inside a space where a mistake can't hurt you.</p>
-    <div class="callout">
-      <div class="q">The one thing to remember:</div>
-      <div class="a">Give agents room to work and walls around the damage. That's the whole discipline — at every level.</div>
-    </div>
-    <p class="muted" style="margin-top:20px;">This is the frontier, and it moves fast — treat specific tools as a snapshot, not gospel. The principle is what lasts.</p>
-  </section>
-
+<!-- INTRO + LANE PICKER -->
+<section style="border-bottom:none;padding-bottom:20px;">
+<div class="sec-num">Pick Your Track</div>
+<h2>This one splits in two.</h2>
+<p class="lead">Agents that act on your behalf are powerful — and that power needs boundaries. The <strong>principle</strong> is the same for everyone: give an agent room to help, but wall off what it could hurt. <strong>How</strong> you do it depends on who you are.</p>
+<div class="lane-tabs">
+<button class="lane-tab everyday active" onclick="showLane('everyday')"><span class="dot"></span>Everyday Track</button>
+<button class="lane-tab dev" onclick="showLane('dev')"><span class="dot"></span>Developer Track</button>
 </div>
+<p class="muted" style="text-align:center;margin-top:16px;font-size:0.9rem;">Tap a track to jump to it — or just scroll; both are below.</p>
+</section>
+<!-- ============ EVERYDAY LANE ============ -->
+<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><div id="lane-everyday">
+<details class="fold" id="step-e1" open=""><summary><span aria-hidden="true" class="fold-num">E1</span><span><span class="fold-meta">The Big Idea</span><h2 class="fold-title">Limit the blast radius.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
+<div class="lane-badge everyday">Everyday Track</div>
 
+
+<p class="lead">When an agent can open files, browse the web, and run tasks for you, the goal is simple: if it ever makes a mistake — or gets tricked — the damage stays small and contained.</p>
+<div class="patterns">
+<div class="pattern"><div class="tag">Give it a sandbox</div><p>A dedicated folder for agent work — copy files in, don't point it at your originals.</p></div>
+<div class="pattern"><div class="tag">Give it a short leash</div><p>Only the access it needs for the task. Not your whole drive, inbox, or accounts.</p></div>
+<div class="pattern"><div class="tag">Watch it first</div><p>Supervise the first few runs before you trust it to work unattended.</p></div>
+<div class="pattern"><div class="tag">Know the off switch</div><p>Be able to pause it, revoke access, and stop a scheduled task at any time.</p></div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-e2"><span><small>Next · Step E2</small><b>Do this. Not that.</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-e2"><summary><span aria-hidden="true" class="fold-num">E2</span><span><span class="fold-meta">The Practical Rules</span><h2 class="fold-title">Do this. Not that.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
+<div class="lane-badge everyday">Everyday Track</div>
+
+
+<p class="lead">These are the habits that prevent almost every everyday agent mishap.</p>
+<div class="dodont">
+<div class="col do">
+<div class="lbl">Do</div>
+<ul>
+<li>Make one dedicated "agent work" folder and copy files into it.</li>
+<li>Tell it plainly what it may not touch: "don't delete anything."</li>
+<li>Be specific about the outcome — vague tasks invite guesswork.</li>
+<li>Limit any browser helper to sites you trust.</li>
+<li>Review its output before anything gets sent or published.</li>
+</ul>
+</div>
+<div class="col dont">
+<div class="lbl">Don't</div>
+<ul>
+<li>Put passwords, financial files, or credentials in the working folder.</li>
+<li>Give it standing access to your whole drive or inbox "just in case."</li>
+<li>Let it act on untrusted web pages, emails, or documents unchecked.</li>
+<li>Assume org settings protect you on a personal account — they may not.</li>
+<li>Trust an unattended, scheduled agent you've never watched run.</li>
+</ul>
+</div>
+</div>
+<div class="callout warn">
+<div class="q">Why the caution?</div>
+<div class="a">Agents that read the web and your files can be fooled by hidden instructions buried in a page or document — "prompt injection." It's the #1 risk. The folder trick and a short leash are what keep a bad instruction from becoming a bad outcome.</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-e3"><span><small>Next · Step E3</small><b>If it's for your job, loop in IT.</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-e3"><summary><span aria-hidden="true" class="fold-num">E3</span><span><span class="fold-meta">At Work</span><h2 class="fold-title">If it's for your job, loop in IT.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
+<div class="lane-badge everyday">Everyday Track</div>
+
+
+<p class="lead">Workplace agents touch company data — so the rules aren't just yours to set.</p>
+<div class="ladder">
+<div class="rung teal"><div class="step">1</div><div class="body"><div class="t">Use only approved tools and connections</div><p>Your organization vets agents for a reason. Don't wire one into company systems on your own.</p></div></div>
+<div class="rung teal"><div class="step">2</div><div class="body"><div class="t">Assume someone should be able to audit it</div><p>Know what your agent did and when. If you can't show your work, slow down.</p></div></div>
+<div class="rung teal"><div class="step">3</div><div class="body"><div class="t">Ask before you automate anything sensitive</div><p>Customer data, finances, personnel info — get a yes from the people who own the risk.</p></div></div>
+</div>
+<div class="callout teal">
+<div class="q">The everyday takeaway:</div>
+<div class="a">You don't need to be technical to be responsible. A dedicated folder, a short leash, a quick review, and looping in IT at work — that's 90% of safe agent use.</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-final"><span><small>Next · Wrap-up</small><b>Powerful and careful aren't opposites.</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+</div><!-- /everyday -->
+<!-- ============ DEVELOPER LANE ============ -->
+<div class="lane-hidden" id="lane-dev">
+<details class="fold" id="step-d1"><summary><span aria-hidden="true" class="fold-num">D1</span><span><span class="fold-meta">Test Before You Trust</span><h2 class="fold-title">Never let an agent run loose on your real machine.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
+<div class="lane-badge dev">Developer Track</div>
+
+
+<p class="lead">Coding agents write and run code you haven't reviewed. The pattern in 2026 is to run them in an isolated environment — a sandbox — so a bad command destroys a disposable container, not your system.</p>
+<div class="patterns">
+<div class="pattern"><div class="tag">Isolation</div><p>Own filesystem, network, and process space — walled off from your host, credentials, and production data.</p></div>
+<div class="pattern"><div class="tag">Ephemeral</div><p>Spin up, run, tear down. Nothing persists unless you choose it to.</p></div>
+<div class="pattern"><div class="tag">Reproducible</div><p>Same environment every run — so a test result actually means something.</p></div>
+<div class="pattern"><div class="tag">Recoverable</div><p>If it breaks, you throw it away and start fresh. No cleanup on your real box.</p></div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-d2"><span><small>Next · Step D2</small><b>Where people run agents safely.</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-d2"><summary><span aria-hidden="true" class="fold-num">D2</span><span><span class="fold-meta">The Tooling Landscape</span><h2 class="fold-title">Where people run agents safely.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
+<div class="lane-badge dev">Developer Track</div>
+
+
+<p class="lead">A fast-moving space — verify current specs before you commit. As of mid-2026, roughly:</p>
+<h3>Agent-native sandboxes (built into the coding agent)</h3>
+<p class="muted" style="font-size:0.94rem;">Isolate for safety while the agent writes and runs code. Great for generation; the "last mile" of real deployment/verification often stays manual.</p>
+<div class="chips"><span class="chip">Claude Code</span><span class="chip">OpenAI Codex</span><span class="chip">Cursor (cloud agents)</span><span class="chip">GitHub Copilot agent</span></div>
+<h3>Dedicated sandbox infrastructure (bring your own agent)</h3>
+<p class="muted" style="font-size:0.94rem;">Purpose-built isolated compute — microVM-level separation, SDKs, fast boot. For running untrusted code at scale.</p>
+<div class="chips"><span class="chip">E2B</span><span class="chip">Modal</span><span class="chip">Daytona (open-source)</span><span class="chip">Fly.io Sprites</span><span class="chip">Vercel Sandbox</span><span class="chip">CodeSandbox</span></div>
+<h3>Self-hosted dev environments (your own hardware)</h3>
+<p class="muted" style="font-size:0.94rem;">Run environments on your own servers — or that old machine in the closet — for full control and data residency.</p>
+<div class="chips"><span class="chip">Coder</span><span class="chip">Daytona (self-hosted)</span><span class="chip">Docker / dev containers</span><span class="chip">Northflank (BYOC)</span></div>
+<div class="callout warn">
+<div class="q">Sandboxes solve execution — not verification.</div>
+<div class="a">Most can run tests, but can't hit real databases or hand you a working preview. That last mile — proving it works end-to-end — still needs a human. Isolation buys safety, not certainty.</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-d3"><span><small>Next · Step D3</small><b>Permissions ask. Hooks enforce.</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-d3"><summary><span aria-hidden="true" class="fold-num">D3</span><span><span class="fold-meta">Guardrails in Code</span><h2 class="fold-title">Permissions ask. Hooks enforce.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
+<div class="lane-badge dev">Developer Track</div>
+
+
+<p class="lead">For production agents, "please don't" isn't a control. Two layers matter:</p>
+<div class="ladder">
+<div class="rung"><div class="step">1</div><div class="body"><div class="t">Permissions / allow-lists</div><p>Define a narrow set of tools and actions the agent may use. The model still decides within them.</p></div></div>
+<div class="rung"><div class="step">2</div><div class="body"><div class="t">Deterministic hooks</div><p>Your own code firing at fixed points — block destructive commands, inject context, audit every action. The final word, not a suggestion.</p></div></div>
+<div class="rung"><div class="step">3</div><div class="body"><div class="t">An enforcement point outside the model</div><p>A proxy or gateway that intercepts agent traffic. Because you can't trust the thing you're trying to constrain to constrain itself.</p></div></div>
+</div>
+<div class="callout">
+<div class="q">The developer takeaway:</div>
+<div class="a">Isolate execution, constrain with allow-lists, enforce with code the model can't override, and keep a human on the last mile. Same "limit the blast radius" idea as the Everyday track — just with real teeth.</div>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-final"><span><small>Next · Wrap-up</small><b>Powerful and careful aren't opposites.</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+</div><!-- /dev -->
+<!-- SHARED CLOSE -->
+<details class="fold" id="step-final"><summary><span aria-hidden="true" class="fold-num">✓</span><span><span class="fold-meta">Both Tracks · The Through-Line</span><h2 class="fold-title">Powerful and careful aren't opposites.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section style="border-bottom:none;">
+
+
+<p class="lead">Whether you're copying files into a folder or wiring up a microVM, it's the same instinct: let the agent help freely inside a space where a mistake can't hurt you.</p>
+<div class="callout">
+<div class="q">The one thing to remember:</div>
+<div class="a">Give agents room to work and walls around the damage. That's the whole discipline — at every level.</div>
+</div>
+<p class="muted" style="margin-top:20px;">This is the frontier, and it moves fast — treat specific tools as a snapshot, not gospel. The principle is what lasts.</p>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="ai-at-work.html"><span><small>Keep going</small><b>AI | What Actually Works: six lessons from 50+ AI projects</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+</div>
 <!-- ===== LEARNING PATH (shared block · this page = step 4) ===== -->
-<div class="series-strip" aria-label="The AI Series — your path">
-  <span class="series-label">The AI Series · Your Path</span>
-  <div class="series-pills">
-    <a href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html" class="series-pill"><b>1</b> Choose a Tool</a>
-    <a href="https://shevastudio.com/now-what.html" class="series-pill"><b>2</b> Now What?</a>
-    <a href="https://shevastudio.com/now-build-it.html" class="series-pill"><b>3</b> Now Build It</a>
-    <span class="series-pill current"><b>4</b> Run It Safely</span>
-  </div>
+<div aria-label="The AI Series — your path" class="series-strip">
+<span class="series-label">The AI Series · Your Path</span>
+<div class="series-pills">
+<a class="series-pill" href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html"><b>1</b> Choose a Tool</a>
+<a class="series-pill" href="https://shevastudio.com/now-what.html"><b>2</b> Now What?</a>
+<a class="series-pill" href="https://shevastudio.com/now-build-it.html"><b>3</b> Now Build It</a>
+<span class="series-pill current"><b>4</b> Run It Safely</span>
 </div>
-
+</div>
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="big">That's the series — Choose, Use, Build, Run Safely.</div>
-  <div class="sub">Making AI human, practical, and a little bit fun.</div>
-  <a class="cta" href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html">Back to Part 1 →</a>
-  <a class="cta ghost" href="https://shevastudio.com/guides.html">Browse the Guides</a>
-  <div class="socials">
-    <a href="https://tiktok.com/@sheva.studio">TikTok</a>
-    <a href="https://youtube.com/@sheva.studio">YouTube</a>
-    <a href="https://instagram.com/sheva.studios">Instagram</a>
-    <a href="https://linkedin.com/in/elishevanoland">LinkedIn</a>
-  </div>
+<div class="big">That's the series — Choose, Use, Build, Run Safely.</div>
+<div class="sub">Making AI human, practical, and a little bit fun.</div>
+<a class="cta" href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html">Back to Part 1 →</a>
+<a class="cta ghost" href="https://shevastudio.com/guides.html">Browse the Guides</a>
+<div class="socials">
+<a href="https://tiktok.com/@sheva.studio">TikTok</a>
+<a href="https://youtube.com/@sheva.studio">YouTube</a>
+<a href="https://instagram.com/sheva.studios">Instagram</a>
+<a href="https://linkedin.com/in/elishevanoland">LinkedIn</a>
+</div>
 </footer>
-
 <script>
   function showLane(which){
     document.getElementById('lane-everyday').classList.toggle('lane-hidden', which!=='everyday');
@@ -344,6 +392,71 @@
     window.scrollTo({top:document.querySelector(which==='everyday'?'#lane-everyday':'#lane-dev').offsetTop-20,behavior:'smooth'});
   }
 </script>
-
-</body>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
+  var btn = document.querySelector('button.fold-all');
+  function visible(d){ return d.offsetParent !== null; }
+  function sync(){
+    if(!btn) return;
+    var shown = folds.filter(visible);
+    var all = shown.length && shown.every(function(d){ return d.open; });
+    btn.textContent = all ? 'Close all' : 'Open all';
+    btn.setAttribute('aria-expanded', all ? 'true' : 'false');
+  }
+  function go(id, from){
+    var t = document.getElementById(id);
+    if(!t) return false;
+    if(from){ var f = from.closest('details.fold'); if(f && f !== t) f.open = false; }
+    if(t.tagName === 'DETAILS') t.open = true;
+    t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    var s = t.tagName === 'DETAILS' ? t.querySelector('summary') : t;
+    try{ s.focus({preventScroll:true}); }catch(e){}
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+    sync(); return true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1), t = id && document.getElementById(id);
+    if(!t) return;
+    var isNext = a.hasAttribute('data-fold-next');
+    if(isNext || (t.tagName === 'DETAILS' && t.classList.contains('fold'))){ e.preventDefault(); go(id, isNext ? a : null); }
+  });
+  function fromHash(){
+    var id = (location.hash || '').slice(1);
+    var t = id && document.getElementById(id);
+    if(!t || t.tagName !== 'DETAILS' || !t.classList.contains('fold')) return;
+    folds.forEach(function(d){ d.open = (d === t); });
+    setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+    sync();
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  if(btn) btn.addEventListener('click', function(){
+    var shown = folds.filter(visible);
+    var open = !(shown.length && shown.every(function(d){ return d.open; }));
+    shown.forEach(function(d){ d.open = open; }); sync();
+  });
+  folds.forEach(function(d){ d.addEventListener('toggle', sync); });
+  sync();
+  // Print or save: open everything, then put it back
+  var before = null;
+  window.addEventListener('beforeprint', function(){ before = folds.map(function(d){ return d.open; }); folds.forEach(function(d){ d.open = true; }); });
+  window.addEventListener('afterprint', function(){ if(before) folds.forEach(function(d,i){ d.open = before[i]; }); before = null; sync(); });
+  // Videos load only when tapped
+  document.querySelectorAll('button.yt').forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0';
+      f.title = b.getAttribute('aria-label').replace('Play video: ','');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      var w = document.createElement('div'); w.className = 'yt'; w.appendChild(f);
+      b.replaceWith(w);
+    });
+  });
+})();
+</script></body>
 </html>
