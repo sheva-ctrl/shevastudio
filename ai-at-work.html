@@ -43,6 +43,8 @@
   .nav-links{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px}
   .nav-links a{color:var(--muted);text-decoration:none;font-weight:600}
   .nav-links a:hover,.nav-links a[aria-current]{color:var(--violet)}
+  @media (max-width:640px){.nav{flex-wrap:nowrap}.brand{flex:none}
+    .nav-links{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-width:0}.nav-links::-webkit-scrollbar{display:none}.nav-links a{white-space:nowrap}}
 
   /* Hero */
   .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -143,8 +145,20 @@
   .btn:hover{background:#6A2FE0}
   footer{border-top:1px solid var(--line);padding:22px 0 40px}
   .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+
+  .video{margin:0 0 6px!important}
+  .video-label{font-size:15px!important;letter-spacing:0!important;text-transform:none!important;color:var(--ink)!important;font-weight:700!important;display:flex;align-items:center;gap:8px;margin-bottom:10px!important}
+  .video-label .mins{color:var(--muted);font-weight:600}
+  .stepchip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--violet);border-radius:999px;padding:3px 9px;vertical-align:middle}
+  .readnext{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;margin:22px 0 16px!important;padding-top:18px;border-top:1px dashed var(--line)}
+  .readnext .stepchip{background:var(--teal)}
+  .vidtag{color:var(--violet);text-transform:none;letter-spacing:0;font-weight:700}
+  .howlesson{margin-top:14px;font-size:15px;line-height:1.9;color:var(--ink)}
+  .howlesson .stepchip:last-of-type{background:var(--teal)}
 </style>
-</head>
+<style>@media (max-width:640px){
+  .nav-links a{white-space:nowrap;flex:none}
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style></head>
 <body>
 <header class="topbar">
 <div class="wrap nav">
@@ -155,6 +169,8 @@
 <a href="guides.html">Guides</a>
 <a href="prompt-builder.html">Prompt Builder</a>
 <a aria-current="page" href="ai-at-work.html">AI at Work</a>
+<a href="field-guides.html">Field Guides</a>
+<a href="index.html#create">Creator Tools</a>
 <a href="contact.html">Contact</a>
 </nav>
 </div>
@@ -167,7 +183,7 @@
 <div class="goal">
 <strong>What you'll be able to do</strong>
       By the end of this page, you'll know how to get your first real win with AI at work — and how to help your team keep using it.
-    </div>
+    </div><p class="howlesson"><b>How each lesson works:</b> tap a lesson to open it. <span class="stepchip">Step 1</span> watch the short video. <span class="stepchip">Step 2</span> read and try it. Then tap <b>Next</b>.</p>
 <p class="series-links">New lesson every Tuesday on <a href="https://www.linkedin.com/company/18615452/" rel="noopener" target="_blank">LinkedIn</a>. Prefer video? <a href="https://www.youtube.com/playlist?list=PLdMgFKibvlYBMeyzpnB3ahecEMJL3sxhf" rel="noopener" target="_blank">Watch the Learn AI playlist</a>.</p>
 </section>
 <div class="list-head">
@@ -179,16 +195,16 @@
 <details class="lesson" id="card-1" open="">
 <summary>
 <span aria-hidden="true" class="s-num">1</span>
-<span><span class="s-meta">1 of 6 · Oct 13</span><h2 class="s-title">How to get your first real win with AI</h2></span>
+<span><span class="s-meta">1 of 6 · Oct 13 · <span class="vidtag">▶ 3-min video</span></span><h2 class="s-title">How to get your first real win with AI</h2></span>
 <span aria-hidden="true" class="chev"></span>
 </summary>
 <div class="lesson-body"><div class="video">
-<p class="video-label">Watch · 3 min</p>
+<p class="video-label"><span class="stepchip">Step 1</span> Watch the lesson <span class="mins">· 3 min</span></p>
 <button aria-label="Play video: Your First 15 Minutes With AI" class="yt" data-id="bTn4lZsoTBU">
-<img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span>
+<img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span>
 </button>
 <p class="video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p>
-</div>
+</div><p class="readnext"><span class="stepchip">Step 2</span> Read it and try it <span aria-hidden="true">↓</span></p>
 <figure><img alt="Card 1: The moment it clicked wasn't a training. Tool you have, task you dread, it works once." height="1080" loading="lazy" onerror="this.parentElement.remove()" src="what-works-01.png" width="1080"/></figure>
 <p>AI didn't click for me in a training class. It clicked when I sat down with one boring task I did over and over, and used the AI tool I already had to set it up so it mostly does itself.</p>
 <p class="label">Here's how</p>
@@ -199,7 +215,6 @@
 </ol>
 <p class="payoff">It took me 40 minutes. It gives me five hours a month back.</p>
 <p class="try"><span>Try it this week:</span> pick one task and give it 40 minutes.</p>
-
 <p class="more">Not sure which tool to open? <a href="Sheva-Studio-Intro-to-AI.html">Start with the Intro to AI guide →</a></p>
 <nav aria-label="Next lesson" class="next"><a data-next="" href="#card-2"><span><small>Next · 2 of 6</small><b>How to turn pushback on AI into people actually using it</b></span><span aria-hidden="true" class="arrow">→</span></a></nav>
 </div>
@@ -208,16 +223,16 @@
 <details class="lesson" id="card-2">
 <summary>
 <span aria-hidden="true" class="s-num">2</span>
-<span><span class="s-meta">2 of 6 · Oct 20</span><h2 class="s-title">How to turn pushback on AI into people actually using it</h2></span>
+<span><span class="s-meta">2 of 6 · Oct 20 · <span class="vidtag">▶ 6-min video</span></span><h2 class="s-title">How to turn pushback on AI into people actually using it</h2></span>
 <span aria-hidden="true" class="chev"></span>
 </summary>
 <div class="lesson-body"><div class="video">
-<p class="video-label">Watch · 6 min</p>
+<p class="video-label"><span class="stepchip">Step 1</span> Watch the lesson <span class="mins">· 6 min</span></p>
 <button aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation" class="yt" data-id="ls2BQ2RFYYo">
-<img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span>
+<img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span>
 </button>
 <p class="video-title">Where Do I Start With AI? Build a Practical Foundation — includes the two rules that keep you safe</p>
-</div>
+</div><p class="readnext"><span class="stepchip">Step 2</span> Read it and try it <span aria-hidden="true">↓</span></p>
 <figure><img alt="Card 2: The team that pushed back hardest adopted fastest. Hard questions, one-page rule, they adopt." height="1080" loading="lazy" onerror="this.parentElement.remove()" src="what-works-02.png" width="1080"/></figure>
 <p>The team that pushed back hardest on AI ended up using it the most. They weren't saying no. They were asking fair questions:</p>
 <ul class="questions">
@@ -233,7 +248,6 @@
 </ol>
 <p class="payoff">Once the rules were written down, the pushback stopped.</p>
 <p class="try"><span>Try it this week:</span> ask your team their #1 worry about AI, then write down the answer.</p>
-
 <nav aria-label="Next lesson" class="next"><a data-next="" href="#card-3"><span><small>Next · 3 of 6</small><b>How to ask AI for something and get an answer you can use</b></span><span aria-hidden="true" class="arrow">→</span></a></nav>
 </div>
 </details>
@@ -241,16 +255,16 @@
 <details class="lesson" id="card-3">
 <summary>
 <span aria-hidden="true" class="s-num">3</span>
-<span><span class="s-meta">3 of 6 · Oct 27</span><h2 class="s-title">How to ask AI for something and get an answer you can use</h2></span>
+<span><span class="s-meta">3 of 6 · Oct 27 · <span class="vidtag">▶ 5-min video</span></span><h2 class="s-title">How to ask AI for something and get an answer you can use</h2></span>
 <span aria-hidden="true" class="chev"></span>
 </summary>
 <div class="lesson-body"><div class="video">
-<p class="video-label">Watch · 5 min</p>
+<p class="video-label"><span class="stepchip">Step 1</span> Watch the lesson <span class="mins">· 5 min</span></p>
 <button aria-label="Play video: How to Talk to AI So It Actually Understands You" class="yt" data-id="77PcQZEa5_0">
-<img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg"/><span class="play"><i></i></span>
+<img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg"/><span class="play"><i></i></span>
 </button>
 <p class="video-title">How to Talk to AI So It Actually Understands You</p>
-</div>
+</div><p class="readnext"><span class="stepchip">Step 2</span> Read it and try it <span aria-hidden="true">↓</span></p>
 <figure><img alt="Card 3: Five lines that fix a vague prompt. Goal, context, audience, format, check lead to an answer you can use." height="1080" loading="lazy" onerror="this.parentElement.remove()" src="what-works-03.png" width="1080"/></figure>
 <p>Vague answers come from vague requests. Most of us have never had to write down exactly what we want.</p>
 <p class="label">Here's how — say these five things, in order</p>
@@ -263,7 +277,6 @@
 </ol>
 <p class="payoff">Most people skip audience and format. Add those two and the answer gets usable.</p>
 <p class="try"><span>Try it this week:</span> rewrite one request using all five lines and compare the answers.</p>
-
 <p class="more"><a href="prompt-builder.html">Fill in the five blanks with the free Prompt Builder →</a><br/>
       Go deeper: <a href="https://www.youtube.com/watch?v=mTKFka8m4RA" rel="noopener" target="_blank">How to Write Better AI Prompts (3 min)</a></p>
 <nav aria-label="Next lesson" class="next"><a data-next="" href="#card-4"><span><small>Next · 4 of 6</small><b>How to use AI's first draft without getting burned</b></span><span aria-hidden="true" class="arrow">→</span></a></nav>
@@ -273,16 +286,16 @@
 <details class="lesson" id="card-4">
 <summary>
 <span aria-hidden="true" class="s-num">4</span>
-<span><span class="s-meta">4 of 6 · Nov 3</span><h2 class="s-title">How to use AI's first draft without getting burned</h2></span>
+<span><span class="s-meta">4 of 6 · Nov 3 · <span class="vidtag">▶ 2-min video</span></span><h2 class="s-title">How to use AI's first draft without getting burned</h2></span>
 <span aria-hidden="true" class="chev"></span>
 </summary>
 <div class="lesson-body"><div class="video">
-<p class="video-label">Watch · 2 min</p>
+<p class="video-label"><span class="stepchip">Step 1</span> Watch the lesson <span class="mins">· 2 min</span></p>
 <button aria-label="Play video: How to Use AI at Work Without Losing Your Judgment" class="yt" data-id="AMTiGFmoD3g">
-<img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/AMTiGFmoD3g/maxresdefault.jpg"/><span class="play"><i></i></span>
+<img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/AMTiGFmoD3g/maxresdefault.jpg"/><span class="play"><i></i></span>
 </button>
 <p class="video-title">How to Use AI at Work Without Losing Your Judgment</p>
-</div>
+</div><p class="readnext"><span class="stepchip">Step 2</span> Read it and try it <span aria-hidden="true">↓</span></p>
 <figure><img alt="Card 4: Where the handoff actually breaks. AI drafts it, you verify it, you decide." height="1080" loading="lazy" onerror="this.parentElement.remove()" src="what-works-04.png" width="1080"/></figure>
 <p>AI writes a first draft 10 times faster than I can. That's the easy part. The real work is checking it — and that's where the saved time should go.</p>
 <p class="label">Here's how</p>
@@ -293,7 +306,6 @@
 </ol>
 <p class="payoff">AI drafts it. You check it. You decide.</p>
 <p class="try"><span>Try it this week:</span> before you send anything AI wrote, check every number in it.</p>
-
 <p class="more"><a href="guides.html">The 5-step habit, including the checking step →</a></p>
 <nav aria-label="Next lesson" class="next"><a data-next="" href="#card-5"><span><small>Next · 5 of 6</small><b>How to pick an AI helper that keeps working</b></span><span aria-hidden="true" class="arrow">→</span></a></nav>
 </div>
@@ -302,16 +314,16 @@
 <details class="lesson" id="card-5">
 <summary>
 <span aria-hidden="true" class="s-num">5</span>
-<span><span class="s-meta">5 of 6 · Nov 10</span><h2 class="s-title">How to pick an AI helper that keeps working</h2></span>
+<span><span class="s-meta">5 of 6 · Nov 10 · <span class="vidtag">▶ 5-min video</span></span><h2 class="s-title">How to pick an AI helper that keeps working</h2></span>
 <span aria-hidden="true" class="chev"></span>
 </summary>
 <div class="lesson-body"><div class="video">
-<p class="video-label">Watch · 5 min</p>
+<p class="video-label"><span class="stepchip">Step 1</span> Watch the lesson <span class="mins">· 5 min</span></p>
 <button aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide" class="yt" data-id="uAuiAE7f1Yw">
-<img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg"/><span class="play"><i></i></span>
+<img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg"/><span class="play"><i></i></span>
 </button>
 <p class="video-title">How to Start Using AI: A No-Jargon Beginner's Guide — includes building one small workflow</p>
-</div>
+</div><p class="readnext"><span class="stepchip">Step 2</span> Read it and try it <span aria-hidden="true">↓</span></p>
 <figure><img alt="Card 5: The agents that survived were the boring ones. Boring task, one trigger, you review." height="1080" loading="lazy" onerror="this.parentElement.remove()" src="what-works-05.png" width="1080"/></figure>
 <p>An "agent" is AI that does one job on its own, without you asking each time. Across 50+ AI projects, the big, exciting ones stalled. The boring ones are still running: a weekly summary, a folder that sorts itself, a monthly report.</p>
 <p class="label">Here's how</p>
@@ -322,7 +334,6 @@
 </ol>
 <p class="payoff">Small and boring beats big and exciting.</p>
 <p class="try"><span>Try it this week:</span> name the most boring task you repeat every week. That's your first one.</p>
-
 <nav aria-label="Next lesson" class="next"><a data-next="" href="#card-6"><span><small>Next · 6 of 6</small><b>Why AI at work fades by day nine — and the fix</b></span><span aria-hidden="true" class="arrow">→</span></a></nav>
 </div>
 </details>
@@ -330,16 +341,16 @@
 <details class="lesson" id="card-6">
 <summary>
 <span aria-hidden="true" class="s-num">6</span>
-<span><span class="s-meta">6 of 6 · Nov 17</span><h2 class="s-title">Why AI at work fades by day nine — and the fix</h2></span>
+<span><span class="s-meta">6 of 6 · Nov 17 · <span class="vidtag">▶ 4-min video</span></span><h2 class="s-title">Why AI at work fades by day nine — and the fix</h2></span>
 <span aria-hidden="true" class="chev"></span>
 </summary>
 <div class="lesson-body"><div class="video">
-<p class="video-label">Watch · 4 min</p>
+<p class="video-label"><span class="stepchip">Step 1</span> Watch the lesson <span class="mins">· 4 min</span></p>
 <button aria-label="Play video: Feeling Overwhelmed by AI? Start Here" class="yt" data-id="_XlGERRwVLU">
-<img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/_XlGERRwVLU/maxresdefault.jpg"/><span class="play"><i></i></span>
+<img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/_XlGERRwVLU/maxresdefault.jpg"/><span class="play"><i></i></span>
 </button>
 <p class="video-title">Feeling Overwhelmed by AI? Start Here</p>
-</div>
+</div><p class="readnext"><span class="stepchip">Step 2</span> Read it and try it <span aria-hidden="true">↓</span></p>
 <figure><img alt="Card 6: Why AI rollouts flatline at day nine. Everyone logs in, then nothing. One person, one hated task, built until it worked. They told their team." height="1080" loading="lazy" onerror="this.parentElement.remove()" src="what-works-06.png" width="1080"/></figure>
 <p>Week one, everyone logs in. Everyone gets access, there's a sales demo, a big announcement. By day nine, almost nobody has a reason to open it again.</p>
 <p class="label">What happened</p>
@@ -349,7 +360,6 @@
 <li><strong>What spread it</strong>They told their team. Not me.</li>
 </ol>
 <p class="try"><span>Try it this week:</span> pick one person and one task they hate. Sit with them until it works once.</p>
-
 <nav aria-label="Next section" class="next"><a data-next="" href="#covered"><span><small>Finish</small><b>What we covered</b></span><span aria-hidden="true" class="arrow">→</span></a></nav>
 </div>
 </details>
@@ -464,5 +474,11 @@
   });
 })();
 </script>
-</body>
+<script>(function(){
+  var n=document.querySelector('.nav-links'); if(!n) return;
+  function edge(){ n.classList.toggle('more', n.scrollLeft + n.clientWidth < n.scrollWidth - 4); }
+  var c=n.querySelector('[aria-current]');
+  if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
+  n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
+})();</script></body>
 </html>

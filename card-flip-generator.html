@@ -144,16 +144,21 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
   .site-nav .nav-links::-webkit-scrollbar{display:none}}
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
-.main-grid > *{min-width:0} .slides-preview{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))!important}@media (max-width:760px){.main-grid{grid-template-columns:1fr!important}}</style></head>
+.main-grid > *{min-width:0} .slides-preview{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))!important}@media (max-width:760px){.main-grid{grid-template-columns:1fr!important}}</style><style>@media (max-width:640px){
+  .nav-links a{white-space:nowrap;flex:none}
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style></head>
 <body>
 <nav class="site-nav">
 <a class="nav-home" href="index.html">🏠 Sheva Studio</a>
 <div class="nav-links">
 <a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
 <a class="nav-link" href="guides.html">Guides</a>
 <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-<a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
-<a class="nav-link current" href="card-flip-generator.html">Build Your Own</a>
+<a class="nav-link" href="ai-at-work.html">AI at Work</a>
+<a class="nav-link" href="field-guides.html">Field Guides</a>
+<a aria-current="page" class="nav-link current" href="index.html#create">Creator Tools</a>
+<a class="nav-link" href="contact.html">Contact</a>
 </div>
 </nav>
 <div class="container">
@@ -162,7 +167,6 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <p class="subtitle">Click any slide, edit it, download when ready</p>
 <div class="note">💡 DARK slides = the superpower hook. LIGHT slides = the habit. Intro slides stay clean; power slides carry a subtle @scribing.life.</div>
 <div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1"><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Four steps</span><h2 class="fold-title">How it works</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="howto" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
-
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
 <div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">1 · START</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Pick a challenge to remix, or start blank.</p></div>
 <div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">2 · CLICK</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Click any slide in the preview. It's now the one you're editing, shown on the left.</p></div>
@@ -216,7 +220,6 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <h2 class="preview-title">Carousel Preview</h2>
 <span class="preview-count" id="slideCount"></span>
 <div class="slides-preview" id="slidesContainer"></div>
-
 </div>
 </div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-3"><span><small>Next · Step 3</small><b>Download your deck</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details><details class="fold" id="step-3"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Save it</span><h2 class="fold-title">Download your deck</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="export-holder"><div class="export-section">
 <div class="export-title">📥 Export</div>
@@ -420,5 +423,11 @@ loadEditor(); render();
     });
   });
 })();
-</script></body>
+</script><script>(function(){
+  var n=document.querySelector('.nav-links'); if(!n) return;
+  function edge(){ n.classList.toggle('more', n.scrollLeft + n.clientWidth < n.scrollWidth - 4); }
+  var c=n.querySelector('[aria-current]');
+  if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
+  n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
+})();</script></body>
 </html>

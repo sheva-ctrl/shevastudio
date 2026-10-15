@@ -282,18 +282,20 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
   .site-nav .nav-links::-webkit-scrollbar{display:none}}
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
-</style></head>
+</style><style>@media (max-width:640px){
+  .nav-links a{white-space:nowrap;flex:none}
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style></head>
 <body>
 <nav class="site-nav">
 <a class="nav-home" href="index.html">🏠 Sheva Studio</a>
 <div class="nav-links">
 <a class="nav-link" href="index.html">Home</a>
+<a aria-current="page" class="nav-link current" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
 <a class="nav-link" href="guides.html">Guides</a>
-<a class="nav-link current" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
 <a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
 <a class="nav-link" href="ai-at-work.html">AI at Work</a>
-<a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
-<a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
+<a class="nav-link" href="field-guides.html">Field Guides</a>
+<a class="nav-link" href="index.html#create">Creator Tools</a>
 <a class="nav-link" href="contact.html">Contact</a>
 </div>
 </nav>
@@ -311,8 +313,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <a class="series-pill" href="now-build-it.html"><b>3</b> Now Build It</a>
 <a class="series-pill" href="run-it-safely.html"><b>4</b> Run It Safely</a>
 </div>
-</div><div class="page-video"><p class="fold-video-label">Watch first · 4:35</p><button aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide" class="yt" data-id="uAuiAE7f1Yw" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Start Using AI: A No-Jargon Beginner's Guide</p></div>
-
+</div><div class="page-video"><p class="fold-video-label">Watch first · 4:35</p><button aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide" class="yt" data-id="uAuiAE7f1Yw" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Start Using AI: A No-Jargon Beginner's Guide</p></div>
 <p class="objective rise d2"><b>The goal</b>By the time you reach the bottom, you'll know how to talk to AI, how to make it stick, and which tool to open first — even if today is your very first time using AI.</p>
 <!-- PRO TIP MOVED HERE -->
 <div class="protip rise d2">
@@ -320,9 +321,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <b>Talk to it like a person.</b> Type the way you'd talk to a friend or coworker you're figuring something out with — normal sentences, plain words. You don't need any special tricks.
   </div>
 <!-- MOVED 04 TO 01 -->
-<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Pick</span><h2 class="fold-title">Which tool, and when</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:04</p><button aria-label="Play video: Your First 15 Minutes With AI: Pick One Tool and Go" class="yt" data-id="bTn4lZsoTBU" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p></div><p class="fold-lede">Match the tool to your goals and style. Tap a logo to open it and try prompting.</p><section class="section rise d2">
-
-
+<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Pick</span><h2 class="fold-title">Which tool, and when</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:04</p><button aria-label="Play video: Your First 15 Minutes With AI: Pick One Tool and Go" class="yt" data-id="bTn4lZsoTBU" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p></div><p class="fold-lede">Match the tool to your goals and style. Tap a logo to open it and try prompting.</p><section class="section rise d2">
 <div class="tool">
 <a aria-label="Open Microsoft Copilot" class="badge" href="https://copilot.microsoft.com" rel="noopener" target="_blank">
 <img alt="Microsoft Copilot logo" height="24" loading="lazy" src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&amp;sz=128" width="24"/></a>
@@ -370,9 +369,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 </div>
 </div>
 </section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-2"><span><small>Next · Step 2</small><b>Prompting that works</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
-<details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Prompt</span><h2 class="fold-title">Prompting that works</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 4:52</p><button aria-label="Play video: How to Talk to AI So It Actually Understands You" class="yt" data-id="77PcQZEa5_0" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Talk to AI So It Actually Understands You</p></div><section class="section rise d2">
-
-
+<details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Prompt</span><h2 class="fold-title">Prompting that works</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 4:52</p><button aria-label="Play video: How to Talk to AI So It Actually Understands You" class="yt" data-id="77PcQZEa5_0" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Talk to AI So It Actually Understands You</p></div><section class="section rise d2">
 <p class="hint">A good request has these pieces. Tap any one to open an example.</p>
 <div class="acc">
 <button aria-expanded="false" class="piece" data-k="role"><span><b>Role</b> — who it answers as</span><span class="pm">+</span></button>
@@ -393,18 +390,14 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 </ul>
 </div>
 </section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-3"><span><small>Next · Step 3</small><b>Your first ten minutes</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
-<details class="fold" id="step-3"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Start</span><h2 class="fold-title">Your first ten minutes</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 5:55</p><button aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation" class="yt" data-id="ls2BQ2RFYYo" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Where Do I Start With AI? Build a Practical Foundation</p></div><section class="section rise d2">
-
-
+<details class="fold" id="step-3"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Start</span><h2 class="fold-title">Your first ten minutes</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 5:55</p><button aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation" class="yt" data-id="ls2BQ2RFYYo" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Where Do I Start With AI? Build a Practical Foundation</p></div><section class="section rise d2">
 <ol class="steps">
 <li><div><div class="t">Open a tool and sign in.</div><div class="d">Not sure which? The tool picker is at the top of this guide. Free tiers are plenty to start.</div></div></li>
 <li><div><div class="t">Tell it who you are and what you want.</div><div class="d">One or two sentences of context beats a clever keyword. "I'm a [role]. Help me [do this]. Keep it [short/casual/etc.]."</div></div></li>
 <li><div><div class="t">React — don't restart.</div><div class="d">Steer the answer instead of starting over: "shorter," "more casual," "redo that part," "give me three versions."</div></div></li>
 </ol>
 </section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-4"><span><small>Next · Step 4</small><b>Make it stick</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
-<details class="fold" id="step-4"><summary><span aria-hidden="true" class="fold-num">4</span><span><span class="fold-meta">Stick</span><h2 class="fold-title">Make it stick</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:41</p><button aria-label="Play video: Feeling Overwhelmed by AI? Start Here" class="yt" data-id="_XlGERRwVLU" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/_XlGERRwVLU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Feeling Overwhelmed by AI? Start Here</p></div><section class="section rise d2">
-
-
+<details class="fold" id="step-4"><summary><span aria-hidden="true" class="fold-num">4</span><span><span class="fold-meta">Stick</span><h2 class="fold-title">Make it stick</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:41</p><button aria-label="Play video: Feeling Overwhelmed by AI? Start Here" class="yt" data-id="_XlGERRwVLU" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/_XlGERRwVLU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Feeling Overwhelmed by AI? Start Here</p></div><section class="section rise d2">
 <ul class="points">
 <li><b>Set your preferences once.</b> In settings, tell it your role, your tone, and 2–3 things to avoid. It loads into every chat so you stop repeating yourself.</li>
 <li><b>Turn on memory.</b> It carries context between chats so you stop repeating yourself — and you can view or edit anything it keeps.</li>
@@ -426,7 +419,6 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <span class="nu-arrow">→</span>
 </a>
 <!-- VIDEO EMBED MOVED HERE (BEFORE FOOTER) -->
-
 <div class="cta rise d3">
 <h2>Want the full walkthrough?</h2>
 <div class="btns">
@@ -523,5 +515,11 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     });
   });
 })();
-</script></body>
+</script><script>(function(){
+  var n=document.querySelector('.nav-links'); if(!n) return;
+  function edge(){ n.classList.toggle('more', n.scrollLeft + n.clientWidth < n.scrollWidth - 4); }
+  var c=n.querySelector('[aria-current]');
+  if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
+  n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
+})();</script></body>
 </html>

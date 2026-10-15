@@ -209,23 +209,28 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
   .site-nav .nav-links::-webkit-scrollbar{display:none}}
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
-#your-prompt{scroll-margin-top:84px} .blocks > details.fold{margin-bottom:12px}</style></head>
+#your-prompt{scroll-margin-top:84px} .blocks > details.fold{margin-bottom:12px}</style><style>@media (max-width:640px){
+  .nav-links a{white-space:nowrap;flex:none}
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style></head>
 <body>
 <nav class="site-nav">
 <a class="nav-home" href="index.html">🏠 Sheva Studio</a>
 <div class="nav-links">
 <a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
 <a class="nav-link" href="guides.html">Guides</a>
-<a class="nav-link current" href="prompt-builder.html">Prompt Builder</a>
-<a class="nav-link" href="no-brainer-decks.html">No-Brainer Decks</a>
-<a class="nav-link" href="card-flip-generator.html">Build Your Own</a>
+<a aria-current="page" class="nav-link current" href="prompt-builder.html">Prompt Builder</a>
+<a class="nav-link" href="ai-at-work.html">AI at Work</a>
+<a class="nav-link" href="field-guides.html">Field Guides</a>
+<a class="nav-link" href="index.html#create">Creator Tools</a>
+<a class="nav-link" href="contact.html">Contact</a>
 </div>
 </nav>
 <div class="wrap">
 <span class="kicker rise d1">AI Learning Pack · Sheva Studio</span>
 <h1 class="rise d1">The Prompt Builder <span class="accent">| No Jargon</span></h1>
 <p class="sub-headline rise d2">Goal · Context · Audience · Format · Check</p>
-<p class="lede rise d2">A blank AI chat may seem like the scariest thing on the internet. But it doesn't have to be. Use this prompt generator to get started: <strong>fill in the blanks below</strong> and watch a clean, copy-ready prompt build itself.</p><div class="page-video"><p class="fold-video-label">Watch first · 2:52</p><button aria-label="Play video: How to Write Better AI Prompts: Context, Task, Format" class="yt" data-id="mTKFka8m4RA" type="button"><img alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')" src="https://i.ytimg.com/vi/mTKFka8m4RA/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Write Better AI Prompts: Context, Task, Format</p></div>
+<p class="lede rise d2">A blank AI chat may seem like the scariest thing on the internet. But it doesn't have to be. Use this prompt generator to get started: <strong>fill in the blanks below</strong> and watch a clean, copy-ready prompt build itself.</p><div class="page-video"><p class="fold-video-label">Watch first · 2:52</p><button aria-label="Play video: How to Write Better AI Prompts: Context, Task, Format" class="yt" data-id="mTKFka8m4RA" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/mTKFka8m4RA/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Write Better AI Prompts: Context, Task, Format</p></div>
 <p class="lede rise d2">Only the first box is required. The rest just make the answer better. <strong>Frozen? Hit Surprise Me.</strong></p>
 <p class="section-label rise d3">Not sure where to start? Tap one to fill it in</p>
 <div class="chips rise d3">
@@ -241,32 +246,22 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><div class="builder rise d4">
 <div class="blocks">
 <details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Required</span><h2 class="fold-title">Goal</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-goal">
-
-
 <p class="hint">What you want it to do. One clear job. Start with a verb: draft, summarize, explain, plan, compare.</p>
 <textarea id="goal" oninput="update()" placeholder="e.g., Draft a friendly email asking my landlord to fix the heater" rows="2"></textarea>
 </div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-2"><span><small>Next · Step 2</small><b>Context</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 <details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Context</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-context">
-
-
 <p class="hint">What it should know first. Background, the situation, anything you'd tell a coworker before handing this off.</p>
 <textarea id="context" oninput="update()" placeholder="e.g., The heater's been out for 3 days, it's winter, I've already called once with no answer" rows="2"></textarea>
 </div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-3"><span><small>Next · Step 3</small><b>Audience</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 <details class="fold" id="step-3"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Audience</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-audience">
-
-
 <p class="hint">Who it's for. Who reads or uses the result. This sets the tone.</p>
 <textarea id="audience" oninput="update()" placeholder="e.g., My landlord — polite but firm" rows="1"></textarea>
 </div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-4"><span><small>Next · Step 4</small><b>Format</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 <details class="fold" id="step-4"><summary><span aria-hidden="true" class="fold-num">4</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Format</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-format">
-
-
 <p class="hint">What it should look like. Bullets, a table, a short email, an outline, five sentences. Be specific.</p>
 <textarea id="format" oninput="update()" placeholder="e.g., A short email with a subject line, under 120 words" rows="1"></textarea>
 </div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-5"><span><small>Next · Step 5</small><b>Check</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 <details class="fold" id="step-5"><summary><span aria-hidden="true" class="fold-num">5</span><span><span class="fold-meta">Optional</span><h2 class="fold-title">Check</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="block" id="block-check">
-
-
 <p class="hint">How to keep it honest. Tell it to flag guesses or ask questions, so you catch AI making things up.</p>
 <textarea id="check" oninput="update()" placeholder="e.g., Ask me anything you're unsure about before writing the final version" rows="1"></textarea>
 </div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#your-prompt"><span><small>Next · Last step</small><b>Copy your prompt</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
@@ -443,5 +438,11 @@ fill(starter);
     });
   });
 })();
-</script></body>
+</script><script>(function(){
+  var n=document.querySelector('.nav-links'); if(!n) return;
+  function edge(){ n.classList.toggle('more', n.scrollLeft + n.clientWidth < n.scrollWidth - 4); }
+  var c=n.querySelector('[aria-current]');
+  if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
+  n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
+})();</script></body>
 </html>
