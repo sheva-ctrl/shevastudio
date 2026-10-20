@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sheva Studio — All My Links</title>
-<meta name="description" content="Everything Sheva Studio in one place: TikTok, Instagram, YouTube, Facebook, free ADHD and AI tools, and the Amazon shop.">
+<meta name="description" content="Everything Sheva Studio in one place: TikTok, Instagram, YouTube, Facebook, Pinterest, free ADHD and AI tools, and the Amazon shop.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,6 +22,9 @@
 
   .top{text-align:center;margin-bottom:28px}
   .avatar{width:112px;height:112px;object-fit:contain;display:block;margin:0 auto 14px;filter:drop-shadow(0 10px 20px rgba(96,32,208,.15))}
+  .avatar-link{display:inline-block;border-radius:50%;transition:transform .15s ease}
+  .avatar-link:hover{transform:scale(1.04)}
+  .avatar-link:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
   h1{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.01em;line-height:1.1}
   .handle{font-family:'Space Mono',monospace;font-size:14px;color:var(--violet);margin-top:2px}
   .bio{color:var(--muted);font-weight:300;font-size:17px;margin:12px auto 0;max-width:34ch}
@@ -56,7 +59,7 @@
 <main class="wrap">
 
   <header class="top">
-    <img class="avatar" src="sheva.png" alt="Sheva Studio sticker" onerror="this.remove()">
+    <a class="avatar-link" href="index.html" aria-label="Go to the Sheva Studio home page"><img class="avatar" src="sheva.png" alt="Sheva Studio sticker" onerror="this.remove()"></a>
     <h1>Sheva Studio</h1>
     <p class="handle">@sheva.studio</p>
     <p class="bio">ADHD tools, soft-glam chaos, and AI made human.</p>
@@ -81,6 +84,10 @@
       <a class="link" href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">
         <span class="ico"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" alt="" loading="lazy"></span>
         <span class="t"><b>Facebook</b><small>Sheva Studio page</small></span><span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="link" href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">
+        <span class="ico"><img src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" loading="lazy"></span>
+        <span class="t"><b>Pinterest</b><small>@scribinglife · boards and saves</small></span><span class="go" aria-hidden="true">→</span>
       </a>
     </div>
   </section>
