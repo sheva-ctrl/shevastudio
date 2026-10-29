@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TikTok LIVE Emotes: How to Upload Fan Club and Super Fan Emotes · Sheva Studio</title>
+<meta content="Upload TikTok LIVE emotes for your Fan Club and Super Fans: where the menus moved, the design rules that keep emotes readable, and how to get fans using them." name="description"/>
+<link href="https://shevastudio.com/tiktok/" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="TikTok LIVE Emotes: How to Upload Fan Club and Super Fan Emotes" property="og:title"/>
+<meta content="Upload TikTok LIVE emotes for your Fan Club and Super Fans: where the menus moved, the design rules that keep emotes readable, and how to get fans using them." property="og:description"/>
+<meta content="https://shevastudio.com/tiktok/" property="og:url"/>
+<meta content="https://shevastudio.com/facebook/sheva.png" property="og:image"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#f6f4fc; --card:#ffffff; --step:#f5f3ef; --ink:#1a1530; --muted:#5b566e; --mono-muted:#6b6680;
+    --purple:#6c3ce0; --teal:#3f8f7f; --gold:#c9a75a; --gold-ink:#8a6d2c; --line:#e4e0ef; --done:#eaf5f1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.45}
+  a{color:var(--purple)}
+  .mono{font-family:'Space Mono',ui-monospace,monospace}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px 48px}
+
+  .topbar{position:sticky;top:0;z-index:10;background:rgba(246,244,252,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .topbar-inner{max-width:720px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:14px}
+  .bar{flex:1;height:8px;border-radius:99px;background:#e2def0;overflow:hidden}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--teal));transition:width .4s ease}
+  .count{font-family:'Space Mono',monospace;font-size:15px;white-space:nowrap}
+  .count b{color:var(--purple)}
+  .reset{font-family:'Space Mono',monospace;font-size:15px;letter-spacing:.06em;color:var(--mono-muted);background:none;border:0;cursor:pointer}
+
+  .back{display:inline-block;margin-top:22px;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none}
+  .eyebrow{display:flex;align-items:center;gap:10px;margin-top:22px;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--mono-muted)}
+  .eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--purple)}
+  h1{font-size:clamp(40px,11.5vw,72px);line-height:.98;font-weight:700;letter-spacing:-.03em;margin:18px 0 22px;overflow-wrap:anywhere}
+  h1 .grad{background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero{display:flex;gap:18px;align-items:center}
+  .hero-text{flex:1}
+  .lede{font-size:19px;line-height:1.5}
+  .hint{margin-top:14px;font-family:'Space Mono',monospace;font-size:13px;color:var(--mono-muted);line-height:1.7}
+  .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 8px 24px rgba(26,21,48,.14);flex-shrink:0}
+  .objective{margin-top:22px;padding:14px 16px;border-radius:14px;background:#ece7fb;font-size:16px}
+  .objective strong{color:var(--purple)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:30px 20px;margin-top:30px}
+  .card-head{display:flex;align-items:baseline;gap:12px}
+  .num{font-family:'Space Mono',monospace;font-weight:700;color:var(--teal);font-size:18px}
+  h2{font-size:clamp(26px,7vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .sub{color:var(--muted);font-size:17px;margin-top:8px}
+  .card p.body{font-size:17px;margin-top:14px}
+  .label{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin:26px 0 12px}
+
+  .stepbtn{width:100%;text-align:left;display:flex;gap:16px;background:var(--step);border:1px solid transparent;border-radius:18px;padding:22px 18px;cursor:pointer;font:inherit;color:inherit;transition:background .2s,border-color .2s}
+  .stepbtn:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+  .box{width:30px;height:30px;border-radius:9px;border:3px solid var(--purple);flex-shrink:0;display:grid;place-items:center;margin-top:2px;transition:background .2s}
+  .box svg{width:16px;height:16px;opacity:0;transition:opacity .2s}
+  .stepbtn.done{background:var(--done);border-color:#cfe7de}
+  .stepbtn.done .box{background:var(--teal);border-color:var(--teal)}
+  .stepbtn.done .box svg{opacity:1}
+  .stepbtn.done .step-title{text-decoration:line-through;text-decoration-color:var(--teal)}
+  .step-title{font-weight:700;font-size:19px;display:block}
+  .path{display:block;font-family:'Space Mono',monospace;font-size:14px;color:var(--mono-muted);margin-top:8px;line-height:1.65}
+  .why{display:block;font-size:16px;color:var(--muted);margin-top:8px}
+  .tip{display:block;margin-top:10px;font-size:14px;color:var(--teal)}
+  .aim{display:inline-block;margin-top:10px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:#e3f1ec;padding:4px 10px;border-radius:99px}
+  .after{margin-top:10px;font-size:15px}
+
+  ul.clean{list-style:none;margin-top:14px}
+  ul.clean li{position:relative;padding:12px 0 12px 26px;border-bottom:1px solid var(--line);font-size:16px}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:"";position:absolute;left:4px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  ul.keep li::before{background:var(--purple)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chips span{font-family:'Space Mono',monospace;font-size:13px;background:#f1edfb;border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+  ol.rules{list-style:none;counter-reset:r;margin-top:14px}
+  ol.rules li{counter-increment:r;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+  ol.rules li:last-child{border-bottom:0}
+  ol.rules li::before{content:counter(r,decimal-leading-zero);font-family:'Space Mono',monospace;font-weight:700;color:var(--purple);font-size:14px;padding-top:2px}
+  ol.rules strong{display:block}
+  ol.rules span{color:var(--muted)}
+
+  .callout{margin-top:26px;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:16px;padding:20px 18px;background:#faf9fd}
+  .callout .label{color:var(--gold-ink);margin:0 0 8px}
+  .callout p{font-size:17px}
+
+  .covered{background:linear-gradient(135deg,#ece7fb,#e3f1ec)}
+  .nextstep{margin-top:18px;padding:14px 16px;border-radius:14px;background:#fff;font-size:16px}
+  .nextstep strong{color:var(--purple)}
+
+  .upnext{display:flex;align-items:center;gap:16px;margin-top:30px;padding:22px 20px;border-radius:22px;background:var(--ink);color:#fff;text-decoration:none;transition:transform .15s}
+  .upnext:hover{transform:translateY(-2px)}
+  .upnext:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+  .upnext small{display:block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#bfb3f5}
+  .upnext b{display:block;font-size:22px;letter-spacing:-.01em;margin-top:4px;line-height:1.2}
+  .upnext .arrow{flex:none;margin-left:auto;width:44px;height:44px;border-radius:50%;background:linear-gradient(90deg,var(--purple),var(--teal));display:grid;place-items:center;font-size:20px}
+  .allguides{display:block;text-align:center;margin-top:14px;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none}
+
+  footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:14px;color:var(--mono-muted)}
+  footer a{display:inline-block;margin-top:12px;text-decoration:none}
+  .trust{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line);font-size:12px;line-height:1.7;color:var(--mono-muted)}
+  .trust p+p{margin-top:6px}
+  .trust a{display:inline;margin:0;text-decoration:underline;text-underline-offset:2px}
+
+  @media (max-width:420px){
+    .hero{flex-direction:column-reverse;align-items:flex-start}
+    .avatar{width:96px;height:96px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>:root{--f-accent:#6c3ce0;--f-accent2:#3f8f7f;--f-ink:#1a1530;--f-muted:#5b566e;--f-line:#e4e0ef;--f-soft:#f1edfb;--f-card:#fff;--f-accent-line:rgba(108,60,224,.35);--f-head:'Space Grotesk',system-ui,sans-serif;--f-body:'Space Grotesk',system-ui,sans-serif}
+/* ===== Sheva Studio collapsible steps ===== */
+.fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
+  font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--f-ink)}
+.fold-help p{margin:0}
+.fold-help b{color:var(--f-accent);font-weight:700}
+button.fold-all{all:unset;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--f-accent);
+  padding:8px 14px;border-radius:999px;border:1.5px solid var(--f-line);background:var(--f-card,#fff);white-space:nowrap}
+button.fold-all:hover{border-color:var(--f-accent)}
+button.fold-all:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+
+details.fold{background:var(--f-card,#fff);border:1px solid var(--f-line);border-radius:16px;margin:0 0 12px;scroll-margin-top:84px;
+  transition:border-color .2s,box-shadow .2s}
+details.fold[open]{border-color:var(--f-accent-line);box-shadow:0 6px 24px rgba(30,24,48,.06)}
+details.fold > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:14px;padding:16px}
+details.fold > summary::-webkit-details-marker{display:none}
+details.fold > summary:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px;border-radius:14px}
+.fold-num{min-width:42px;height:42px;padding:0 8px;border-radius:12px;display:grid;place-items:center;background:var(--f-soft);
+  color:var(--f-accent);font-family:var(--f-head);font-weight:800;font-size:18px;transition:background .2s,color .2s}
+details.fold[open] .fold-num{background:var(--f-accent);color:#fff}
+.fold-meta{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--f-muted);margin:0 0 2px}
+details.fold > summary h2.fold-title{font-family:var(--f-head);font-weight:800;font-size:clamp(19px,3.6vw,24px);line-height:1.2;
+  letter-spacing:-.01em;margin:0;padding:0;border:0;color:var(--f-ink)}
+.fold-chev{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--f-line);display:grid;place-items:center;
+  transition:transform .25s,border-color .2s;flex:none}
+.fold-chev::after{content:"";width:8px;height:8px;border-right:2px solid var(--f-ink);border-bottom:2px solid var(--f-ink);
+  transform:translateY(-2px) rotate(45deg)}
+details.fold[open] .fold-chev{transform:rotate(180deg);border-color:var(--f-accent)}
+details.fold > summary:hover .fold-chev{border-color:var(--f-accent)}
+.fold-body{border-top:1px solid var(--f-line);margin:0 16px;padding:20px 0 20px}
+@media (min-width:700px){details.fold > summary{padding:20px 24px;gap:18px}.fold-body{margin:0 24px}}
+.fold-body > :not(.fold-video):not(.fold-next-wrap):not(.fold-lede){margin:0!important;padding:0!important;border:0!important;
+  background:transparent!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;
+  max-width:none!important;width:auto}
+.fold-body > section.fz > *:first-child:last-child{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important}
+.fold-lede{font-family:var(--f-body);font-size:16px;color:var(--f-muted);margin:0 0 16px;line-height:1.55}
+@media (prefers-reduced-motion:no-preference){details.fold[open] .fold-body{animation:foldIn .3s ease}
+  @keyframes foldIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+
+.fold-video,.page-video{margin:0 0 22px}
+.page-video{margin:26px 0 8px}
+.fold-video-label{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--f-accent);margin:0 0 8px}
+.fold-video-title{font-family:var(--f-body);font-size:15px;font-weight:600;color:var(--f-ink);margin:8px 0 0;line-height:1.4}
+button.yt,div.yt{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:14px;
+  overflow:hidden;background:#1E1830;cursor:pointer}
+button.yt:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}
+.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.yt .play{position:absolute;inset:0;display:grid;place-items:center}
+.yt .play i{width:68px;height:48px;border-radius:12px;background:var(--f-accent);display:grid;place-items:center}
+.yt .play i::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+button.yt:hover .play i{background:var(--f-accent2)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.fold-next-wrap{margin-top:24px;padding-top:18px;border-top:1px solid var(--f-line);display:flex;justify-content:flex-end}
+a.fold-next{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--f-ink);background:var(--f-soft);
+  border:1px solid var(--f-line);border-radius:12px;padding:12px 16px;max-width:100%;transition:border-color .2s}
+a.fold-next:hover{border-color:var(--f-accent)}
+a.fold-next:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
+a.fold-next small{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--f-accent)}
+a.fold-next b{display:block;font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.35}
+a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background:var(--f-accent);color:#fff;display:grid;place-items:center;font-weight:700}
+@media (max-width:600px){.site-nav{flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important}
+  .site-nav .nav-home{flex:none}
+  .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
+  .site-nav .nav-links::-webkit-scrollbar{display:none}}
+@media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
+.fold-help{margin-top:26px}
+.emote-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.emote-strip img{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+@media (min-width:560px){.emote-strip{grid-template-columns:repeat(6,1fr)}}</style></head>
+<body>
+<div class="topbar">
+<div class="topbar-inner">
+<div class="bar"><div class="bar-fill" id="barFill"></div></div>
+<div class="count"><b id="doneCount">0</b> / <span id="totalCount">0</span> done</div>
+<button class="reset" id="resetBtn" type="button">RESET</button>
+</div>
+</div>
+<main class="wrap">
+<a class="back" href="/field-guides.html">← All field guides</a>
+<div class="eyebrow">Field Guide 08 · TikTok</div>
+<h1>EMOTE<br/><span class="grad">DROP</span></h1>
+<div class="hero">
+<div class="hero-text">
+<p class="lede">Turn your LIVE's inside jokes into emotes your fans actually use. Where they go now, how to make them readable, and how to get them used.</p>
+<p class="hint">Tap any step to check it off · saves on this device</p>
+</div>
+<img alt="Sheva" class="avatar" src="/facebook/sheva.png"/>
+</div>
+<p class="objective"><strong>By the end:</strong> your emotes are uploaded, approved, and showing up in your LIVE chat.</p>
+<div class="fold-help"><p><b>How this page works:</b> tap a section to open it. Each section ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Step 1 of 6</span><h2 class="fold-title">Why Emotes</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="card">
+
+<p class="sub">Emotes are your LIVE's inside jokes.</p>
+<p class="body">An emote is a tiny picture your fans drop in your LIVE chat instead of typing. When your regulars can say "THANK YOU" or "ME TOO" with one tap, chat moves faster and new viewers can see there's a community here.</p>
+<div class="label">Who gets which emotes</div>
+<ol class="rules">
+<li><div><strong>Fan emotes</strong><span>For anyone in your Fan Club. Viewers join by sending you one Heart Me gift (1 Coin) during a LIVE.</span></div></li>
+<li><div><strong>Super Fan emotes</strong><span>For paid Super Fans. TikTok sets the price at $9.99 a month.</span></div></li>
+<li><div><strong>Hidden comment emotes</strong><span>Built-in codes anyone can type in regular comments. Bonus in Step 4.</span></div></li>
+</ol>
+<div class="callout">
+<div class="label mono">One thing to remember</div>
+<p>Older tutorials say Creator tools → Subscription → Emotes. That changed on September 15, 2025. Custom emotes now live in your Fan Club, in two trays: Fan and Super Fan.</p>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-2"><span><small>Next · Section 2</small><b>Five Design Rules</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Step 2 of 6</span><h2 class="fold-title">Five Design Rules</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="card">
+
+<p class="sub">Emotes show up about the size of a fingernail. Design for that.</p>
+<div class="label">Rule 1 — the file</div>
+<button class="stepbtn" data-step="r1" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Square PNG, see-through background</span>
+<span class="path">512 × 512 px · PNG · under 1 MB</span>
+<span class="why">Square is required. A see-through background lets your emote sit cleanly on any screen.</span>
+</span>
+</button>
+<div class="label">Rule 2 — the words</div>
+<button class="stepbtn" data-step="r2" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Two words, max</span>
+<span class="why">If it needs a sentence, it's a caption, not an emote.</span>
+<span class="aim">1–2 words</span>
+</span>
+</button>
+<div class="label">Rule 3 — the border</div>
+<button class="stepbtn" data-step="r3" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Thick white border, thin dark edge</span>
+<span class="why">White pops on dark LIVE video. The dark edge keeps it from disappearing on TikTok's white emote tray.</span>
+<span class="tip">Same border on every emote makes your set look like one family.</span>
+</span>
+</button>
+<div class="label">Rule 4 — the crop</div>
+<button class="stepbtn" data-step="r4" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Fill the frame</span>
+<span class="why">Crop tight. Empty space around the edges makes your words smaller.</span>
+</span>
+</button>
+<div class="label">Rule 5 — the test</div>
+<button class="stepbtn" data-step="r5" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Do the fingertip test</span>
+<span class="why">Zoom your emote out on your phone until it's the size of your fingertip. Can't read it? Cut a word or make the letters bigger.</span>
+</span>
+</button>
+<div class="callout">
+<div class="label mono">One thing to remember</div>
+<p>Give each emote its own shape: a drop, a cloud, a megaphone. When every emote is a starburst, the whole tray blurs into one blob.</p>
+</div>
+<div class="label">Example — my set</div>
+<div class="emote-strip">
+<img alt="THANK YOU emote on a yellow tag" height="240" loading="lazy" src="/tiktok/img/emote-thank-you.png" width="240"/>
+<img alt="PIN ME! emote with a pushpin" height="240" loading="lazy" src="/tiktok/img/emote-pin-me.png" width="240"/>
+<img alt="FORGOT WATER emote on a water drop" height="240" loading="lazy" src="/tiktok/img/emote-forgot-water.png" width="240"/>
+<img alt="TIME BLIND emote on a stopwatch" height="240" loading="lazy" src="/tiktok/img/emote-time-blind.png" width="240"/>
+<img alt="ME TOO emote on a cloud" height="240" loading="lazy" src="/tiktok/img/emote-me-too.png" width="240"/>
+<img alt="GO POP emote on a pop-art burst" height="240" loading="lazy" src="/tiktok/img/emote-go-pop.png" width="240"/>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-3"><span><small>Next · Section 3</small><b>Two Trays</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-3"><summary><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Step 3 of 6</span><h2 class="fold-title">Two Trays</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="card">
+
+<p class="sub">Your emotes go in your Fan Club now. One tray for fans, one for Super Fans.</p>
+<div class="label">Tray 1 — Fan</div>
+<button class="stepbtn" data-step="t1" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Upload your everyday emotes</span>
+<span class="path">Profile → ☰ → Creator tools → LIVE Center → Fan Club → Fan Club tools → Emotes → tap an empty slot</span>
+<span class="why">Everyone in your Fan Club can use these. Put your everyday ones here: hello, thank you, your catchphrase.</span>
+<span class="tip">Labels shift between app versions. Some show Fan Club Zone → Emoticons instead. No Fan Club at all? It isn't in every country yet.</span>
+<span class="aim">Up to 15 slots</span>
+</span>
+</button>
+<div class="label">Tray 2 — Super Fan</div>
+<button class="stepbtn" data-step="t2" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Upload your Super Fan emotes</span>
+<span class="path">Fan Club tools → Manage Super Fan benefits → Emotes</span>
+<span class="why">Only paid Super Fans can use these. Save your most "you" ones for this tray. They're part of what people are paying for.</span>
+<span class="tip">This tray is bigger. Creators report room for up to 60.</span>
+</span>
+</button>
+<div class="callout">
+<div class="label mono">One thing to remember</div>
+<p>TikTok reviews every emote before fans can use it. Plan for a few days, up to a week. Rejections usually come from blurry art, a brand logo, or art you don't own.</p>
+</div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-4"><span><small>Next · Section 4</small><b>Get Them Used</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-4"><summary><span aria-hidden="true" class="fold-num">4</span><span><span class="fold-meta">Step 4 of 6</span><h2 class="fold-title">Get Them Used</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="card">
+
+<p class="sub">Emotes nobody knows about don't get used.</p>
+<div class="label">Move 1 — say it out loud</div>
+<button class="stepbtn" data-step="g1" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Tell viewers how to unlock them</span>
+<span class="path">Say: "Tap the Fan Club badge and send a Heart Me to unlock my emotes."</span>
+<span class="why">Fans keep access by earning points within 7 days of you going LIVE. Miss that window and their membership pauses until they send another Heart Me.</span>
+</span>
+</button>
+<div class="label">Move 2 — give each one a moment</div>
+<button class="stepbtn" data-step="g2" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Tie each emote to something that happens every LIVE</span>
+<span class="why">When chat knows the moment, they use the emote without being asked.</span>
+</span>
+</button>
+<ul class="clean">
+<li><b>THANK YOU</b> — after every gift</li>
+<li><b>PIN ME!</b> — when someone wants their comment pinned</li>
+<li><b>FORGOT WATER</b> — the hydration check</li>
+<li><b>TIME BLIND</b> — when the LIVE runs long</li>
+</ul>
+<div class="label">Bonus — hidden comment emotes</div>
+<button class="stepbtn" data-step="g3" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Try a hidden code in any comment</span>
+<span class="path">Type the code with the brackets → post → it turns into a little face</span>
+<span class="why">These work for everyone, on any video. TikTok doesn't publish an official list, so codes can change.</span>
+</span>
+</button>
+<div class="chips"><span>[smile]</span><span>[happy]</span><span>[lovely]</span><span>[laughwithtears]</span><span>[thinking]</span><span>[surprised]</span><span>[flushed]</span><span>[cry]</span><span>[speechless]</span><span>[funnyface]</span></div>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-5"><span><small>Next · Section 5</small><b>Do Not Touch</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-5"><summary><span aria-hidden="true" class="fold-num">5</span><span><span class="fold-meta">Step 5 of 6</span><h2 class="fold-title">Do Not Touch</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="card">
+
+<p class="sub">Skip these and your emotes get approved the first time.</p>
+<ul class="clean keep">
+<li>Don't follow tutorials that send you to Creator tools → Subscription. That menu moved in September 2025.</li>
+<li>Don't use characters, logos, or art you don't own. It's the fastest way to get rejected.</li>
+<li>Don't shrink a whole graphic into an emote. Small text turns to mush.</li>
+<li>Don't launch emotes the day of a big LIVE. Review takes days.</li>
+<li>Don't put all your best ones in the paid tray. Free fans need a reason to stay, too.</li>
+</ul>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-6"><span><small>Next · Section 6</small><b>Fast Start Today</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-6"><summary><span aria-hidden="true" class="fold-num">6</span><span><span class="fold-meta">Step 6 of 6</span><h2 class="fold-title">Fast Start Today</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="card">
+
+<p class="sub">Two moves. Ten minutes.</p>
+<div class="label">Move 1</div>
+<button class="stepbtn" data-step="f1" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Find your Fan Club tools</span>
+<span class="path">Profile → ☰ → Creator tools → LIVE Center → Fan Club</span>
+</span>
+</button>
+<div class="label">Move 2</div>
+<button class="stepbtn" data-step="f2" type="button">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Upload three Fan emotes</span>
+<span class="path">Fan Club tools → Emotes</span>
+<span class="why">A hello, a thank you, and one inside joke.</span>
+</span>
+</button>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-final"><span><small>Next · Wrap-up</small><b>What We Covered</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-final"><summary><span aria-hidden="true" class="fold-num">✓</span><span><span class="fold-meta">Wrap-up</span><h2 class="fold-title">What We Covered</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="card covered">
+
+<ul class="clean">
+<li>Custom emotes live in your Fan Club now, in two trays: Fan and Super Fan.</li>
+<li>Square PNG, see-through background, under 1 MB, readable at fingertip size.</li>
+<li>TikTok reviews every emote, so upload a week before you need them.</li>
+<li>Tell viewers how to unlock them, every LIVE.</li>
+</ul>
+<p class="nextstep"><strong>Next step:</strong> open TikTok and find your Fan Club tools now. One minute.</p>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="/field-guides.html"><span><small>All guides</small><b>Pick your next field guide</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<a class="upnext" href="/instagram/">
+<span><small>Finished the 8? Start over · Guide 01</small><b>Instagram Cleanup</b></span><span aria-hidden="true" class="arrow">→</span>
+</a>
+<a class="allguides" href="/field-guides.html">See all 8 field guides →</a>
+<footer>
+    Sheva Studio · Content · AI · Culture<br/>
+<a href="/">shevastudio.com →</a>
+<div class="trust">
+<p>Last updated: October 29, 2026</p>
+<p>Not affiliated with TikTok. Menus change often — for the most current steps, visit the <a href="https://support.tiktok.com/" rel="noopener" target="_blank">TikTok Help Center</a>.</p>
+<p>For educational purposes. Slot counts and prices can vary by region and account.</p>
+</div>
+</footer>
+</main>
+
+<script>
+(function(){
+  var KEY = 'sheva-tt-emotes-v1';
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.stepbtn'));
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { state = {}; }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+  function render(){
+    var done = 0;
+    steps.forEach(function(btn){
+      var on = !!state[btn.dataset.step];
+      btn.classList.toggle('done', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) done++;
+    });
+    document.getElementById('doneCount').textContent = done;
+    document.getElementById('totalCount').textContent = steps.length;
+    document.getElementById('barFill').style.width = (steps.length ? (done / steps.length * 100) : 0) + '%';
+  }
+  steps.forEach(function(btn){
+    btn.addEventListener('click', function(){ state[btn.dataset.step] = !state[btn.dataset.step]; save(); render(); });
+  });
+  document.getElementById('resetBtn').addEventListener('click', function(){ state = {}; save(); render(); });
+  render();
+})();
+</script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
+  var btn = document.querySelector('button.fold-all');
+  function visible(d){ return d.offsetParent !== null; }
+  function sync(){
+    if(!btn) return;
+    var shown = folds.filter(visible);
+    var all = shown.length && shown.every(function(d){ return d.open; });
+    btn.textContent = all ? 'Close all' : 'Open all';
+    btn.setAttribute('aria-expanded', all ? 'true' : 'false');
+  }
+  function go(id, from){
+    var t = document.getElementById(id);
+    if(!t) return false;
+    if(from){ var f = from.closest('details.fold'); if(f && f !== t) f.open = false; }
+    if(t.tagName === 'DETAILS') t.open = true;
+    t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    var s = t.tagName === 'DETAILS' ? t.querySelector('summary') : t;
+    try{ s.focus({preventScroll:true}); }catch(e){}
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+    sync(); return true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1), t = id && document.getElementById(id);
+    if(!t) return;
+    var isNext = a.hasAttribute('data-fold-next');
+    if(isNext || (t.tagName === 'DETAILS' && t.classList.contains('fold'))){ e.preventDefault(); go(id, isNext ? a : null); }
+  });
+  function fromHash(){
+    var id = (location.hash || '').slice(1);
+    var t = id && document.getElementById(id);
+    if(!t || t.tagName !== 'DETAILS' || !t.classList.contains('fold')) return;
+    folds.forEach(function(d){ d.open = (d === t); });
+    setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
+    sync();
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  if(btn) btn.addEventListener('click', function(){
+    var shown = folds.filter(visible);
+    var open = !(shown.length && shown.every(function(d){ return d.open; }));
+    shown.forEach(function(d){ d.open = open; }); sync();
+  });
+  folds.forEach(function(d){ d.addEventListener('toggle', sync); });
+  sync();
+  // Print or save: open everything, then put it back
+  var before = null;
+  window.addEventListener('beforeprint', function(){ before = folds.map(function(d){ return d.open; }); folds.forEach(function(d){ d.open = true; }); });
+  window.addEventListener('afterprint', function(){ if(before) folds.forEach(function(d,i){ d.open = before[i]; }); before = null; sync(); });
+  // Videos load only when tapped
+  document.querySelectorAll('button.yt').forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0';
+      f.title = b.getAttribute('aria-label').replace('Play video: ','');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      var w = document.createElement('div'); w.className = 'yt'; w.appendChild(f);
+      b.replaceWith(w);
+    });
+  });
+})();
+</script></body>
+</html>
