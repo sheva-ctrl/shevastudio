@@ -1,547 +1,590 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta name="p:domain_verify" content="fbfd4bafca9de885363fe4829e26e61d"/>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sheva Studio — AI Transformation Leader</title>
-<meta content="AI transformation leader and ADHD creator. Enterprise AI strategy and free tools and guides for any content creator, from one person who does both." name="description"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sheva Studio | Plain-Language AI for Individuals, Teams, and Leaders</title>
+<meta name="description" content="Plain-language AI from a Microsoft and Blue Origin alum. Free lessons to start, consulting and team workshops when you're ready, and free field guides for creators."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://shevastudio.com/"/>
+<meta property="og:title" content="Sheva Studio | AI, translated for actual humans"/>
+<meta property="og:description" content="Free plain-language AI lessons, consulting and team workshops, and free field guides for creators."/>
+<meta property="og:image" content="https://shevastudio.com/sheva.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/svg+xml" href="/sheva-studio-mark.svg"/>
+<link rel="icon" sizes="48x48" href="/favicon.ico"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Lexend:wght@300;400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --violet:#6020D0;
-    --violet-2:#7C3AED;
-    --teal:#0891B2;
-    --teal-2:#06B6D4;
-    --ink:#15151C;
-    --muted:#55555F;
-    --line:#E7E5EE;
-    --bg:#FCFCFE;
+    --violet:#7B3FF2;
+    --violet-deep:#5B2BD3;
+    --plum:#1E1830;
+    --plum-2:#2A2242;
+    --teal:#0F9B8A;
+    --teal-ink:#0B7468;
+    --gold:#D9B26C;
+    --bg:#FAF8FC;
+    --lilac:#F1ECFD;
     --card:#FFFFFF;
-    --grad-violet:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 100%);
-    --grad-teal:linear-gradient(100deg,var(--teal) 0%,var(--teal-2) 100%);
-    --grad-full:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
+    --ink:#1E1830;
+    --muted:#5B5568;
+    --line:#E6E0F2;
+    --on-dark:#EDE8F7;
+    --on-dark-muted:#B9B1CC;
+    --head:'Syne','Lexend',system-ui,sans-serif;
+    --body:'Lexend',system-ui,sans-serif;
+    --wrap:1120px;
+    --gutter:clamp(16px,4vw,40px);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{
-    font-family:'Lexend',system-ui,sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    line-height:1.65;
-    font-weight:400;
-    -webkit-font-smoothing:antialiased;
-  }
-  .shell{max-width:960px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+  body{font-family:var(--body);font-weight:400;font-size:17px;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
   img{max-width:100%;display:block}
   a{color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+  :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--plum);color:#fff;padding:10px 16px;border-radius:8px;z-index:200}
+  .skip:focus{left:8px}
+  section[id]{scroll-margin-top:84px}
 
-  /* ---- nav ---- */
-  .site-nav{
-    position:sticky;top:0;z-index:100;
-    background:rgba(252,252,254,.92);backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .site-nav .shell{
-    padding:14px clamp(20px,5vw,64px);
-    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-  }
-  .nav-home{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
-  .nav-mark{
-    width:26px;height:26px;border-radius:8px;flex-shrink:0;
-    background:var(--grad-violet);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#fff;
-  }
-  .nav-word{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em}
-  .nav-links{display:flex;gap:4px;flex-wrap:wrap}
-  @media (max-width:640px){
-    .nav-links{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
-    .nav-links::-webkit-scrollbar{display:none}
-    .nav-link{white-space:nowrap}
-  }
-  .nav-link{
-    font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:var(--muted);
-    text-decoration:none;padding:7px 14px;border-radius:999px;
-    transition:background .15s ease,color .15s ease;white-space:nowrap;
-  }
-  .nav-link:hover{background:#F0EFF5;color:var(--ink)}
-  .nav-link.current{background:var(--grad-full);color:#fff}
-  .nav-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  /* ---------- announcement ---------- */
+  .notice{background:var(--plum);color:var(--on-dark);font-size:14px;text-align:center;padding:10px var(--gutter)}
+  .notice a{color:#fff;font-weight:600;text-underline-offset:3px;margin-left:6px;white-space:nowrap}
+  .notice a:hover{color:var(--gold)}
 
-  main{padding:clamp(40px,7vw,72px) 0 0}
-
-  /* ---- hero photo ---- */
-  .hero-sticker{text-align:center;margin-bottom:26px}
-  .hero-sticker a{display:inline-block;text-decoration:none}
-  .brand-sticker{
-    width:140px;height:auto;background:transparent;
-    filter:drop-shadow(0px 10px 20px rgba(21,21,28,0.12));
-    transition:transform .3s cubic-bezier(.2,.7,.3,1);
-    cursor:pointer;margin:0 auto;
+  /* ---------- nav ---------- */
+  .nav{background:rgba(250,248,252,.94);border-bottom:1px solid var(--line);z-index:100}
+  @supports (backdrop-filter:blur(8px)){.nav{backdrop-filter:blur(8px)}}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+  .brand img{height:30px;width:auto}
+  .brand span{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.06em}
+  .nav-links{display:flex;gap:4px;list-style:none}
+  .nav-links a{display:block;text-decoration:none;font-size:15px;font-weight:500;color:var(--muted);padding:8px 14px;border-radius:999px}
+  .nav-links a:hover{background:var(--lilac);color:var(--ink)}
+  .nav-cta{flex:none}
+  @media (min-width:900px){
+    .nav{position:sticky;top:0}
   }
-  .hero-sticker a:hover .brand-sticker{transform:translateY(-4px) scale(1.03) rotate(2deg);filter:drop-shadow(0px 14px 24px rgba(96,32,208,0.18))}
-
-  /* ---- hero ---- */
-  .hero-copy{text-align:center}
-  .kicker{
-    font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--violet);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
+  @media (max-width:899px){
+    .nav-row{flex-wrap:wrap;row-gap:4px;padding-bottom:4px}
+    .nav-row > nav{order:3;width:100%}
+    .nav-links{justify-content:space-between;margin:0 -4px}
+    .nav-links a{padding:8px 4px;font-size:14px;white-space:nowrap}
   }
-  .kicker::before,.kicker::after{content:"";width:26px;height:2px;background:var(--grad-full);border-radius:2px}
-  h1{
-    font-family:'Syne',sans-serif;font-weight:800;
-    font-size:clamp(30px,5vw,48px);line-height:1.1;letter-spacing:-0.01em;
-    margin:0 auto 16px;max-width:16ch;
-  }
-  h1 .accent{background:var(--grad-full);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-  .sub-headline{
-    font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--teal);font-weight:700;margin-bottom:22px;
-  }
-  .lede-block{max-width:60ch;margin:0 auto;text-align:left}
-  .lede-block p{font-size:clamp(16px,1.9vw,18px);color:var(--muted);font-weight:300;margin-bottom:18px}
-  .lede-block p strong{color:var(--ink);font-weight:500}
-  .hero-lede{text-align:center}
-  .hero-lede p{margin-bottom:0}
-  .hero-btns{justify-content:center;margin-top:26px}
-  .lede-block p.lede-transition{color:var(--ink);font-weight:500;margin-bottom:0;margin-top:28px}
+  @media (max-width:359px){.brand span{display:none}}
 
-  /* ---- fork (signature element) ---- */
-  .fork{margin-top:clamp(56px,9vw,88px)}
-  .fork-label{
-    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--muted);text-align:center;margin-bottom:28px;
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;border-radius:999px;padding:15px 26px;border:2px solid transparent;transition:background-color .15s ease,border-color .15s ease,color .15s ease}
+  .btn-primary{background:var(--violet);color:#fff}
+  .btn-primary:hover{background:var(--violet-deep)}
+  .btn-quiet{border-color:var(--ink);color:var(--ink);background:transparent}
+  .btn-quiet:hover{background:var(--ink);color:#fff}
+  .btn-small{font-size:14.5px;padding:10px 18px}
+  .btn-light{background:#fff;color:var(--plum)}
+  .btn-light:hover{background:var(--gold)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(36px,7vw,84px) 0 clamp(40px,6vw,72px)}
+  .hero-grid{display:grid;gap:36px;align-items:center}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1.15fr .85fr;gap:56px}}
+  .hero-kicker{font-size:15px;font-weight:500;color:var(--teal-ink);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .hero-kicker svg{width:18px;height:18px;flex:none}
+  h1{font-family:var(--head);font-weight:800;font-size:clamp(40px,5.6vw,64px);line-height:1.02;letter-spacing:-.025em;margin-bottom:22px}
+  .hero-lede{font-size:clamp(17px,2vw,20px);font-weight:300;color:var(--muted);max-width:40ch;margin-bottom:30px}
+  .hero-lede strong{font-weight:500;color:var(--ink)}
+  .hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+  @media (max-width:520px){.hero-btns .btn{width:100%}}
+  .hero-art{width:100%;max-width:470px;margin:0 auto;display:block;overflow:visible}
+  @media (max-width:899px){.hero-art{max-width:270px}}
+  .hex-back{transform:translate(52px,46px)}
+  @media (prefers-reduced-motion:no-preference){
+    .hex-back{animation:hexSlide .9s cubic-bezier(.2,.7,.2,1) .15s both}
+    .hex-photo{animation:hexIn .7s ease both}
+    .spark{animation:hexIn .5s ease .7s both}
+    @keyframes hexSlide{from{transform:translate(0,0)}to{transform:translate(52px,46px)}}
+    @keyframes hexIn{from{opacity:0}to{opacity:1}}
   }
-  .fork-hub{display:flex;justify-content:center;margin-bottom:-1px;position:relative;z-index:2}
-  .fork-hub-dot{
-    width:44px;height:44px;border-radius:50%;background:var(--grad-full);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:#fff;
-    box-shadow:0 8px 20px rgba(96,32,208,.28);
+
+  /* ---------- proof ---------- */
+  .proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)}
+  .proof ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr)}
+  .proof li{padding:22px 12px;text-align:center}
+  .proof li + li{border-left:1px solid var(--line)}
+  .proof b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1.1;color:var(--plum)}
+  .proof span{display:block;font-size:clamp(13px,1.6vw,15px);color:var(--muted);line-height:1.35;margin-top:4px}
+
+  /* ---------- section shell ---------- */
+  .block{padding:clamp(56px,9vw,104px) 0}
+  .label{font-size:15px;font-weight:600;color:var(--teal-ink);margin-bottom:10px}
+  h2{font-family:var(--head);font-weight:700;font-size:clamp(30px,4.6vw,46px);line-height:1.06;letter-spacing:-.02em;margin-bottom:16px;max-width:20ch}
+  .intro{font-size:18px;font-weight:300;color:var(--muted);max-width:52ch}
+  h3{font-family:var(--head);font-weight:700;font-size:21px;line-height:1.2;letter-spacing:-.01em}
+
+  /* ---------- router ---------- */
+  .router{padding-top:clamp(48px,7vw,80px)}
+  .router h2{max-width:none}
+  .router-grid{display:grid;gap:14px;margin-top:28px}
+  @media (min-width:800px){.router-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
+  .path{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:start;text-decoration:none;background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:22px;transition:border-color .15s ease}
+  .path:hover{border-color:var(--violet)}
+  .path svg{width:52px;height:52px;grid-row:1 / span 3}
+  .path h3{font-size:22px;align-self:center}
+  .path p{grid-column:2;font-size:15.5px;color:var(--muted);font-weight:300;line-height:1.5}
+  .path .go{grid-column:2;font-size:15px;font-weight:600;color:var(--violet);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;margin-top:6px}
+  @media (min-width:800px){
+    .path{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:28px 26px 26px}
+    .path svg{width:60px;height:60px;margin-bottom:10px}
+    .path h3{align-self:auto}
+    .path .go{margin-top:auto;padding-top:8px}
   }
-  .fork-grid{
-    display:grid;grid-template-columns:1fr;gap:20px;
-    position:relative;padding-top:26px;
-  }
-  @media (min-width:640px){
-    .fork-grid{grid-template-columns:1fr 1fr;gap:0}
-    .fork-connector{position:absolute;top:0;left:0;right:0;height:26px;pointer-events:none}
-    .fork-connector::before,.fork-connector::after{content:"";position:absolute;top:0;width:52%;height:2px;transform-origin:top center}
-    .fork-connector::before{left:0;background:var(--violet-2);transform:rotate(7deg) translateY(4px)}
-    .fork-connector::after{right:0;background:var(--teal-2);transform:rotate(-7deg) translateY(4px)}
-  }
-  .lane-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px;display:flex;flex-direction:column}
-  @media (min-width:640px){
-    .lane-card--a{border-radius:18px 4px 18px 18px;margin-right:8px}
-    .lane-card--b{border-radius:4px 18px 18px 18px;margin-left:8px}
-  }
-  .lane-card::before{content:"";display:block;width:36px;height:4px;border-radius:4px;margin-bottom:18px}
-  .lane-card--a::before{background:var(--grad-violet)}
-  .lane-card--b::before{background:var(--grad-teal)}
-  .lane-tag{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:10px}
-  .lane-card--a .lane-tag{color:var(--violet)}
-  .lane-card--b .lane-tag{color:var(--teal)}
-  .lane-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:23px;line-height:1.2;margin-bottom:10px}
-  .lane-card p{font-size:15px;color:var(--muted);font-weight:300;margin-bottom:20px}
-  .lane-link{font-size:14px;font-weight:600;text-decoration:none;margin-top:auto;display:inline-flex;align-items:center;gap:5px}
-  .lane-card--a .lane-link{color:var(--violet)}
-  .lane-card--b .lane-link{color:var(--teal)}
-  .lane-link:hover{text-decoration:underline}
 
-  /* ---- lane sections ---- */
-  .lane-section{margin-top:clamp(72px,10vw,110px);scroll-margin-top:90px}
-  .section-head{margin-bottom:28px}
-  .section-eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
-  #lead .section-eyebrow{color:var(--violet)}
-  #create .section-eyebrow{color:var(--teal)}
-  .section-head h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,3.4vw,28px);letter-spacing:-0.01em}
+  /* ---------- learn ---------- */
+  .learn-top{display:grid;gap:36px;align-items:start}
+  @media (min-width:900px){.learn-top{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .video-label{font-size:14px;font-weight:600;color:var(--muted);margin:0 0 10px}
+  button.yt,div.yt{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:var(--plum);cursor:pointer}
+  button.yt:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+  .yt img{width:100%;height:100%;object-fit:cover;display:block}
+  .yt .play{position:absolute;inset:0;display:grid;place-items:center}
+  .yt .play i{width:72px;height:52px;border-radius:14px;background:var(--violet);display:grid;place-items:center;box-shadow:0 6px 18px rgba(30,24,48,.35)}
+  .yt .play i::after{content:"";border-left:19px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+  button.yt:hover .play i{background:var(--teal)}
+  .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-title{font-size:15.5px;font-weight:500;margin-top:10px}
 
-  .grid{display:grid;grid-template-columns:1fr;gap:18px}
-  @media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media (min-width:900px){.grid--3{grid-template-columns:repeat(3,1fr)}}
-  @media (min-width:640px) and (max-width:899px){.grid--3 .card:last-child{grid-column:1/-1}}
+  .series{list-style:none;counter-reset:step;margin-top:22px;border-top:1px solid var(--line)}
+  .series li{border-bottom:1px solid var(--line)}
+  .series a{display:grid;grid-template-columns:44px 1fr;gap:2px 14px;align-items:center;text-decoration:none;padding:14px 4px}
+  .series a::before{counter-increment:step;content:counter(step);grid-row:1 / span 2;width:44px;height:44px;border-radius:50%;background:var(--lilac);color:var(--violet);font-family:var(--body);font-weight:600;font-size:18px;display:grid;place-items:center;transition:background-color .15s ease,color .15s ease}
+  .series a:hover::before{background:var(--violet);color:#fff}
+  .series b{font-weight:600;font-size:17px;line-height:1.3}
+  .series a:hover b{color:var(--violet)}
+  .series span{font-size:15px;color:var(--muted);font-weight:300;line-height:1.4}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column}
-  .card::before{content:"";position:absolute;left:0;top:0;right:0;height:3px}
-  #lead .card::before{background:var(--grad-violet)}
-  #create .card::before{background:var(--grad-teal)}
-  .card .tag{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:12px}
-  #lead .card .tag{color:var(--violet)}
-  #create .card .tag{color:var(--teal)}
-  .card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:19px;line-height:1.25;margin-bottom:10px;letter-spacing:-0.01em}
-  .card p{font-size:14.5px;color:var(--muted);font-weight:300;line-height:1.6;margin-bottom:18px}
-  .card .card-link{font-size:14px;font-weight:500;text-decoration:none;margin-top:auto;display:inline-flex;align-items:center;gap:4px}
-  #lead .card .card-link{color:var(--violet)}
-  #create .card .card-link{color:var(--teal)}
-  .card .card-link:hover{text-decoration:underline}
+  .more-head{margin:clamp(48px,7vw,72px) 0 20px;font-family:var(--head);font-weight:700;font-size:24px}
+  .lessons{display:grid;gap:18px}
+  @media (min-width:700px){.lessons{grid-template-columns:repeat(3,1fr)}}
+  .lesson{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .15s ease}
+  .lesson:hover{border-color:var(--violet)}
+  .lesson .thumb{aspect-ratio:16/9;background:var(--plum);overflow:hidden}
+  .lesson .thumb img{width:100%;height:100%;object-fit:cover}
+  .lesson .txt{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .lesson .pill{align-self:flex-start;font-size:13px;font-weight:600;color:var(--teal-ink);background:#E3F4F1;border-radius:999px;padding:3px 10px}
+  .lesson p{font-size:15px;color:var(--muted);font-weight:300;line-height:1.5}
+  .lesson .go{margin-top:auto;padding-top:6px;font-size:15px;font-weight:600;color:var(--violet);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
 
-  /* ---- connect ---- */
-  .social-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-  .social-link{
-    display:flex;align-items:center;gap:12px;
-    background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;
-    text-decoration:none;color:var(--ink);transition:transform .15s ease,border-color .15s ease;
-  }
-  .social-link:hover{transform:translateY(-2px);border-color:var(--violet)}
-  .social-link img{flex-shrink:0;border-radius:4px;object-fit:contain}
-  .social-text{display:flex;flex-direction:column;gap:2px;min-width:0}
-  .social-platform{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--violet);text-transform:uppercase}
-  .social-sub{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
-  .social-sub:first-child{margin-top:0}
-  .social-handle{font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* ---------- teams (dark band) ---------- */
+  .teams{background:var(--plum);color:var(--on-dark)}
+  .teams .label{color:#5FD3C3}
+  .teams h2{color:#fff}
+  .teams .intro{color:var(--on-dark-muted)}
+  .teams-grid{display:grid;gap:40px;align-items:start}
+  @media (min-width:900px){.teams-grid{grid-template-columns:1.2fr .8fr;gap:64px}}
+  .offers{list-style:none;margin-top:30px;border-top:1px solid rgba(237,232,247,.16)}
+  .offers li{padding:20px 0;border-bottom:1px solid rgba(237,232,247,.16);display:grid;gap:4px}
+  @media (min-width:600px){.offers li{grid-template-columns:200px 1fr;gap:24px}}
+  .offers b{font-family:var(--head);font-weight:700;font-size:19px;color:#fff;line-height:1.3}
+  .offers span{font-size:16px;color:var(--on-dark-muted);font-weight:300}
+  .book-card{background:var(--plum-2);border:1px solid rgba(217,178,108,.45);border-radius:26px;padding:30px 28px}
+  .badge{display:inline-block;background:var(--gold);color:var(--plum);font-weight:700;font-size:14px;border-radius:999px;padding:6px 14px;margin-bottom:16px}
+  .book-card h3{color:#fff;font-size:24px;margin-bottom:10px}
+  .book-card p{color:var(--on-dark-muted);font-size:16px;font-weight:300;margin-bottom:22px}
+  .book-card .btn{width:100%}
+  .book-card .alt{margin:16px 0 0;font-size:15px;color:var(--on-dark-muted)}
+  .book-card .alt a{color:#fff;text-underline-offset:3px}
+  .creds{list-style:none;margin-top:26px;padding-top:22px;border-top:1px solid rgba(237,232,247,.16);display:grid;gap:10px}
+  .creds li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px;color:var(--on-dark);line-height:1.45}
+  .creds svg{width:18px;height:18px;margin-top:3px}
 
-  /* ---- cta ---- */
-  .cta{margin-top:clamp(64px,10vw,100px);border-top:1px solid var(--line);padding-top:36px}
-  .cta h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,4vw,30px);letter-spacing:-0.01em;margin-bottom:14px}
-  .cta p{color:var(--muted);font-weight:300;max-width:52ch;margin-bottom:24px}
-  .btns{display:flex;flex-wrap:wrap;gap:12px}
-  .btn{font-family:'Lexend',sans-serif;font-weight:500;font-size:15px;text-decoration:none;border-radius:999px;padding:13px 24px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,box-shadow .15s ease}
-  .btn-primary{background:var(--grad-full);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
-  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-primary:hover{box-shadow:0 10px 28px rgba(96,32,208,.34)}
-  .btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
-  .btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+  /* ---------- creators ---------- */
+  .create-grid{display:grid;gap:18px;margin-top:30px}
+  @media (min-width:900px){.create-grid{grid-template-columns:1.1fr .9fr;gap:24px}}
+  .feature{display:flex;flex-direction:column;justify-content:space-between;gap:26px;text-decoration:none;color:#fff;border-radius:26px;padding:30px 28px;background:linear-gradient(135deg,var(--violet) 0%,#4E3FD6 52%,#088F86 100%);position:relative;overflow:hidden;min-height:320px}
+  .feature .pill{align-self:flex-start;font-size:13.5px;font-weight:600;background:rgba(255,255,255,.18);border-radius:999px;padding:4px 12px}
+  .feature h3{font-size:clamp(26px,3.4vw,34px);line-height:1.08;margin:14px 0 10px}
+  .feature p{font-size:16.5px;font-weight:300;color:#F2EEFF;max-width:38ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1}
+  .chips span{font-size:14px;font-weight:500;background:#fff;color:var(--plum);border-radius:999px;padding:6px 14px}
+  .feature .go{font-weight:600;font-size:16px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;position:relative;z-index:1}
+  .feature:hover .go{color:var(--gold)}
 
-  footer{margin-top:clamp(48px,8vw,72px);padding:28px 0 56px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--muted)}
-  footer a{color:var(--violet);text-decoration:none;border-bottom:1px solid transparent}
-  footer a:hover{border-bottom-color:var(--violet)}
+  .rows{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:6px 20px}
+  .rows li + li{border-top:1px solid var(--line)}
+  .rows a{display:grid;grid-template-columns:40px 1fr;gap:2px 14px;align-items:center;text-decoration:none;padding:16px 0}
+  .rows svg{width:40px;height:40px;grid-row:1 / span 2}
+  .rows b{font-weight:600;font-size:16.5px;line-height:1.3}
+  .rows span{font-size:14.5px;color:var(--muted);font-weight:300;line-height:1.4}
+  .rows a:hover b{color:var(--violet);text-decoration:underline;text-underline-offset:3px}
 
-  .rise{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
-  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}
-  @keyframes rise{to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
+  /* ---------- tagline band ---------- */
+  .tagline{background:var(--lilac);text-align:center;overflow:hidden}
+  .tagline .wrap{padding-top:clamp(56px,9vw,96px);padding-bottom:clamp(56px,9vw,96px)}
+  .tagline blockquote{font-family:var(--head);font-weight:800;font-size:clamp(34px,6.4vw,68px);line-height:1.02;letter-spacing:-.025em;color:var(--plum);max-width:14ch;margin:0 auto}
+  .tagline blockquote span{display:inline-block}
+  .tagline p{max-width:46ch;margin:22px auto 0;font-size:17px;color:var(--muted);font-weight:300}
+  .tagline svg{width:34px;height:38px;margin:0 auto 22px;display:block}
+
+  /* ---------- closing ---------- */
+  .close-grid{display:grid;gap:18px}
+  @media (min-width:800px){.close-grid{grid-template-columns:1fr 1fr;gap:24px}}
+  .close-card{border-radius:26px;padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+  .close-card h2{font-size:clamp(26px,3.4vw,34px);margin:0;max-width:16ch}
+  .close-card p{font-size:16.5px;font-weight:300;max-width:40ch;margin-bottom:10px}
+  .close-a{background:var(--card);border:1.5px solid var(--line)}
+  .close-a p{color:var(--muted)}
+  .close-b{background:var(--teal-ink);color:#fff}
+  .close-b h2{color:#fff}
+  .close-b p{color:#E6FAF6}
+  .close-b .btn-light:hover{background:var(--plum);color:#fff}
+  .fine{font-size:14px;color:var(--muted)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--plum);color:var(--on-dark-muted)}
+  .foot-top{display:grid;gap:34px;padding-top:56px;padding-bottom:40px}
+  @media (min-width:900px){.foot-top{grid-template-columns:1.3fr repeat(4,1fr);gap:28px}}
+  @media (min-width:560px) and (max-width:899px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1 / -1}}
+  .foot-brand .brand span{color:#fff}
+  .foot-brand p{font-size:15px;margin-top:14px;max-width:30ch;line-height:1.5}
+  .foot-col h4{font-family:var(--body);font-size:15px;font-weight:600;color:#fff;margin-bottom:12px}
+  .foot-col ul{list-style:none;display:grid;gap:9px}
+  .foot-col a{font-size:15px;text-decoration:none;color:var(--on-dark-muted)}
+  .foot-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  .foot-base p{border-top:1px solid rgba(237,232,247,.14);padding:20px 0 28px;font-size:14px}
+  .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
-<style>:root{--f-accent:#6020D0;--f-accent2:#0891B2;--f-ink:#15151C;--f-muted:#55555F;--f-line:#E7E5EE;--f-soft:#F5F3FA;--f-card:#fff;--f-accent-line:rgba(96,32,208,.35);--f-head:'Syne','Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
-/* ===== Sheva Studio collapsible steps ===== */
-.fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-  margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
-  font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--f-ink)}
-.fold-help p{margin:0}
-.fold-help b{color:var(--f-accent);font-weight:700}
-button.fold-all{all:unset;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--f-accent);
-  padding:8px 14px;border-radius:999px;border:1.5px solid var(--f-line);background:var(--f-card,#fff);white-space:nowrap}
-button.fold-all:hover{border-color:var(--f-accent)}
-button.fold-all:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
-
-details.fold{background:var(--f-card,#fff);border:1px solid var(--f-line);border-radius:16px;margin:0 0 12px;scroll-margin-top:84px;
-  transition:border-color .2s,box-shadow .2s}
-details.fold[open]{border-color:var(--f-accent-line);box-shadow:0 6px 24px rgba(30,24,48,.06)}
-details.fold > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;
-  gap:14px;padding:16px}
-details.fold > summary::-webkit-details-marker{display:none}
-details.fold > summary:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px;border-radius:14px}
-.fold-num{min-width:42px;height:42px;padding:0 8px;border-radius:12px;display:grid;place-items:center;background:var(--f-soft);
-  color:var(--f-accent);font-family:var(--f-head);font-weight:800;font-size:18px;transition:background .2s,color .2s}
-details.fold[open] .fold-num{background:var(--f-accent);color:#fff}
-.fold-meta{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--f-muted);margin:0 0 2px}
-details.fold > summary h2.fold-title{font-family:var(--f-head);font-weight:800;font-size:clamp(19px,3.6vw,24px);line-height:1.2;
-  letter-spacing:-.01em;margin:0;padding:0;border:0;color:var(--f-ink)}
-.fold-chev{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--f-line);display:grid;place-items:center;
-  transition:transform .25s,border-color .2s;flex:none}
-.fold-chev::after{content:"";width:8px;height:8px;border-right:2px solid var(--f-ink);border-bottom:2px solid var(--f-ink);
-  transform:translateY(-2px) rotate(45deg)}
-details.fold[open] .fold-chev{transform:rotate(180deg);border-color:var(--f-accent)}
-details.fold > summary:hover .fold-chev{border-color:var(--f-accent)}
-.fold-body{border-top:1px solid var(--f-line);margin:0 16px;padding:20px 0 20px}
-/* Connect stays open: same card look, no toggle */
-.fold.fold-static{background:var(--f-card,#fff);border:1px solid var(--f-accent-line);border-radius:16px;margin:0 0 12px;scroll-margin-top:84px;box-shadow:0 6px 24px rgba(30,24,48,.06)}
-.fold-static > .fold-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;padding:16px}
-.fold-static .fold-num{background:var(--f-accent);color:#fff}
-.fold-static .fold-head h2.fold-title{font-family:var(--f-head);font-weight:800;font-size:clamp(19px,3.6vw,24px);line-height:1.2;letter-spacing:-.01em;margin:0;padding:0;border:0;color:var(--f-ink)}
-@media (min-width:700px){.fold-static > .fold-head{padding:20px 24px;gap:18px}}
-@media (min-width:700px){details.fold > summary{padding:20px 24px;gap:18px}.fold-body{margin:0 24px}}
-.fold-body > :not(.fold-video):not(.fold-next-wrap):not(.fold-lede){margin:0!important;padding:0!important;border:0!important;
-  background:transparent!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;
-  max-width:none!important;width:auto}
-.fold-body > section.fz > *:first-child:last-child{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important}
-.fold-lede{font-family:var(--f-body);font-size:16px;color:var(--f-muted);margin:0 0 16px;line-height:1.55}
-@media (prefers-reduced-motion:no-preference){details.fold[open] .fold-body{animation:foldIn .3s ease}
-  @keyframes foldIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
-
-.fold-video,.page-video{margin:0 0 22px}
-.page-video{margin:26px 0 8px}
-.fold-video-label{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--f-accent);margin:0 0 8px}
-.fold-video-title{font-family:var(--f-body);font-size:15px;font-weight:600;color:var(--f-ink);margin:8px 0 0;line-height:1.4}
-button.yt,div.yt{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:14px;
-  overflow:hidden;background:#1E1830;cursor:pointer}
-button.yt:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}
-.yt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
-.yt .play{position:absolute;inset:0;display:grid;place-items:center}
-.yt .play i{width:68px;height:48px;border-radius:12px;background:var(--f-accent);display:grid;place-items:center}
-.yt .play i::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
-button.yt:hover .play i{background:var(--f-accent2)}
-.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-
-.fold-next-wrap{margin-top:24px;padding-top:18px;border-top:1px solid var(--f-line);display:flex;justify-content:flex-end}
-a.fold-next{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--f-ink);background:var(--f-soft);
-  border:1px solid var(--f-line);border-radius:12px;padding:12px 16px;max-width:100%;transition:border-color .2s}
-a.fold-next:hover{border-color:var(--f-accent)}
-a.fold-next:focus-visible{outline:3px solid var(--f-accent);outline-offset:2px}
-a.fold-next small{display:block;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--f-accent)}
-a.fold-next b{display:block;font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.35}
-a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background:var(--f-accent);color:#fff;display:grid;place-items:center;font-weight:700}
-@media (max-width:600px){.site-nav{flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important}
-  .site-nav .nav-home{flex:none}
-  .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
-  .site-nav .nav-links::-webkit-scrollbar{display:none}}
-@media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
-.page-video{max-width:720px;margin-left:auto!important;margin-right:auto!important} #book{scroll-margin-top:84px}</style><style>@media (max-width:640px){
-  .nav-links a{white-space:nowrap;flex:none}
-  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.nav-mark{width:auto!important;height:28px!important;background:none!important;border-radius:0!important;display:block!important;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><style>.fork-hub-mark{height:72px;width:auto;display:block;filter:drop-shadow(0 10px 22px rgba(96,32,208,.28))}</style></head>
-<body>
-<nav class="site-nav">
-<div class="shell">
-<a class="nav-home" href="index.html">
-<img alt="" aria-hidden="true" class="nav-mark" height="28" src="/sheva-studio-mark.svg" width="24.7"/>
-<span class="nav-word">SHEVA STUDIO</span>
-</a>
-<div class="nav-links">
-<a aria-current="page" class="nav-link current" href="index.html">Home</a>
-<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
-<a class="nav-link" href="guides.html">Guides</a>
-<a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-<a class="nav-link" href="ai-at-work.html">AI at Work</a>
-<a class="nav-link" href="field-guides.html">Field Guides</a>
-<a class="nav-link" href="#create">Creator Tools</a>
-<a class="nav-link" href="contact.html">Contact</a>
-</div>
-</div>
-</nav>
-<main>
-<div class="shell">
-<!-- HERO -->
-<section class="rise d1">
-<div class="hero-sticker">
-<a href="#connect">
-<img alt="Sheva Studio Sticker" class="brand-sticker" src="sheva.png"/>
-</a>
-</div>
-<div class="hero-copy">
-<p class="kicker">AI Transformation Leader · Seattle</p>
-<h1>AI, translated for <span class="accent">actual humans.</span></h1>
-<p class="sub-headline">Microsoft + Blue Origin Alumni</p>
-</div>
-<div class="lede-block hero-lede">
-<p>I help teams and individuals turn AI into something people actually use. <strong>Free tools to start. Consulting when you're ready.</strong></p>
-<div class="btns hero-btns">
-<a class="btn btn-primary" href="contact.html">Book a Consultation →</a>
-<a class="btn btn-ghost" href="#lead">Start learning free</a>
-</div>
-</div>
-</section><div class="page-video"><p class="fold-video-label">Watch first · 4:35</p><button aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide" class="yt" data-id="uAuiAE7f1Yw" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Start Using AI: A No-Jargon Beginner's Guide</p></div>
-<!-- FORK -->
-<section class="fork rise d2">
-<p class="fork-label">Pick your lane</p>
-<div class="fork-hub"><img alt="" aria-hidden="true" class="fork-hub-mark" height="72" src="/sheva-studio-mark.svg" width="63.5"/></div>
-<div class="fork-grid">
-<div aria-hidden="true" class="fork-connector"></div>
-<div class="lane-card lane-card--a">
-<span class="lane-tag">Lead with AI</span>
-<h3>Enterprise AI Leadership</h3>
-<p>Strategy, workshops, and 1:1 consulting for teams ready to make AI part of the culture, not just the tech stack.</p>
-<a class="lane-link" href="#lead">Explore this lane →</a>
-</div>
-<div class="lane-card lane-card--b">
-<span class="lane-tag">Create</span>
-<h3>Creator Tools</h3>
-<p>Free guides for any content creator, plus ADHD-friendly tools and a community for brains that don't work in straight lines. From an ADHD creator, soft-glam chaos enjoyer, and your unofficial late-night problem-solver.</p>
-<a class="lane-link" href="#create">Explore this lane →</a><a class="lane-link" href="field-guides.html" style="display:block;margin-top:10px">Creator Field Guides →</a>
-</div>
-</div>
-</section>
-<!-- LEAD WITH AI -->
-<div class="fold-help"><p><b>How this page works:</b> tap a section to open it. Each section ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="lead" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Lead with AI</span><h2 class="fold-title">Learn AI With Me</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 5:55</p><button aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation" class="yt" data-id="ls2BQ2RFYYo" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Where Do I Start With AI? Build a Practical Foundation</p></div><section class="lane-section">
-<div class="grid grid--3">
-<div class="card" style="grid-column:1/-1">
-<span class="tag">New · Weekly series</span>
-<h3>AI | What Actually Works</h3>
-<p>Six lessons from 50+ AI projects. How to get your first real win with AI at work, and how to help your team keep using it. Plain language, one lesson every Tuesday.</p>
-<a class="card-link" href="ai-at-work.html">Start Lesson 1 →</a>
-</div>
-<div class="card">
-<span class="tag">Training</span>
-<h3>Intro to AI</h3>
-<p>A short series for people who want to actually use AI minus the jargon, the hype, and the open-tabs rabbit hole.</p>
-<a class="card-link" href="Sheva-Studio-Intro-to-AI.html">Start Series →</a>
-</div>
-<div class="card">
-<span class="tag">Guides</span>
-<h3>Actionable Guides</h3>
-<p>Deep dives, quick recipes, and custom frameworks built for instant productivity.</p>
-<a class="card-link" href="guides.html">View Guides →</a>
-</div>
-<div class="card">
-<span class="tag">Tool</span>
-<h3>The Prompt Builder</h3>
-<p>Fill in five blanks — Goal, Context, Audience, Format, Check — and watch a clean, copy-ready prompt build itself.</p>
-<a class="card-link" href="prompt-builder.html">Build a Prompt →</a>
-</div>
-</div>
-</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#create"><span><small>Next · Section 2</small><b>Creator Tools</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
-<!-- CREATE WITH ADHD -->
-<details class="fold" id="create"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Create</span><h2 class="fold-title">Creator Tools</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="lane-section">
-<div class="grid grid--3">
-<div class="card" style="grid-column:1/-1">
-<span class="tag">New · 7 free guides · For any creator</span>
-<h3>Creator Field Guides</h3>
-<p>For any content creator growing on Instagram or Facebook. Tap-to-check-off settings, one switch at a time. Clean up who you follow, stop spam comments, fix your profile, and get your reels in front of new people.</p>
-<a class="card-link" href="field-guides.html">Open the Guides →</a>
-</div>
-<div class="card">
-<span class="tag">Community</span>
-<h3>Side by Side Collective</h3>
-<p>Real connection, not curated. Systems built for different brains.</p>
-<a class="card-link" href="https://www.facebook.com/share/g/1D73WaXiEy/" rel="noopener" target="_blank">Join Group →</a>
-</div>
-<div class="card">
-<span class="tag">Grab &amp; Go</span>
-<h3>No-Brainer Decks</h3>
-<p>Pre-made ADHD challenge carousels. Pick one, download the slides, post. Zero design required.</p>
-<a class="card-link" href="no-brainer-decks.html">Grab a Deck →</a>
-</div>
-<div class="card">
-<span class="tag">Make Your Own</span>
-<h3>Build-Your-Own Decks</h3>
-<p>Same dark/light carousel format, but editable. Swap the words, add slides, make it yours.</p>
-<a class="card-link" href="card-flip-generator.html">Start Building →</a>
-</div>
-</div>
-</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#connect"><span><small>Next · Section 3</small><b>Let's Connect</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
-<!-- CONNECT -->
-<div class="fold fold-static" id="connect"><div class="fold-head"><span aria-hidden="true" class="fold-num">3</span><span><span class="fold-meta">Connect</span><h2 class="fold-title">Let's Connect</h2></span></div><div class="fold-body"><section class="lane-section">
-<p class="social-sub">Follow along</p>
-<div class="social-grid">
-<a class="social-link" href="https://tiktok.com/@sheva.studio" rel="noopener" target="_blank">
-<img alt="TikTok logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=tiktok.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">TikTok</span><span class="social-handle">@sheva.studio</span></div>
-</a>
-<a class="social-link" href="https://youtube.com/@sheva.studio" rel="noopener" target="_blank">
-<img alt="YouTube logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">YouTube</span><span class="social-handle">@sheva.studio</span></div>
-</a>
-<a class="social-link" href="https://instagram.com/sheva.studios" rel="noopener" target="_blank">
-<img alt="Instagram logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=instagram.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">Instagram</span><span class="social-handle">@sheva.studios</span></div>
-</a>
-<a class="social-link" href="https://facebook.com/ShevaKayStudio" rel="noopener" target="_blank">
-<img alt="Facebook logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=facebook.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">Facebook</span><span class="social-handle">ShevaKayStudio</span></div>
-</a>
-<a class="social-link" href="https://pinterest.com/scribinglife" rel="noopener" target="_blank">
-<img alt="Pinterest logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=pinterest.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">Pinterest</span><span class="social-handle">@scribinglife</span></div>
-</a>
-<a class="social-link" href="https://amazon.com/shop/scribinglife" rel="noopener" target="_blank">
-<img alt="Amazon logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=amazon.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">Amazon Shop</span><span class="social-handle">scribinglife</span></div>
-</a>
-</div>
-<p class="social-sub">Work with me</p>
-<div class="social-grid">
-<a class="social-link" href="https://www.linkedin.com/in/elishevanoland/" rel="noopener" target="_blank">
-<img alt="LinkedIn logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=linkedin.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">LinkedIn</span><span class="social-handle">Elisheva Walker</span></div>
-</a>
-<a class="social-link" href="https://www.linkedin.com/company/sheva-studio/" rel="noopener" target="_blank">
-<img alt="LinkedIn logo" height="20" loading="lazy" src="https://www.google.com/s2/favicons?domain=linkedin.com&amp;sz=128" width="20"/>
-<div class="social-text"><span class="social-platform">LinkedIn</span><span class="social-handle">Sheva Studio company page</span></div>
-</a>
-</div>
-</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#book"><span><small>Next · Last stop</small><b>Let's talk about what AI could do for you</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></div>
-<!-- CTA -->
-<section class="cta" id="book">
-<h2>Let's talk about what AI could do for you.</h2>
-<p>1:1 consultations, team workshops, conference talks. No generic playbook — just a plan that fits how you actually work.</p>
-<div class="btns">
-<a class="btn btn-primary" href="contact.html">Book a Consultation →</a>
-<a class="btn btn-ghost" href="Sheva-Studio-Intro-to-AI.html">Get Started with AI</a>
-</div>
-</section>
-<footer>
-      1:1 · Team Workshops · Conference Workshops — all welcome.  → 
-      <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a> · <a href="https://www.linkedin.com/in/elishevanoland/" rel="noopener" target="_blank">LinkedIn</a>
-</footer>
-</div>
-</main>
 <script>
-(function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
-  var btn = document.querySelector('button.fold-all');
-  function visible(d){ return d.offsetParent !== null; }
-  function sync(){
-    if(!btn) return;
-    var shown = folds.filter(visible);
-    var all = shown.length && shown.every(function(d){ return d.open; });
-    btn.textContent = all ? 'Close all' : 'Open all';
-    btn.setAttribute('aria-expanded', all ? 'true' : 'false');
-  }
-  function go(id, from){
-    var t = document.getElementById(id);
-    if(!t) return false;
-    if(from){ var f = from.closest('details.fold'); if(f && f !== t) f.open = false; }
-    if(t.tagName === 'DETAILS') t.open = true;
-    t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
-    var s = t.tagName === 'DETAILS' ? t.querySelector('summary') : t;
-    try{ s.focus({preventScroll:true}); }catch(e){}
-    if(history.replaceState) history.replaceState(null,'','#'+id);
-    sync(); return true;
-  }
-  document.addEventListener('click', function(e){
-    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
-    if(!a) return;
-    var id = a.getAttribute('href').slice(1), t = id && document.getElementById(id);
-    if(!t) return;
-    var isNext = a.hasAttribute('data-fold-next');
-    if(isNext || (t.tagName === 'DETAILS' && t.classList.contains('fold'))){ e.preventDefault(); go(id, isNext ? a : null); }
+// YouTube thumbnails: try the sharpest version first, step down only if YouTube doesn't have it
+function ytNext(img){
+  var order=['maxresdefault','hq720','sddefault','hqdefault'];
+  var m=img.src.match(/\/vi\/([^\/]+)\/([a-z0-9]+)\.jpg/);
+  var i=m?order.indexOf(m[2]):-1;
+  if(i>-1&&i<order.length-1){img.src='https://i.ytimg.com/vi/'+m[1]+'/'+order[i+1]+'.jpg';}
+  else{img.onerror=img.onload=null;}
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Shared shapes: the Sheva Studio hexagon and small icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="hex" d="M378.000,32.402 A44.000,44.000 0 0 1 422.000,32.402 L707.349,197.148 A44.000,44.000 0 0 1 729.349,235.253 L729.349,564.747 A44.000,44.000 0 0 1 707.349,602.852 L422.000,767.598 A44.000,44.000 0 0 1 378.000,767.598 L92.651,602.852 A44.000,44.000 0 0 1 70.651,564.747 L70.651,235.253 A44.000,44.000 0 0 1 92.651,197.148 Z"/>
+    <linearGradient id="hexGrad" gradientUnits="userSpaceOnUse" x1="120" y1="80" x2="700" y2="760">
+      <stop offset="0" stop-color="#7B3FF2"/>
+      <stop offset="1" stop-color="#088F86"/>
+    </linearGradient>
+    <clipPath id="hexClip"><use href="#hex"/></clipPath>
+  </defs>
+</svg>
+
+<p class="notice">New every Tuesday: AI | What Actually Works, one plain-language lesson at a time.<a href="ai-at-work.html">Start Lesson 1</a></p>
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="index.html" aria-label="Sheva Studio home">
+      <img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/>
+      <span>SHEVA STUDIO</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#learn">Learn AI</a></li>
+        <li><a href="#teams">For teams</a></li>
+        <li><a href="#create">For creators</a></li>
+        <li><a href="playbooks/">Free playbook</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-small nav-cta" href="contact.html">Book a Consultation</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-kicker">
+        <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="url(#hexGrad)"/></svg>
+        Microsoft and Blue Origin alum, based in Seattle
+      </p>
+      <h1>AI, translated for actual humans.</h1>
+      <p class="hero-lede">Plain-language AI for individuals, teams, and leaders. <strong>Free lessons to start. Consulting when you're ready.</strong></p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="contact.html">Book a Consultation</a>
+        <a class="btn btn-quiet" href="#learn">Start learning free</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="40 0 800 850" role="img" aria-labelledby="heroPhoto">
+      <title id="heroPhoto">Sheva smiling, with long wavy hair</title>
+      <g class="hex-back"><use href="#hex" fill="url(#hexGrad)"/></g>
+      <g class="hex-photo">
+        <use href="#hex" fill="#EDEAF2"/>
+        <image href="sheva.png" x="47.2" y="-4" width="712.8" height="950.4" clip-path="url(#hexClip)" preserveAspectRatio="xMidYMid slice"/>
+        <use href="#hex" fill="none" stroke="#FFFFFF" stroke-width="14"/>
+      </g>
+      <path class="spark" d="M760 40 C766 78 780 92 818 98 C780 104 766 118 760 156 C754 118 740 104 702 98 C740 92 754 78 760 40Z" fill="#D9B26C"/>
+    </svg>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof" aria-label="At a glance">
+  <ul class="wrap">
+    <li><b>20+</b><span>years leading tech programs</span></li>
+    <li><b>50+</b><span>AI projects shipped</span></li>
+    <li><b>$0</b><span>to start learning</span></li>
+  </ul>
+</section>
+
+<!-- ROUTER -->
+<section class="router" aria-labelledby="startHead">
+  <div class="wrap">
+    <h2 id="startHead">Where do you want to start?</h2>
+    <p class="intro">Pick the one that sounds like you. Everything here is free except the consulting.</p>
+    <div class="router-grid">
+      <a class="path" href="#learn">
+        <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#7B3FF2"/><path d="M400 238C418 344 456 382 562 400C456 418 418 456 400 562C382 456 344 418 238 400C344 382 382 344 400 238Z" fill="#fff"/></svg>
+        <h3>I'm new to AI</h3>
+        <p>Four short steps from "which one do I even open" to your first useful answer.</p>
+        <span class="go">Start the free series</span>
+      </a>
+      <a class="path" href="#teams">
+        <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#1E1830"/><g fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round"><circle cx="330" cy="330" r="62"/><path d="M220 540c0-62 50-108 110-108s110 46 110 108"/><circle cx="490" cy="352" r="50"/><path d="M468 440c14-4 26-6 40-6 52 0 92 40 92 96"/></g></svg>
+        <h3>I want AI working for my team</h3>
+        <p>Consulting, workshops, and talks built around the work your people already do.</p>
+        <span class="go">See how I help teams</span>
+      </a>
+      <a class="path" href="#create">
+        <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#0F9B8A"/><rect x="306" y="214" width="188" height="372" rx="38" fill="none" stroke="#fff" stroke-width="40"/><path d="M372 336l84 64-84 64z" fill="#fff"/></svg>
+        <h3>I make content</h3>
+        <p>Free field guides for Instagram, Facebook, and TikTok, plus done-for-you carousels.</p>
+        <span class="go">Open the creator guides</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LEARN -->
+<section class="block" id="learn" aria-labelledby="learnHead">
+  <div class="wrap">
+    <div class="learn-top">
+      <div>
+        <p class="video-label">Watch first, 4:35</p>
+        <button class="yt" type="button" data-id="uAuiAE7f1Yw" aria-label="Play video: How to Start Using AI: A No-Jargon Beginner's Guide">
+          <img src="https://i.ytimg.com/vi/uAuiAE7f1Yw/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720" onerror="ytNext(this)" onload="if(this.naturalWidth&lt;=120)ytNext(this)"/>
+          <span class="play"><i></i></span>
+        </button>
+        <p class="video-title">How to Start Using AI: A No-Jargon Beginner's Guide</p>
+      </div>
+      <div>
+        <p class="label">Learn AI</p>
+        <h2 id="learnHead">Learn AI without the jargon.</h2>
+        <p class="intro">The AI Series walks you from your first prompt to your first agent. Go in order, or jump to the step you need.</p>
+        <ol class="series">
+          <li><a href="Sheva-Studio-Intro-to-AI.html"><b>Choose a Tool</b><span>Pick one AI and get your first useful answer today.</span></a></li>
+          <li><a href="now-what.html"><b>Now What?</b><span>Spot what to hand off to AI, at work and at home.</span></a></li>
+          <li><a href="now-build-it.html"><b>Now Build It</b><span>Build your first AI agent, one plain step at a time.</span></a></li>
+          <li><a href="run-it-safely.html"><b>Run It Safely</b><span>Keep your agents useful and safe in the real world.</span></a></li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="more-head">More free lessons</h3>
+    <div class="lessons">
+      <a class="lesson" href="ai-at-work.html">
+        <div class="thumb"><img src="https://i.ytimg.com/vi/AMTiGFmoD3g/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720" onerror="ytNext(this)" onload="if(this.naturalWidth&lt;=120)ytNext(this)"/></div>
+        <div class="txt">
+          <span class="pill">New lesson every Tuesday</span>
+          <h3>AI | What Actually Works</h3>
+          <p>Six lessons from 50+ AI projects. Get your first real win at work, then help your team keep it.</p>
+          <span class="go">Start Lesson 1</span>
+        </div>
+      </a>
+      <a class="lesson" href="prompt-builder.html">
+        <div class="thumb"><img src="https://i.ytimg.com/vi/mTKFka8m4RA/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720" onerror="ytNext(this)" onload="if(this.naturalWidth&lt;=120)ytNext(this)"/></div>
+        <div class="txt">
+          <span class="pill">Free and interactive</span>
+          <h3>The Prompt Builder</h3>
+          <p>Fill in five blanks: goal, context, audience, format, check. Copy the prompt it builds for you.</p>
+          <span class="go">Build a prompt</span>
+        </div>
+      </a>
+      <a class="lesson" href="guides.html">
+        <div class="thumb"><img src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720" onerror="ytNext(this)" onload="if(this.naturalWidth&lt;=120)ytNext(this)"/></div>
+        <div class="txt">
+          <span class="pill">One-page cheat sheets</span>
+          <h3>Quick-Glance Guides</h3>
+          <p>The five-step workflow and the prompt recipe, laid out so you can check them in seconds.</p>
+          <span class="go">Open the guides</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TEAMS -->
+<section class="block teams" id="teams" aria-labelledby="teamsHead">
+  <div class="wrap teams-grid">
+    <div>
+      <p class="label">For teams and leaders</p>
+      <h2 id="teamsHead">Make AI part of how your team works.</h2>
+      <p class="intro">Most teams get AI and never open it twice. I help you pick the work it should do first, then make it stick.</p>
+      <ul class="offers">
+        <li><b>1:1 consultation</b><span>We pick a task you already hate and build it together until it works.</span></li>
+        <li><b>Team workshops</b><span>Built around what your team does all day, not a tour of features.</span></li>
+        <li><b>Keynotes and talks</b><span>Practical AI adoption for rooms that are tired of hype decks.</span></li>
+      </ul>
+    </div>
+    <div class="book-card">
+      <span class="badge">First 15 minutes free</span>
+      <h3>Tell me what you're trying to fix.</h3>
+      <p>A short call to see if we're a fit. No pitch. If I'm not the right person, I'll say so.</p>
+      <a class="btn btn-primary" href="contact.html">Book a Consultation</a>
+      <p class="alt">Rather email? <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></p>
+      <ul class="creds" aria-label="Background">
+        <li><svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#D9B26C"/></svg>Founded a Responsible AI committee in a regulated environment</li>
+        <li><svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#D9B26C"/></svg>Wrote the AI acceptable use policy, aligned to the NIST AI framework</li>
+        <li><svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#D9B26C"/></svg>Shipped 50+ AI agent projects from idea to daily use</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CREATORS -->
+<section class="block" id="create" aria-labelledby="createHead">
+  <div class="wrap">
+    <p class="label">For creators</p>
+    <h2 id="createHead">Grow your account without the guesswork.</h2>
+    <p class="intro">Free, tap-to-check-off guides for any content creator. Built-in settings only, one switch at a time.</p>
+    <div class="create-grid">
+      <a class="feature" href="field-guides.html">
+        <div>
+          <span class="pill">8 free guides</span>
+          <h3>Creator Field Guides</h3>
+          <p>Clean up who you follow, stop spam comments, fix your profile, and get your reels in front of new people.</p>
+        </div>
+        <div class="chips" aria-label="Platforms covered"><span>Instagram</span><span>Facebook</span><span>TikTok</span></div>
+        <span class="go">Start with Guide 1</span>
+      </a>
+      <ul class="rows">
+        <li><a href="playbooks/">
+          <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#7B3FF2"/><path d="M320 250h150l70 70v230H320z" fill="none" stroke="#fff" stroke-width="40" stroke-linejoin="round"/></svg>
+          <b>Free Focus Playbook</b><span>Start When Your Brain Won't. Five small moves from frozen to moving.</span></a></li>
+        <li><a href="no-brainer-decks.html">
+          <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#0F9B8A"/><rect x="270" y="300" width="200" height="250" rx="22" fill="none" stroke="#fff" stroke-width="36"/><path d="M340 250h168a22 22 0 0 1 22 22v206" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round"/></svg>
+          <b>No-Brainer Decks</b><span>Ready-made ADHD carousels. Download the slides and post.</span></a></li>
+        <li><a href="card-flip-generator.html">
+          <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#1E1830"/><path d="M300 520l40-110 170-170 70 70-170 170z" fill="none" stroke="#fff" stroke-width="36" stroke-linejoin="round"/></svg>
+          <b>Build-Your-Own Decks</b><span>Same carousel style, your words. Edit, add slides, export.</span></a></li>
+        <li><a href="https://www.facebook.com/share/g/1D73WaXiEy/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 800 800" aria-hidden="true"><use href="#hex" fill="#D9B26C"/><g fill="none" stroke="#1E1830" stroke-width="40" stroke-linecap="round"><circle cx="340" cy="340" r="56"/><circle cx="470" cy="340" r="56"/><path d="M250 540c10-60 50-96 90-96s70 22 90 50c20-28 50-50 90-50s80 36 90 96"/></g></svg>
+          <b>Side by Side Collective</b><span>A Facebook group for real connection and systems built for different brains.</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINE -->
+<section class="tagline" aria-label="About Sheva Studio">
+  <div class="wrap">
+    <svg viewBox="69.5 25.5 661 749" aria-hidden="true"><use href="#hex" fill="url(#hexGrad)"/></svg>
+    <blockquote><span>42 tabs open.</span> <span>All of them are me.</span></blockquote>
+    <p>ADHD brain, enterprise background. Everything here comes in short steps you can finish, check off, and come back to.</p>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="block" aria-label="Next steps">
+  <div class="wrap close-grid">
+    <div class="close-card close-a">
+      <h2>Ready to bring AI to your team?</h2>
+      <p>1:1 consultations, team workshops, and conference talks. A plan that fits how you already work.</p>
+      <a class="btn btn-primary" href="contact.html">Book a Consultation</a>
+      <span class="fine">First 15 minutes free.</span>
+    </div>
+    <div class="close-card close-b">
+      <h2>Want something you can use tonight?</h2>
+      <p>Focus Playbook 01 is free. Subscribe on YouTube, download the PDF, and try your first move in ten seconds.</p>
+      <a class="btn btn-light" href="playbooks/">Get the free playbook</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="index.html" aria-label="Sheva Studio home">
+        <img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/>
+        <span>SHEVA STUDIO</span>
+      </a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Creators</h4>
+      <ul>
+        <li><a href="field-guides.html">Creator Field Guides</a></li>
+        <li><a href="playbooks/">Free Focus Playbook</a></li>
+        <li><a href="no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Work with me</h4>
+      <ul>
+        <li><a href="contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Follow along</h4>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+
+<script>
+// Videos load only when tapped
+document.querySelectorAll('button.yt').forEach(function(b){
+  b.addEventListener('click', function(){
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0';
+    f.title = b.getAttribute('aria-label').replace('Play video: ','');
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    var w = document.createElement('div'); w.className = 'yt'; w.appendChild(f);
+    b.replaceWith(w);
+    f.focus();
   });
-  function fromHash(){
-    var id = (location.hash || '').slice(1);
-    var t = id && document.getElementById(id);
-    if(!t || t.tagName !== 'DETAILS' || !t.classList.contains('fold')) return;
-    folds.forEach(function(d){ d.open = (d === t); });
-    setTimeout(function(){ t.scrollIntoView({block:'start'}); }, 0);
-    sync();
-  }
-  window.addEventListener('hashchange', fromHash);
-  fromHash();
-  if(btn) btn.addEventListener('click', function(){
-    var shown = folds.filter(visible);
-    var open = !(shown.length && shown.every(function(d){ return d.open; }));
-    shown.forEach(function(d){ d.open = open; }); sync();
-  });
-  folds.forEach(function(d){ d.addEventListener('toggle', sync); });
-  sync();
-  // Print or save: open everything, then put it back
-  var before = null;
-  window.addEventListener('beforeprint', function(){ before = folds.map(function(d){ return d.open; }); folds.forEach(function(d){ d.open = true; }); });
-  window.addEventListener('afterprint', function(){ if(before) folds.forEach(function(d,i){ d.open = before[i]; }); before = null; sync(); });
-  // Videos load only when tapped
-  document.querySelectorAll('button.yt').forEach(function(b){
-    b.addEventListener('click', function(){
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-id') + '?autoplay=1&rel=0';
-      f.title = b.getAttribute('aria-label').replace('Play video: ','');
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      f.allowFullscreen = true;
-      var w = document.createElement('div'); w.className = 'yt'; w.appendChild(f);
-      b.replaceWith(w);
-    });
-  });
-})();
-</script><script>(function(){
-  var n=document.querySelector('.nav-links'); if(!n) return;
-  function edge(){ n.classList.toggle('more', n.scrollLeft + n.clientWidth < n.scrollWidth - 4); }
-  var c=n.querySelector('[aria-current]');
-  if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
-  n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
-})();</script></body>
+});
+</script>
+</body>
 </html>
