@@ -14,7 +14,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <style>
-  :root{--bg:#f6f4fc;--card:#ffffff;--ink:#1a1530;--muted:#5b566e;--mono-muted:#6b6680;--purple:#6c3ce0;--teal:#3f8f7f;--line:#e4e0ef}
+  :root{--bg:#FAF8FC;--card:#ffffff;--ink:#1E1830;--muted:#5B5568;--mono-muted:#6b6680;--purple:#7B3FF2;--teal:#0B7468;--line:#E6E0F2}
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.45}
   a{color:var(--purple)}
@@ -43,7 +43,7 @@
   .trust{margin-top:16px;font-size:12px;line-height:1.7}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<style>:root{--f-accent:#6c3ce0;--f-accent2:#3f8f7f;--f-ink:#1a1530;--f-muted:#5b566e;--f-line:#e4e0ef;--f-soft:#f1edfb;--f-card:#fff;--f-accent-line:rgba(108,60,224,.35);--f-head:'Space Grotesk',system-ui,sans-serif;--f-body:'Space Grotesk',system-ui,sans-serif}
+<style>:root{--f-accent:#7B3FF2;--f-accent2:#0B7468;--f-ink:#1E1830;--f-muted:#5B5568;--f-line:#E6E0F2;--f-soft:#F1ECFD;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:'Space Grotesk',system-ui,sans-serif;--f-body:'Space Grotesk',system-ui,sans-serif}
 /* ===== Sheva Studio collapsible steps ===== */
 .fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
@@ -113,10 +113,22 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
   .site-nav .nav-links::-webkit-scrollbar{display:none}}
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
-.hub-desc{font-size:17px;color:var(--f-muted);margin:0 0 16px}a.hub-open{display:inline-block;background:linear-gradient(90deg,var(--f-accent),var(--f-accent2));color:#fff;text-decoration:none;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;padding:12px 18px;border-radius:12px}a.hub-open:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}</style><style>.brandrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px}.brandrow .back{margin-top:0!important}.brandlink{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink,#1a1530);font-family:'Space Mono',ui-monospace,monospace;font-size:13px;font-weight:700;letter-spacing:.08em}.brandlink:hover{color:var(--purple,#6c3ce0)}.brandlink:focus-visible{outline:3px solid var(--purple,#6c3ce0);outline-offset:3px;border-radius:6px}.brandmark{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+.hub-desc{font-size:17px;color:var(--f-muted);margin:0 0 16px}a.hub-open{display:inline-block;background:linear-gradient(90deg,var(--f-accent),var(--f-accent2));color:#fff;text-decoration:none;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;padding:12px 18px;border-radius:12px}a.hub-open:focus-visible{outline:3px solid var(--f-accent);outline-offset:3px}</style><style>.brandrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px}.brandrow .back{margin-top:0!important}.brandlink{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink,#1E1830);font-family:'Space Mono',ui-monospace,monospace;font-size:13px;font-weight:700;letter-spacing:.08em}.brandlink:hover{color:var(--purple,#7B3FF2)}.brandlink:focus-visible{outline:3px solid var(--purple,#7B3FF2);outline-offset:3px;border-radius:6px}.brandmark{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+</head>
 <body>
-<main class="wrap">
-<div class="brandrow"><a class="brandlink" href="/"><img alt="" aria-hidden="true" class="brandmark" height="26" src="/sheva-studio-mark.svg" width="22.9"/><span>SHEVA STUDIO</span></a></div>
+<a class="ss-skip" href="#ss-main">Skip to content</a>
+<header class="ss-nav">
+  <div class="ss-wrap ss-row">
+    <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+    <nav aria-label="Main"><ul class="ss-links">
+      <li><a href="/#learn">Learn AI</a></li><li><a href="/#teams">For teams</a></li><li><a href="/#create" class="ss-here">For creators</a></li><li><a href="/playbooks/">Free playbook</a></li>
+    </ul></nav>
+    <a class="ss-cta" href="/contact.html">Book a Consultation</a>
+  </div>
+</header>
+
+<main class="wrap" id="ss-main">
 <div class="eyebrow">Sheva Studio · Field Guides</div>
 <h1>CREATOR<br/><span class="grad">FIELD GUIDES</span></h1>
 <p class="lede">Free, tap-to-check-off guides for any content creator growing on Instagram, Facebook, and TikTok. One switch at a time, built-in tools only, no sketchy apps.</p>
@@ -135,9 +147,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <p>New field guides drop here as they're tested. Bookmark this page.</p>
 </div>
 <footer>
-    Sheva Studio · Content · AI · Culture<br/>
-<a href="/">shevastudio.com →</a>
-<p class="trust">Last updated: October 29, 2026<br/>Not affiliated with Meta, Facebook, Instagram, or TikTok. For educational purposes. Results vary by account.</p>
+    <p class="trust">Last updated: October 29, 2026<br/>Not affiliated with Meta, Facebook, Instagram, or TikTok. For educational purposes. Results vary by account.</p>
 </footer>
 </main>
 <script>
@@ -206,5 +216,53 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     });
   });
 })();
-</script></body>
+</script><footer class="ss-foot">
+  <div class="ss-wrap ss-foot-top">
+    <div class="ss-foot-brand">
+      <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div>
+      <p class="ss-foot-h">Learn</p>
+      <ul>
+        <li><a href="/Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="/ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="/prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="/guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Creators</p>
+      <ul>
+        <li><a href="/field-guides.html">Creator Field Guides</a></li>
+        <li><a href="/playbooks/">Free Focus Playbook</a></li>
+        <li><a href="/no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="/card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="/connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Work with me</p>
+      <ul>
+        <li><a href="/contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Follow along</p>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ss-wrap ss-foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+</body>
 </html>

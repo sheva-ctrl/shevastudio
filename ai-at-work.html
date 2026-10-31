@@ -158,24 +158,22 @@
 </style>
 <style>@media (max-width:640px){
   .nav-links a{white-space:nowrap;flex:none}
-  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.mark{width:auto!important;height:32px!important;background:none!important;border-radius:0!important;display:block!important;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.mark{width:auto!important;height:32px!important;background:none!important;border-radius:0!important;display:block!important;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+</head>
 <body>
-<header class="topbar">
-<div class="wrap nav">
-<a class="brand" href="index.html"><img alt="" aria-hidden="true" class="mark" height="32" src="/sheva-studio-mark.svg" width="28.2"/>SHEVA STUDIO</a>
-<nav aria-label="Main" class="nav-links">
-<a href="index.html">Home</a>
-<a href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
-<a href="guides.html">Guides</a>
-<a href="prompt-builder.html">Prompt Builder</a>
-<a aria-current="page" href="ai-at-work.html">AI at Work</a>
-<a href="field-guides.html">Field Guides</a>
-<a href="index.html#create">Creator Tools</a>
-<a href="contact.html">Contact</a>
-</nav>
-</div>
+<a class="ss-skip" href="#ss-main">Skip to content</a>
+<header class="ss-nav ss-sticky">
+  <div class="ss-wrap ss-row">
+    <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+    <nav aria-label="Main"><ul class="ss-links">
+      <li><a href="/#learn" class="ss-here">Learn AI</a></li><li><a href="/#teams">For teams</a></li><li><a href="/#create">For creators</a></li><li><a href="/playbooks/">Free playbook</a></li>
+    </ul></nav>
+    <a class="ss-cta" href="/contact.html">Book a Consultation</a>
+  </div>
 </header>
-<main class="wrap">
+
+<main class="wrap" id="ss-main">
 <section class="hero">
 <p class="eyebrow">Practical AI Education · Sheva Studio</p>
 <h1>AI <span class="bar">|</span> What Actually Works</h1>
@@ -401,12 +399,6 @@
 <a class="btn" href="contact.html">Book a Consultation →</a>
 </section>
 </main>
-<footer>
-<div class="wrap foot">
-<a class="brand" href="index.html"><img alt="" aria-hidden="true" class="mark" height="32" src="/sheva-studio-mark.svg" width="28.2"/>SHEVA STUDIO</a>
-<span>Connection beats perfection. · <a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></span>
-</div>
-</footer>
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -480,5 +472,53 @@
   var c=n.querySelector('[aria-current]');
   if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
   n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
-})();</script></body>
+})();</script><footer class="ss-foot">
+  <div class="ss-wrap ss-foot-top">
+    <div class="ss-foot-brand">
+      <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div>
+      <p class="ss-foot-h">Learn</p>
+      <ul>
+        <li><a href="/Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="/ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="/prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="/guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Creators</p>
+      <ul>
+        <li><a href="/field-guides.html">Creator Field Guides</a></li>
+        <li><a href="/playbooks/">Free Focus Playbook</a></li>
+        <li><a href="/no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="/card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="/connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Work with me</p>
+      <ul>
+        <li><a href="/contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Follow along</p>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ss-wrap ss-foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+</body>
 </html>

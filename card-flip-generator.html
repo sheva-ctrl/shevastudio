@@ -9,24 +9,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-:root{--violet:#6020D0;--violet-2:#7C3AED;--teal:#0891B2;--ink:#15151C;--muted:#55555F;--line:#E7E5EE;--bg:#FCFCFE;--card:#FFFFFF;--grad:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);}
+:root{--violet:#7B3FF2;--violet-2:#7B3FF2;--teal:#0F9B8A;--ink:#1E1830;--muted:#5B5568;--line:#E6E0F2;--bg:#FAF8FC;--card:#FFFFFF;--grad:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);}
 body { font-family:'Lexend',system-ui,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased; }
 .container { max-width:1400px; margin:0 auto; padding:0 clamp(20px,5vw,48px) clamp(28px,6vw,56px); }
 .kicker{ font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--violet); display:inline-flex; align-items:center; gap:10px; margin-bottom:16px; }
 .kicker::before{ content:""; width:34px; height:2px; background:var(--grad); border-radius:2px; }
 h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5vw,46px); color:var(--ink); margin-bottom:0.5rem; letter-spacing:-0.01em; }
 .subtitle { font-family:'Space Mono',monospace; color:var(--teal); font-weight:700; font-size:clamp(13px,2vw,16px); margin-bottom:1rem; }
-.note { background:linear-gradient(180deg,rgba(96,32,208,.05),rgba(8,145,178,.04)); border:1px solid var(--line); border-left:4px solid var(--violet); padding:0.85rem 1.1rem; border-radius:12px; font-size:0.92rem; color:var(--muted); margin-bottom:1.5rem; }
+.note { background:linear-gradient(180deg,rgba(123,63,242,.05),rgba(15,155,138,.04)); border:1px solid var(--line); border-left:4px solid var(--violet); padding:0.85rem 1.1rem; border-radius:12px; font-size:0.92rem; color:var(--muted); margin-bottom:1.5rem; }
 .main-grid { display:grid; grid-template-columns:1fr 2fr; gap:2rem; }
 .sidebar { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:1.5rem; height:fit-content; }
 .sidebar h2 { font-family:'Lexend',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:1rem; color:var(--ink); }
 .preset-btn { display:block; width:100%; padding:0.7rem; margin-bottom:0.5rem; background:#f0eff5; border:none; border-radius:999px; font-weight:600; cursor:pointer; text-align:left; transition:all 0.2s; font-family:'Lexend',sans-serif; }
 .preset-btn:hover { background:#e5e2f0; }
-.preset-btn.active { background:var(--grad); color:#fff; box-shadow:0 6px 18px rgba(96,32,208,.26); }
+.preset-btn.active { background:var(--grad); color:#fff; box-shadow:0 6px 18px rgba(123,63,242,.26); }
 .editor-section { margin-bottom:1.1rem; }
 .editor-label { font-size:0.78rem; font-weight:600; color:var(--muted); margin-bottom:0.35rem; display:block; }
 .editor-input, .editor-textarea, select.editor-input { width:100%; padding:0.6rem; border:1px solid var(--line); border-radius:0.5rem; font-size:0.85rem; font-family:'Inter',sans-serif; }
-.editor-input:focus, .editor-textarea:focus { outline:none; border-color:var(--violet); background:rgba(96,32,208,.04); }
+.editor-input:focus, .editor-textarea:focus { outline:none; border-color:var(--violet); background:rgba(123,63,242,.04); }
 .mode-toggle { display:flex; gap:0.5rem; }
 .mode-btn { flex:1; padding:0.6rem; border:none; border-radius:0.5rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Lexend',sans-serif; }
 .mode-btn.light-mode { background:#f2f1ea; color:#1a2238; border:2px solid var(--line); }
@@ -34,7 +34,7 @@ h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5v
 .mode-btn.selected { outline:3px solid #d9b26c; }
 .button-group { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-top:0.5rem; }
 .action-btn { padding:0.65rem 0.8rem; border-radius:999px; font-weight:600; border:none; cursor:pointer; font-size:0.85rem; transition:all 0.2s; font-family:'Lexend',sans-serif; }
-.btn-primary { background:var(--grad); color:#fff; box-shadow:0 4px 14px rgba(96,32,208,.22); } .btn-primary:hover { transform:translateY(-1px); }
+.btn-primary { background:var(--grad); color:#fff; box-shadow:0 4px 14px rgba(123,63,242,.22); } .btn-primary:hover { transform:translateY(-1px); }
 .btn-secondary { background:#e5e7eb; color:#374151; } .btn-secondary:hover { background:#d1d5db; }
 .btn-add { background:var(--teal); color:white; } .btn-add:hover { background:#0e7490; }
 .btn-del { background:#b91c1c; color:white; } .btn-del:hover { background:#991b1b; }
@@ -58,23 +58,23 @@ h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5v
 .card-tag { position:absolute; top:0.7rem; right:0.8rem; font-size:0.55rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6; }
 .card.dark .card-tag { color:#d9b26c; }
 .card.light .card-tag { color:#8a7a4f; }
-.export-section { background:linear-gradient(180deg,rgba(96,32,208,.04),rgba(8,145,178,.03)); border-radius:16px; padding:1.5rem; }
+.export-section { background:linear-gradient(180deg,rgba(123,63,242,.04),rgba(15,155,138,.03)); border-radius:16px; padding:1.5rem; }
 .export-title { font-family:'Lexend',sans-serif; font-size:1.1rem; font-weight:700; color:var(--ink); margin-bottom:1rem; }
-.export-btn { width:100%; padding:1rem; background:var(--grad); color:white; border:none; border-radius:999px; font-weight:700; font-size:1rem; cursor:pointer; margin-bottom:0.6rem; transition:transform .15s ease,box-shadow .15s ease; box-shadow:0 6px 18px rgba(96,32,208,.22); }
+.export-btn { width:100%; padding:1rem; background:var(--grad); color:white; border:none; border-radius:999px; font-weight:700; font-size:1rem; cursor:pointer; margin-bottom:0.6rem; transition:transform .15s ease,box-shadow .15s ease; box-shadow:0 6px 18px rgba(123,63,242,.22); }
 .export-btn:hover { transform:translateY(-2px); }
 .export-btn.secondary { background:#1f2937; box-shadow:none; }
 .export-note { font-size:0.85rem; color:var(--muted); margin-top:0.75rem; }
 .hint { font-size:0.8rem; color:var(--muted); margin-bottom:0.75rem; }
-.site-nav{position:sticky;top:0;z-index:100;background:rgba(252,252,254,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7E5EE;margin:0 0 24px;padding:14px clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
-.site-nav .nav-home:hover{color:#6020D0;}
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,252,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E6E0F2;margin:0 0 24px;padding:14px clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#1E1830;text-decoration:none;display:flex;align-items:center;gap:6px;}
+.site-nav .nav-home:hover{color:#7B3FF2;}
 .site-nav .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
-.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#55555F;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
-.site-nav .nav-link:hover{background:#F0EFF5;color:#15151C;}
+.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#5B5568;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
+.site-nav .nav-link:hover{background:#F0EFF5;color:#1E1830;}
 .site-nav .nav-link.current{background:var(--grad);color:#fff;}
 @media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
 </style>
-<style>:root{--f-accent:#6020D0;--f-accent2:#0891B2;--f-ink:#15151C;--f-muted:#55555F;--f-line:#E7E5EE;--f-soft:#F5F3FA;--f-card:#fff;--f-accent-line:rgba(96,32,208,.35);--f-head:'Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+<style>:root{--f-accent:#7B3FF2;--f-accent2:#0F9B8A;--f-ink:#1E1830;--f-muted:#5B5568;--f-line:#E6E0F2;--f-soft:#F1ECFD;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:'Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
 /* ===== Sheva Studio collapsible steps ===== */
 .fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
@@ -146,21 +146,22 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
 .main-grid > *{min-width:0} .slides-preview{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))!important}@media (max-width:760px){.main-grid{grid-template-columns:1fr!important}}</style><style>@media (max-width:640px){
   .nav-links a{white-space:nowrap;flex:none}
-  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.site-nav .nav-home{gap:9px!important}.nav-logo{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.site-nav .nav-home{gap:9px!important}.nav-logo{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+</head>
 <body>
-<nav class="site-nav">
-<a class="nav-home" href="index.html"><img alt="" aria-hidden="true" class="nav-logo" height="26" src="/sheva-studio-mark.svg" width="22.9"/>SHEVA STUDIO</a>
-<div class="nav-links">
-<a class="nav-link" href="index.html">Home</a>
-<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
-<a class="nav-link" href="guides.html">Guides</a>
-<a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-<a class="nav-link" href="ai-at-work.html">AI at Work</a>
-<a class="nav-link" href="field-guides.html">Field Guides</a>
-<a aria-current="page" class="nav-link current" href="index.html#create">Creator Tools</a>
-<a class="nav-link" href="contact.html">Contact</a>
-</div>
-</nav>
+<a class="ss-skip" href="#ss-main">Skip to content</a>
+<header class="ss-nav ss-sticky">
+  <div class="ss-wrap ss-row">
+    <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+    <nav aria-label="Main"><ul class="ss-links">
+      <li><a href="/#learn">Learn AI</a></li><li><a href="/#teams">For teams</a></li><li><a href="/#create" class="ss-here">For creators</a></li><li><a href="/playbooks/">Free playbook</a></li>
+    </ul></nav>
+    <a class="ss-cta" href="/contact.html">Book a Consultation</a>
+  </div>
+</header>
+<span id="ss-main" tabindex="-1"></span>
+
 <div class="container">
 <span class="kicker">ADHD Learning Pack · Sheva Studio</span>
 <h1>Build Your Own Decks</h1>
@@ -429,5 +430,53 @@ loadEditor(); render();
   var c=n.querySelector('[aria-current]');
   if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
   n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
-})();</script></body>
+})();</script><footer class="ss-foot">
+  <div class="ss-wrap ss-foot-top">
+    <div class="ss-foot-brand">
+      <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div>
+      <p class="ss-foot-h">Learn</p>
+      <ul>
+        <li><a href="/Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="/ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="/prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="/guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Creators</p>
+      <ul>
+        <li><a href="/field-guides.html">Creator Field Guides</a></li>
+        <li><a href="/playbooks/">Free Focus Playbook</a></li>
+        <li><a href="/no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="/card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="/connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Work with me</p>
+      <ul>
+        <li><a href="/contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Follow along</p>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ss-wrap ss-foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+</body>
 </html>

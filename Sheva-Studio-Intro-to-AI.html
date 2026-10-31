@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --violet:#6020D0; --violet-2:#7C3AED; --teal:#0891B2;
-    --ink:#15151C; --muted:#55555F; --line:#E7E5EE;
-    --bg:#FCFCFE; --card:#FFFFFF;
+    --violet:#7B3FF2; --violet-2:#7B3FF2; --teal:#0F9B8A;
+    --ink:#1E1830; --muted:#5B5568; --line:#E6E0F2;
+    --bg:#FAF8FC; --card:#FFFFFF;
     --grad:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -47,7 +47,7 @@
     text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
   .series-pills{display:flex;flex-wrap:wrap;gap:8px;}
   .series-pill{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;text-decoration:none;
-    color:var(--muted);background:#F5F3FA;border:1px solid var(--line);border-radius:999px;
+    color:var(--muted);background:#F1ECFD;border:1px solid var(--line);border-radius:999px;
     padding:8px 14px;display:inline-flex;align-items:center;gap:8px;transition:all .15s ease;white-space:nowrap;}
   .series-pill:hover{border-color:var(--violet);color:var(--violet);transform:translateY(-1px);}
   .series-pill b{font-size:11px;background:var(--line);color:var(--muted);width:20px;height:20px;
@@ -60,7 +60,7 @@
     background:var(--card);border:1px solid var(--line);border-left:4px solid var(--violet);
     border-radius:0 14px 14px 0;padding:18px 20px;margin:0 0 32px;text-decoration:none;
     transition:transform .15s ease,box-shadow .15s ease;}
-  .next-up:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(96,32,208,.1);}
+  .next-up:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(123,63,242,.1);}
   .next-up .nu-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
   .next-up .nu-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:var(--ink);}
@@ -101,7 +101,7 @@
     color:var(--muted);letter-spacing:0;margin-top:6px}
 
   /* pro tip */
-  .protip{background:rgba(96,32,208,.06);border:1px solid rgba(96,32,208,.18);border-radius:14px;
+  .protip{background:rgba(123,63,242,.06);border:1px solid rgba(123,63,242,.18);border-radius:14px;
     padding:16px 18px;margin:0 0 20px;font-size:15.5px;color:var(--ink);font-weight:300;line-height:1.6}
   .protip .lbl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--violet);display:block;margin-bottom:6px;font-weight:700}
@@ -171,7 +171,7 @@
   .btns{display:flex;flex-wrap:wrap;gap:12px}
   .btn{font-family:'Lexend';font-weight:500;font-size:15px;text-decoration:none;border-radius:999px;padding:13px 24px;
     display:inline-flex;align-items:center;gap:8px;transition:transform .15s,box-shadow .15s}
-  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 6px 22px rgba(123,63,242,.28)}
   .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
   .btn:hover{transform:translateY(-2px)}
   .btn-ghost:hover{border-color:var(--violet);color:var(--violet)}
@@ -183,13 +183,13 @@
   .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
   .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}
   @keyframes rise{to{opacity:1;transform:none}}
-.site-nav{position:sticky;top:0;z-index:100;background:rgba(252,252,254,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E7E5EE;margin:calc(-1 * clamp(28px,6vw,72px)) calc(-1 * clamp(20px,5vw,64px)) clamp(24px,5vw,40px);padding:14px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#15151C;text-decoration:none;display:flex;align-items:center;gap:6px;}
-.site-nav .nav-home:hover{color:#6020D0;}
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,252,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E6E0F2;margin:calc(-1 * clamp(28px,6vw,72px)) calc(-1 * clamp(20px,5vw,64px)) clamp(24px,5vw,40px);padding:14px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.site-nav .nav-home{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.08em;color:#1E1830;text-decoration:none;display:flex;align-items:center;gap:6px;}
+.site-nav .nav-home:hover{color:#7B3FF2;}
 .site-nav .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
-.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#55555F;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
-.site-nav .nav-link:hover{background:#F0EFF5;color:#15151C;}
-.site-nav .nav-link.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;}
+.site-nav .nav-link{font-family:'Lexend',sans-serif;font-size:13.5px;font-weight:500;color:#5B5568;text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .15s ease,color .15s ease;white-space:nowrap;}
+.site-nav .nav-link:hover{background:#F0EFF5;color:#1E1830;}
+.site-nav .nav-link.current{background:linear-gradient(100deg,#7B3FF2 0%,#7B3FF2 45%,#0F9B8A 100%);color:#fff;}
 @media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
 
   /* jump link */
@@ -198,7 +198,7 @@
   .jumplink:hover{color:var(--violet);}
 
   /* recommended tool badge */
-  .tool.recommended{background:rgba(96,32,208,.04);border-radius:14px;padding:18px 16px;margin-top:6px;border-top:none;}
+  .tool.recommended{background:rgba(123,63,242,.04);border-radius:14px;padding:18px 16px;margin-top:6px;border-top:none;}
   .tool.recommended .rec-tag{font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;
     text-transform:uppercase;color:#fff;background:var(--grad);display:inline-block;padding:3px 10px;
     border-radius:999px;margin-bottom:6px;}
@@ -212,7 +212,7 @@
   .stealbox li{margin-bottom:8px;}
   .stealbox li:last-child{margin-bottom:0;}
 </style>
-<style>:root{--f-accent:#6020D0;--f-accent2:#0891B2;--f-ink:#15151C;--f-muted:#55555F;--f-line:#E7E5EE;--f-soft:#F5F3FA;--f-card:#fff;--f-accent-line:rgba(96,32,208,.35);--f-head:'Syne','Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+<style>:root{--f-accent:#7B3FF2;--f-accent2:#0F9B8A;--f-ink:#1E1830;--f-muted:#5B5568;--f-line:#E6E0F2;--f-soft:#F1ECFD;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:'Syne','Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
 /* ===== Sheva Studio collapsible steps ===== */
 .fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
@@ -284,23 +284,25 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
 </style><style>@media (max-width:640px){
   .nav-links a{white-space:nowrap;flex:none}
-  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.site-nav .nav-home{gap:9px!important}.nav-logo{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.site-nav .nav-home{gap:9px!important}.nav-logo{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><style>body{padding:0!important}
+.ss-page{padding:clamp(28px,6vw,72px) clamp(20px,5vw,64px)}</style>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+</head>
 <body>
-<nav class="site-nav">
-<a class="nav-home" href="index.html"><img alt="" aria-hidden="true" class="nav-logo" height="26" src="/sheva-studio-mark.svg" width="22.9"/>SHEVA STUDIO</a>
-<div class="nav-links">
-<a class="nav-link" href="index.html">Home</a>
-<a aria-current="page" class="nav-link current" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
-<a class="nav-link" href="guides.html">Guides</a>
-<a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-<a class="nav-link" href="ai-at-work.html">AI at Work</a>
-<a class="nav-link" href="field-guides.html">Field Guides</a>
-<a class="nav-link" href="index.html#create">Creator Tools</a>
-<a class="nav-link" href="contact.html">Contact</a>
-</div>
-</nav>
+<a class="ss-skip" href="#ss-main">Skip to content</a>
+<header class="ss-nav ss-sticky">
+  <div class="ss-wrap ss-row">
+    <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+    <nav aria-label="Main"><ul class="ss-links">
+      <li><a href="/#learn" class="ss-here">Learn AI</a></li><li><a href="/#teams">For teams</a></li><li><a href="/#create">For creators</a></li><li><a href="/playbooks/">Free playbook</a></li>
+    </ul></nav>
+    <a class="ss-cta" href="/contact.html">Book a Consultation</a>
+  </div>
+</header>
+
+<div class="ss-page" id="ss-main">
 <div class="wrap">
-<a class="back-btn" href="index.html">← Studio Hub</a>
 <span class="kicker rise d1">The Starter Guide</span>
 <h1 class="rise d1">Start using AI <span class="accent">today.</span></h1>
 <p class="lede rise d2">One page, no jargon. Run your first prompt, build a habit, then pick a tool and go. <strong>Keep this open in a tab</strong> — it's built to be used, not just read.</p>
@@ -521,5 +523,54 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   var c=n.querySelector('[aria-current]');
   if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
   n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
-})();</script></body>
+})();</script></div>
+<footer class="ss-foot">
+  <div class="ss-wrap ss-foot-top">
+    <div class="ss-foot-brand">
+      <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div>
+      <p class="ss-foot-h">Learn</p>
+      <ul>
+        <li><a href="/Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="/ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="/prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="/guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Creators</p>
+      <ul>
+        <li><a href="/field-guides.html">Creator Field Guides</a></li>
+        <li><a href="/playbooks/">Free Focus Playbook</a></li>
+        <li><a href="/no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="/card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="/connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Work with me</p>
+      <ul>
+        <li><a href="/contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Follow along</p>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ss-wrap ss-foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+</body>
 </html>

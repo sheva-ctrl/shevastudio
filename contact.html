@@ -11,14 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --violet:#6020D0;
-    --violet-2:#7C3AED;
-    --teal:#0891B2;
-    --teal-2:#06B6D4;
-    --ink:#15151C;
-    --muted:#55555F;
-    --line:#E7E5EE;
-    --bg:#FCFCFE;
+    --violet:#7B3FF2;
+    --violet-2:#7B3FF2;
+    --teal:#0F9B8A;
+    --teal-2:#0F9B8A;
+    --ink:#1E1830;
+    --muted:#5B5568;
+    --line:#E6E0F2;
+    --bg:#FAF8FC;
     --card:#FFFFFF;
     --grad-violet:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 100%);
     --grad-teal:linear-gradient(100deg,var(--teal) 0%,var(--teal-2) 100%);
@@ -37,7 +37,7 @@
   /* ---- nav ---- */
   .site-nav{
     position:sticky;top:0;z-index:100;
-    background:rgba(252,252,254,.92);backdrop-filter:blur(8px);
+    background:rgba(250,248,252,.92);backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
   .site-nav .shell{
@@ -112,7 +112,7 @@
   .field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2355555F' stroke-width='2.2' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:42px}
   .field input:focus,.field select:focus,.field textarea:focus{
     outline:none;border-color:var(--violet-2);background:#fff;
-    box-shadow:0 0 0 4px rgba(124,58,237,.12);
+    box-shadow:0 0 0 4px rgba(123,63,242,.12);
   }
   .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:560px){.row{grid-template-columns:1fr}}
@@ -124,8 +124,8 @@
     border-radius:999px;padding:14px 26px;display:inline-flex;align-items:center;gap:8px;
     border:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;
   }
-  .btn-primary{background:var(--grad-full);color:#fff;box-shadow:0 6px 22px rgba(96,32,208,.28)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(96,32,208,.34)}
+  .btn-primary{background:var(--grad-full);color:#fff;box-shadow:0 6px 22px rgba(123,63,242,.28)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(123,63,242,.34)}
   .btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
   .form-foot{font-size:13.5px;color:var(--muted);margin-top:14px}
 
@@ -139,7 +139,7 @@
   .side-block h3{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;line-height:1.25;margin-bottom:6px}
   .side-block p{font-size:14.5px;color:var(--muted)}
   .side-divider{height:1px;background:var(--line);margin:24px 0}
-  .direct a{color:var(--violet);font-weight:500;text-decoration:none;border-bottom:1.5px solid rgba(96,32,208,.25)}
+  .direct a{color:var(--violet);font-weight:500;text-decoration:none;border-bottom:1.5px solid rgba(123,63,242,.25)}
   .direct a:hover{border-bottom-color:var(--violet)}
 
   footer{
@@ -150,7 +150,7 @@
   footer a{color:var(--violet);text-decoration:none}
   footer a:hover{text-decoration:underline}
 </style>
-<style>:root{--f-accent:#6020D0;--f-accent2:#0891B2;--f-ink:#15151C;--f-muted:#55555F;--f-line:#E7E5EE;--f-soft:#F5F3FA;--f-card:#fff;--f-accent-line:rgba(96,32,208,.35);--f-head:'Syne','Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+<style>:root{--f-accent:#7B3FF2;--f-accent2:#0F9B8A;--f-ink:#1E1830;--f-muted:#5B5568;--f-line:#E6E0F2;--f-soft:#F1ECFD;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:'Syne','Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
 /* ===== Sheva Studio collapsible steps ===== */
 .fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
@@ -222,27 +222,22 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
 main .grid{display:block!important} main .grid > details.fold{margin-bottom:12px}</style><style>@media (max-width:640px){
   .nav-links a{white-space:nowrap;flex:none}
-  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.nav-mark{width:auto!important;height:28px!important;background:none!important;border-radius:0!important;display:block!important;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.nav-mark{width:auto!important;height:28px!important;background:none!important;border-radius:0!important;display:block!important;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+</head>
 <body>
-<nav class="site-nav">
-<div class="shell">
-<a class="nav-home" href="index.html">
-<img alt="" aria-hidden="true" class="nav-mark" height="28" src="/sheva-studio-mark.svg" width="24.7"/>
-<span class="nav-word">SHEVA STUDIO</span>
-</a>
-<div class="nav-links">
-<a class="nav-link" href="index.html">Home</a>
-<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
-<a class="nav-link" href="guides.html">Guides</a>
-<a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-<a class="nav-link" href="ai-at-work.html">AI at Work</a>
-<a class="nav-link" href="field-guides.html">Field Guides</a>
-<a class="nav-link" href="index.html#create">Creator Tools</a>
-<a aria-current="page" class="nav-link current" href="contact.html">Contact</a>
-</div>
-</div>
-</nav>
-<main>
+<a class="ss-skip" href="#ss-main">Skip to content</a>
+<header class="ss-nav ss-sticky">
+  <div class="ss-wrap ss-row">
+    <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+    <nav aria-label="Main"><ul class="ss-links">
+      <li><a href="/#learn">Learn AI</a></li><li><a href="/#teams" class="ss-here">For teams</a></li><li><a href="/#create">For creators</a></li><li><a href="/playbooks/">Free playbook</a></li>
+    </ul></nav>
+    <a class="ss-cta" href="/contact.html">Book a Consultation</a>
+  </div>
+</header>
+
+<main id="ss-main">
 <div class="shell">
 <p class="page-kicker">Contact</p>
 <h1>Tell me what you're trying to fix.</h1>
@@ -436,5 +431,53 @@ main .grid{display:block!important} main .grid > details.fold{margin-bottom:12px
   var c=n.querySelector('[aria-current]');
   if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
   n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
-})();</script></body>
+})();</script><footer class="ss-foot">
+  <div class="ss-wrap ss-foot-top">
+    <div class="ss-foot-brand">
+      <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div>
+      <p class="ss-foot-h">Learn</p>
+      <ul>
+        <li><a href="/Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="/ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="/prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="/guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Creators</p>
+      <ul>
+        <li><a href="/field-guides.html">Creator Field Guides</a></li>
+        <li><a href="/playbooks/">Free Focus Playbook</a></li>
+        <li><a href="/no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="/card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="/connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Work with me</p>
+      <ul>
+        <li><a href="/contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Follow along</p>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ss-wrap ss-foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+</body>
 </html>

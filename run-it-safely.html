@@ -17,7 +17,7 @@
     --text:#1e1830;
     --muted:#5c5470;
     --accent:#7b3ff2;
-    --accent-2:#0891B2;        /* was #0f9b8a green — now brand teal (colorblind-safe) */
+    --accent-2:#0F9B8A;        /* was #0f9b8a green — now brand teal (colorblind-safe) */
     --accent-warm:#d97828;
     --font-heading:'Bricolage Grotesque',-apple-system,BlinkMacSystemFont,sans-serif;
     --font-body:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;
@@ -116,9 +116,9 @@
   .series-pills{display:flex;flex-wrap:wrap;gap:8px;}
   .series-pill{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;text-decoration:none;color:#55555F;background:#F5F3FA;border:1px solid #E7E5EE;border-radius:999px;padding:8px 14px;display:inline-flex;align-items:center;gap:8px;transition:all .15s ease;white-space:nowrap;}
   .series-pill:hover{border-color:#6020D0;color:#6020D0;transform:translateY(-1px);}
-  .series-pill:focus-visible{outline:2px solid #0891B2;outline-offset:2px;}
+  .series-pill:focus-visible{outline:2px solid #0F9B8A;outline-offset:2px;}
   .series-pill b{font-size:11px;background:#E7E5EE;color:#55555F;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;}
-  .series-pill.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0891B2 100%);color:#fff;border-color:transparent;}
+  .series-pill.current{background:linear-gradient(100deg,#6020D0 0%,#7C3AED 45%,#0F9B8A 100%);color:#fff;border-color:transparent;}
   .series-pill.current b{background:rgba(255,255,255,0.25);color:#fff;}
 
   /* FOOTER */
@@ -140,7 +140,7 @@
     .dodont li,.rung .body p,.pattern p{color:#000!important;}
   }
 </style>
-<style>:root{--f-accent:#7b3ff2;--f-accent2:#0891B2;--f-ink:#1e1830;--f-muted:#5c5470;--f-line:#e2dced;--f-soft:#f2edf8;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:var(--font-heading);--f-body:var(--font-body)}
+<style>:root{--f-accent:#7b3ff2;--f-accent2:#0F9B8A;--f-ink:#1e1830;--f-muted:#5c5470;--f-line:#e2dced;--f-soft:#f2edf8;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:var(--font-heading);--f-body:var(--font-body)}
 /* ===== Sheva Studio collapsible steps ===== */
 .fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
@@ -210,8 +210,22 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   .site-nav .nav-links{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0}
   .site-nav .nav-links::-webkit-scrollbar{display:none}}
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
-</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+</head>
 <body>
+<a class="ss-skip" href="#ss-main">Skip to content</a>
+<header class="ss-nav ss-sticky">
+  <div class="ss-wrap ss-row">
+    <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+    <nav aria-label="Main"><ul class="ss-links">
+      <li><a href="/#learn" class="ss-here">Learn AI</a></li><li><a href="/#teams">For teams</a></li><li><a href="/#create">For creators</a></li><li><a href="/playbooks/">Free playbook</a></li>
+    </ul></nav>
+    <a class="ss-cta" href="/contact.html">Book a Consultation</a>
+  </div>
+</header>
+<span id="ss-main" tabindex="-1"></span>
+
 <!-- HERO -->
 <header class="hero">
 <div class="kicker">Sheva · Part 4 · AI Integrations</div>
@@ -376,12 +390,6 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <div class="sub">Making AI human, practical, and a little bit fun.</div>
 <a class="cta" href="https://shevastudio.com/Sheva-Studio-Intro-to-AI.html">Back to Part 1 →</a>
 <a class="cta ghost" href="https://shevastudio.com/guides.html">Browse the Guides</a>
-<div class="socials">
-<a href="https://tiktok.com/@sheva.studio">TikTok</a>
-<a href="https://youtube.com/@sheva.studio">YouTube</a>
-<a href="https://instagram.com/sheva.studios">Instagram</a>
-<a href="https://linkedin.com/in/elishevanoland">LinkedIn</a>
-</div>
 </footer>
 <script>
   function showLane(which){
@@ -458,5 +466,53 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     });
   });
 })();
-</script></body>
+</script><footer class="ss-foot">
+  <div class="ss-wrap ss-foot-top">
+    <div class="ss-foot-brand">
+      <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div>
+      <p class="ss-foot-h">Learn</p>
+      <ul>
+        <li><a href="/Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="/ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="/prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="/guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Creators</p>
+      <ul>
+        <li><a href="/field-guides.html">Creator Field Guides</a></li>
+        <li><a href="/playbooks/">Free Focus Playbook</a></li>
+        <li><a href="/no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="/card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="/connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Work with me</p>
+      <ul>
+        <li><a href="/contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Follow along</p>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ss-wrap ss-foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+</body>
 </html>

@@ -10,10 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --violet:#6020D0;
-    --violet-2:#7C3AED;
-    --teal:#0891B2;
-    --teal-2:#06B6D4;
+    --violet:#7B3FF2;
+    --violet-2:#7B3FF2;
+    --teal:#0F9B8A;
+    --teal-2:#0F9B8A;
     --grad-full:linear-gradient(100deg,var(--violet) 0%,var(--violet-2) 45%,var(--teal) 100%);
     --bg:#100E1A;
     --card:#1B1830;
@@ -73,7 +73,7 @@
   }
   .hero-card::after{
     content:"";position:absolute;inset:0;pointer-events:none;
-    box-shadow:0 0 60px -10px rgba(124,58,237,.25) inset;
+    box-shadow:0 0 60px -10px rgba(123,63,242,.25) inset;
   }
   .deck-eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-2);margin-bottom:14px}
   .deck-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);line-height:1.12;margin-bottom:16px;max-width:20ch}
@@ -105,7 +105,7 @@
     cursor:pointer;text-decoration:none;display:block;
     transition:transform .15s ease,box-shadow .15s ease;
   }
-  .download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.35)}
+  .download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(123,63,242,.35)}
   .download-btn.is-soon{
     background:none;border:1px dashed var(--line);color:var(--muted);
     cursor:default;font-weight:500;
@@ -122,13 +122,13 @@
     font-family:'Lexend',sans-serif;
   }
   .film-item:hover{transform:translateY(-2px)}
-  .film-item.active{border-color:var(--teal-2);box-shadow:0 0 0 1px var(--teal-2),0 8px 20px -6px rgba(6,182,212,.4)}
+  .film-item.active{border-color:var(--teal-2);box-shadow:0 0 0 1px var(--teal-2),0 8px 20px -6px rgba(15,155,138,.4)}
   .film-num{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)}
   .film-title{font-size:12.5px;font-weight:500;line-height:1.3}
 
   .note{margin-top:32px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);max-width:60ch;line-height:1.7}
 </style>
-<style>:root{--f-accent:#7C3AED;--f-accent2:#06B6D4;--f-ink:#F3F1F8;--f-muted:#A9A3BE;--f-line:#332E52;--f-soft:#221E3B;--f-card:#1B1830;--f-accent-line:rgba(124,58,237,.6);--f-head:'Syne',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+<style>:root{--f-accent:#7B3FF2;--f-accent2:#0F9B8A;--f-ink:#F3F1F8;--f-muted:#A9A3BE;--f-line:#332E52;--f-soft:#221E3B;--f-card:#1B1830;--f-accent-line:rgba(123,63,242,.6);--f-head:'Syne',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
 /* ===== Sheva Studio collapsible steps ===== */
 .fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
@@ -200,27 +200,22 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
 .deck-viewer > *,.hero-row,.hero-card{min-width:0} .hero-card{flex:1 1 auto}</style><style>@media (max-width:640px){
   .nav-links a{white-space:nowrap;flex:none}
-  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.nav-mark{width:auto!important;height:28px!important;background:none!important;border-radius:0!important;display:block!important;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+  .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.nav-mark{width:auto!important;height:28px!important;background:none!important;border-radius:0!important;display:block!important;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+</head>
 <body>
-<nav class="site-nav">
-<div class="shell">
-<a class="nav-home" href="index.html">
-<img alt="" aria-hidden="true" class="nav-mark" height="28" src="/sheva-studio-mark.svg" width="24.7"/>
-<span class="nav-word">SHEVA STUDIO</span>
-</a>
-<div class="nav-links">
-<a class="nav-link" href="index.html">Home</a>
-<a class="nav-link" href="Sheva-Studio-Intro-to-AI.html">Intro to AI</a>
-<a class="nav-link" href="guides.html">Guides</a>
-<a class="nav-link" href="prompt-builder.html">Prompt Builder</a>
-<a class="nav-link" href="ai-at-work.html">AI at Work</a>
-<a class="nav-link" href="field-guides.html">Field Guides</a>
-<a aria-current="page" class="nav-link current" href="index.html#create">Creator Tools</a>
-<a class="nav-link" href="contact.html">Contact</a>
-</div>
-</div>
-</nav>
-<main>
+<a class="ss-skip" href="#ss-main">Skip to content</a>
+<header class="ss-nav ss-sticky">
+  <div class="ss-wrap ss-row">
+    <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+    <nav aria-label="Main"><ul class="ss-links">
+      <li><a href="/#learn">Learn AI</a></li><li><a href="/#teams">For teams</a></li><li><a href="/#create" class="ss-here">For creators</a></li><li><a href="/playbooks/">Free playbook</a></li>
+    </ul></nav>
+    <a class="ss-cta" href="/contact.html">Book a Consultation</a>
+  </div>
+</header>
+
+<main id="ss-main">
 <div class="shell">
 <p class="page-eyebrow">Grab &amp; Go</p>
 <h1 class="page-title">No-Brainer Decks</h1>
@@ -427,5 +422,53 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   var c=n.querySelector('[aria-current]');
   if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
   n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
-})();</script></body>
+})();</script><footer class="ss-foot">
+  <div class="ss-wrap ss-foot-top">
+    <div class="ss-foot-brand">
+      <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
+      <p>Plain-language AI for individuals, teams, and leaders. Made in Seattle.</p>
+    </div>
+    <div>
+      <p class="ss-foot-h">Learn</p>
+      <ul>
+        <li><a href="/Sheva-Studio-Intro-to-AI.html">The AI Series</a></li>
+        <li><a href="/ai-at-work.html">AI | What Actually Works</a></li>
+        <li><a href="/prompt-builder.html">The Prompt Builder</a></li>
+        <li><a href="/guides.html">Quick-Glance Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Creators</p>
+      <ul>
+        <li><a href="/field-guides.html">Creator Field Guides</a></li>
+        <li><a href="/playbooks/">Free Focus Playbook</a></li>
+        <li><a href="/no-brainer-decks.html">No-Brainer Decks</a></li>
+        <li><a href="/card-flip-generator.html">Build-Your-Own Decks</a></li>
+        <li><a href="/connect.html">All my links</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Work with me</p>
+      <ul>
+        <li><a href="/contact.html">Book a Consultation</a></li>
+        <li><a href="mailto:sheva@shevastudio.com">sheva@shevastudio.com</a></li>
+        <li><a href="https://www.linkedin.com/in/elishevanoland/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/company/sheva-studio/" target="_blank" rel="noopener">Sheva Studio on LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ss-foot-h">Follow along</p>
+      <ul>
+        <li><a href="https://tiktok.com/@sheva.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://youtube.com/@sheva.studio" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/sheva.studios" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://facebook.com/ShevaKayStudio" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://pinterest.com/scribinglife" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://amazon.com/shop/scribinglife" target="_blank" rel="noopener">Amazon Shop</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ss-wrap ss-foot-base"><p>© 2026 Sheva Studio</p></div>
+</footer>
+</body>
 </html>

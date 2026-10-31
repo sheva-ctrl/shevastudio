@@ -17,6 +17,7 @@ Sheva Studio Intros and How-Tos — a small site for learning AI and building AD
 
 ## Notes
 
-- All pages share one sticky nav bar so you always know where you are.
-- Brand palette: violet → teal gradient, Lexend + Space Mono.
-- The `Gemini_Generated_Image_kl8s9vkl8s9vkl8s.png` sticker needs to stay in the repo root — it's referenced by filename on the homepage.
+- Every page shares one header and footer. Their styles live in `site.css`; the header and footer markup is the same block on each page, so a menu change means updating `site.css` plus that block.
+- Brand palette: violet #7B3FF2, teal #0F9B8A, plum #1E1830, gold #D9B26C, background #FAF8FC. Syne headlines, Lexend body, Space Mono wordmark.
+- `connect.html` is the TikTok link-in-bio page and intentionally has no site header.
+- `sheva.png` (the signature sticker) is used on the homepage hero and in link previews.
