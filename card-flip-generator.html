@@ -3,9 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>h1,h2,h3{font-family:'Bricolage Grotesque','Lexend',sans-serif}</style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Build Your Own Decks — Sheva Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Space+Mono:wght@400;700&amp;family=Inter:wght@400;500;600&amp;family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -14,18 +16,18 @@ body { font-family:'Lexend',system-ui,sans-serif; background:var(--bg); color:va
 .container { max-width:1400px; margin:0 auto; padding:0 clamp(20px,5vw,48px) clamp(28px,6vw,56px); }
 .kicker{ font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--violet); display:inline-flex; align-items:center; gap:10px; margin-bottom:16px; }
 .kicker::before{ content:""; width:34px; height:2px; background:var(--grad); border-radius:2px; }
-h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5vw,46px); color:var(--ink); margin-bottom:0.5rem; letter-spacing:-0.01em; }
+h1 { font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(30px,5.5vw,46px); color:var(--ink); margin-bottom:0.5rem; letter-spacing:-0.01em; }
 .subtitle { font-family:'Space Mono',monospace; color:var(--teal); font-weight:700; font-size:clamp(13px,2vw,16px); margin-bottom:1rem; }
 .note { background:linear-gradient(180deg,rgba(123,63,242,.05),rgba(15,155,138,.04)); border:1px solid var(--line); border-left:4px solid var(--violet); padding:0.85rem 1.1rem; border-radius:12px; font-size:0.92rem; color:var(--muted); margin-bottom:1.5rem; }
 .main-grid { display:grid; grid-template-columns:1fr 2fr; gap:2rem; }
 .sidebar { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:1.5rem; height:fit-content; }
-.sidebar h2 { font-family:'Lexend',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:1rem; color:var(--ink); }
+.sidebar h2 { font-family:'Bricolage Grotesque',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:1rem; color:var(--ink); }
 .preset-btn { display:block; width:100%; padding:0.7rem; margin-bottom:0.5rem; background:#f0eff5; border:none; border-radius:999px; font-weight:600; cursor:pointer; text-align:left; transition:all 0.2s; font-family:'Lexend',sans-serif; }
 .preset-btn:hover { background:#e5e2f0; }
 .preset-btn.active { background:var(--grad); color:#fff; box-shadow:0 6px 18px rgba(123,63,242,.26); }
 .editor-section { margin-bottom:1.1rem; }
 .editor-label { font-size:0.78rem; font-weight:600; color:var(--muted); margin-bottom:0.35rem; display:block; }
-.editor-input, .editor-textarea, select.editor-input { width:100%; padding:0.6rem; border:1px solid var(--line); border-radius:0.5rem; font-size:0.85rem; font-family:'Inter',sans-serif; }
+.editor-input, .editor-textarea, select.editor-input { width:100%; padding:0.6rem; border:1px solid var(--line); border-radius:0.5rem; font-size:0.85rem; font-family:'Lexend',sans-serif; }
 .editor-input:focus, .editor-textarea:focus { outline:none; border-color:var(--violet); background:rgba(123,63,242,.04); }
 .mode-toggle { display:flex; gap:0.5rem; }
 .mode-btn { flex:1; padding:0.6rem; border:none; border-radius:0.5rem; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Lexend',sans-serif; }
@@ -39,7 +41,7 @@ h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5v
 .btn-add { background:var(--teal); color:white; } .btn-add:hover { background:#0e7490; }
 .btn-del { background:#b91c1c; color:white; } .btn-del:hover { background:#991b1b; }
 .preview-area { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:2rem; }
-.preview-title { font-family:'Lexend',sans-serif; font-size:1.4rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+.preview-title { font-family:'Bricolage Grotesque',sans-serif; font-size:1.4rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
 .preview-count { font-family:'Space Mono',monospace; font-size:0.8rem; color:var(--muted); margin-bottom:1.5rem; display:block; }
 .slides-preview { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; margin-bottom:2rem; }
 .card { aspect-ratio:4/5; border-radius:0.5rem; padding:2rem 1.5rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.12); cursor:pointer; transition:transform .15s ease; }
@@ -49,7 +51,7 @@ h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5v
 .card.dark { background:#1b2540; color:#f2f0e9; }
 .card-eyebrow { font-size:0.65rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:0.9rem; }
 .card.dark .card-eyebrow { color:#d9b26c; } .card.light .card-eyebrow { color:#8a7a4f; }
-.card-headline { font-family:'Playfair Display',serif; font-weight:700; line-height:1.18; white-space:pre-line; }
+.card-headline { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; line-height:1.18; white-space:pre-line; }
 .card-headline.big { font-size:1.55rem; } .card-headline.med { font-size:1.3rem; }
 .card-subtitle { font-size:0.85rem; line-height:1.5; margin-top:1rem; white-space:pre-line; opacity:0.92; }
 .card-footer { position:absolute; bottom:0.9rem; left:0; right:0; text-align:center; font-size:0.55rem; letter-spacing:0.08em; opacity:0.38; }
@@ -59,7 +61,7 @@ h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5v
 .card.dark .card-tag { color:#d9b26c; }
 .card.light .card-tag { color:#8a7a4f; }
 .export-section { background:linear-gradient(180deg,rgba(123,63,242,.04),rgba(15,155,138,.03)); border-radius:16px; padding:1.5rem; }
-.export-title { font-family:'Lexend',sans-serif; font-size:1.1rem; font-weight:700; color:var(--ink); margin-bottom:1rem; }
+.export-title { font-family:'Bricolage Grotesque',sans-serif; font-size:1.1rem; font-weight:700; color:var(--ink); margin-bottom:1rem; }
 .export-btn { width:100%; padding:1rem; background:var(--grad); color:white; border:none; border-radius:999px; font-weight:700; font-size:1rem; cursor:pointer; margin-bottom:0.6rem; transition:transform .15s ease,box-shadow .15s ease; box-shadow:0 6px 18px rgba(123,63,242,.22); }
 .export-btn:hover { transform:translateY(-2px); }
 .export-btn.secondary { background:#1f2937; box-shadow:none; }
@@ -74,7 +76,7 @@ h1 { font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(30px,5.5v
 .site-nav .nav-link.current{background:var(--grad);color:#fff;}
 @media(max-width:600px){.site-nav{flex-direction:column;align-items:flex-start;}}
 </style>
-<style>:root{--f-accent:#7B3FF2;--f-accent2:#0F9B8A;--f-ink:#1E1830;--f-muted:#5B5568;--f-line:#E6E0F2;--f-soft:#F1ECFD;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:'Lexend',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
+<style>:root{--f-accent:#7B3FF2;--f-accent2:#0F9B8A;--f-ink:#1E1830;--f-muted:#5B5568;--f-line:#E6E0F2;--f-soft:#F1ECFD;--f-card:#fff;--f-accent-line:rgba(123,63,242,.35);--f-head:'Bricolage Grotesque',sans-serif;--f-body:'Lexend',system-ui,sans-serif}
 /* ===== Sheva Studio collapsible steps ===== */
 .fold-help{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin:28px 0 14px;padding:14px 16px;border-radius:14px;background:var(--f-soft);border:1px solid var(--f-line);
