@@ -304,6 +304,10 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 .ssx-next b{color:var(--f-accent,#7B3FF2)}
 .ssx-opt{font-weight:400;opacity:.75}
 </style>
+<style id="a11y-fixes">
+/* Readable small text: darker shades of the brand teal, gold and orange (WCAG AA 4.5:1) */
+.signoff a{text-decoration:underline;text-underline-offset:2px}
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -317,7 +321,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   </div>
 </header>
 
-<div class="ss-page" id="ss-main">
+<div class="ss-page" id="ss-main" role="main">
 <div class="wrap">
 <span class="kicker rise d1">The Starter Guide</span>
 <h1 class="rise d1">Start using AI <span class="accent">today.</span></h1>
@@ -339,7 +343,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <b>Talk to it like a person.</b> Type the way you'd talk to a friend or coworker you're figuring something out with — normal sentences, plain words. You don't need any special tricks.
   </div>
 <!-- MOVED 04 TO 01 -->
-<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Pick</span><h2 class="fold-title">Which tool, and when</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:04</p><button aria-label="Play video: Your First 15 Minutes With AI: Pick One Tool and Go" class="yt" data-id="bTn4lZsoTBU" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p></div><p class="fold-lede">Match the tool to your goals and style. Tap a logo to open it and try prompting.</p><section class="section rise d2">
+<div class="fold-help"><p><b>How this page works:</b> tap or click a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Pick</span><h2 class="fold-title">Which tool, and when</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:04</p><button aria-label="Play video: Your First 15 Minutes With AI: Pick One Tool and Go" class="yt" data-id="bTn4lZsoTBU" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p></div><p class="fold-lede">Match the tool to your goals and style. Tap or click a logo to open it and try prompting.</p><section class="section rise d2">
 <div class="tool">
 <a aria-label="Open Microsoft Copilot" class="badge" href="https://copilot.microsoft.com" rel="noopener" target="_blank">
 <img alt="Microsoft Copilot logo" height="24" loading="lazy" src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&amp;sz=128" width="24"/></a>
@@ -388,7 +392,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 </div>
 </section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-2"><span><small>Next · Step 2</small><b>Prompting that works</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 <details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Prompt</span><h2 class="fold-title">Prompting that works</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 4:52</p><button aria-label="Play video: How to Talk to AI So It Actually Understands You" class="yt" data-id="77PcQZEa5_0" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/77PcQZEa5_0/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">How to Talk to AI So It Actually Understands You</p></div><section class="section rise d2">
-<p class="hint">A good request has these pieces. Tap any one to open an example.</p>
+<p class="hint">A good request has these pieces. Tap or click any one to open an example.</p>
 <div class="acc">
 <button aria-expanded="false" class="piece" data-k="role"><span><b>Role</b> — who it answers as</span><span class="pm">+</span></button>
 <div class="piece-ex" data-ex="role" hidden=""><span class="k">Role (optional).</span> What role or personality do you want it to answer in? <span class="ex">e.g. "Answer as a patient teacher," or "a friendly nurse."</span></div>

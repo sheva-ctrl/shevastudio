@@ -213,6 +213,10 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 .ssx-next b{color:var(--f-accent,#7B3FF2)}
 .ssx-opt{font-weight:400;opacity:.75}
 </style>
+<style id="a11y-fixes">
+/* Readable small text: darker shades of the brand teal, gold and orange (WCAG AA 4.5:1) */
+.prompt-line span{color:#0B7468}
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -226,7 +230,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   </div>
 </header>
 
-<div class="ss-page" id="ss-main">
+<div class="ss-page" id="ss-main" role="main">
 <div class="wrap">
 <div class="rise d1" style="text-align:center; margin-bottom:28px;">
 <a href="#connect" style="text-decoration: none; display: inline-block;">
@@ -237,49 +241,49 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <p class="lede rise d2">Ask, analyze, create, and verify — with any AI assistant you have access to. Match the tool to how you naturally think and operate.</p><div class="page-video"><p class="fold-video-label">Watch first · 5:55</p><button aria-label="Play video: Where Do I Start With AI? Build a Practical Foundation" class="yt" data-id="ls2BQ2RFYYo" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/ls2BQ2RFYYo/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Where Do I Start With AI? Build a Practical Foundation</p></div>
 <p class="lede">How AI actually works, the five parts of a strong prompt, and the two rules that keep you safe: always verify the output, never paste in sensitive data.</p>
 <p class="ssx-obj"><b>By the end:</b> you'll know which AI tool fits how you work, a 5-step habit for using it, a prompt recipe, and the two rules that keep you safe.</p>
-<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Step 1 of 6</span><h2 class="fold-title">Cross-Platform Core Engines</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:04</p><button aria-label="Play video: Your First 15 Minutes With AI: Pick One Tool and Go" class="yt" data-id="bTn4lZsoTBU" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p></div><section class="gsec">
+<div class="fold-help"><p><b>How this page works:</b> tap or click a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Step 1 of 6</span><h2 class="fold-title">Cross-Platform Core Engines</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><div class="fold-video"><p class="fold-video-label">Watch · 3:04</p><button aria-label="Play video: Your First 15 Minutes With AI: Pick One Tool and Go" class="yt" data-id="bTn4lZsoTBU" type="button"><img alt="" loading="lazy" onerror="var s=this.src;if(s.indexOf('maxresdefault')&gt;-1)this.src=s.replace('maxresdefault','sddefault');else if(s.indexOf('sddefault')&gt;-1)this.src=s.replace('sddefault','hqdefault');else this.onerror=this.onload=null" onload="if(this.naturalWidth&amp;&amp;this.naturalWidth&lt;=120)this.onerror()" src="https://i.ytimg.com/vi/bTn4lZsoTBU/maxresdefault.jpg"/><span class="play"><i></i></span></button><p class="fold-video-title">Your First 15 Minutes With AI: Pick One Tool and Go</p></div><section class="gsec">
 <div class="tools-container rise d2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 24px;">
 <a class="tool-tag recommended" href="https://chatgpt.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
 <img alt="ChatGPT" src="https://www.google.com/s2/favicons?domain=chatgpt.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
 <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
 <span class="rec-tag">Start here</span>
 <span style="font-weight: 700; color:var(--ink);">ChatGPT</span>
-<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Writing &amp; Brainstorming</span>
+<span style="font-size: 11px; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Writing &amp; Brainstorming</span>
 </div>
 </a>
 <a class="tool-tag" href="https://gemini.google.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
 <img alt="Gemini" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
 <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
 <span style="font-weight: 700; color:var(--ink);">Google Gemini</span>
-<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Google &amp; Visuals</span>
+<span style="font-size: 11px; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Google &amp; Visuals</span>
 </div>
 </a>
 <a class="tool-tag" href="https://claude.ai" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
 <img alt="Claude" src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
 <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
 <span style="font-weight: 700; color:var(--ink);">Claude</span>
-<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Documents &amp; Code</span>
+<span style="font-size: 11px; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Documents &amp; Code</span>
 </div>
 </a>
 <a class="tool-tag" href="https://copilot.microsoft.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
 <img alt="Copilot" src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
 <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
 <span style="font-weight: 700; color:var(--ink);">Copilot</span>
-<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Microsoft 365</span>
+<span style="font-size: 11px; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Microsoft 365</span>
 </div>
 </a>
 <a class="tool-tag" href="https://grok.com" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
 <img alt="Grok" src="https://www.google.com/s2/favicons?domain=grok.com&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
 <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
 <span style="font-weight: 700; color:var(--ink);">Grok</span>
-<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Real-Time &amp; X Data</span>
+<span style="font-size: 11px; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Real-Time &amp; X Data</span>
 </div>
 </a>
 <a class="tool-tag" href="https://fellow.app" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 10px; height: auto; padding: 12px 16px;" target="_blank">
 <img alt="Fellow" src="https://www.google.com/s2/favicons?domain=fellow.app&amp;sz=128" style="width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;"/>
 <div style="display: flex; flex-direction: column; text-align: left; line-height: 1.3;">
 <span style="font-weight: 700; color:var(--ink);">Fellow</span>
-<span style="font-size: 11px; opacity: 0.8; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Meeting Notes &amp; Actions</span>
+<span style="font-size: 11px; font-family: system-ui, sans-serif; font-weight: 400; margin-top: 2px;">Best for Meeting Notes &amp; Actions</span>
 </div>
 </a>
 </div>

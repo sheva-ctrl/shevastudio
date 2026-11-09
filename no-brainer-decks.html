@@ -218,6 +218,10 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 .ssx-next b{color:var(--f-accent,#7B3FF2)}
 .ssx-opt{font-weight:400;opacity:.75}
 </style>
+<style id="a11y-fixes">
+/* Readable small text: darker shades of the brand teal, gold and orange (WCAG AA 4.5:1) */
+.fold-help b,.ssx-obj b,button.fold-all,a.fold-next small{color:#B08CFF}
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -237,7 +241,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <h1 class="page-title">No-Brainer Decks</h1>
 <p class="ssx-lede">Ready-made carousel decks of small, ADHD-friendly moves. Flip through a deck, pick one move, and try it today.</p>
 <p class="ssx-obj"><b>By the end:</b> you'll have one move from one deck to try today.</p>
-<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Tap the arrows or a slide</span><h2 class="fold-title">Browse the decks</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="deck-viewer">
+<div class="fold-help"><p><b>How this page works:</b> tap or click a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Use the arrows or pick a slide</span><h2 class="fold-title">Browse the decks</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="deck-viewer">
 <div>
 <div class="hero-row">
 <button aria-label="Previous deck" class="arrow-btn" id="prevBtn">
@@ -253,12 +257,12 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
 </button>
 </div>
-<div class="filmstrip" id="filmstrip"></div>
+<div class="filmstrip" id="filmstrip" tabindex="0" role="region" aria-label="Slides in this deck"></div>
 </div>
-<aside class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar">
 <!-- bullets injected here -->
 <span aria-disabled="true" class="download-btn is-soon">Downloads coming soon</span>
-</aside>
+</div>
 </div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-2"><span><small>Next · Step 2</small><b>Get the full decks</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 <details class="fold" id="step-2"><summary><span aria-hidden="true" class="fold-num">2</span><span><span class="fold-meta">Coming soon</span><h2 class="fold-title">Get the full decks</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><p class="note">These decks are previews — downloads open here soon. In the meantime, <a href="index.html#connect" style="color:var(--teal-2);">find me where you already scroll</a> for the same ideas in short form.</p></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="card-flip-generator.html"><span><small>Next · Make your own</small><b>Build Your Own Deck</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 </div>
