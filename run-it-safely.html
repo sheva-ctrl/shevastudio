@@ -228,6 +228,13 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 .ssx-next b{color:var(--f-accent,#7B3FF2)}
 .ssx-opt{font-weight:400;opacity:.75}
 </style>
+<style id="a11y-fixes">
+/* Readable small text: darker shades of the brand teal, gold and orange (WCAG AA 4.5:1) */
+.promise .n,.pattern .tag,.lane-badge.everyday{color:#0B7468}
+.lane-tab.everyday.active{background:#0B7468}
+.dodont .col.dont .lbl,.promise .h,.guard .h{color:#A84F12}
+.dodont .col.do .lbl{color:#0B7468}
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -240,7 +247,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     <a class="ss-cta" href="/contact.html">Book a Consultation</a>
   </div>
 </header>
-<span id="ss-main" tabindex="-1"></span>
+<main id="ss-main" tabindex="-1" style="outline:none">
 
 <!-- HERO -->
 <header class="hero">
@@ -266,10 +273,10 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <button class="lane-tab everyday active" onclick="showLane('everyday')"><span class="dot"></span>Everyday Track</button>
 <button class="lane-tab dev" onclick="showLane('dev')"><span class="dot"></span>Developer Track</button>
 </div>
-<p class="muted" style="text-align:center;margin-top:16px;font-size:0.9rem;">Tap a track to jump to it — or just scroll; both are below.</p>
+<p class="muted" style="text-align:center;margin-top:16px;font-size:0.9rem;">Pick a track to jump to it — or just scroll; both are below.</p>
 </section>
 <!-- ============ EVERYDAY LANE ============ -->
-<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><div id="lane-everyday">
+<div class="fold-help"><p><b>How this page works:</b> tap or click a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><div id="lane-everyday">
 <details class="fold" id="step-e1" open=""><summary><span aria-hidden="true" class="fold-num">E1</span><span><span class="fold-meta">The Big Idea</span><h2 class="fold-title">Limit the blast radius.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
 <div class="lane-badge everyday">Everyday Track</div>
 
@@ -484,7 +491,8 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     });
   });
 })();
-</script><footer class="ss-foot">
+</script></main>
+<footer class="ss-foot">
   <div class="ss-wrap ss-foot-top">
     <div class="ss-foot-brand">
       <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>

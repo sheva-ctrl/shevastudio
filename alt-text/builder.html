@@ -461,7 +461,7 @@ canvas.confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:n
 
   function copy(text, btn){
     function done(ok){
-      btn.textContent = ok ? 'Copied' : 'Press and hold to copy';
+      btn.textContent = ok ? 'Copied' : 'Select the text to copy';
       btn.classList.toggle('ok', ok);
       if (ok) party.pop(btn);
       setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1600);

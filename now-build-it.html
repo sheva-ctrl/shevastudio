@@ -261,6 +261,12 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 .ssx-next b{color:var(--f-accent,#7B3FF2)}
 .ssx-opt{font-weight:400;opacity:.75}
 </style>
+<style id="a11y-fixes">
+/* Readable small text: darker shades of the brand teal, gold and orange (WCAG AA 4.5:1) */
+.promise .n,.pattern .tag,.move .lbl{color:#0B7468}
+.promise .h,.guard .h{color:#A84F12}
+
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -273,7 +279,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     <a class="ss-cta" href="/contact.html">Book a Consultation</a>
   </div>
 </header>
-<span id="ss-main" tabindex="-1"></span>
+<main id="ss-main" tabindex="-1" style="outline:none">
 
 <!-- SERIES NAV -->
 <nav class="series-nav">
@@ -313,7 +319,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 </div>
 </section>
 <!-- 01 WHAT IS AN AGENT -->
-<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">The Big Idea</span><h2 class="fold-title">An agent is just a handoff that repeats.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
+<div class="fold-help"><p><b>How this page works:</b> tap or click a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1" open=""><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">The Big Idea</span><h2 class="fold-title">An agent is just a handoff that repeats.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
 
 
 <p class="lead">Forget the sci-fi. Strip away the buzzword and an "agent" is something simple: instead of asking AI to do a task once, you set it up so it does that task again and again — with less and less input from you.</p>
@@ -349,7 +355,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 
 <p class="lead">Same three ingredients, very different tools. Start wherever you are — you can always climb.</p>
 <div class="recipe" style="border-left:3px solid var(--accent-2);">
-<div class="title" style="color:var(--accent-2);">Tier 1 · No-code — start here</div>
+<div class="title" style="color:#0B7468;">Tier 1 · No-code — start here</div>
 <p style="color:#3a3350;font-size:0.94rem;margin-bottom:10px;">Built into tools you already have. No coding, ready in about ten minutes. Match it to your ecosystem.</p>
 <div class="flow">
 <span class="chip">Custom GPTs (ChatGPT)</span>
@@ -436,7 +442,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <details class="fold" id="step-6"><summary><span aria-hidden="true" class="fold-num">6</span><span><span class="fold-meta">Your Turn</span><h2 class="fold-title">Design your first agent.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
 
 
-<p class="lead">Fill in the boxes for one agent you'd actually use. Short answers are fine, and the gray text shows an example. Then <strong>tap Print / Save</strong> to keep it. This page doesn't save it for you.</p>
+<p class="lead">Fill in the boxes for one agent you'd actually use. Short answers are fine, and the gray text shows an example. Then <strong>use Print / Save</strong> to keep it. This page doesn't save it for you.</p>
 <div class="builder">
 <div class="step-label">My agent recipe card</div>
 <div class="field"><label for="agJob">The JOB — what it does every time</label><input id="agJob" placeholder="e.g. turn my meeting notes into a summary + action items" type="text"/></div>
@@ -564,7 +570,8 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     });
   });
 })();
-</script><footer class="ss-foot">
+</script></main>
+<footer class="ss-foot">
   <div class="ss-wrap ss-foot-top">
     <div class="ss-foot-brand">
       <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>

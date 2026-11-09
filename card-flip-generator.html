@@ -162,7 +162,12 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 .ssx-wwc li::before{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--f-accent2,#0B7468)}
 .ssx-next{margin:14px 0 0;padding:12px 14px;border-radius:12px;background:#fff;font-size:16px;line-height:1.5;color:var(--f-ink,#1E1830)}
 .ssx-next b{color:var(--f-accent,#7B3FF2)}
-.ssx-opt{font-weight:400;opacity:.75}
+.ssx-opt{font-weight:400}
+</style>
+<style id="a11y-fixes">
+/* Readable small text: darker shades of the brand teal, gold and orange (WCAG AA 4.5:1) */
+.subtitle{color:#0B7468}
+.btn-add{background:#0B7468}
 </style>
 </head>
 <body>
@@ -176,7 +181,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     <a class="ss-cta" href="/contact.html">Book a Consultation</a>
   </div>
 </header>
-<span id="ss-main" tabindex="-1"></span>
+<main id="ss-main" tabindex="-1" style="outline:none">
 
 <div class="container">
 <span class="kicker">ADHD Learning Pack · Sheva Studio</span>
@@ -185,7 +190,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <p class="ssx-lede">Turn an idea into a swipeable carousel without design software. Start from a ready-made ADHD challenge deck or a blank one, change the words, and download every slide as an image.</p>
 <p class="ssx-obj"><b>By the end:</b> you'll have a carousel deck saved as images, in order, ready to post on TikTok, Instagram or Facebook.</p>
 <div class="note">💡 Dark slides carry the big idea. Light slides carry the everyday habit. Power slides add a small @scribing.life tag at the bottom; intro slides stay clean.</div>
-<div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1"><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Four steps</span><h2 class="fold-title">How it works</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="howto" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+<div class="fold-help"><p><b>How this page works:</b> tap or click a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1"><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Four steps</span><h2 class="fold-title">How it works</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="howto" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
 <div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">1 · START</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Pick a challenge to remix, or start blank.</p></div>
 <div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">2 · CLICK</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Click any slide in the preview. It's now the one you're editing, shown on the left.</p></div>
@@ -200,7 +205,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <button class="preset-btn" onclick="loadPreset('deck2',event)">🎯 Focus Challenge</button>
 <button class="preset-btn" onclick="loadPreset('deck3',event)">🧘 Reset Challenge</button>
 <button class="preset-btn" onclick="loadPreset('blank',event)">✏️ Blank Canvas</button>
-<h2 style="margin-top:2rem;">Edit Slide <span id="editSlideNum" style="color:#d9b26c;"></span></h2>
+<h2 style="margin-top:2rem;">Edit Slide <span id="editSlideNum" style="color:#8a6d2c;"></span></h2>
 <p class="hint">Click a slide in the preview to pick it. Changes show up as you type.</p>
 <div class="editor-section">
 <span class="editor-label" id="bgLab">Slide color</span>
@@ -451,7 +456,8 @@ loadEditor(); render();
   var c=n.querySelector('[aria-current]');
   if(c && n.scrollWidth > n.clientWidth){ n.scrollLeft += c.getBoundingClientRect().left - n.getBoundingClientRect().left - 12; }
   n.addEventListener('scroll', edge, {passive:true}); window.addEventListener('resize', edge); edge();
-})();</script><footer class="ss-foot">
+})();</script></main>
+<footer class="ss-foot">
   <div class="ss-wrap ss-foot-top">
     <div class="ss-foot-brand">
       <a class="ss-brand" href="/" aria-label="Sheva Studio home"><img src="/sheva-studio-mark.svg" alt="" width="27" height="30"/><span>SHEVA STUDIO</span></a>
