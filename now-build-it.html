@@ -143,7 +143,7 @@
 
   /* COMMIT */
   .commit-box{background:linear-gradient(135deg,rgba(217,120,40,0.08),rgba(123,63,242,0.06));border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:20px;text-align:center;}
-  .commit-box .fill{font-size:1.15rem;font-weight:700;line-height:1.7;color:var(--text);margin-bottom:6px;}
+  .commit-box .fill{display:block;font-size:1.15rem;font-weight:700;line-height:1.7;color:var(--text);margin-bottom:6px;}
   .commit-input{width:100%;max-width:460px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;color:var(--text);font-size:1rem;font-family:inherit;text-align:center;margin:4px auto 16px;display:block;}
   .commit-input:focus{outline:none;border-color:var(--accent);}
   .commit-input::placeholder{color:#a39ab5;}
@@ -247,6 +247,20 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
 </style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
 <link href="/site.css" rel="stylesheet"/>
+<style id="ssx-consistency">
+/* Shared: goal line + What We Covered wrap-up, matched to the creator field guides */
+.ssx-obj{margin:18px 0;padding:14px 16px;border-radius:14px;background:var(--f-soft,#F1ECFD);border:1px solid var(--f-line,#E6E0F2);font-size:16px;line-height:1.5;color:var(--f-ink,#1E1830);text-align:left}
+.ssx-obj b{color:var(--f-accent,#7B3FF2)}
+.ssx-lede{font-size:18px;line-height:1.5;margin:12px 0 0}
+.ssx-wwc{background:linear-gradient(135deg,#ece7fb,#e3f1ec);border-radius:14px;padding:18px 16px}
+.ssx-wwc ul{list-style:none;margin:0;padding:0}
+.ssx-wwc li{position:relative;padding:10px 0 10px 24px;border-bottom:1px solid rgba(30,24,48,.08);font-size:16px;line-height:1.5;color:var(--f-ink,#1E1830)}
+.ssx-wwc li:last-child{border-bottom:0}
+.ssx-wwc li::before{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--f-accent2,#0B7468)}
+.ssx-next{margin:14px 0 0;padding:12px 14px;border-radius:12px;background:#fff;font-size:16px;line-height:1.5;color:var(--f-ink,#1E1830)}
+.ssx-next b{color:var(--f-accent,#7B3FF2)}
+.ssx-opt{font-weight:400;opacity:.75}
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -282,6 +296,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <div><div class="n">PERSONAL OUTPUT</div><p>Your own agent recipe card</p></div>
 </div>
 <div class="wrap">
+<p class="ssx-obj"><b>By the end:</b> you'll have a recipe card for one AI agent: what it does, what it needs to know, and when it runs.</p>
 <!-- RECAP / BRIDGE -->
 <section>
 <div class="sec-num">Where We've Been</div>
@@ -421,13 +436,13 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <details class="fold" id="step-6"><summary><span aria-hidden="true" class="fold-num">6</span><span><span class="fold-meta">Your Turn</span><h2 class="fold-title">Design your first agent.</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section>
 
 
-<p class="lead">Fill in the three ingredients for one agent you'd actually use. Then <strong>hit Print to save it</strong> — it won't save on its own.</p>
+<p class="lead">Fill in the boxes for one agent you'd actually use. Short answers are fine, and the gray text shows an example. Then <strong>tap Print / Save</strong> to keep it. This page doesn't save it for you.</p>
 <div class="builder">
 <div class="step-label">My agent recipe card</div>
-<div class="field"><label>The JOB — what it does every time</label><input placeholder="e.g. turn my meeting notes into a summary + action items" type="text"/></div>
-<div class="field"><label>The CONTEXT — what it always needs to know (your role, format, tone, rules)</label><textarea placeholder="e.g. I'm a project lead. Use a bulleted format, keep it under 150 words, always list owners." rows="3"></textarea></div>
-<div class="field"><label>The TRIGGER — when/how it runs</label><input placeholder="e.g. every time I paste in raw notes after a meeting" type="text"/></div>
-<div class="field"><label>Where I'll build it (the tool I already have)</label><input placeholder="e.g. a Custom GPT / Claude Project / Copilot / Gemini Gem" type="text"/></div>
+<div class="field"><label for="agJob">The JOB — what it does every time</label><input id="agJob" placeholder="e.g. turn my meeting notes into a summary + action items" type="text"/></div>
+<div class="field"><label for="agContext">The CONTEXT — what it always needs to know (your role, format, tone, rules)</label><textarea id="agContext" placeholder="e.g. I'm a project lead. Use a bulleted format, keep it under 150 words, always list owners." rows="3"></textarea></div>
+<div class="field"><label for="agTrigger">The TRIGGER — when/how it runs</label><input id="agTrigger" placeholder="e.g. every time I paste in raw notes after a meeting" type="text"/></div>
+<div class="field"><label for="agTool">Where I'll build it (the tool I already have)</label><input id="agTool" placeholder="e.g. a Custom GPT / Claude Project / Copilot / Gemini Gem" type="text"/></div>
 <div class="btn-row no-print"><button class="btn-primary" onclick="window.print()">Print / Save My Recipe</button><button class="btn-ghost" onclick="clearBuilder()">Clear</button></div>
 </div>
 <div class="move" style="margin-top:26px;">
@@ -441,10 +456,10 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 
 <p class="lead">Not ten. One. Set it up, run it a few times supervised, and see how it feels.</p>
 <div class="commit-box">
-<div class="fill">This week, I'll build an agent that</div>
-<input class="commit-input" placeholder="e.g. drafts my weekly report from notes" type="text"/>
-<div class="fill">so I stop doing</div>
-<input class="commit-input" placeholder="e.g. the same Friday summary by hand" type="text"/>
+<label class="fill" for="agWeek">This week, I'll build an agent that</label>
+<input class="commit-input" id="agWeek" placeholder="e.g. drafts my weekly report from notes" type="text"/>
+<label class="fill" for="agStop">so I stop doing</label>
+<input class="commit-input" id="agStop" placeholder="e.g. the same Friday summary by hand" type="text"/>
 <div class="btn-row no-print" style="justify-content:center;"><button class="btn-primary" onclick="window.print()">Print / Save My Plan</button></div>
 </div>
 <div class="move">
@@ -467,7 +482,8 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <div class="q">The one thing to remember:</div>
 <div class="a">You're not learning a new skill — you're leveling up the one you already have. A handoff you set up once is an agent.</div>
 </div>
-</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="run-it-safely.html"><span><small>Next part · Part 4</small><b>Run It Safely: agents in the real world</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+</section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="#step-wrap"><span><small>Next · Wrap-up</small><b>What We Covered</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
+<details class="fold" id="step-wrap"><summary><span aria-hidden="true" class="fold-num">✓</span><span><span class="fold-meta">Wrap-up</span><h2 class="fold-title">What We Covered</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="ssx"><div class="ssx-wwc"><ul><li>An agent is a handoff that repeats. You set it up once instead of asking every time.</li><li>Every agent needs three ingredients: the job, the context and the trigger.</li><li>Start at Tier 1 in the tool you already have, watch the first few runs, and know how to turn it off.</li></ul><p class="ssx-next"><b>Next step:</b> fill in your recipe card and build that one agent this week.</p></div></section><div class="fold-next-wrap"><a class="fold-next" data-fold-next="" href="run-it-safely.html"><span><small>Next part · Part 4</small><b>Run It Safely: agents in the real world</b></span><span aria-hidden="true" class="arrow">→</span></a></div></div></details>
 </div>
 <!-- FOOTER -->
 <footer class="footer">

@@ -150,6 +150,20 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
   .nav-links a{white-space:nowrap;flex:none}
   .nav-links.more{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}}</style><style>.site-nav .nav-home{gap:9px!important}.nav-logo{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
 <link href="/site.css" rel="stylesheet"/>
+<style id="ssx-consistency">
+/* Shared: goal line + What We Covered wrap-up, matched to the creator field guides */
+.ssx-obj{margin:18px 0;padding:14px 16px;border-radius:14px;background:var(--f-soft,#F1ECFD);border:1px solid var(--f-line,#E6E0F2);font-size:16px;line-height:1.5;color:var(--f-ink,#1E1830);text-align:left}
+.ssx-obj b{color:var(--f-accent,#7B3FF2)}
+.ssx-lede{font-size:18px;line-height:1.5;margin:12px 0 0}
+.ssx-wwc{background:linear-gradient(135deg,#ece7fb,#e3f1ec);border-radius:14px;padding:18px 16px}
+.ssx-wwc ul{list-style:none;margin:0;padding:0}
+.ssx-wwc li{position:relative;padding:10px 0 10px 24px;border-bottom:1px solid rgba(30,24,48,.08);font-size:16px;line-height:1.5;color:var(--f-ink,#1E1830)}
+.ssx-wwc li:last-child{border-bottom:0}
+.ssx-wwc li::before{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--f-accent2,#0B7468)}
+.ssx-next{margin:14px 0 0;padding:12px 14px;border-radius:12px;background:#fff;font-size:16px;line-height:1.5;color:var(--f-ink,#1E1830)}
+.ssx-next b{color:var(--f-accent,#7B3FF2)}
+.ssx-opt{font-weight:400;opacity:.75}
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -168,7 +182,9 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <span class="kicker">ADHD Learning Pack · Sheva Studio</span>
 <h1>Build Your Own Decks</h1>
 <p class="subtitle">Click any slide, edit it, download when ready</p>
-<div class="note">💡 DARK slides = the superpower hook. LIGHT slides = the habit. Intro slides stay clean; power slides carry a subtle @scribing.life.</div>
+<p class="ssx-lede">Turn an idea into a swipeable carousel without design software. Start from a ready-made ADHD challenge deck or a blank one, change the words, and download every slide as an image.</p>
+<p class="ssx-obj"><b>By the end:</b> you'll have a carousel deck saved as images, in order, ready to post on TikTok, Instagram or Facebook.</p>
+<div class="note">💡 Dark slides carry the big idea. Light slides carry the everyday habit. Power slides add a small @scribing.life tag at the bottom; intro slides stay clean.</div>
 <div class="fold-help"><p><b>How this page works:</b> tap a step to open it. Each step ends with a <b>Next</b> button.</p><button class="fold-all" type="button">Open all</button></div><details class="fold" id="step-1"><summary><span aria-hidden="true" class="fold-num">1</span><span><span class="fold-meta">Four steps</span><h2 class="fold-title">How it works</h2></span><span aria-hidden="true" class="fold-chev"></span></summary><div class="fold-body"><section class="fz"><div class="howto" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
 <div><span style="font-family:'Space Mono',monospace;color:var(--violet);font-weight:700;font-size:0.85rem;">1 · START</span><p style="font-size:0.9rem;color:var(--muted);margin-top:4px;">Pick a challenge to remix, or start blank.</p></div>
@@ -185,35 +201,38 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <button class="preset-btn" onclick="loadPreset('deck3',event)">🧘 Reset Challenge</button>
 <button class="preset-btn" onclick="loadPreset('blank',event)">✏️ Blank Canvas</button>
 <h2 style="margin-top:2rem;">Edit Slide <span id="editSlideNum" style="color:#d9b26c;"></span></h2>
-<p class="hint">Click a slide in the preview to select it.</p>
+<p class="hint">Click a slide in the preview to pick it. Changes show up as you type.</p>
 <div class="editor-section">
-<label class="editor-label">Background</label>
-<div class="mode-toggle">
+<span class="editor-label" id="bgLab">Slide color</span>
+<p class="hint">Dark for the big idea, light for the everyday habit.</p>
+<div class="mode-toggle" role="group" aria-labelledby="bgLab">
 <button class="mode-btn light-mode" id="lightModeBtn" onclick="setMode('light')">Light (habit)</button>
 <button class="mode-btn dark-mode" id="darkModeBtn" onclick="setMode('dark')">Dark (superpower)</button>
 </div>
 </div>
 <div class="editor-section">
-<label class="editor-label">Footer</label>
+<label class="editor-label" for="slideType">Bottom tag</label>
 <select class="editor-input" id="slideType" onchange="updateSlide()">
-<option value="intro">Intro (no footer)</option>
-<option value="power">Power slide (subtle footer)</option>
+<option value="intro">None (intro slide)</option>
+<option value="power">Small @scribing.life tag (power slide)</option>
 </select>
 </div>
 <div class="editor-section">
-<label class="editor-label">Eyebrow / badge (optional)</label>
-<input class="editor-input" id="slideEyebrow" oninput="updateSlide()" placeholder="POWER MOVE #1" type="text"/>
+<label class="editor-label" for="slideEyebrow">Small label above the headline <span class="ssx-opt">(optional)</span></label>
+<p class="hint">Like: POWER MOVE #1</p>
+<input class="editor-input" id="slideEyebrow" oninput="updateSlide()" placeholder="Type here" type="text"/>
 </div>
 <div class="editor-section">
-<label class="editor-label">Headline (serif). Use Enter for line breaks.</label>
+<label class="editor-label" for="slideHeadline">Headline</label>
+<p class="hint">The big words on the slide. Press Enter to start a new line.</p>
 <textarea class="editor-textarea" id="slideHeadline" oninput="updateSlide()" rows="3"></textarea>
 </div>
 <div class="editor-section">
-<label class="editor-label">Subtitle (optional, sans)</label>
+<label class="editor-label" for="slideSub">Supporting line <span class="ssx-opt">(optional)</span></label>
+<p class="hint">One or two short sentences under the headline.</p>
 <textarea class="editor-textarea" id="slideSub" oninput="updateSlide()" rows="4"></textarea>
 </div>
 <div class="button-group">
-<button class="action-btn btn-primary" onclick="updateSlide()">💾 Update</button>
 <button class="action-btn btn-secondary" onclick="resetPreset()">🔄 Reset Deck</button>
 <button class="action-btn btn-add" onclick="addSlide()">➕ Add Slide</button>
 <button class="action-btn btn-del" onclick="deleteSlide()">🗑️ Delete Slide</button>
