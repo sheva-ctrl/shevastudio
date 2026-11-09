@@ -185,6 +185,34 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 @media print{.fold-help,.fold-next-wrap,.fold-chev,.fold-video,.page-video{display:none!important}}
 .fold-help{margin-top:26px}</style><style>.brandrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px}.brandrow .back{margin-top:0!important}.brandlink{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink,#1E1830);font-family:'Space Mono',ui-monospace,monospace;font-size:13px;font-weight:700;letter-spacing:.08em}.brandlink:hover{color:var(--purple,#7B3FF2)}.brandlink:focus-visible{outline:3px solid var(--purple,#7B3FF2);outline-offset:3px;border-radius:6px}.brandmark{height:26px;width:auto;display:block;flex:none}</style><link href="/sheva-studio-mark.svg" rel="icon" type="image/svg+xml"/><link href="/favicon.ico" rel="icon" sizes="48x48"/><link href="/apple-touch-icon.png" rel="apple-touch-icon"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&amp;family=Space+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
 <link href="/site.css" rel="stylesheet"/>
+<style id="g09-only">
+/* Guide 09: swipeable phone walkthrough */
+.g07{margin-top:12px;font-size:15px;color:var(--muted)}
+.shots{margin-top:22px}
+.shots-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.shots-title{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple)}
+.shots-nav{display:flex;align-items:center;gap:6px;flex:none}
+.sbtn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:17px;cursor:pointer}
+.sbtn:hover{border-color:var(--purple);color:var(--purple)}
+.sbtn:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.sbtn:disabled{opacity:.35;cursor:default}
+.scount{font-family:'Space Mono',monospace;font-size:13px;color:var(--mono-muted);min-width:52px;text-align:center}
+.strack{position:relative;list-style:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:2px 2px 12px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.strack:focus-visible{outline:3px solid var(--purple);outline-offset:2px;border-radius:16px}
+.shot{flex:0 0 86%;max-width:330px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.shot > a{display:block}
+.shot img{display:block;width:100%;height:auto;aspect-ratio:4/5;border-bottom:1px solid var(--line)}
+.shot .cap{padding:12px 14px 16px}
+.shot p{font-size:15px;line-height:1.45;margin-top:8px}
+.shot b.n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;margin-right:8px;vertical-align:1px}
+.stag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 9px}
+.stag.fb{background:#FBF1DC;color:#7A5A1C}
+.stag.alt{background:#ece7fb;color:var(--purple)}
+.stag.co{background:#eeecf2;color:var(--muted)}
+.stag.go{background:#e3f1ec;color:var(--teal)}
+.shots-hint{font-family:'Space Mono',monospace;font-size:12px;color:var(--mono-muted);margin-top:4px}
+@media print{.shots{display:none}}
+</style>
 </head>
 <body>
 <a class="ss-skip" href="#ss-main">Skip to content</a>
@@ -259,10 +287,38 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
 <span>
 <span class="step-title">Add it before you share</span>
-<span class="path">New post → pick your photo → Next → on the last screen, Advanced settings → Accessibility → Write alt text → Done</span>
-<span class="why">On a carousel, you'll see a box for each photo.</span>
+<span class="path">New post → pick your photo → Next → on the last screen, More options → scroll to Accessibility and translation → Write alt text → ✓</span>
+<span class="why">Some phones say Advanced settings instead of More options. On a carousel, you'll see a box for each photo.</span>
 </span>
 </button>
+<button class="stepbtn" data-step="igfb" type="button" style="margin-top:12px">
+<span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
+<span>
+<span class="step-title">Posting to Facebook yourself? Turn off the auto-share</span>
+<span class="path">Same screen: Also share on → turn off Facebook → Don't share this post (just this one) or Stop sharing all posts (every post from now on)</span>
+<span class="why">Then post to Facebook with its own caption, link comment and alt text.</span>
+</span>
+</button>
+<p class="g07">Why post to each app on its own: <a href="/instagram/cross-posting.html">Guide 07, Stop Auto Cross-Posting</a></p>
+<div class="shots" role="region" aria-labelledby="shots-h">
+<div class="shots-head"><div class="shots-title" id="shots-h">See it on a phone · 13 screens</div><div class="shots-nav"><button type="button" class="sbtn" data-dir="-1" aria-label="Previous screen">←</button><span class="scount" aria-live="polite">1 / 13</span><button type="button" class="sbtn" data-dir="1" aria-label="Next screen">→</button></div></div>
+<ol class="strack" tabindex="0" aria-label="Instagram, screen by screen. Swipe or use the arrows.">
+<li class="shot"><a href="/alt-text/img/ig-01.webp" target="_blank" rel="noopener" aria-label="Open screen 1 larger"><img src="/alt-text/img/ig-01.webp" width="720" height="900" loading="lazy" alt="Instagram New post screen. The Also share on row reads 1 profile, Your story, with a Facebook profile listed under it, circled in yellow."/></a><div class="cap"><span class="stag fb">Optional · Facebook</span><p><b class="n">1</b>On the last screen, tap <strong>Also share on…</strong> If it says 1 profile, the post goes to Facebook too.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-02.webp" target="_blank" rel="noopener" aria-label="Open screen 2 larger"><img src="/alt-text/img/ig-02.webp" width="720" height="900" loading="lazy" alt="Also share on screen with the Facebook toggle circled. A pop-up asks, Stop sharing on Facebook? The choices are Don't share this post, Stop sharing all posts (circled) and Cancel."/></a><div class="cap"><span class="stag fb">Optional · Facebook</span><p><b class="n">2</b>Turn off <strong>Facebook</strong>. Pick <strong>Don't share this post</strong> for just this one, or <strong>Stop sharing all posts</strong> to stop auto-sharing every post.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-03.webp" target="_blank" rel="noopener" aria-label="Open screen 3 larger"><img src="/alt-text/img/ig-03.webp" width="720" height="900" loading="lazy" alt="New post screen. Also share on now reads Your story only, and the More options row is circled."/></a><div class="cap"><span class="stag alt">Alt text</span><p><b class="n">3</b>Back on New post, tap <strong>More options</strong>. Some phones call it Advanced settings.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-04.webp" target="_blank" rel="noopener" aria-label="Open screen 4 larger"><img src="/alt-text/img/ig-04.webp" width="720" height="900" loading="lazy" alt="Top of the More options screen, with Tag channel, Add reminder and Add fundraiser, and a yellow arrow pointing down the page."/></a><div class="cap"><span class="stag alt">Alt text</span><p><b class="n">4</b>Scroll down past the ads and sharing settings.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-05.webp" target="_blank" rel="noopener" aria-label="Open screen 5 larger"><img src="/alt-text/img/ig-05.webp" width="720" height="900" loading="lazy" alt="Bottom of More options. Automatic sharing shows a Facebook toggle switched off. Below it, Accessibility and translation has a Write alt text row, circled."/></a><div class="cap"><span class="stag alt">Alt text</span><p><b class="n">5</b>Under <strong>Accessibility and translation</strong>, tap <strong>Write alt text</strong>. The Facebook switch above it is the auto-share setting for every post.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-06.webp" target="_blank" rel="noopener" aria-label="Open screen 6 larger"><img src="/alt-text/img/ig-06.webp" width="720" height="900" loading="lazy" alt="Alt text screen with a small thumbnail of the post next to an empty box that says Write alt text."/></a><div class="cap"><span class="stag alt">Alt text</span><p><b class="n">6</b>Tap the box and type or paste your alt text. The <a href="/alt-text/builder.html">Alt Text Builder</a> writes it for you.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-07.webp" target="_blank" rel="noopener" aria-label="Open screen 7 larger"><img src="/alt-text/img/ig-07.webp" width="720" height="900" loading="lazy" alt="Alt text screen with alt text typed in the box and the blue check mark at top right circled."/></a><div class="cap"><span class="stag alt">Alt text</span><p><b class="n">7</b>Tap the <strong>check mark</strong> to save it.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-08.webp" target="_blank" rel="noopener" aria-label="Open screen 8 larger"><img src="/alt-text/img/ig-08.webp" width="720" height="900" loading="lazy" alt="Top of More options with the back arrow circled and a yellow arrow pointing up."/></a><div class="cap"><span class="stag alt">Alt text</span><p><b class="n">8</b>Tap the <strong>back arrow</strong> to return to your post.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-09.webp" target="_blank" rel="noopener" aria-label="Open screen 9 larger"><img src="/alt-text/img/ig-09.webp" width="720" height="900" loading="lazy" alt="New post screen showing a game night collage, the caption, and the Tag people row, circled."/></a><div class="cap"><span class="stag co">Optional · Collab</span><p><b class="n">9</b>Posting with a partner or your other account? Tap <strong>Tag people</strong>.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-10.webp" target="_blank" rel="noopener" aria-label="Open screen 10 larger"><img src="/alt-text/img/ig-10.webp" width="720" height="900" loading="lazy" alt="Edit tags screen with the collage on top and the Invite collaborators button circled."/></a><div class="cap"><span class="stag co">Optional · Collab</span><p><b class="n">10</b>Tap <strong>Invite collaborators</strong>.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-11.webp" target="_blank" rel="noopener" aria-label="Open screen 11 larger"><img src="/alt-text/img/ig-11.webp" width="720" height="900" loading="lazy" alt="Search results for sheva with the sheva.studios account circled at the top. The other results are blurred."/></a><div class="cap"><span class="stag co">Optional · Collab</span><p><b class="n">11</b>Search for the account and tap it.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-12.webp" target="_blank" rel="noopener" aria-label="Open screen 12 larger"><img src="/alt-text/img/ig-12.webp" width="720" height="900" loading="lazy" alt="Edit tags screen with sheva.studios tagged on the collage and the blue check mark at top right circled."/></a><div class="cap"><span class="stag co">Optional · Collab</span><p><b class="n">12</b>Tap the <strong>check mark</strong>. Once they accept, the post goes to their followers too.</p></div></li>
+<li class="shot"><a href="/alt-text/img/ig-13.webp" target="_blank" rel="noopener" aria-label="Open screen 13 larger"><img src="/alt-text/img/ig-13.webp" width="720" height="900" loading="lazy" alt="New post screen with Tag people set to sheva.studios and the blue Share button circled."/></a><div class="cap"><span class="stag go">Share</span><p><b class="n">13</b>Tap <strong>Share</strong>. Done.</p></div></li>
+</ol>
+<p class="shots-hint">Swipe to go screen by screen. Yellow marks what to tap.</p>
+</div>
 <div class="label">Instagram · a post that's already up</div>
 <button class="stepbtn" data-step="ig2" type="button">
 <span class="box"><svg fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"></path></svg></span>
@@ -396,6 +452,29 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <p>For educational purposes. Results vary by account.</p>
 </div>
 </footer>
+<script>
+(function(){
+  var box = document.querySelector('.shots'); if (!box) return;
+  var track = box.querySelector('.strack'), items = track.querySelectorAll('.shot'), count = box.querySelector('.scount');
+  var prev = box.querySelector('[data-dir="-1"]'), next = box.querySelector('[data-dir="1"]');
+  function step(){ return items[0].getBoundingClientRect().width + 12; }
+  function idx(){ return Math.max(0, Math.min(items.length - 1, Math.round(track.scrollLeft / step()))); }
+  function sync(){
+    var i = idx();
+    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) i = items.length - 1;
+    count.textContent = (i + 1) + ' / ' + items.length;
+    prev.disabled = i === 0; next.disabled = i === items.length - 1;
+  }
+  var t; track.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(sync, 60); }, {passive: true});
+  [prev, next].forEach(function(b){
+    b.addEventListener('click', function(){
+      var i = Math.max(0, Math.min(items.length - 1, idx() + Number(b.dataset.dir)));
+      track.scrollTo({left: items[i].offsetLeft - 2, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    });
+  });
+  sync();
+})();
+</script>
 </main>
 <script>
 (function(){

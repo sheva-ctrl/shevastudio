@@ -187,6 +187,25 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <link href="/site.css" rel="stylesheet"/>
 <style>
 /* Alt Text Builder. One column: slide cards with four questions, live output, AI prompt, how it works. */
+.lede2{font-size:17px;line-height:1.5;color:var(--muted);margin-top:12px}
+.howto{list-style:none;counter-reset:h;display:grid;gap:10px;margin-top:20px}
+.howto li{counter-increment:h;display:grid;grid-template-columns:36px 1fr;column-gap:12px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.howto li::before{content:counter(h);grid-row:span 2;width:36px;height:36px;border-radius:50%;background:var(--purple);color:#fff;font-weight:700;display:grid;place-items:center}
+.howto b{font-size:17px}
+.howto span{font-size:15px;color:var(--muted)}
+@media (min-width:640px){.howto{grid-template-columns:repeat(3,1fr)}}
+.ftop{display:flex;align-items:center;gap:8px}
+.ftop label{min-width:0}
+.ftop .pill,.ftop .tick{flex:none}
+.pill{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 9px;background:#eeecf2;color:var(--muted)}
+.pill.req{background:#ece7fb;color:var(--purple)}
+.tick{width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center;margin-left:auto;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.field.filled .tick{transform:scale(1)}
+.field.filled input,.field.filled textarea{border-color:#9fd3c4}
+.field .ex{font-family:'Space Mono',monospace;font-size:13px;color:var(--teal)}
+.ready{margin-top:12px;padding:10px 14px;border-radius:12px;background:#e3f1ec;color:var(--teal);font-weight:700;font-size:15px}
+.ready a{color:var(--teal)}
+canvas.confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9999}
 .privacy{margin-top:14px;font-family:'Space Mono',monospace;font-size:13px;color:var(--teal)}
 .slide{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 18px;margin-top:22px}
 .slide-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -234,14 +253,20 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <div class="brandrow"><a class="back" href="/alt-text/">← Field Guide 09: Paint the Picture</a></div>
 <div class="eyebrow">Free tool · Alt text</div>
 <h1>ALT TEXT<br/><span class="grad">BUILDER</span></h1>
-<p class="lede">Answer four quick questions. The builder turns your answers into alt text you can paste into any app.</p>
-<p class="objective"><strong>By the end:</strong> you'll have alt text for your photo, or for every slide in a carousel, ready to copy.</p>
+<p class="lede">Some of your followers can't see your photos. Their phone reads the screen out loud, and when it reaches a photo, it reads the alt text.</p>
+<p class="lede2">Skip it and they hear the app's guess, like "May be an image of 1 person." This builder writes something better from four quick answers.</p>
+<p class="objective"><strong>By the end:</strong> you'll have alt text for your photo, or for every slide in a carousel, ready to paste.</p>
+<ol class="howto">
+<li><b>Look at your photo</b><span>Carousel? Start with slide 1.</span></li>
+<li><b>Fill in the boxes</b><span>Only box 1 is required. The rest make it better.</span></li>
+<li><b>Copy and paste</b><span>Into the app's alt text box. <a href="/alt-text/#step-3">Where's the box?</a></span></li>
+</ol>
 <p class="privacy">No AI and no uploads. Nothing you type leaves this page.</p>
 
 <div id="slides"></div>
 <button type="button" class="addslide" id="addSlide">+ Add another slide</button>
 
-<section class="card out-card" aria-live="polite">
+<section class="card out-card" id="yours" aria-live="polite">
 <div class="label">Your alt text</div>
 <div id="outputs"></div>
 </section>
@@ -258,7 +283,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
 <section class="card how">
 <div class="label">How the builder works</div>
 <ul class="clean">
-<li>It puts your answers in order: what it is, the one detail, why it's there, then the words on the image.</li>
+<li>It puts your answers in order: what's in the photo, the one detail, why it's there, then the words on it.</li>
 <li>It removes "image of," hashtags and emoji. Screen readers already say it's an image and read hashtags and emoji out loud, which slows people down.</li>
 <li>It filters profanity and slurs, and the AI prompt asks for clean wording too.</li>
 </ul>
@@ -343,19 +368,60 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     return {text: parts.join(' '), notes: notes};
   }
 
+  // Confetti: a small pop when a box is filled, a big burst when the alt text is ready. Off for reduced motion.
+  var party = (function(){
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cv, cx, bits = [], raf = 0, C = ['#7B3FF2', '#0B7468', '#D9B26C', '#B08CFF', '#5FC9B4'];
+    function size(){ var d = window.devicePixelRatio || 1; cv.width = innerWidth * d; cv.height = innerHeight * d; cx.setTransform(d, 0, 0, d, 0, 0); }
+    function setup(){
+      if (cv) return;
+      cv = document.createElement('canvas'); cv.className = 'confetti'; cv.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(cv); cx = cv.getContext('2d'); size(); addEventListener('resize', size);
+    }
+    function add(x, y, n, spd, ang, spread){
+      for (var i = 0; i < n; i++) {
+        var a = ang + (Math.random() - .5) * spread, v = spd * (.55 + Math.random() * .6);
+        bits.push({x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, w: 5 + Math.random() * 5, h: 8 + Math.random() * 6,
+          r: Math.random() * 6.28, vr: (Math.random() - .5) * .3, c: C[i % C.length], life: 0, max: 80 + Math.random() * 50});
+      }
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+    function tick(){
+      cx.clearRect(0, 0, innerWidth, innerHeight);
+      bits = bits.filter(function(b){
+        b.life++; b.vx *= .985; b.vy = b.vy * .985 + .28; b.x += b.vx; b.y += b.vy; b.r += b.vr;
+        var a = Math.min(1, (b.max - b.life) / (b.max * .3));
+        if (a <= 0 || b.y > innerHeight + 20) return false;
+        cx.save(); cx.globalAlpha = a; cx.translate(b.x, b.y); cx.rotate(b.r); cx.fillStyle = b.c;
+        cx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h * Math.abs(Math.cos(b.life * .12 + b.r)) + 1); cx.restore();
+        return true;
+      });
+      raf = bits.length ? requestAnimationFrame(tick) : 0;
+    }
+    return {
+      pop: function(el){ if (reduce) return; setup(); var r = el.getBoundingClientRect(); add(Math.min(r.right - 20, innerWidth - 20), r.top + Math.min(r.height / 2, 24), 22, 7, -Math.PI / 2, 2.2); },
+      big: function(){ if (reduce) return; setup(); var y = innerHeight * .72; add(0, y, 60, 15, -Math.PI / 3, .9); add(innerWidth, y, 60, 15, -Math.PI * 2 / 3, .9); }
+    };
+  })();
+
   var slidesEl = document.getElementById('slides'), outEl = document.getElementById('outputs');
   var slides = [];
 
-  function field(id, label, opt, help, multi, ph){
+  function field(id, label, req, help, ex, multi){
     var wrap = document.createElement('div'); wrap.className = 'field';
-    var l = document.createElement('label'); l.htmlFor = id; l.textContent = label + ' ';
-    if (opt) { var o = document.createElement('span'); o.className = 'opt'; o.textContent = '(optional)'; l.appendChild(o); }
+    var top = document.createElement('div'); top.className = 'ftop';
+    var l = document.createElement('label'); l.htmlFor = id; l.textContent = label;
+    var pill = document.createElement('span'); pill.className = 'pill' + (req ? ' req' : ''); pill.textContent = req ? 'Required' : 'Optional';
+    var tick = document.createElement('span'); tick.className = 'tick'; tick.setAttribute('aria-hidden', 'true'); tick.textContent = '✓';
+    top.appendChild(l); top.appendChild(pill); top.appendChild(tick);
     var h = document.createElement('span'); h.className = 'help'; h.id = id + '-h'; h.textContent = help;
+    var e = document.createElement('span'); e.className = 'ex'; e.id = id + '-e'; e.textContent = 'Like: ' + ex;
     var inp = document.createElement(multi ? 'textarea' : 'input');
-    inp.id = id; inp.placeholder = ph; inp.setAttribute('aria-describedby', id + '-h'); inp.autocomplete = 'off';
+    inp.id = id; inp.placeholder = 'Type here'; inp.setAttribute('aria-describedby', id + '-h ' + id + '-e'); inp.autocomplete = 'off';
+    if (req) inp.setAttribute('aria-required', 'true');
     if (!multi) inp.type = 'text';
-    inp.addEventListener('input', render);
-    wrap.appendChild(l); wrap.appendChild(h); wrap.appendChild(inp);
+    inp.addEventListener('input', function(){ wrap.classList.toggle('filled', !!inp.value.trim()); render(); });
+    wrap.appendChild(top); wrap.appendChild(h); wrap.appendChild(e); wrap.appendChild(inp);
     return {wrap: wrap, inp: inp};
   }
 
@@ -368,13 +434,25 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     var rm = document.createElement('button'); rm.type = 'button'; rm.className = 'rm'; rm.textContent = 'Remove';
     head.appendChild(rm); card.appendChild(head);
     var f = {
-      what: field('what' + n, '1. What is it?', false, 'The subject, in plain words.', false, 'Collage of five family board games'),
-      detail: field('detail' + n, '2. One detail that sets the mood', true, 'Only if it matters. One detail, not five.', false, 'on a cream background'),
-      why: field('why' + n, '3. Why is it in your post?', true, 'What should people take away?', false, 'Our picks for family game night'),
-      words: field('words' + n, '4. Words on the image', true, 'Type every word that appears on it, in order.', true, 'What\'s your family\'s fave game?')
+      what: field('what' + n, '1. What\'s in the photo?', true, 'Name what someone would notice first. A few words is enough.', 'Collage of five family board game boxes', false),
+      detail: field('detail' + n, '2. One detail worth noticing', false, 'A color, the light, the setting or what someone is doing. Skip it if it adds nothing.', 'in a bright grid on a cream background', false),
+      why: field('why' + n, '3. Why is it in your post?', false, 'The point you want people to get, in a few words.', 'Our picks for family game night', false),
+      words: field('words' + n, '4. What words are on it?', false, 'Copy every word printed on the photo or slide, in order. No words? Leave it blank.', 'What\'s your family\'s fave game?', true)
     };
-    ['what', 'detail', 'why', 'words'].forEach(function(k){ card.appendChild(f[k].wrap); });
-    var s = {card: card, h: h, rm: rm, f: f};
+    var ready = document.createElement('p'); ready.className = 'ready'; ready.hidden = true;
+    ready.appendChild(document.createTextNode('✓ Your alt text is ready. Add more below, or '));
+    var jump = document.createElement('a'); jump.href = '#yours'; jump.textContent = 'jump to it ↓'; ready.appendChild(jump);
+    ['what', 'detail', 'why', 'words'].forEach(function(k){ card.appendChild(f[k].wrap); if (k === 'what') card.appendChild(ready); });
+    var s = {card: card, h: h, rm: rm, f: f, done: {}};
+    f.what.inp.addEventListener('input', function(){ if (!f.what.inp.value.trim()) ready.hidden = true; else if (s.done.what) ready.hidden = false; });
+    ['what', 'detail', 'why', 'words'].forEach(function(k){
+      f[k].inp.addEventListener('change', function(){
+        if (!f[k].inp.value.trim() || s.done[k]) return;
+        s.done[k] = 1;
+        if (k === 'what') { ready.hidden = false; party.big(); }
+        else party.pop(f[k].wrap.querySelector('.tick'));
+      });
+    });
     rm.addEventListener('click', function(){ slides.splice(slides.indexOf(s), 1); card.remove(); render(); });
     slides.push(s); slidesEl.appendChild(card);
     render();
@@ -385,6 +463,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
     function done(ok){
       btn.textContent = ok ? 'Copied' : 'Press and hold to copy';
       btn.classList.toggle('ok', ok);
+      if (ok) party.pop(btn);
       setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1600);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -441,7 +520,7 @@ a.fold-next .arrow{flex:none;width:34px;height:34px;border-radius:50%;background
       btn.addEventListener('click', function(){ copy(r.text, btn); });
       head.appendChild(lab); head.appendChild(btn); box.appendChild(head);
       var p = document.createElement('p'); p.className = 'alt' + (r.text ? '' : ' empty');
-      p.textContent = r.text || 'Start with question 1 and your alt text appears here.';
+      p.textContent = r.text || 'Fill in box 1 and your alt text shows up here.';
       box.appendChild(p);
       var meta = document.createElement('div'); meta.className = 'meta';
       function chip(cls, t){ var c = document.createElement('span'); c.className = cls; c.textContent = t; meta.appendChild(c); }
