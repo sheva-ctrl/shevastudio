@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Game Night Posting Kit · Sheva Studio</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: one narrow column. Sticky progress bar, a how-to section, then one tap-to-open section per post. */
+:root{
+  --bg:#FAF8FC; --card:#FFFFFF; --soft:#F1ECFD; --ink:#1E1830; --muted:#5B5568; --line:#E6E0F2;
+  --purple:#7B3FF2; --purple-deep:#5B2BD3; --teal:#0B7468; --teal-soft:#E0F3EF; --gold:#D9B26C; --gold-soft:#F8EFDC;
+  --display:'Bricolage Grotesque','Plus Jakarta Sans',system-ui,sans-serif;
+  --body:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+a{color:var(--purple-deep)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 64px}
+
+.topbar{position:sticky;top:0;z-index:10;background:rgba(250,248,252,.95);border-bottom:1px solid var(--line)}
+@supports (backdrop-filter:blur(6px)){.topbar{backdrop-filter:blur(6px)}}
+.topbar-inner{max-width:720px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px}
+.bar{flex:1;height:8px;border-radius:99px;background:#E2DEF0;overflow:hidden}
+.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--teal));transition:width .4s ease}
+.count{font-size:14px;font-weight:700;white-space:nowrap}
+.count b{color:var(--purple)}
+
+header{padding:28px 0 18px;display:flex;flex-direction:column;gap:10px}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.eyebrow svg{flex:none}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,8vw,48px);line-height:1.02;letter-spacing:-.02em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--purple)}
+.lede{color:var(--muted);font-size:17px;max-width:60ch}
+
+details.sec{background:var(--card);border:1.5px solid var(--line);border-radius:18px;margin-top:12px;overflow:hidden}
+details.sec[open]{border-color:#D6CAF5}
+details.sec>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;min-height:60px}
+details.sec>summary::-webkit-details-marker{display:none}
+.num{flex:none;width:40px;height:44px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px;color:#fff;background:var(--purple);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.num.how{background:var(--teal)}
+.sum-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.sum-title{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.15}
+.sum-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;font-weight:700;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.04em}
+.chip.ready{background:var(--teal-soft);color:var(--teal)}
+.chip.photos{background:var(--gold-soft);color:#7A5A1C}
+.chip.done{background:var(--purple);color:#fff}
+.chev{flex:none;width:12px;height:12px;border-right:2.5px solid var(--muted);border-bottom:2.5px solid var(--muted);transform:rotate(45deg);margin:0 6px 6px 0;transition:transform .2s}
+details[open]>summary .chev{transform:rotate(225deg);margin:6px 6px 0 0}
+.body{padding:4px 16px 18px;display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--line)}
+
+h3{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.how-list{display:flex;flex-direction:column;gap:10px;padding-left:20px}
+.how-list li::marker{color:var(--purple)}
+
+.imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.imgs a{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:700}
+.imgs img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--soft)}
+.hint{font-size:13px;color:var(--muted)}
+.notice{margin-top:14px;background:var(--gold-soft);border-radius:12px;padding:12px 14px;font-size:15px}
+
+.checks{display:flex;flex-direction:column;gap:2px}
+.checks label{display:flex;align-items:center;gap:12px;min-height:44px;font-weight:600;cursor:pointer}
+.checks input{width:22px;height:22px;accent-color:var(--purple);flex:none}
+.urls{display:flex;flex-direction:column;gap:10px}
+.urls label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--muted)}
+.urls input{border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;background:#fff;font-size:16px;font-weight:500;color:var(--ink);width:100%}
+.urls input:focus{border-color:var(--purple);outline:none}
+
+.copy{border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.copy-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 8px 8px 14px;background:var(--soft)}
+.copy-label{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.copy-btn{flex:none;border:0;border-radius:99px;background:var(--purple);color:#fff;font-weight:800;font-size:14px;padding:8px 16px;min-height:40px;min-width:84px;cursor:pointer}
+.copy-btn.ok{background:var(--teal)}
+.copy pre{white-space:pre-wrap;word-wrap:break-word;font-family:var(--body);font-size:15px;line-height:1.5;padding:12px 14px;margin:0}
+.copy pre .ph{background:var(--gold-soft);border-radius:4px;padding:0 3px}
+
+.next{align-self:flex-start;border:0;border-radius:99px;background:var(--ink);color:#fff;font-weight:800;padding:10px 20px;min-height:44px;cursor:pointer}
+footer{margin-top:28px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner">
+  <div class="bar" aria-hidden="true"><div class="bar-fill" id="barFill"></div></div>
+  <div class="count" id="count" aria-live="polite"><b>0</b> of 11 posted</div>
+</div></div>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow"><svg width="14" height="16" viewBox="0 0 18 20" aria-hidden="true"><polygon points="9,0 18,5 18,15 9,20 0,15 0,5" fill="#7B3FF2"/></svg>Sheva Studio · Cozy hosting</div>
+    <h1>Game Night <em>Posting Kit</em></h1>
+    <p class="lede">Every post's captions, pinned comments, Amazon list and Pinterest copy, ready to copy. Your checkmarks and links save on this phone.</p>
+  </header>
+
+  <details class="sec" id="how">
+    <summary><span class="num how">?</span><span class="sum-text"><span class="sum-title">How to post</span><span class="sum-meta">Instagram first, then Facebook</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="body">
+      <ol class="how-list" style="margin-top:14px">
+        <li><strong>Instagram first, then Facebook,</strong> each with its own caption. Keep automatic sharing off (<a href="/instagram/cross-posting.html">Cross-Posting Trap guide</a>).</li>
+        <li><strong>Instagram links don't click</strong> in captions or comments, so the Instagram pinned comment points to your bio.</li>
+        <li><strong>Facebook links do click,</strong> so the Facebook pinned comment carries TikTok Shop and Pinterest. Paste a post's links into its link boxes and the comment fills them in.</li>
+        <li><strong>Pinterest:</strong> tag each game from your Amazon Storefront on the collage pin, and set the pin's main link to TikTok Shop.</li>
+        <li><strong>Order:</strong> board games 1 to 7, then the card set: 11 as the intro, then 8, 9 and 10.</li>
+      </ol>
+      <button type="button" class="next" data-next="0">Next</button>
+    </div>
+  </details>
+
+  <main id="posts"></main>
+
+  <footer>Unlisted page for Sheva Studio. Not in search or the site menu.</footer>
+</div>
+
+<script>
+const POSTS = [{"n": 1, "title": "Family fave game", "ready": true, "ig": "What card or board game is your family's fave?\n\nOurs are Monikers and What Do You Meme. Both get the whole crew laughing.\n\nSave this for your next game night. Five picks, one for every kind of player:\nFast + silly: Taco Cat Goat Cheese Pizza\nDraw + guess: Telestrations\nThink alike: Herd Mentality\nAct it out: Monikers: Family Edition\nMeme captions: What Do You Meme? Family Edition\n\nDrop yours below. I'm making part 2 from your answers.\n\n#familygamenight #boardgames #cardgames #gamenight #cozyhosting", "fb": "Game night at our house means Monikers or What Do You Meme.\n\nFive picks for every kind of player are in the photo: fast and silly, draw and guess, think alike, act it out, and meme captions.\n\nWhat card or board game is your family's fave?\n\n#familygamenight #boardgames #cardgames #gamenight #cozyhosting", "am": ["Family Party Games for Game Night", "Five family party games, one for every kind of player: fast and silly, draw and guess, think alike, act it out, and meme captions. Monikers and What Do You Meme are our family's favorites."], "pt": ["Family Party Games Everyone Can Play | Game Night Ideas", "Five family party games for game night: Taco Cat Goat Cheese Pizza, Telestrations, Herd Mentality, Monikers: Family Edition and What Do You Meme? Family Edition. Fast, silly picks for ages 6+ to 12+. Save this for your next family game night. Affiliate links: I may earn a commission.", "family game night, party games, family board games, card games for kids, games for teens, game night ideas, holiday gift ideas, cozy hosting"], "alt": "What's your family go-to game? Taco Cat, Telestrations, Herd Mentality, Monikers, What Do You Meme?", "posted": true}, {"n": 2, "title": "Trader, builder, conqueror", "ready": true, "ig": "Are you the trader, the builder, or the conqueror?\n\nOurs are Catan and Ticket to Ride.\n\nSave this for your next strategy night:\nTrade & Build: Catan\nTile by Tile: Carcassonne\nRoute Builder: Ticket to Ride\nEngine Builder: Splendor\nWorld Conquest: Risk\n\nDrop your pick below. I'm making part 2 from your answers.\n\n#boardgames #strategygames #tabletopgames #gamenight #cozyhosting", "fb": "In our house it's Catan and Ticket to Ride.\n\nFive picks for every kind of strategist are in the photo, from trading sheep to taking over the world.\n\nSo which one are you: the trader, the builder, or the conqueror?\n\n#boardgames #strategygames #tabletopgames #gamenight #cozyhosting", "am": ["Strategy Board Games Worth Owning", "Five strategy board games for every play style: trade and build, tile laying, route building, engine building and world conquest. Catan and Ticket to Ride are our family's go-tos."], "pt": ["Strategy Board Games Worth Owning | Catan, Ticket to Ride and More", "Five strategy board games for game night: Catan, Carcassonne, Ticket to Ride, Splendor and Risk. Trade, build, claim routes or conquer the world, for ages 7+ to 10+. Save this for your next board game night. Affiliate links: I may earn a commission.", "strategy board games, board games for adults, family board games, game night ideas, Catan, Ticket to Ride, tabletop games, board game gift ideas"], "alt": "Trader, builder or conqueror? Catan, Carcassonne, Ticket to Ride, Splendor, Risk. What's yours?"}, {"n": 3, "title": "Mystery", "ready": false, "need": "MicroMacro: Crime City and Deception: Murder in Hong Kong", "ig": "Who solved it first in your house?\n\nOurs are Clue and Mysterium.\n\nSave this for your next mystery night:\nClassic Whodunit: Clue: Classic Edition\nGhostly Clues: Mysterium\nVisual Hunt: MicroMacro: Crime City\nForensics & Traitors: Deception: Murder in Hong Kong\nDeep Narrative: Sherlock Holmes: Consulting Detective\n\nDrop your detective pick below. I'm making part 2 from your answers.\n\n#mysterygames #boardgames #gamenight #whodunit #cozyhosting", "fb": "Clue and Mysterium are the mysteries we keep coming back to.\n\nFive picks for the armchair detectives are in the photo, from a classic whodunit to a full case file.\n\nWho solved it first in your house?\n\n#mysterygames #boardgames #gamenight #whodunit #cozyhosting", "am": ["Mystery Board Games for Game Night", "Five mystery and deduction games: a classic whodunit, ghostly clues, a visual search, forensics with a hidden traitor, and a full detective case. Clue and Mysterium are our family's favorites."], "pt": ["Mystery Board Games for Armchair Detectives | Game Night Ideas", "Five mystery games for game night: Clue: Classic Edition, Mysterium, MicroMacro: Crime City, Deception: Murder in Hong Kong and Sherlock Holmes: Consulting Detective. Whodunits, ghost clues and real deduction for ages 8+ to 14+. Affiliate links: I may earn a commission.", "mystery games, murder mystery game night, deduction games, detective games, Clue board game, board games for adults, family game night, game night ideas"], "alt": "Who solved it first? Clue, Mysterium, MicroMacro, Deception, Sherlock Holmes. What's yours?"}, {"n": 4, "title": "Traitor", "ready": false, "need": "Mansions of Madness 2nd Edition", "ig": "Who in your family is always the traitor?\n\nOurs are Betrayal and Dead of Winter.\n\nSave this for your next spooky game night:\nHaunted House: Betrayal at House on the Hill\nZombie Survival: Dead of Winter\nApp-Driven Story: Mansions of Madness 2nd Edition\nSci-Fi Survival: Nemesis\nHidden Paranoia: The Thing: Infection at Outpost 31\n\nDrop your pick below. Naming your family traitor is optional. I'm making part 2 from your answers.\n\n#horrorgames #boardgames #tabletopgames #betrayal #gamenight", "fb": "Our picks for a night of backstabbing: Betrayal and Dead of Winter.\n\nFive picks for survival and betrayal are in the photo, from a haunted house to an alien hiding at the table.\n\nWho in your family is always the traitor?\n\n#horrorgames #boardgames #tabletopgames #betrayal #gamenight", "am": ["Horror Board Games With a Traitor Twist", "Five horror and hidden-traitor games: a haunted house, zombie survival, an app-driven story, sci-fi survival and an alien paranoia game. Betrayal and Dead of Winter are our family's favorites."], "pt": ["Horror Board Games With a Traitor Twist | Spooky Game Night", "Five horror board games: Betrayal at House on the Hill, Dead of Winter, Mansions of Madness 2nd Edition, Nemesis and The Thing: Infection at Outpost 31. Haunted houses, zombies, sci-fi survival and a traitor at the table, for ages 12+ to 14+. Affiliate links: I may earn a commission.", "horror board games, hidden traitor games, spooky game night, cooperative board games, zombie games, board games for adults, Halloween game night, tabletop games"], "alt": "Who's always the traitor? Betrayal, Dead of Winter, Mansions of Madness, Nemesis, The Thing."}, {"n": 5, "title": "Which role", "ready": true, "ig": "Which role are you: investigator, spell slinger, or chaos gremlin?\n\nOurs are Magic and Arkham Horror.\n\nSave this for your next long game night:\nInvestigator: Arkham Horror: The Card Game\nCo-op Hero: Marvel Champions: The Card Game\nCampaign RPG: Gloomhaven\nDeck Builder: Dominion\nSpell Slinger: Magic: The Gathering Foundations Starter Collection\n\nDrop your role below. I'm making part 2 from your answers.\n\n#cardgames #roleplaying #deckbuilding #gamenight #cozyhosting", "fb": "At our house it's Magic and Arkham Horror.\n\nFive picks for card players and campaign fans are in the photo, from deck building to a full dungeon crawl.\n\nWhich role are you: investigator, spell slinger, or chaos gremlin?\n\n#cardgames #roleplaying #deckbuilding #gamenight #cozyhosting", "am": ["Card and Campaign Games for Deep Play", "Five games for players who like a role: a co-op investigation, superhero co-op, a dungeon campaign, a deck builder and a Magic starter collection. Magic and Arkham Horror are our family's favorites."], "pt": ["Card and Campaign Games for Deep Play | Deck Builders and Co-op", "Five games for long game nights: Arkham Horror: The Card Game, Marvel Champions: The Card Game, Gloomhaven, Dominion and the Magic: The Gathering Foundations Starter Collection. Investigators, heroes, dungeons and spells for ages 13+ to 14+. Affiliate links: I may earn a commission.", "deck building games, cooperative card games, campaign board games, Magic the Gathering, Marvel Champions, strategy card games, board games for adults, game night ideas"], "alt": "Which role are you? Arkham Horror, Marvel Champions, Gloomhaven, Dominion, Magic. What's yours?"}, {"n": 6, "title": "Cozy gateway", "ready": true, "ig": "What card or board game is your cozy gateway game?\n\nOurs are Ticket to Ride and Wingspan.\n\nSave this for the next time you're teaching someone new:\nGateway Game: Ticket to Ride\nBird Collection: Wingspan\nTile Drafting: Azul\nNature Puzzle: Cascadia\nCalm Engine: Everdell\n\nDrop yours below. I'm making part 2 from your answers.\n\n#familygamenight #boardgames #tabletopgames #gamenight #cozyhosting", "fb": "Ticket to Ride and Wingspan are our go-to games for new players.\n\nFive easy-to-learn picks are in the photo: trains, birds, tiles, nature and a woodland city.\n\nWhat's your cozy gateway game?\n\n#familygamenight #boardgames #tabletopgames #gamenight #cozyhosting", "am": ["Cozy Gateway Board Games", "Five easy-to-teach games for new players: a train route classic, bird collecting, tile drafting, a nature puzzle and a calm woodland engine builder. Ticket to Ride and Wingspan are our family's favorites."], "pt": ["Cozy Gateway Board Games for New Players | Easy to Teach", "Five cozy board games that are easy to teach: Ticket to Ride, Wingspan, Azul, Cascadia and Everdell. Trains, birds, tiles, nature and a woodland city for ages 8+ to 13+. Affiliate links: I may earn a commission.", "gateway board games, cozy board games, board games for beginners, family board games, Wingspan, Ticket to Ride, board game gift ideas, game night ideas"], "alt": "Cozy gateway games: Ticket to Ride, Wingspan, Azul, Cascadia, Everdell. What's yours?"}, {"n": 7, "title": "Cozy vibe", "ready": true, "ig": "What brings the cozy vibe to your table?\n\nOurs are Parks and Canvas.\n\nSave this for a calm night in:\nNational Parks: Parks\nLayered Art: Canvas\nZen Paths: Tsuro\nArtisan Dragons: Flamecraft\nWoodland City: Everdell\n\nDrop yours below. I'm making part 2 from your answers.\n\n#cozygaming #boardgames #aestheticgames #gamenight #cozyhosting", "fb": "Our picks for a calm night in: Parks and Canvas.\n\nFive picks for a calm, sensory-friendly game night are in the photo: national parks, art, peaceful paths, dragons and a woodland city.\n\nWhat brings the cozy vibe to your table?\n\n#cozygaming #boardgames #aestheticgames #gamenight #cozyhosting", "am": ["Calm Board Games for a Cozy Night In", "Five calm, beautiful games for a low-key night: national parks, layered art, peaceful paths, artisan dragons and a woodland city. Parks and Canvas are our family's favorites."], "pt": ["Calm Board Games for a Cozy Night In | Aesthetic Game Night", "Five cozy board games: Parks, Canvas, Tsuro, Flamecraft and Everdell. National parks, art, peaceful paths, dragons and a woodland city for ages 8+ to 14+. Affiliate links: I may earn a commission.", "cozy board games, aesthetic board games, calm games, cozy night in, board games for adults, family game night, board game gift ideas, cozy hosting"], "alt": "Cozy vibe games: Parks, Canvas, Tsuro, Flamecraft, Everdell. What's yours?"}, {"n": 11, "title": "Just a deck", "note": "Card set intro", "ready": true, "deck": true, "ig": "Just a deck. What are you playing?\n\nNo box needed. Just a deck of cards and someone who swears their house rules are the real rules.\n\nSave this for the next time all you've got is a deck:\nSpades\nGolf\nRummy\nHearts\nCrazy Eights\n\nDrop your game and your house rule below.\n\n#familygamenight #cardgames #gamenight #playingcards #cozyhosting", "fb": "No box needed for these. Just a deck of cards and someone who swears their house rules are the real rules.\n\nSpades, Golf, Rummy, Hearts or Crazy Eights?\n\nWhat's your just-a-deck game, and what's the house rule you'll defend forever?\n\n#familygamenight #cardgames #gamenight #playingcards #cozyhosting", "am": ["Card Games You Can Play With Just a Deck", "Classic card games that need nothing but a standard deck: Spades, Golf, Rummy, Hearts and Crazy Eights. Add a good deck of cards and you're set for game night."], "pt": ["Card Games You Can Play With Just a Deck | Easy Family Card Games", "Five classic card games that need only a standard deck: Spades, Golf, Rummy, Hearts and Crazy Eights. No box, no app, just shuffle and deal. Save this for family game night. Affiliate links: I may earn a commission.", "card games, family card games, classic card games, games with a deck of cards, easy card games, card games for two, family game night, game night ideas"], "alt": "Family go-to game? Spades, Golf, Rummy, Hearts, Crazy Eights. What's yours?"}, {"n": 8, "title": "Trick-taking", "ready": true, "ig": "Are you a Spades house or a Hearts house?\n\nSave this for your next card night:\nPartners / Bid + tricks: Spades\nAvoid the Queen: Hearts\nFast + partners: Euchre\nMeld + tricks: Pinochle\nPredict your tricks: Wizard\n\nDrop your pick and your house rules below. I'm making part 2 from your answers.\n\n#familygamenight #cardgames #spades #gamenight #cozyhosting", "fb": "Every family has a trick-taking game, and house rules they'll defend forever.\n\nSpades, Hearts, Euchre, Pinochle or Wizard?\n\nAre you a Spades house or a Hearts house, and what's your house rule?\n\n#familygamenight #cardgames #spades #gamenight #cozyhosting", "am": ["Trick-Taking Card Games", "Five trick-taking card games: Spades, Hearts, Euchre, Pinochle and Wizard. Four play with standard decks of cards, and Wizard comes with its own deck."], "pt": ["Trick-Taking Card Games Families Love | Spades, Hearts and More", "Five trick-taking card games: Spades, Hearts, Euchre, Pinochle and Wizard. Partners, bidding and dodging the Queen of Spades. Save this for family card night. Affiliate links: I may earn a commission.", "trick taking card games, Spades card game, Hearts card game, Euchre, family card games, card games for adults, classic card games, family game night"], "alt": "Family go-to game? Spades, Hearts, Euchre, Pinochle, Wizard. What's yours?"}, {"n": 9, "title": "Sets + runs", "ready": false, "need": "Phase 10", "ig": "Sets, runs, or lowest score wins?\n\nSave this for your next card night:\nSets + runs, 2-player: Gin Rummy\nClassic sets + runs: Rummy\nLowest score wins: Golf\nComplete the phase: Phase 10\nRummy with a twist: Five Crowns\n\nDrop yours below. Bonus points if you settle 6-card vs 9-card Golf. I'm making part 2 from your answers.\n\n#familygamenight #cardgames #rummy #gamenight #cozyhosting", "fb": "Rummy people and Golf people do not agree on much.\n\nGin Rummy, Rummy, Golf, Phase 10 or Five Crowns?\n\nWhich one does your family play, and is it 6-card or 9-card Golf?\n\n#familygamenight #cardgames #rummy #gamenight #cozyhosting", "am": ["Rummy-Style Card Games", "Five card games built on sets and runs: Gin Rummy, Rummy, Golf, Phase 10 and Five Crowns. Three need only standard playing cards, and Phase 10 and Five Crowns come with their own decks."], "pt": ["Rummy-Style Card Games for Family Night | Phase 10, Five Crowns and More", "Five card games built on sets and runs: Gin Rummy, Rummy, Golf, Phase 10 and Five Crowns. Easy to learn and quick to set up. Save this for family card night. Affiliate links: I may earn a commission.", "rummy card games, family card games, Phase 10, Five Crowns, card games for adults, card games for kids, classic card games, family game night"], "alt": "Family go-to game? Gin Rummy, Rummy, Golf, Phase 10, Five Crowns. What's yours?"}, {"n": 10, "title": "Goes out first", "ready": true, "ig": "Who always goes out first?\n\nSave this for your next game night:\nMatch + skip + reverse: Uno\nBuild in order: Skip-Bo\nClassic shedding: Crazy Eights\nDon't draw the kitten: Exploding Kittens\nSlap + speed: Taco Cat Goat Cheese Pizza\n\nDrop yours below. I'm making part 2 from your answers.\n\n#familygamenight #cardgames #uno #gamenight #cozyhosting", "fb": "There's one person in every family who always goes out first.\n\nUno, Skip-Bo, Crazy Eights, Exploding Kittens or Taco Cat Goat Cheese Pizza?\n\nWho's the first one out in your house?\n\n#familygamenight #cardgames #uno #gamenight #cozyhosting", "am": ["Fast Card Games Where First Out Wins", "Five fast card games about emptying your hand: Uno, Skip-Bo, Crazy Eights, Exploding Kittens and Taco Cat Goat Cheese Pizza. Quick rounds that work for kids and adults."], "pt": ["Fast Card Games Where First Out Wins | Uno, Skip-Bo and More", "Five quick card games for family night: Uno, Skip-Bo, Crazy Eights, Exploding Kittens and Taco Cat Goat Cheese Pizza. Match, build, slap and race to empty your hand. Affiliate links: I may earn a commission.", "family card games, Uno, Skip-Bo, Exploding Kittens, fast card games, card games for kids, party card games, family game night"], "alt": "Family go-to game? Uno, Skip-Bo, Crazy Eights, Exploding Kittens, Taco Cat. What's yours?"}];
+const KEY = 'ss-gamenight-kit-v1';
+const CHECKS = [['ig','Instagram posted'],['fb','Facebook posted'],['pc','Pinned comments up'],['am','Amazon list made'],['pt','Pinterest pin up']];
+const URLS = [['tt','TikTok Shop link'],['pin','Pinterest pin link'],['igu','Instagram post link'],['fbu','Facebook post link'],['amu','Amazon list link']];
+
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+function st(n){
+  if (!state[n]) {
+    const p = POSTS.find(x => x.n === n);
+    state[n] = {c: p && p.posted ? {ig:true, fb:true} : {}, u:{}};
+  }
+  return state[n];
+}
+
+function el(tag, attrs, ...kids){
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === 'class') e.className = v; else if (k === 'text') e.textContent = v; else e.setAttribute(k, v);
+  }
+  for (const k of kids) if (k != null) e.append(k);
+  return e;
+}
+
+function fbComment(p){
+  const s = st(p.n).u;
+  const shop = p.deck ? 'Shop a deck of cards on TikTok Shop: ' : 'Shop all five games on TikTok Shop: ';
+  return 'Affiliate links, so I may earn a small commission at no extra cost to you.\n' + shop + (s.tt || '[TikTok Shop link]') + '\nSee the full list on Pinterest: ' + (s.pin || '[Pinterest pin link]');
+}
+function igComment(p){
+  return (p.deck ? 'Everything from this post is linked in my bio' : 'Every game from this post is linked in my bio') + ', on Amazon and TikTok Shop. Affiliate links, so I may earn a small commission. Save this so you have it on game night.';
+}
+
+function fillPre(pre, text){
+  pre.replaceChildren();
+  text.split(/(\[[^\]]+ link\])/).forEach(part => {
+    if (/^\[[^\]]+ link\]$/.test(part)) pre.append(el('span', {class:'ph', text:part})); else pre.append(part);
+  });
+}
+
+async function copyText(text, btn){
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
+    const t = el('textarea'); t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.append(t); t.select();
+    try { ok = document.execCommand('copy'); } catch (e2) {}
+    t.remove();
+  }
+  btn.textContent = ok ? 'Copied' : 'Press and hold the text';
+  btn.classList.toggle('ok', ok);
+  setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1600);
+}
+
+function copyBlock(label, getText){
+  const pre = el('pre');
+  const btn = el('button', {type:'button', class:'copy-btn', text:'Copy', 'aria-label':'Copy ' + label});
+  btn.addEventListener('click', () => copyText(getText(), btn));
+  const box = el('div', {class:'copy'}, el('div', {class:'copy-head'}, el('span', {class:'copy-label', text:label}), btn), pre);
+  box.refresh = () => fillPre(pre, getText());
+  box.refresh();
+  return box;
+}
+
+function posted(n){ const c = st(n).c; return !!(c.ig && c.fb); }
+function updateTop(){
+  const done = POSTS.filter(p => posted(p.n)).length;
+  document.getElementById('count').innerHTML = '<b>' + done + '</b> of ' + POSTS.length + ' posted';
+  document.getElementById('barFill').style.width = (done / POSTS.length * 100) + '%';
+}
+
+const sections = [];
+const main = document.getElementById('posts');
+POSTS.forEach((p, i) => {
+  const pad = String(p.n).padStart(2, '0');
+  const meta = el('span', {class:'sum-meta'});
+  const chip = el('span', {class:'chip'});
+  const prog = el('span');
+  meta.append(chip, prog);
+  if (p.note) meta.append(el('span', {text:'· ' + p.note}));
+  const sum = el('summary', {}, el('span', {class:'num', text:String(p.n)}),
+    el('span', {class:'sum-text'}, el('span', {class:'sum-title', text:p.title}), meta), el('span', {class:'chev', 'aria-hidden':'true'}));
+  const body = el('div', {class:'body'});
+  const det = el('details', {class:'sec', id:'post-' + p.n}, sum, body);
+
+  const refreshSummary = () => {
+    const c = st(p.n).c; const n = CHECKS.filter(([k]) => c[k]).length;
+    if (posted(p.n)) { chip.className = 'chip done'; chip.textContent = 'Posted'; }
+    else if (p.ready) { chip.className = 'chip ready'; chip.textContent = 'Ready'; }
+    else { chip.className = 'chip photos'; chip.textContent = 'Photos needed'; }
+    prog.textContent = n + ' of 5 done';
+  };
+
+  if (p.ready) {
+    body.append(el('div', {class:'imgs'},
+      el('a', {href:'game-night/post-' + pad + '.jpg', target:'_blank', rel:'noopener'}, el('img', {src:'game-night/post-' + pad + '.jpg', alt:'Post ' + p.n + ' collage for Facebook and Instagram', loading:'lazy', width:'1080', height:'1350'}), 'Facebook + Instagram'),
+      el('a', {href:'game-night/pin-' + pad + '.jpg', target:'_blank', rel:'noopener'}, el('img', {src:'game-night/pin-' + pad + '.jpg', alt:'Post ' + p.n + ' Pinterest pin', loading:'lazy', width:'1000', height:'1500'}), 'Pinterest pin')),
+      el('p', {class:'hint', text:'Tap an image to open it, then press and hold to save.'}));
+  } else {
+    body.append(el('p', {class:'notice', text:'Photos needed: ' + p.need + '. The images go here once the boxes are in. The copy below is ready now.'}));
+  }
+
+  body.append(el('h3', {text:'Checklist'}));
+  const checks = el('div', {class:'checks'});
+  CHECKS.forEach(([k, label]) => {
+    const box = el('input', {type:'checkbox'});
+    box.checked = !!st(p.n).c[k];
+    box.addEventListener('change', () => { st(p.n).c[k] = box.checked; save(); refreshSummary(); updateTop(); });
+    checks.append(el('label', {}, box, label));
+  });
+  body.append(checks);
+
+  const fbBox = copyBlock('Pinned comment · Facebook', () => fbComment(p));
+  body.append(el('h3', {text:'Links'}));
+  const urls = el('div', {class:'urls'});
+  URLS.forEach(([k, label]) => {
+    const inp = el('input', {type:'url', inputmode:'url', autocomplete:'off', placeholder:'Paste link'});
+    inp.value = st(p.n).u[k] || '';
+    inp.addEventListener('input', () => { st(p.n).u[k] = inp.value.trim(); save(); fbBox.refresh(); });
+    urls.append(el('label', {}, label, inp));
+  });
+  body.append(urls);
+
+  body.append(el('h3', {text:'Alt text'}), copyBlock('Alt text · all apps', () => p.alt));
+  body.append(el('h3', {text:'Instagram'}), copyBlock('Instagram caption', () => p.ig), copyBlock('Pinned comment · Instagram', () => igComment(p)));
+  body.append(el('h3', {text:'Facebook'}), copyBlock('Facebook caption', () => p.fb), fbBox);
+  body.append(el('h3', {text:'Amazon idea list'}), copyBlock('List title', () => p.am[0]), copyBlock('List description', () => p.am[1]));
+  body.append(el('h3', {text:'Pinterest'}), copyBlock('Pin title', () => p.pt[0]), copyBlock('Pin description', () => p.pt[1]), copyBlock('Tagged topics', () => p.pt[2]));
+  if (i < POSTS.length - 1) body.append(el('button', {type:'button', class:'next', 'data-next':String(i + 1), text:'Next · Post ' + POSTS[i + 1].n}));
+
+  refreshSummary();
+  sections.push(det);
+  main.append(det);
+});
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-next]');
+  if (!b) return;
+  const cur = b.closest('details'); const nxt = sections[Number(b.dataset.next)];
+  if (cur) cur.open = false;
+  if (nxt) { nxt.open = true; nxt.scrollIntoView({behavior:'smooth', block:'start'}); }
+});
+updateTop();
+</script>
+</body>
+</html>
