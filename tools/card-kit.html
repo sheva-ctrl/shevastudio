@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Field Guide Card Kit · Sheva Studio</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#FAF8FC; --surface:#FFFFFF; --ink:#1E1830; --muted:#5A5470; --line:#E4DCF0;
+  --accent:#7B3FF2; --accent-ink:#FFFFFF; --teal:#0B7A6D; --chip:#F1ECFB; --checker-a:#2A2340; --checker-b:#332A4C;
+  --display:'Bricolage Grotesque','Plus Jakarta Sans',system-ui,sans-serif;
+  --body:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#141020; --surface:#1E1830; --ink:#F2EEF9; --muted:#B7AFCB; --line:#2F2747;
+  --accent:#A98BFF; --accent-ink:#141020; --teal:#5FD3C2; --chip:#2A2340; color-scheme:dark;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 64px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,54px);line-height:1.02;letter-spacing:-.02em;text-wrap:balance}
+.lede{margin:0;max-width:62ch;color:var(--muted);font-size:17px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.how li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.how b{font-family:var(--display);font-size:22px;line-height:1;color:var(--accent)}
+.how span{font-size:15px}
+.controls{position:sticky;top:0;z-index:5;background:var(--bg);padding-block:10px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{font:inherit;font-weight:700;font-size:15px;padding:10px 16px;min-height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.seg button:focus-visible,.jump a:focus-visible,.tile a:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.jump{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.jump a{flex-shrink:0;text-decoration:none;font-weight:700;font-size:14px;color:var(--ink);background:var(--chip);border-radius:999px;padding:8px 12px;min-height:36px;display:inline-flex;align-items:center}
+.hint{margin:0;font-size:14px;color:var(--muted)}
+section.guide{display:flex;flex-direction:column;gap:14px;scroll-margin-top:150px}
+.ghead{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(24px,3.6vw,32px);line-height:1.1;letter-spacing:-.01em}
+.hook{margin:0;color:var(--muted);font-size:15px}
+.hook code{font-family:var(--body);font-weight:700;color:var(--ink);user-select:all}
+.grid{display:grid;gap:12px}
+.grid[data-fmt="4x5"]{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.grid[data-fmt="9x16"]{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+.grid[data-fmt="16x9"]{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.tile{display:flex;flex-direction:column;gap:6px;min-width:0;margin:0}
+.tile a{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.tile.see-through a{background-color:var(--checker-a);background-image:linear-gradient(45deg,var(--checker-b) 25%,transparent 25%,transparent 75%,var(--checker-b) 75%),linear-gradient(45deg,var(--checker-b) 25%,transparent 25%,transparent 75%,var(--checker-b) 75%);background-size:20px 20px;background-position:0 0,10px 10px}
+.tile img{display:block;width:100%;height:auto}
+.tile figcaption{font-size:13px;font-weight:600;color:var(--muted)}
+.tile figcaption strong{color:var(--ink)}
+footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><svg width="16" height="18" viewBox="0 0 18 20" aria-hidden="true"><polygon points="9,0 18,5 18,15 9,20 0,15 0,5" fill="#7B3FF2"/></svg>Sheva Studio · Creator Field Guides</div>
+    <h1>Field Guide Card Kit</h1>
+    <p class="lede">All 8 guides from shevastudio.com as ready-to-post cards. Each carousel is your photo with its overlay, then six cards. The same cards come in YouTube and Shorts sizes for your videos.</p>
+    <ol class="how">
+      <li><b>1</b><span>Pick a size below: <strong>Carousel</strong> for Instagram and Facebook posts, <strong>YouTube</strong> or <strong>Shorts</strong> for video.</span></li>
+      <li><b>2</b><span>Press and hold a card to save it. Or tap it to open full size, then save.</span></li>
+      <li><b>3</b><span>Post in order: your photo with the slide 1 overlay, then slides 2 to 7.</span></li>
+    </ol>
+  </header>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Card size">
+      <button type="button" id="fmt-4x5" data-fmt="4x5" aria-pressed="true">Carousel · 4:5</button>
+      <button type="button" id="fmt-16x9" data-fmt="16x9" aria-pressed="false">YouTube · 16:9</button>
+      <button type="button" id="fmt-9x16" data-fmt="9x16" aria-pressed="false">Shorts · 9:16</button>
+    </div>
+    <nav class="jump" aria-label="Jump to a guide" id="jump"></nav>
+    <p class="hint" id="hint"></p>
+  </div>
+
+  <main id="guides"></main>
+
+  <footer>Cards use the copy from each guide page on shevastudio.com. The checkered areas are see-through: lay those cards over your video in CapCut.</footer>
+</div>
+
+<script>
+const BASE = 'assets/card-kit/';
+const GUIDES = [
+  ['01','instagram-cleanup','Instagram Cleanup','Following way too many?','shevastudio.com/instagram'],
+  ['02','blue-follow-button','The Blue Follow Button','Still showing Add Friend?','shevastudio.com/facebook'],
+  ['03','quiet-filters','The Quiet Filters','Sick of “DM me” spam?','shevastudio.com/instagram/quiet-filters.html'],
+  ['04','save-able-profile','The Save-Able Profile','Profile visits, but no follows?','shevastudio.com/instagram/profile.html'],
+  ['05','reach-rescue','The Reach Rescue','Only friends see your reels?','shevastudio.com/facebook/reach.html'],
+  ['06','feed-cleanse','Facebook Feed Cleanse','Clean your feed. Unfriend nobody.','shevastudio.com/facebook/feed-cleanse.html'],
+  ['07','cross-posting-trap','The Cross-Posting Trap','Same reel, different results?','shevastudio.com/instagram/cross-posting.html'],
+  ['08','emote-drop','The Emote Drop','LIVE emotes nobody uses?','shevastudio.com/tiktok'],
+];
+const PLATFORM = {'01':'Instagram','02':'Facebook','03':'Instagram','04':'Instagram','05':'Facebook','06':'Facebook','07':'Instagram + Facebook','08':'TikTok'};
+const HINTS = {
+  '4x5':'1080 × 1350. Slide 1 is the overlay: put it on top of your photo, then post slides 2 to 7 after it.',
+  '16x9':'1920 × 1080. The checkered side is see-through. Put the card over your video and sit on that side of the frame.',
+  '9x16':'1080 × 1920. Slide 1 is the cover overlay. On slides 2 to 7 the bottom is see-through, so your face shows under the card.'
+};
+const main = document.getElementById('guides');
+const jump = document.getElementById('jump');
+const hint = document.getElementById('hint');
+
+function el(tag, attrs, ...kids){
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs||{})) n.setAttribute(k, v);
+  for (const k of kids) n.append(k);
+  return n;
+}
+function tile(src, strong, rest, alt, seeThrough){
+  const img = el('img', {src, alt, loading:'lazy', decoding:'async'});
+  const a = el('a', {href:src, target:'_blank', rel:'noopener'}, img);
+  const cap = el('figcaption', {}, el('strong', {}, strong), rest);
+  return el('figure', {class:'tile' + (seeThrough ? ' see-through' : '')}, a, cap);
+}
+function render(fmt){
+  main.replaceChildren();
+  jump.replaceChildren();
+  hint.textContent = HINTS[fmt];
+  for (const [n, slug, name, hook, url] of GUIDES){
+    jump.append(el('a', {href:'#g'+n}, n + ' · ' + name.replace(/^The /,'')));
+    const sec = el('section', {class:'guide', id:'g'+n});
+    const head = el('div', {class:'ghead'},
+      el('span', {class:'eyebrow'}, 'Guide ' + n + ' · ' + PLATFORM[n]),
+      el('h2', {}, name));
+    const p = el('p', {class:'hook'});
+    p.append('Overlay hook: “' + hook + '”  ·  Full guide: ');
+    p.append(el('code', {}, url));
+    head.append(p);
+    const grid = el('div', {class:'grid', 'data-fmt':fmt});
+    if (fmt !== '16x9'){
+      grid.append(tile(BASE + 'overlays/field-guide-' + n + '-' + slug + '-' + fmt + '.png', 'Slide 1', ' · overlay for your photo', name + ' cover overlay', true));
+    }
+    for (let i = 2; i <= 7; i++){
+      const nn = String(i).padStart(2,'0');
+      grid.append(tile(BASE + 'cards/' + fmt + '/guide-' + n + '-' + slug + '-' + nn + '-' + fmt + '.png', 'Slide ' + i, '', name + ' slide ' + i, fmt !== '4x5'));
+    }
+    sec.append(head, grid);
+    main.append(sec);
+  }
+}
+function choose(fmt){
+  document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fmt === fmt)));
+  render(fmt);
+  try { localStorage.setItem('cardkit-fmt', fmt); } catch (e) {}
+}
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => choose(b.dataset.fmt)));
+let start = '4x5';
+try { const s = localStorage.getItem('cardkit-fmt'); if (s && HINTS[s]) start = s; } catch (e) {}
+choose(start);
+</script>
+</body>
+</html>
