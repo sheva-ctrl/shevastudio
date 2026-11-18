@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>YouTube Build Plan · Sheva Studio</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Lexend:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+:root{
+  --violet:#6020d0; --violet-2:#7c3aed; --teal:#0891b2; --teal-2:#06b6d4;
+  --ink:#15151c; --muted:#55555f; --line:#e7e5ee; --bg:#fcfcfe; --card:#fff; --soft:#f5f3fa;
+  --grad-full:linear-gradient(100deg,#6020d0 0%,#7c3aed 45%,#0891b2 100%);
+  --display:"Syne","Lexend",sans-serif; --body:"Lexend",system-ui,sans-serif; --mono:"Space Mono",monospace;
+  --hex:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--body)}
+.shell{max-width:960px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 96px}
+.top{padding:36px 0 8px}
+.eyebrow{display:flex;align-items:center;gap:10px;font:700 11.5px/1.65 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.eyebrow i{width:26px;height:3px;border-radius:3px;background:var(--grad-full)}
+h1{font:800 clamp(30px,6vw,48px)/1.1 var(--display);letter-spacing:-.01em;margin:12px 0 14px}
+h1 .accent{background:var(--grad-full);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-weight:300;font-size:clamp(16px,2.4vw,18px);color:var(--muted);margin:0;max-width:60ch}
+.lede b{font-weight:500;color:var(--ink)}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:26px 0 0;padding:0;list-style:none}
+.how li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;font-size:14.5px;font-weight:300;color:var(--muted)}
+.how b{display:block;font:800 19px/1.25 var(--display);color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
+.facts{margin:18px 0 0;font:400 12.5px/1.65 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.jump{position:sticky;top:0;z-index:5;background:rgba(252,252,254,.92);backdrop-filter:blur(8px);margin:28px 0 8px;padding:10px 0;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto}
+.jump a{flex:none;text-decoration:none;color:var(--muted);font-weight:500;font-size:13.5px;padding:7px 14px;border-radius:999px}
+.jump a:hover{background:#f0eff5;color:var(--ink)}
+.jump a.today{background:var(--grad-full);color:#fff}
+.jump a:focus-visible,.btn:focus-visible,.copy:focus-visible,.slides a:focus-visible,.photo>a:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.day{padding-top:36px;scroll-margin-top:60px}
+.day h2{display:flex;align-items:center;gap:12px;margin:0 0 18px;font:700 28px/1.3 var(--display);letter-spacing:-.01em}
+.hex{width:22px;height:25px;background:var(--grad-full);clip-path:var(--hex);flex:none}
+.day.past{opacity:.6}
+.post{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 26px;margin-bottom:18px}
+.post.notready{background:var(--soft)}
+.post header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 16px;align-items:flex-start;margin-bottom:12px}
+.when b{display:block;font:700 15px/1.4 var(--mono);letter-spacing:.06em}
+.when span{font:400 12px/1.5 var(--mono);color:var(--muted);letter-spacing:.04em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:700 11px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:#fff}
+.tag.ok{color:var(--violet);border-color:rgba(96,32,208,.35)}
+.tag.ai{color:var(--ink);background:#f3eefd;border-color:rgba(96,32,208,.25)}
+h3{font:700 19px/1.25 var(--display);letter-spacing:-.01em;margin:0 0 14px}
+.assets{margin:0 0 18px}
+.photo{display:flex;flex-wrap:wrap;gap:16px 20px;align-items:flex-start}
+.photo>a img{display:block;width:180px;height:auto;border-radius:12px;border:1px solid var(--line)}
+.dl{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.btn{display:inline-flex;flex-direction:column;text-decoration:none;font-weight:500;font-size:15px;line-height:1.35;padding:11px 20px;border-radius:999px;color:#fff;background:var(--grad-full);box-shadow:0 6px 22px rgba(96,32,208,.28)}
+.btn span{font:400 11px/1.4 var(--mono);opacity:.9;letter-spacing:.04em}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--teal)}
+.slides{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.slides a{text-decoration:none;color:var(--muted);font:700 11px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;display:flex;flex-direction:column;gap:6px}
+.slides img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);display:block}
+.small{font-size:13px;font-weight:300;color:var(--muted);margin:10px 0 0}
+.pending{margin:0 0 18px;font-weight:500;font-size:15px}
+.pending span{display:block;font:400 12px/1.5 var(--mono);color:var(--muted);letter-spacing:.04em;margin-top:2px}
+.cap{background:var(--soft);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.post.notready .cap{background:#fff}
+.lab{font:700 11.5px/1.65 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.captext{white-space:pre-line;margin:4px 0 12px;font-size:16px;user-select:all}
+.copy{font:500 14px/1 var(--body);padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;min-height:40px}
+.copy:hover{border-color:var(--teal)}
+.copy.done{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font:400 12.5px/1.65 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s ease,box-shadow .15s ease}.btn:hover{transform:translateY(-2px)}}
+h3{margin-top:18px}.pts{padding-left:22px;margin:0}.pts li{margin-bottom:8px;font-weight:300}.cap{margin-bottom:12px}.copy{margin-right:6px;margin-top:4px}</style>
+</head>
+<body>
+<div class="shell">
+<div class="top">
+  <div class="eyebrow"><i></i>Sheva Studio · YouTube</div>
+  <h1>YouTube <span class="accent">Build Plan</span></h1>
+  <p class="lede">12 weeks, Nov 23 to Feb 14. Two long videos and five Shorts a week, <b>built from the Sora Archive, your AI series and your Facebook AI carousels.</b> Long videos build watch hours.</p>
+  <ol class="how" style="margin-top:26px"><li><b>Now</b>38 subscribers. Best Shorts: about 1.6K views each. A 4:29 long video: 69 views.</li><li><b>Step 1 · 500 subscribers</b>Also needs 3 public uploads in 90 days and either 3,000 watch hours or 3 million Shorts views. Unlocks memberships and Shopping.</li><li><b>Step 2 · 1,000 subscribers</b>Plus 8,000 watch hours in a year (20 million Shorts views is the other route). Unlocks ad revenue for new applicants after Feb 1, 2027.</li></ol>
+<p class="small" style="margin:14px 0 0">Rough math, my estimate: at about 3 minutes watched per view, 3,000 hours is about 60,000 long-video views. With Shorts topping out near 1.6K views, the Shorts route (3 to 20 million) is not the path. The Jan 31, 2027 window needs 1,000 subscribers and 4,000 hours already in hand, which is out of reach from here. Shorts views do not count toward watch hours.</p>
+  <p class="facts">24 long videos · 60 Shorts · Video files are not on this page</p>
+</div>
+<nav class="jump" id="jump" aria-label="Jump to a date"><a href="#w1">Wk 1</a><a href="#w2">Wk 2</a><a href="#w3">Wk 3</a><a href="#w4">Wk 4</a><a href="#w5">Wk 5</a><a href="#w6">Wk 6</a><a href="#w7">Wk 7</a><a href="#w8">Wk 8</a><a href="#w9">Wk 9</a><a href="#w10">Wk 10</a><a href="#w11">Wk 11</a><a href="#w12">Wk 12</a></nav>
+<section class="day" id="w1"><h2><span class="hex"></span>Week 1 · Nov 23</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Nov 23 and Tue Nov 24</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Nov 23 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Let AI Plan Your Thanksgiving Oven Timeline</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="Let AI Plan Your Thanksgiving Oven Timeline">Copy title</button> <button type="button" class="copy" data-copy="List your dishes, cook times and ovens, then ask AI to work backward from dinnertime.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Nov 24 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">My First Sora Videos Were Unhinged (And That&#x27;s Why They Worked) | The Sora Archive Ep 01</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 01. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="My First Sora Videos Were Unhinged (And That&#x27;s Why They Worked) | The Sora Archive Ep 01">Copy title</button> <button type="button" class="copy" data-copy="The first Sora videos I ever made were a Thanksgiving Jenga tower and a WiFi router parade float. No plan. No script. Just prompts and chaos. This is where The Sora Archive begins.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: Let AI Plan Your Thanksgiving Oven Timeline. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: Giant Jenga Tower Collapse. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w2"><h2><span class="hex"></span>Week 2 · Nov 30</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Nov 30 and Tue Dec 1</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Nov 30 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">The 4-Part Prompt Formula: Role, Task, Context, Format</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="The 4-Part Prompt Formula: Role, Task, Context, Format">Copy title</button> <button type="button" class="copy" data-copy="Four parts make any prompt work. Try the formula on the next thing you ask AI.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Dec 1 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">I Used Sora AI to Film My ADHD Brain (And It Was Uncomfortably Accurate) | The Sora Archive Ep 02</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 02. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="I Used Sora AI to Film My ADHD Brain (And It Was Uncomfortably Accurate) | The Sora Archive Ep 02">Copy title</button> <button type="button" class="copy" data-copy="What if you could make a video that shows — not tells — what ADHD feels like from the inside? I used a farm, golden-hour lighting, and Sora AI to try. This is what happened.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: The 4-Part Prompt Formula: Role, Task, Context, Format. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: Time Blindness Harvest. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w3"><h2><span class="hex"></span>Week 3 · Dec 7</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Dec 7 and Tue Dec 8</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Dec 7 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">5 AI Prompts That Save Your Monday</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="5 AI Prompts That Save Your Monday">Copy title</button> <button type="button" class="copy" data-copy="Five prompts that sort a full task list before the week starts.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Dec 8 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">I Invented Nonsense Words and Sora AI Turned Them Into Films | The Sora Archive Ep 03</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 03. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="I Invented Nonsense Words and Sora AI Turned Them Into Films | The Sora Archive Ep 03">Copy title</button> <button type="button" class="copy" data-copy="What happens when you combine Lewis Carroll&#x27;s nonsense language with Gen Z ADHD slang and feed it to Sora? You get chortlestorms, frabjangle hazes, and a glimmercroft detour. And somehow — Sora understood every word.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: 5 AI Prompts That Save Your Monday. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: Chortlestorm / Frabjangle Haze (Scene-setter). Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w4"><h2><span class="hex"></span>Week 4 · Dec 14</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Dec 14 and Tue Dec 15</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Dec 14 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">What to Automate First at Work (Start Small)</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="What to Automate First at Work (Start Small)">Copy title</button> <button type="button" class="copy" data-copy="Start with one boring task. Here is how to pick it.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Dec 15 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">I Work in AI and Used Sora to Show What My Brain Does on a Farm | The Sora Archive Ep 04</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 04. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="I Work in AI and Used Sora to Show What My Brain Does on a Farm | The Sora Archive Ep 04">Copy title</button> <button type="button" class="copy" data-copy="I lead AI development at data centers. I also spent months prompting Sora to film me failing to apply tech logic to farm chores. 404 Barn Not Found. Jira Goat. Infinite Loop grain. This is what happens when a tech brain tries to touch grass.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: What to Automate First at Work (Start Small). First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: 404 Barn Not Found. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w5"><h2><span class="hex"></span>Week 5 · Dec 21</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Dec 21 and Tue Dec 22</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Dec 21 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Plan a Whole Day With AI in 5 Steps</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="Plan a Whole Day With AI in 5 Steps">Copy title</button> <button type="button" class="copy" data-copy="Let AI draft the plan. You make the calls.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Dec 22 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Meet Pixel: The Accidental AI Character Who Became My ADHD Mascot | The Sora Archive Ep 05</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 05. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="Meet Pixel: The Accidental AI Character Who Became My ADHD Mascot | The Sora Archive Ep 05">Copy title</button> <button type="button" class="copy" data-copy="I needed a character to represent ADHD chaos in my Sora videos. I wrote one brief. What came out was Pixel — a holographic blue raven-chihuahua who hijacks every task, hyperfocuses on the wrong things, and immediately became the most beloved character in my archive.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: Plan a Whole Day With AI in 5 Steps. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: The Clean One Thing Sidequest. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w6"><h2><span class="hex"></span>Week 6 · Dec 28</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Dec 28 and Tue Dec 29</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Dec 28 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">5 AI Myths, Busted</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="5 AI Myths, Busted">Copy title</button> <button type="button" class="copy" data-copy="Which of these did you believe? Five myths, five plain answers.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Dec 29 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">I Built an ADHD Productivity System Around a Penguin and It Actually Worked | The Sora Archive Ep 06</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 06. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="I Built an ADHD Productivity System Around a Penguin and It Actually Worked | The Sora Archive Ep 06">Copy title</button> <button type="button" class="copy" data-copy="Body doubling — working near another person to activate the ADHD brain — is one of the most effective productivity tools for neurodivergent people. I used Sora to build a penguin body-double character named Nova, and then built an entire 10-video ADHD productivity series around her. This is that story.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: 5 AI Myths, Busted. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: MicroStart — Nova Taps the Stopwatch. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w7"><h2><span class="hex"></span>Week 7 · Jan 4</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Jan 4 and Tue Jan 5</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Jan 4 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Build a Roadmap in 20 Minutes With AI</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="Build a Roadmap in 20 Minutes With AI">Copy title</button> <button type="button" class="copy" data-copy="A rough roadmap now beats a perfect one in March.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Jan 5 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">The Observer Effect: What ADHD Hyperfocus Actually Looks Like in AI Video | The Sora Archive Ep 07</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 07. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="The Observer Effect: What ADHD Hyperfocus Actually Looks Like in AI Video | The Sora Archive Ep 07">Copy title</button> <button type="button" class="copy" data-copy="In physics, observing a particle changes its behavior. In ADHD, noticing you&#x27;re focused immediately breaks the focus. I built an entire Sora series around this feeling — and what came back was more poetic than I expected.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: Build a Roadmap in 20 Minutes With AI. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: Painting the Roses Red — Observer Glitch. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w8"><h2><span class="hex"></span>Week 8 · Jan 11</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Jan 11 and Tue Jan 12</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Jan 11 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">5 Questions to Ask Before You Trust an AI Answer</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="5 Questions to Ask Before You Trust an AI Answer">Copy title</button> <button type="button" class="copy" data-copy="Five checks to run before you rely on anything AI tells you.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Jan 12 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">I Made Vintage Cola Ads Across 70 Years With the Same AI Character | The Sora Archive Ep 08</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 08. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="I Made Vintage Cola Ads Across 70 Years With the Same AI Character | The Sora Archive Ep 08">Copy title</button> <button type="button" class="copy" data-copy="1950s diner. 1970s disco. 1990s grunge. Same character. Same cola. Different era. I used Sora to build a vintage advertising series that spans 70 years — and what I learned about Sora&#x27;s knowledge of cinematography history will surprise you.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: 5 Questions to Ask Before You Trust an AI Answer. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: Cola Ad Template — Decade Concept. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w9"><h2><span class="hex"></span>Week 9 · Jan 18</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Jan 18 and Tue Jan 19</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Jan 18 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">What I Wish I Knew Before Using AI</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="What I Wish I Knew Before Using AI">Copy title</button> <button type="button" class="copy" data-copy="The mistakes I made so you can skip them.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Jan 19 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">My Husband and I Built an AI Universe Together — And It Changed Our Creative Partnership | The Sora Archive Ep 09</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 09. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="My Husband and I Built an AI Universe Together — And It Changed Our Creative Partnership | The Sora Archive Ep 09">Copy title</button> <button type="button" class="copy" data-copy="The moment @wdw544 entered the Sora universe, everything expanded. This episode is about building a two-character AI world, the dopamine menu dialogue that became our most-shared video, and what happens when your creative partner is also your person.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: What I Wish I Knew Before Using AI. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: Dopamine Menu Dialogue — Couple Version. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w10"><h2><span class="hex"></span>Week 10 · Jan 25</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Jan 25 and Tue Jan 26</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Jan 25 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Your AI Questions, Answered</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="Your AI Questions, Answered">Copy title</button> <button type="button" class="copy" data-copy="You asked. These are the questions that came up most.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Jan 26 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">How to Lock Characters in Sora — Complete Tutorial (250 Videos of Trial and Error) | The Sora Archive Ep 10</p><p class="small" style="margin:0 0 10px">Sora Archive Episode 10. Long video. Set Altered content to Yes.</p><button type="button" class="copy" data-copy="How to Lock Characters in Sora — Complete Tutorial (250 Videos of Trial and Error) | The Sora Archive Ep 10">Copy title</button> <button type="button" class="copy" data-copy="After 250 Sora videos and months of character drift, morphing, and identity swapping — I cracked the system. This tutorial covers the complete Character Lock method: the block, the tone, the gesture rules, and the dialogue format. Plus a full copy-paste template you can use today.
+
+#SoraArchive #SoraAI #AIVideo #WhimsyLoop #ShevaStudio">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: Your AI Questions, Answered. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Prompt reveal: Character Lock Block — The Core Method. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w11"><h2><span class="hex"></span>Week 11 · Feb 1</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Feb 1 and Tue Feb 2</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Feb 1 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Turn Your Notes Into a Practice Quiz With AI</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="Turn Your Notes Into a Practice Quiz With AI">Copy title</button> <button type="button" class="copy" data-copy="Paste your notes in and ask for a 5-question quiz that hides the answers until you reply.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Feb 2 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Open slot: Season 2 of The Sora Archive</p><p class="small" style="margin:0 0 10px">No episode planned.</p><button type="button" class="copy" data-copy="Open slot: Season 2 of The Sora Archive">Copy title</button> <button type="button" class="copy" data-copy="Episodes for Season 2 are not written yet. Pick the next Sora theme and add it here.">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: Turn Your Notes Into a Practice Quiz With AI. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Sora archive clip with a silent reaction. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section><section class="day" id="w12"><h2><span class="hex"></span>Week 12 · Feb 8</h2><article class="post">
+<header><div class="when"><b>Long-form · 2 this week</b><span>Mon Feb 8 and Tue Feb 9</span></div><div class="tags"><span class="tag ok">Watch hours</span></div></header>
+<h3>Mon Feb 8 · AI, plain language</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">5 Quick Fixes for Accessible Posts</p><p class="small" style="margin:0 0 10px">Built from your Facebook AI carousel on the same topic.</p><button type="button" class="copy" data-copy="5 Quick Fixes for Accessible Posts">Copy title</button> <button type="button" class="copy" data-copy="Small changes that help more people see, hear and read what you post.
+
+#EverydayAI #AITips #AIforBeginners #LearnAI #ShevaStudio">Copy description</button></div>
+<h3>Tue Feb 9 · Sora Archive</h3>
+<div class="cap"><span class="lab">Title</span><p class="captext">Open slot: Season 2 of The Sora Archive</p><p class="small" style="margin:0 0 10px">No episode planned.</p><button type="button" class="copy" data-copy="Open slot: Season 2 of The Sora Archive">Copy title</button> <button type="button" class="copy" data-copy="Episodes for Season 2 are not written yet. Pick the next Sora theme and add it here.">Copy description</button></div>
+<h3>Shorts · 5 this week</h3>
+<ul class="pts"><li><b>Mon:</b> Hook cut from Monday's video: 5 Quick Fixes for Accessible Posts. First beat only, 30 to 45 seconds.</li><li><b>Tue:</b> Sora archive clip with a silent reaction. Altered content: Yes.</li><li><b>Wed:</b> Unserious 101 clip, same as TikTok.</li><li><b>Fri:</b> Focus Friday ADHD tip clip, same as TikTok.</li><li><b>Sat:</b> Side by Side Saturday clip. Add to the Side by Side Collective playlist.</li></ul>
+</article></section>
+<footer>Dec 21 and Dec 28 are holiday weeks: film those long videos ahead. Titles and descriptions are drafts; check voice before posting.</footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy');
+    var done=function(){var o=b.textContent;b.textContent='Copied';b.classList.add('done');setTimeout(function(){b.textContent=o;b.classList.remove('done')},1600)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){sel(b)})}else{sel(b)}
+  });
+});
+function sel(b){var p=b.parentNode.querySelector('.captext');var r=document.createRange();r.selectNodeContents(p);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+
+</script>
+</body>
+</html>
